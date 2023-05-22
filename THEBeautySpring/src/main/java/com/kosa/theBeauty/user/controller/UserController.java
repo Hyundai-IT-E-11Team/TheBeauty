@@ -29,7 +29,7 @@ public class UserController {
 	// 비밀번호 찾기 실행
 	@DebugLog
 	@PostMapping("password")
-	public String findPwService(@RequestParam String userMail, @RequestParam int userRegistration) {
+	public String findPasswordService(@RequestParam String userMail, @RequestParam int userRegistration) {
 		
 		UserVO userVO = service.findPassword(userMail, userRegistration);
 		if(userVO != null) {
@@ -37,6 +37,4 @@ public class UserController {
 		}
 		return "잘못된 요청입니다. 다시 입력 해주세요."; 
 	}
-
-
 }

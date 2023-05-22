@@ -13,5 +13,4 @@ public class UserVO {
     private String userMail;
     private String userPw;
 	private int userRegistration;
-
 }

@@ -15,7 +15,6 @@ public class UserService {
 
     public UserVO findPassword(String userMail, int userRegistration) {
         
-    	return dao.findPassword(userMail, userRegistration);
+    	return dao.selectPassword(userMail, userRegistration);
     }
-
 }
