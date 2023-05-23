@@ -1,6 +1,8 @@
 package com.kosa.theBeauty.user.controller;
 
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.user.domain.UserVO;
 import com.kosa.theBeauty.user.service.UserService;
-
 
 import lombok.RequiredArgsConstructor;
 
@@ -47,4 +48,18 @@ public class UserController {
 		
 		return "user/login";
   }
+  
+  @DebugLog
+	@PostMapping(value="findEmail")
+	public String findEmail(String userName,int userRegistration,UserVO user,Model model) {
+		user.setUserName(userName);
+		user.setUserRegistration(userRegistration);
+		
+		String userEmail = service.findEmail(user);
+		
+		model.addAttribute("userEmail",userEmail);
+		String viewName ="findEmailResult";
+		
+		return viewName;
+	}
 }

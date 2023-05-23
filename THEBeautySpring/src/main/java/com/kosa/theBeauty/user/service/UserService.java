@@ -12,7 +12,14 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 	
 	private final UserDAO dao;
+	
+	public String findEmail(UserVO user) {
 
+		user = dao.selectOne(user);
+		
+		return user.getUserEMail();
+	}
+  
 	public UserVO registerUser(UserVO userVO) {
     
 		return dao.insertUser();

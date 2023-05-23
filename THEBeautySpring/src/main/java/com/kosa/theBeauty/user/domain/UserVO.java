@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserVO {
 	
+  private int userSeq;
 	private String userName;
 	private String userMail;
 	private String userPw;

@@ -8,5 +8,10 @@
 </head>
 <body>
 아이디 찾기 화면입니다
+<form action="/user/findEmail" method="post">
+	이름 : <input type="text" id="userName" name="userName" >
+	주민번호 : <input type="text" id="userRegistration" name="userRegistration">
+	<input type="submit" value="아이디찾기">  
+</form>
 </body>
 </html>
