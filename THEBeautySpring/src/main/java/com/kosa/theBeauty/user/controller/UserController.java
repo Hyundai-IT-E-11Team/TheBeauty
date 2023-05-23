@@ -1,6 +1,5 @@
 package com.kosa.theBeauty.user.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +20,13 @@ public class UserController {
 	
 	private final UserService service;
 	
+  @DebugLog
+	@PostMapping("login")
+	public String login(UserDTO dto) {
+		service.login(dto);
+		return null;
+  }
+  
 	// 비밀번호 찾기 페이지로 이동
 	@GetMapping("password")
 	public String showFindPwPage() {

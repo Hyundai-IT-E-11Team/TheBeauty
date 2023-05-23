@@ -13,6 +13,11 @@ public class UserService {
 	
 	private final UserDAO dao;
 	
+  public UserVO login(UserDTO dto) {
+		System.out.println(dao.selectUserByDTO(dto));
+		return null;
+	}
+  
 	public String findEmail(UserVO user) {
 
 		user = dao.selectOne(user);
