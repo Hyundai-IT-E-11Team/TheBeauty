@@ -14,4 +14,5 @@ public class UserVO {
 	private String userPw;
 	private int userRegistration;
 	private int userMobile;
+
 }

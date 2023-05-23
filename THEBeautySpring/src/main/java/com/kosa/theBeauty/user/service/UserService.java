@@ -10,10 +10,17 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
+	
 	private final UserDAO dao;
 
 	public UserVO registerUser(UserVO userVO) {
+    
 		return dao.insertUser();
 	}
+  
+  public UserVO findPassword(String userMail, int userRegistration) {
+    
+    return dao.selectPassword(userMail, userRegistration);
+  }
+  
 }

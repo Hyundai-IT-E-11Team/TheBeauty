@@ -18,5 +18,13 @@
 		INSERT INTO tb_user
 		VALUES(#{userMail}, #{userPw}, #{userName}, #{userRegistration}, #{userMobile})
 	</insert>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="selectPassword" parameterType="UserVO" resultMap="UserVOMap">
+		SELECT *
+		  FROM tb_user 
+		 WHERE user_mail = #{userMail} 
+		   AND user_registration = #{userRegistration}
+	</select>
 
-</mapper>  
+</mapper>
