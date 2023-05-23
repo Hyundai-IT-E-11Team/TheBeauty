@@ -1,19 +1,20 @@
 package com.kosa.theBeauty.user.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.user.domain.UserVO;
 import com.kosa.theBeauty.user.service.UserService;
 
+
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("find")
+@RequestMapping("user")
 @RequiredArgsConstructor
 public class UserController {
 	
@@ -36,5 +37,14 @@ public class UserController {
 			return userVO.getUserPw();
 		}
 		return "잘못된 요청입니다. 다시 입력 해주세요."; 
-	}
+  }
+  
+  @DebugLog
+	@PostMapping
+	public String post(UserVO userVO) {
+		
+		service.registerUser(userVO);
+		
+		return "user/login";
+  }
 }

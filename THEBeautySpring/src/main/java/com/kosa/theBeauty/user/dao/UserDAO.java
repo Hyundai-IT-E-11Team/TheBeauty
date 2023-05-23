@@ -7,5 +7,6 @@ import com.kosa.theBeauty.user.domain.UserVO;
 @Mapper
 public interface UserDAO {
 
+	UserVO insertUser();
 	UserVO selectPassword(String userMail, int userRegistration);
 }
