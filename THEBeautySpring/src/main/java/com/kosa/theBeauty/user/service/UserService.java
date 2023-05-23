@@ -32,6 +32,7 @@ public class UserService {
 		String result = dao.selectOneUserMail(userMail);
 		System.out.println(result);
 		return result;
+
 	}
 
 	// 회원가입

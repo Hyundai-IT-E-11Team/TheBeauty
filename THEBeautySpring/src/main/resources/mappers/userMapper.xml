@@ -51,4 +51,28 @@
 		AND user_registration = #{userRegistration}
 	</select>
 
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="UserVO">
+	
+		INSERT INTO tb_user
+		VALUES(#{userMail}, #{userPw}, #{userName}, #{userRegistration}, #{userMobile})
+		
+	</insert>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="selectPassword" parameterType="UserVO" resultMap="UserVOMap">
+	
+		SELECT *
+		  FROM tb_user 
+		 WHERE user_mail = #{userMail} 
+		   AND user_registration = #{userRegistration}
+		   
+	</select>
+	
+	<!-- 비밀번호 수정 -->
+	<update id="updatePassword" parameterType="UserVO">
+	    UPDATE tb_user
+	       SET user_pw = #{newPassword}
+	     WHERE user_mail = #{userMail}
+	</update>
 </mapper>  
