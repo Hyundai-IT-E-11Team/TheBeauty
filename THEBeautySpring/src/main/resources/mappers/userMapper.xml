@@ -30,16 +30,25 @@
 	
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="UserVO">
-		INSERT INTO tb_user
-		VALUES(#{userMail}, #{userPw}, #{userName}, #{userRegistration}, #{userMobile})
+		INSERT INTO tb_user (user_mail, user_pw, user_name,user_registration,user_mobile)
+		VALUES(#{userMail}, #{userPw}, #{userName}, #{userRegistration},
+		#{userMobile})
 	</insert>
 	
+	<!-- 회원가입 시 이메일 중복 검사 -->
+	<select id="selectOneUserMail" parameterType="String" resultType="String">
+		SELECT user_mail
+		  FROM tb_user
+		 WHERE user_mail = #{userMail}
+	</select>
+
 	<!-- 비밀번호 찾기 -->
-	<select id="selectPassword" parameterType="UserVO" resultMap="UserVOMap">
+	<select id="selectPassword" parameterType="UserVO"
+		resultMap="UserVOMap">
 		SELECT *
-		  FROM tb_user 
-		 WHERE user_mail = #{userMail} 
-		   AND user_registration = #{userRegistration}
+		FROM tb_user
+		WHERE user_mail = #{userMail}
+		AND user_registration = #{userRegistration}
 	</select>
 
 </mapper>  

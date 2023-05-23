@@ -1,70 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	<h1>회원가입</h1>
-	<form action="${pageContext.request.contextPath}/register"
-		method="post">
-		<div>
-			<label for="email">이메일:</label> <input type="email" id="email"
-				name="userMail" required>
-			<button type="button" onclick="checkEmail()">중복확인</button>
-		</div>
-		<div>
-			<label for="password">비밀번호:</label> <input type="password"
-				id="password" name="userPw" required>
-		</div>
-		<div>
-			<label for="confirmPassword">비밀번호 확인:</label> <input type="password"
-				id="confirmPassword" name="confirmPassword" required>
-		</div>
-		<div>
-			<label for="name">이름:</label> <input type="text" id="name"
-				name="userName" required>
-		</div>
-		<div>
-			<label for="registration">주민등록번호:</label> <input type="text"
-				id="registration" name="userRegistration" required>
-		</div>
-		<div>
-			<label for="mobile">전화번호:</label> <input type="tel" id="mobile"
-				name="userMobile" required>
-		</div>
-		<div>
-			<input type="submit" value="회원가입">
-		</div>
+	회원가입 페이지
+	<br>
+	<form id="register" action="register" method="post">
+		이메일 : <input type="email" id="userMail" name="userMail">
+		<button type="button" onclick="checkMail()">중복확인</button>
+		<br> 비밀번호 : <input type="password" id="userPw" name="userPw"><br>
+		비밀번호 확인: <input type="password" id="checkPassword"
+			name="checkPassword"><br> 이름 : <input type="text"
+			id="userName" name="userName"><br> 주민번호 : <input
+			type="text" id="userRegistration" name="userRegistration"><br>
+		전화번호 : <input type="text" id="userMobile" name="userMobile"><br>
+		<input type="submit" value="회원가입">
 	</form>
-
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		function checkEmail() {
-			var email = $("#email").val();
-
-			// AJAX 요청을 통해 서버에 이메일 중복확인 요청
-			$.ajax({
-				url : "${pageContext.request.contextPath}/checkEmail",
-				data : {
-					email : email
-				},
-				dataType : "json",
-				success : function(response) {
-					if (response.duplicated) {
-						alert("중복된 이메일입니다.");
-					} else {
-						alert("사용 가능한 이메일입니다.");
-					}
-				}
-			});
-		}
-	</script>
-
+	<script
+		src="${pageContext.request.contextPath}/resources/js/user/register.js"></script>
 
 </body>
 </html>

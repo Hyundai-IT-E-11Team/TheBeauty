@@ -11,8 +11,12 @@ public interface UserDAO {
 	UserVO selectUserByDTO(UserDTO dto);
 
 	UserVO selectOne(UserDTO dto);
-
-	UserVO insertUser();
+  
+  // 회원가입
+	int insertUser(UserVO userVO);
+	
+	// 회원가입 시 이메일 중복 검사
+	String selectOneUserMail(String userMail);
 
 	UserVO selectPassword(String userMail, int userRegistration);
 }

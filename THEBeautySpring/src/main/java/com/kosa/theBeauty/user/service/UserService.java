@@ -15,28 +15,38 @@ public class UserService {
 
 	private final UserDAO dao;
 
-	public UserVO login(UserDTO dto) {
+  public UserVO login(UserDTO dto) {
+    
 		return dao.selectUserByDTO(dto);
 	}
 
-	@DebugLog
-	public String findEmail(UserDTO dto) {
+	public String findEmail(UserVO user) {
+
+		user = dao.selectOne(user);
+		return user.getUserMail();
+	}
+	
+	// 회원가입 시 이메일 중복 검사
+	public String checkMail(String userMail) {
 		
-		String userMail ;
-		try {
-			userMail = dao.selectOne(dto).getUserMail();
-		} catch (Exception e) {
-			userMail = "입력하신 정보의 아이디가 없습니다.";
+		String result = dao.selectOneUserMail(userMail);
+		System.out.println(result);
+		return result;
+	}
+
+	// 회원가입
+	public boolean registerUser(UserVO userVO) {
+
+		int cnt = dao.insertUser(userVO);
+		if(cnt!=1) {
+			//rollback
+			return false;
+		} else {
+			return true;
 		}
-		return userMail;
 	}
 
-	public UserVO registerUser(UserVO userVO) {
-
-		return dao.insertUser();
-	}
-
-	public UserVO findPassword(String userMail, int userRegistration) {
+	public UserVO findPassword(String userMail, String userRegistration) {
 
 		return dao.selectPassword(userMail, userRegistration);
 	}
