@@ -1,6 +1,5 @@
 package com.kosa.theBeauty.user.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosa.theBeauty.user.dao.UserDAO;
@@ -11,8 +10,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
-	private UserDAO dao;
+	
+	private final UserDAO dao;
 	
 	public String findEmail(UserVO user) {
 
@@ -20,5 +19,15 @@ public class UserService {
 		
 		return user.getUserEMail();
 	}
-
+  
+	public UserVO registerUser(UserVO userVO) {
+    
+		return dao.insertUser();
+	}
+  
+  public UserVO findPassword(String userMail, int userRegistration) {
+    
+    return dao.selectPassword(userMail, userRegistration);
+  }
+  
 }
