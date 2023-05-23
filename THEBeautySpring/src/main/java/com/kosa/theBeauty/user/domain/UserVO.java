@@ -10,7 +10,7 @@ public class UserVO {
 	private String roleName;
 	private String userName;
 	private String userMail;
-	private String userPW;
+	private String userPw;
 	private String userRegistration;
 	private String userMobile;
 }
