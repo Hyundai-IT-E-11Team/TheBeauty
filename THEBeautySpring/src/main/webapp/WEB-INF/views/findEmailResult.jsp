@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-아이디 : ${userEmail}
+고객님의 아이디는  <h4>${userEmail}</h4>입니다!<br>
+<a href="login">로그인하러가기</a>
+<a href="maintest">아이디재검색</a>
+<a href="password">비밀번호찾기</a>
 </body>
 </html>

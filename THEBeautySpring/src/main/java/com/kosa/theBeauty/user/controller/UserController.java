@@ -4,10 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.user.domain.UserDTO;
@@ -19,17 +20,56 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequestMapping("user")
 @RequiredArgsConstructor
+@SessionAttributes(value = {"currUser"})
 public class UserController {
 
 	private final UserService service;
 
 	@DebugLog
-	@PostMapping("login")
-	public String login(UserDTO dto) {
-		service.login(dto);
-		return null;
+	@GetMapping("login")
+	public String login() {
+		return "user/login";
 	}
 
+	@GetMapping("maintest")
+	public String mainPage() {
+		return "findEmail";
+	}
+
+	//로그인
+	@DebugLog
+	@PostMapping("login")
+	public String login(UserDTO dto, Model model) {
+		UserVO vo = service.login(dto);
+		if(vo == null) {
+			return "redirect:/user/login";
+		} else {
+			model.addAttribute("currUser", vo);
+			return "redirect:/main";
+		}
+	}
+
+	//회원가입
+	@DebugLog
+	@PostMapping
+	public String post(UserVO userVO) {
+
+		service.registerUser(userVO);
+
+		return "user/login";
+	}
+	
+	//아이디 찾기
+	@DebugLog
+	@PostMapping("findEmail")
+	public String findEmail(UserDTO dto,Model model) {
+		
+		String userEmail = service.findEmail(dto);
+		model.addAttribute("userEmail", userEmail);
+		
+		return "findEmailResult";
+	}
+	
 	// 비밀번호 찾기 페이지로 이동
 	@GetMapping("password")
 	public String showFindPwPage() {
@@ -114,4 +154,5 @@ public class UserController {
 
 		return viewName;
 	}
+
 }

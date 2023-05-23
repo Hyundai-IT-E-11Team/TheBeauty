@@ -1,0 +1,66 @@
+h1 {
+	text-align: center;
+}
+
+#outter {
+	display: flex;
+	justify-content: center;
+}
+
+#container {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#container>form {
+	display: flex;
+}
+
+h3 {
+	align-self: flex-start;
+}
+
+.textInput {
+	width: 350px;
+	height: 40px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #D4D4D4;
+	margin-right: 5px;
+}
+
+#bottom>div>button {
+	border: 1px solid #000000;
+	background-color: #ffffff;
+	color: #000000;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+}
+
+#loginBtn {
+	background-color: #000000;
+	color: #ffffff;
+	border: none;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	height: 88px;
+	width: 88px;
+}
+#bottom {
+	width:100%;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+form {
+	margin-bottom: 5px;
+}
