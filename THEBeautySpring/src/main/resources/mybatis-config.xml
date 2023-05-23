@@ -21,11 +21,9 @@
 	            오직 XML 설정에서만 사용되며, 타이핑을 줄이기 
 		   위해 사용합니다. -->
 	<typeAliases>
-
 		<typeAlias alias="TestVO" type="com.kosa.theBeauty.test.domain.TestVO" />	          
 		<typeAlias alias="UserVO" type="com.kosa.theBeauty.user.domain.UserVO" />	  
-    <typeAlias alias="userDTO" type="com.kosa.theBeauty.user.domain.UserDTO" />
-				
+    	<typeAlias alias="userDTO" type="com.kosa.theBeauty.user.domain.UserDTO" />		
 	</typeAliases>
 	
 </configuration>	
