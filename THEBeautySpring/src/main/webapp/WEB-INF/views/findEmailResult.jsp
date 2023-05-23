@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>회원가입</h1>
-	<h3>테스트</h3>
+아이디 : ${userEmail}
 </body>
 </html>

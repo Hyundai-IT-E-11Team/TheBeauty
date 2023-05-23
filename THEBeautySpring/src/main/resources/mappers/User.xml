@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa.theBeauty.user.dao.UserDAO">
+	<resultMap type="UserVO" id="UserVO">
+		 <result property="userSequence" column="user_seq" />
+		 <result property="userName" column="user_name" />
+		 <result property="userEmail" column="user_mail" />
+	     <result property="userPassword" column="user_pw" />
+	     <result property="userRegistration" column="user_registration" />
+		 <result property="userMobile" column="user_mobile" />  
+	</resultMap>
+	
+	<select id="selectOne" resultMap="UserVO">
+		SELECT user_mail
+		  FROM tb_user
+		 WHERE user_name = #{userName}
+		   AND user_registration = #{userRegistration}
+	</select>
+
+</mapper>  
