@@ -24,4 +24,20 @@ function checkMail() {
 	});
 }
 
-
+$("#register").submit(function(event) {
+	let status = $('#userMail').attr('status');
+    var userPw = $("#userPw").val();
+    var checkPassword = $("#checkPassword").val();
+    
+    if(status !== "yes"){
+    	alert("이메일 중복확인을 하십시오.");
+        event.preventDefault();
+        return;
+	}
+    if (userPw !== checkPassword) {
+        alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+        event.preventDefault();
+        return;
+    }
+    
+});
