@@ -16,37 +16,30 @@
     <h1>비밀번호 변경</h1>
     <h2>더뷰티닷컴 비밀번호 변경</h2>
 
-    <form action="updatePassword" method="post">
+    <form id="passwordChangeForm" action="updatePassword" method="post">
         <label for="userMail">이메일:</label>
         <input type="email" id="userMail" name="userMail" required><br>
 
         <label for="newPassword">새 비밀번호:</label>
-        <input type="password" id="newPassword" name="userPW" required><br>
+        <input type="password" id="newPassword" name="newPassword" required><br>
+        
+        <label for="confirmPassword">새 비밀번호 확인:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
         <input type="submit" class="btn-change" value="비밀번호 변경">
     </form>
 
     <script>
-        function changePassword() {
-            var userMail = $("#userMail").val();
-            var userPW = $("#newPassword").val();
+        $("#passwordChangeForm").submit(function(event) {
+            var newPassword = $("#newPassword").val();
+            var confirmPassword = $("#confirmPassword").val();
 
-            $.ajax({
-                url: '/user/updatePassword',
-                method: 'POST',
-                data: {
-                    'userMail': userMail,
-                    'userPW': userPW
-                },
-                success: function(result) {
-                    alert("비밀번호가 성공적으로 변경되었습니다.");
-                },
-                error: function(status, error) {
-                    alert("Error: " + status + ' - ' + error);
-                }
-            });
-        }
-
+            if (newPassword !== confirmPassword) {
+                alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+                event.preventDefault(); // stop form submission
+                return;
+            }
+        });
     </script>
 </body>
 </html>

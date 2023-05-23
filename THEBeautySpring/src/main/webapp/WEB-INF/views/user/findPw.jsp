@@ -30,28 +30,32 @@
             <label for="registration">주민등록번호</label>
         </div>
         <br><br>
-        <input type="submit" id="check" value="회원정보찾기" class="btn-find">
+        <input type="submit" value="회원정보찾기" class="btn-find">
     </form>
 
     <script>
-        function findPassword() {
-            var userMail = $("#email").val();
-            var userRegistration = $("#registration").val();
-        
-            $.post("/password",
-            {
-                'userMail': userMail,
-                'userRegistration': userRegistration
-            },
-            function(result, status){
-                if (status === 'success') {
-                    alert("Your password is " + result);
-                } else {
-                    alert("Error: " + status);
-                }
-            });
-        }
-        
+	    $("#passwordFindForm").submit(function(event) {
+	
+	        var userMail = $("#email").val();
+	        var userRegistration = $("#registration").val();
+	
+	        $.post("/passwordChange",
+	        {
+	            'userMail': userMail,
+	            'userRegistration': userRegistration
+	        },
+	        function(data, status) {
+	            if (status === 'success') {
+	                if(data) {
+	                    window.location.href = "/passwordChange";  // 비밀번호 변경 페이지로 이동
+	                } else {
+	                    alert("잘못된 요청입니다. 다시 입력해주세요.");
+	                }
+	            } else {
+	            }
+	        });
+	    });
+
     </script>
 </body>
 </html>

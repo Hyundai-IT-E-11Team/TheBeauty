@@ -20,7 +20,7 @@ public class UserController {
 	
 	private final UserService service;
 	
-  @DebugLog
+    @DebugLog
 	@PostMapping("login")
 	public String login(UserDTO dto) {
 		service.login(dto);
@@ -34,33 +34,18 @@ public class UserController {
 		return "user/findPw";
 	}
 	
-//	// 비밀번호 찾기 실행
-//	@DebugLog
-//	@PostMapping("findPassword")
-//	public String findPasswordService(String userMail, String userRegistration, Model model) {
-//		
-//		UserVO userVO = service.findPassword(userMail, userRegistration);
-//		if(userVO != null) {
-//	        return  "redirect:theBeauty/user/passwordChange"; // 비밀번호 수정 페이지로 이동
-//		} else {
-//			model.addAttribute("message", "잘못된 요청입니다. 다시 입력해주세요.");
-//	        return "/user/findPw"; // 비밀번호 찾기 페이지  보여주기
-//		}
-//	}
-	
 	// 비밀번호 변경 페이지로 이동
 	@PostMapping("passwordChange")
-	public String showChangePwPage(UserVO user,Model model) {
+	public String showChangePwPage(UserVO user, Model model) {
 		//db 검색
 		boolean ck = service.findPassword(user);
 		
 		if(ck) {
 			 return "user/changePw";
 		}else {
-			// model.addAttribute("message", "잘못된 요청입니다. 다시 입력해주세요.");
+			 //model.addAttribute("message", "잘못된 요청입니다. 다시 입력해주세요.");
 			 return "redirect:/user/password";
 		}
-	   
 	}
   
 	// 비밀번호 변경 실행
@@ -69,10 +54,10 @@ public class UserController {
 
 	    boolean isUpdated = service.updatePassword(userMail, newPassword);
 	    if(isUpdated) {
-	        return "theBeauty/user/changePwSuccess"; // 비밀번호 업데이트 성공 시 보여줄 뷰 이름
+	        return "user/loginSample"; // 비밀번호 업데이트 성공 시 보여줄 뷰 이름
 	    } else {
-	        model.addAttribute("message", "비밀번호 업데이트에 실패했습니다.");
-	        return "/user/findPw";
+	        //model.addAttribute("message", "비밀번호 업데이트에 실패했습니다.");
+	        return "redirect:/user/changePw";
 	    }
 	}
 	

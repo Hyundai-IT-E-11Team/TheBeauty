@@ -43,5 +43,4 @@ public class UserService {
     public boolean updatePassword(String userMail, String newPassword) {
         return dao.updatePassword(userMail, newPassword) > 0;
     }
-  
 }
