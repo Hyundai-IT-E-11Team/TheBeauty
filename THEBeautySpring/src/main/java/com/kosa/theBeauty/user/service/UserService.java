@@ -3,6 +3,7 @@ package com.kosa.theBeauty.user.service;
 import org.springframework.stereotype.Service;
 
 import com.kosa.theBeauty.user.dao.UserDAO;
+import com.kosa.theBeauty.user.domain.UserDTO;
 import com.kosa.theBeauty.user.domain.UserVO;
 
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class UserService {
 
 		user = dao.selectOne(user);
 		
-		return user.getUserEMail();
+		return user.getUserMail();
 	}
   
 	public UserVO registerUser(UserVO userVO) {
@@ -30,9 +31,17 @@ public class UserService {
 		return dao.insertUser();
 	}
   
-  public UserVO findPassword(String userMail, int userRegistration) {
-    
-    return dao.selectPassword(userMail, userRegistration);
-  }
+	public boolean findPassword(UserVO user) {
+		 user = dao.selectPassword(user);
+		 if(user!=null) {
+			 return true;
+		 } else {
+			 return false;
+		}
+	  }
+	
+    public boolean updatePassword(String userMail, String newPassword) {
+        return dao.updatePassword(userMail, newPassword) > 0;
+    }
   
 }

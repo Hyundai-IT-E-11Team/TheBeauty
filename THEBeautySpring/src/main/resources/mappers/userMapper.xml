@@ -4,6 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kosa.theBeauty.user.dao.UserDAO">
+
+	<resultMap type="UserVO" id="UserVOMap">
+		<result column="user_name" property="userName"/>
+		<result column="user_mail" property="userMail"/>
+		<result column="user_pw" property="userPw"/>
+		<result column="user_registration" property="userRegistration"/>
+	</resultMap>
 	
 	<select id="selectUserByDTO" parameterType="UserDTO" resultType="String">
 		
@@ -11,4 +18,28 @@
 		
 	</select>
 
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="UserVO">
+	
+		INSERT INTO tb_user
+		VALUES(#{userMail}, #{userPw}, #{userName}, #{userRegistration}, #{userMobile})
+		
+	</insert>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="selectPassword" parameterType="UserVO" resultMap="UserVOMap">
+	
+		SELECT *
+		  FROM tb_user 
+		 WHERE user_mail = #{userMail} 
+		   AND user_registration = #{userRegistration}
+		   
+	</select>
+	
+	<!-- 비밀번호 수정 -->
+	<update id="updatePassword" parameterType="UserVO">
+	    UPDATE tb_user
+	       SET user_pw = #{newPassword}
+	     WHERE user_mail = #{userMail}
+	</update>
 </mapper>  
