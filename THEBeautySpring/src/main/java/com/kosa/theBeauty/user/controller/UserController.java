@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.user.domain.UserDTO;
@@ -17,21 +18,33 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequestMapping("user")
 @RequiredArgsConstructor
+@SessionAttributes(value = {"currUser"})
 public class UserController {
 
 	private final UserService service;
-	
+
+	@DebugLog
+	@GetMapping("login")
+	public String login() {
+		return "user/login";
+	}
+
 	@GetMapping("maintest")
 	public String mainPage() {
 		return "findEmail";
 	}
 
 	//로그인
-	@DebugLog
+		@DebugLog
 	@PostMapping("login")
-	public String login(UserDTO dto) {
-		service.login(dto);
-		return null;
+	public String login(UserDTO dto, Model model) {
+		UserVO vo = service.login(dto);
+		if(vo == null) {
+			return "redirect:/user/login";
+		} else {
+			model.addAttribute("currUser", vo);
+			return "redirect:/main";
+		}
 	}
 
 	//회원가입

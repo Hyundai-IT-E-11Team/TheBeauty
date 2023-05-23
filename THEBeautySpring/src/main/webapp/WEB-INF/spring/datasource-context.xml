@@ -46,6 +46,6 @@
 		<constructor-arg ref="dataSource"></constructor-arg>
 	</bean>
 
-	<mybatis:scan base-package="com.kosa.theBeauty.*.dao" />
+	<mybatis:scan base-package="com.kosa.theBeauty" />
 
 </beans>

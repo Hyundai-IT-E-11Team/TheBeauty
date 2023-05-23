@@ -16,8 +16,7 @@ public class UserService {
 	private final UserDAO dao;
 
 	public UserVO login(UserDTO dto) {
-		System.out.println(dao.selectUserByDTO(dto));
-		return null;
+		return dao.selectUserByDTO(dto);
 	}
 
 	@DebugLog

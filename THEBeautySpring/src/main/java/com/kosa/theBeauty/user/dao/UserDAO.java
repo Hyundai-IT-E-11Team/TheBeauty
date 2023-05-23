@@ -8,7 +8,7 @@ import com.kosa.theBeauty.user.domain.UserVO;
 @Mapper
 public interface UserDAO {
 
-	String selectUserByDTO(UserDTO dto);
+	UserVO selectUserByDTO(UserDTO dto);
 
 	UserVO selectOne(UserDTO dto);
 
