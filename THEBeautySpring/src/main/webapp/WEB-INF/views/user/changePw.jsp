@@ -29,17 +29,8 @@
         <input type="submit" class="btn-change" value="비밀번호 변경">
     </form>
 
-    <script>
-        $("#passwordChangeForm").submit(function(event) {
-            var newPassword = $("#newPassword").val();
-            var confirmPassword = $("#confirmPassword").val();
-
-            if (newPassword !== confirmPassword) {
-                alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
-                event.preventDefault(); // stop form submission
-                return;
-            }
-        });
-    </script>
+	<script
+      src="${pageContext.request.contextPath}/resources/js/user/changePw.js"></script>
+	
 </body>
 </html>

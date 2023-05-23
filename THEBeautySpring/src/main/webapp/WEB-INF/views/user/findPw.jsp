@@ -33,29 +33,6 @@
         <input type="submit" value="회원정보찾기" class="btn-find">
     </form>
 
-    <script>
-	    $("#passwordFindForm").submit(function(event) {
-	
-	        var userMail = $("#email").val();
-	        var userRegistration = $("#registration").val();
-	
-	        $.post("/passwordChange",
-	        {
-	            'userMail': userMail,
-	            'userRegistration': userRegistration
-	        },
-	        function(data, status) {
-	            if (status === 'success') {
-	                if(data) {
-	                    window.location.href = "/passwordChange";  // 비밀번호 변경 페이지로 이동
-	                } else {
-	                    alert("잘못된 요청입니다. 다시 입력해주세요.");
-	                }
-	            } else {
-	            }
-	        });
-	    });
-
-    </script>
+    <script src="findPw.js"></script>
 </body>
 </html>
