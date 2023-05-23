@@ -2,6 +2,7 @@ package com.kosa.theBeauty.user.service;
 
 import org.springframework.stereotype.Service;
 
+import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.user.dao.UserDAO;
 import com.kosa.theBeauty.user.domain.UserDTO;
 import com.kosa.theBeauty.user.domain.UserVO;
@@ -18,11 +19,16 @@ public class UserService {
 		return dao.selectUserByDTO(dto);
 	}
 
-	public String findEmail(UserVO user) {
-
-		user = dao.selectOne(user);
-
-		return user.getUserMail();
+	@DebugLog
+	public String findEmail(UserDTO dto) {
+		
+		String userMail ;
+		try {
+			userMail = dao.selectOne(dto).getUserMail();
+		} catch (Exception e) {
+			userMail = "입력하신 정보의 아이디가 없습니다.";
+		}
+		return userMail;
 	}
 
 	public UserVO registerUser(UserVO userVO) {

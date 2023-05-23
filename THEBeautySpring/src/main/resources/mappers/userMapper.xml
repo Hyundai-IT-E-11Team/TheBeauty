@@ -6,15 +6,40 @@
 <mapper namespace="com.kosa.theBeauty.user.dao.UserDAO">
 	<resultMap type="UserVO" id="UserVOMap">
 		<result column="user_name" property="userName" />
-		<result column="user_mail" property="userMail" />
 		<result column="user_pw" property="userPw" />
+		<result column="user_mail" property="userMail" />
 		<result column="user_registration" property="userRegistration" />
+		<result column="user_mobile" property="userMobile" />
 	</resultMap>
+  
+  <!-- 로그인 -->
 	<select id="selectUserByDTO" parameterType="userDTO" resultMap="UserVOMap">
 		SELECT *
 		  FROM tb_user
 		 WHERE user_mail = #{mail}
 		   AND user_pw = #{pw}
+	</select>
+	
+	<!-- 아이디 찾기 -->
+	<select id="selectOne" parameterType="UserDTO" resultMap="UserVOMap">
+		SELECT *
+		  FROM tb_user
+		 WHERE user_name = #{userName}
+		   AND user_registration = #{userRegistration}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="UserVO">
+		INSERT INTO tb_user
+		VALUES(#{userMail}, #{userPw}, #{userName}, #{userRegistration}, #{userMobile})
+	</insert>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="selectPassword" parameterType="UserVO" resultMap="UserVOMap">
+		SELECT *
+		  FROM tb_user 
+		 WHERE user_mail = #{userMail} 
+		   AND user_registration = #{userRegistration}
 	</select>
 
 </mapper>  

@@ -10,7 +10,7 @@ public interface UserDAO {
 
 	UserVO selectUserByDTO(UserDTO dto);
 
-	UserVO selectOne(UserVO user);
+	UserVO selectOne(UserDTO dto);
 
 	UserVO insertUser();
 
