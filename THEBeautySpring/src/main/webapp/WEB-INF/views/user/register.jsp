@@ -42,29 +42,29 @@
 		</div>
 	</form>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		function checkEmail() {
-			var email = document.getElementById("email").value;
+			var email = $("#email").val();
 
 			// AJAX 요청을 통해 서버에 이메일 중복확인 요청
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET",
-					"${pageContext.request.contextPath}/checkEmail?email="
-							+ email, true);
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState === XMLHttpRequest.DONE
-						&& xhr.status === 200) {
-					var response = JSON.parse(xhr.responseText);
+			$.ajax({
+				url : "${pageContext.request.contextPath}/checkEmail",
+				data : {
+					email : email
+				},
+				dataType : "json",
+				success : function(response) {
 					if (response.duplicated) {
 						alert("중복된 이메일입니다.");
 					} else {
 						alert("사용 가능한 이메일입니다.");
 					}
 				}
-			};
-			xhr.send();
+			});
 		}
 	</script>
+
 
 </body>
 </html>
