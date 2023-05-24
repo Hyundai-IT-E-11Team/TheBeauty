@@ -26,7 +26,7 @@ public class UserService {
         try {
             userMail = dao.selectOne(dto).getUserMail();
         } catch (Exception e) {
-            userMail = "입력하신 정보의 아이디가 없습니다.";
+            userMail = null;
         }
         return userMail;
 	}
