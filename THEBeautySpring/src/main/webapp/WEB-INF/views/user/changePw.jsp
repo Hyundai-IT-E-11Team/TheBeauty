@@ -21,7 +21,7 @@
         <input type="email" id="userMail" name="userMail" required><br>
 
         <label for="newPassword">새 비밀번호:</label>
-        <input type="password" id="newPassword" name="newPassword" required><br>
+        <input type="password" id="newPassword" name="userPw" required><br>
         
         <label for="confirmPassword">새 비밀번호 확인:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required><br>

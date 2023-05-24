@@ -17,8 +17,6 @@
 		위해 사용합니다. -->
 	<typeAliases>
 
-		<typeAlias alias="TestVO"
-			type="com.kosa.theBeauty.test.domain.TestVO" />
 		<typeAlias alias="UserVO"
 			type="com.kosa.theBeauty.user.domain.UserVO" />
 		<typeAlias alias="UserDTO"

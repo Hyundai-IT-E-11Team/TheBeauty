@@ -27,11 +27,15 @@
 				<input type="checkbox"> 아이디 저장하기
 			</div>
 				<div>
+				<a href="findEmail">
 				<button>아이디 찾기</button>
+				</a>
+				<a href="password">
 				<button>비밀번호 찾기</button>
+				</a>
 				</div>
 			</div>
-			<a href="regist">회원가입</a>
+			<a href="registerPage">회원가입</a>
 		</div>
 	</div>
 </body>

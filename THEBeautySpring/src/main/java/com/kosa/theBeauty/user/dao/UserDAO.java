@@ -8,23 +8,21 @@ import com.kosa.theBeauty.user.domain.UserVO;
 @Mapper
 public interface UserDAO {
 
-	UserVO selectUserByDTO(UserDTO dto);
-
-	UserVO selectOne(UserDTO dto);
-
 	// 회원가입
 	int insertUser(UserVO userVO);
 
 	// 회원가입 시 이메일 중복 검사
 	String selectOneUserMail(String userMail);
+	
+	// 로그인
+	UserVO selectUserByDTO(UserDTO dto);
+	
+	// 아이디 찾기
+	UserVO selectOne(UserDTO dto);
 
-	UserVO selectPassword(String userMail, String userRegistration);
-
-	UserVO selectOne(UserVO user);
-
-	UserVO insertUser();
-
+	//비밀번호 찾기
 	UserVO selectPassword(UserVO user);
 
-	int updatePassword(@Param("userMail") String userMail, @Param("newPassword") String newPassword);
+	//비밀번호 변경
+	int updatePassword(UserVO user);
 }

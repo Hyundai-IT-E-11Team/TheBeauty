@@ -31,11 +31,6 @@ public class UserController {
 		return "user/login";
 	}
 
-	@GetMapping("maintest")
-	public String mainPage() {
-		return "findEmail";
-	}
-
 	// 로그인
 	@DebugLog
 	@PostMapping("login")
@@ -44,38 +39,10 @@ public class UserController {
 		if (vo == null) {
 			return "redirect:/user/login";
 		} else {
-			model.addAttribute("currUser", vo);
+			model.addAttribute("currU"
+					+ "ser", vo);
 			return "redirect:/main";
 		}
-	}
-
-	// 아이디 찾기
-//	@DebugLog
-//	@PostMapping("findEmail")
-//	public String findEmail(UserDTO dto, Model model) {
-//
-//		String userEmail = service.findEmail(dto);
-//		model.addAttribute("userEmail", userEmail);
-//
-//		return "findEmailResult";
-//	}
-
-	// 비밀번호 찾기 페이지로 이동
-	@GetMapping("password")
-	public String showFindPwPage() {
-		return "user/FindPw";
-	}
-
-	// 비밀번호 찾기 실행
-	@DebugLog
-	@PostMapping("password")
-	public String findPasswordService(@RequestParam String userMail, @RequestParam String userRegistration) {
-
-		UserVO userVO = service.findPassword(userMail, userRegistration);
-		if (userVO != null) {
-			return userVO.getUserPw();
-		}
-		return "잘못된 요청입니다. 다시 입력 해주세요.";
 	}
 
 	// 회원가입 페이지로 이동
@@ -89,35 +56,8 @@ public class UserController {
 	@PostMapping("register")
 	public String register(UserVO userVO, Model model) {
 		boolean result = service.registerUser(userVO);
-		return "user/findPw";
+		return "redirect:login";
 	}
-
-	// 비밀번호 변경 페이지로 이동
-//	@PostMapping("passwordChange")
-//	public String showChangePwPage(UserVO user, Model model) {
-//		// db 검색
-//		boolean ck = service.findPassword(user);
-//
-//		if (ck) {
-//			return "user/changePw";
-//		} else {
-//			// model.addAttribute("message", "잘못된 요청입니다. 다시 입력해주세요.");
-//			return "redirect:/user/password";
-//		}
-//	}
-
-	// 비밀번호 변경 실행
-//	@PostMapping("updatePassword")
-//	public String updatePasswordService(String userMail, String newPassword, Model model) {
-//
-//		boolean isUpdated = service.updatePassword(userMail, newPassword);
-//		if (isUpdated) {
-//			return "user/loginSample"; // 비밀번호 업데이트 성공 시 보여줄 뷰 이름
-//		} else {
-//			// model.addAttribute("message", "비밀번호 업데이트에 실패했습니다.");
-//			return "redirect:/user/changePw";
-//		}
-//	}
 
 	// 회원가입 시 이메일 중복 검사
 	@PostMapping("checkMailDuplicate")
@@ -132,18 +72,55 @@ public class UserController {
 		}
 	}
 
+	// 아이디 찾기
 	@DebugLog
-	@PostMapping(value = "findEmail")
-	public String findEmail(String userName, String userRegistration, UserVO user, Model model) {
-		user.setUserName(userName);
-		user.setUserRegistration(userRegistration);
+	@GetMapping("findEmail")
+	public String findEmail() {
+		return "findEmail";
+	}
 
-		String userEmail = service.findEmail(user);
+	@DebugLog
+	@PostMapping("findEmail")
+	public String findEmail(UserDTO dto, Model model) {
 
+		String userEmail = service.findEmail(dto);
 		model.addAttribute("userEmail", userEmail);
-		String viewName = "findEmailResult";
 
-		return viewName;
+		return "findEmailResult";
+	}
+
+	// 비밀번호 찾기 페이지로 이동
+	@GetMapping("password")
+	public String showFindPwPage() {
+		return "user/findPw";
+	}
+
+	// 비밀번호 변경 페이지로 이동
+	@PostMapping("passwordChange")
+	public String showChangePwPage(UserVO user, Model model) {
+		// db 검색
+		boolean ck = service.findPassword(user);
+
+		if (ck) {
+			return "user/changePw";
+		} else {
+			// model.addAttribute("message", "잘못된 요청입니다. 다시 입력해주세요.");
+			return "redirect:/user/password";
+		}
+	}
+
+	// 비밀번호 변경 실행
+	@DebugLog
+	@PostMapping("updatePassword")
+	public String updatePasswordService(UserVO user) {
+
+		boolean isUpdated = service.updatePassword(user);
+		if (isUpdated) {
+			return "redirect:login"; // 비밀번호 업데이트 성공 시 보여줄 뷰 이름
+		} else {
+			// model.addAttribute("message", "비밀번호 업데이트에 실패했습니다.");
+			return "redirect:/user/changePw";
+		}
 	}
 
 }
