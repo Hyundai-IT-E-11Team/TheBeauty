@@ -7,6 +7,7 @@
 <title>THEBeauty 로그인</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/user/login.css" />
+
 </head>
 <body>
 	<h1>로그인</h1>
@@ -22,20 +23,12 @@
 				</div>
 				<input id="loginBtn"  type="submit" value="로그인">
 			</form>
-			<div id="bottom">
-			<div>
-				<input type="checkbox"> 아이디 저장하기
-			</div>
-				<div>
-				<a href="findEmail">
-				<button>아이디 찾기</button>
-				</a>
-				<a href="password">
-				<button>비밀번호 찾기</button>
-				</a>
-				</div>
-			</div>
-			<a href="registerPage">회원가입</a>
+			         <br>
+         <div id="bottom">
+            <a href="findEmail">아이디 찾기</a>&nbsp;/&nbsp;
+            <a href="password">비밀번호 찾기</a>&nbsp;/&nbsp;
+            <a href="registerPage">회원가입</a>
+         </div>
 		</div>
 	</div>
 </body>

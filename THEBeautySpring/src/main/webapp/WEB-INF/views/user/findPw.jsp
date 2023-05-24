@@ -4,35 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>비밀번호 찾기</title>
+    <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/user/findPw.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-        .btn-find{
-            background-color: black;
-            color: white;
-        }
-        .textbox {
-            border-bottom: 2px solid gray;
-            padding-bottom: 5px;
-        }
-    </style>
+
 </head>
 <body>
     <h1>비밀번호 찾기</h1>
-    <h2>더뷰티닷컴 비밀번호 찾기</h2>
-
-    <form id="passwordFindForm" class="content" action="passwordChange" method="post">
-        <div class="textbox">
-            <input id="email" name="userMail" type="email" />
-            <label for="email">이메일</label>
+    <hr>
+   	<div id="outter">
+		<div id="container">
+	    <h3>더뷰티닷컴 비밀번호 찾기</h3>
+	    <form id="passwordFindForm" class="content" action="passwordChange" method="post">
+	        <div>
+	            <input placeholder="더현대닷컴 이메일" class="textInput" name="userMail" type="email" required /> <br>
+	            <input placeholder="더현대닷컴 주민번호" class="textInput" name="userRegistration" id="userRegistration" type="text" required />
+   	        </div>
+	        <input type="submit" value="회원정보 찾기" id="findUserInfoBtn">
+	    </form>
         </div>
-        <div class="textbox">
-            <input id="registration" name="userRegistration" type="text" />
-            <label for="registration">주민등록번호</label>
-        </div>
-        <br><br>
-        <input type="submit" value="회원정보찾기" class="btn-find">
-    </form>
-
+	</div>
     <script src="findPw.js"></script>
 </body>
 </html>

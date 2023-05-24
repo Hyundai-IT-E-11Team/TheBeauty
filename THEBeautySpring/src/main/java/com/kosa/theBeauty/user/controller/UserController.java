@@ -76,7 +76,7 @@ public class UserController {
 	@DebugLog
 	@GetMapping("findEmail")
 	public String findEmail() {
-		return "findEmail";
+		return "user/findEmail";
 	}
 
 	@DebugLog
@@ -86,7 +86,7 @@ public class UserController {
 		String userEmail = service.findEmail(dto);
 		model.addAttribute("userEmail", userEmail);
 
-		return "findEmailResult";
+		return "user/findEmailResult";
 	}
 
 	// 비밀번호 찾기 페이지로 이동
@@ -122,5 +122,7 @@ public class UserController {
 			return "redirect:/user/changePw";
 		}
 	}
+	
+
 
 }

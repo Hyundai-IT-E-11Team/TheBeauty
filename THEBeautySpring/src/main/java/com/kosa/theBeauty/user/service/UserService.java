@@ -13,14 +13,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserService {
 
-	private final UserDAO dao;
+   private final UserDAO dao;
 
-	public UserVO login(UserDTO dto) {
+   public UserVO login(UserDTO dto) {
 
-		return dao.selectUserByDTO(dto);
-	}
+      return dao.selectUserByDTO(dto);
+   }
 
-	public String findEmail(UserDTO dto) {
+   public String findEmail(UserDTO dto) {
 
         String userMail ;
         try {
@@ -29,28 +29,28 @@ public class UserService {
             userMail = "입력하신 정보의 아이디가 없습니다.";
         }
         return userMail;
-	}
+   }
 
-	// 회원가입 시 이메일 중복 검사
-	public String checkMail(String userMail) {
+   // 회원가입 시 이메일 중복 검사
+   public String checkMail(String userMail) {
 
-		String result = dao.selectOneUserMail(userMail);
-		System.out.println(result);
-		return result;
+      String result = dao.selectOneUserMail(userMail);
+      System.out.println(result);
+      return result;
 
-	}
+   }
 
-	// 회원가입
-	public boolean registerUser(UserVO userVO) {
+   // 회원가입
+   public boolean registerUser(UserVO userVO) {
 
-		int cnt = dao.insertUser(userVO);
-		if (cnt != 1) {
-			// rollback
-			return false;
-		} else {
-			return true;
-		}
-	}
+      int cnt = dao.insertUser(userVO);
+      if (cnt != 1) {
+         // rollback
+         return false;
+      } else {
+         return true;
+      }
+   }
 
     public boolean findPassword(UserVO user) {
         user = dao.selectPassword(user);

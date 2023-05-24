@@ -58,4 +58,5 @@
 	       SET user_pw = #{userPw}
 	     WHERE user_mail = #{userMail}
 	</update>
+
 </mapper>  
