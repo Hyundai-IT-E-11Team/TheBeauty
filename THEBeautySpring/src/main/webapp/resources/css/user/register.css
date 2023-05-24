@@ -4,7 +4,10 @@ h1 {
 
 #outter {
 	display: flex;
-	justify-content: center;
+justify-content: center;}
+
+#outter>div:first-child {
+	width:88px;
 }
 
 #container {
@@ -13,8 +16,10 @@ h1 {
 	align-items: center;
 }
 
-#container>form {
+.signup-form {
 	display: flex;
+	flex-direction: column; /* 변경: form 요소를 세로로 나열하도록 변경 */
+	margin-bottom: 5px;
 }
 
 h3 {
@@ -28,50 +33,30 @@ h3 {
 	border-left: none;
 	border-right: none;
 	border-bottom: 2px solid #D4D4D4;
-	margin-right: 5px;
+	margin-bottom: 5px;
 }
 
-#bottom>div>button {
-	border: 1px solid #000000;
-	background-color: #ffffff;
-	color: #000000;
-	text-decoration: none;
-	text-align: center;
-	cursor: pointer;
-}
-
-#loginBtn {
+#checkBtn {
 	background-color: #000000;
 	color: #ffffff;
 	border: none;
 	text-decoration: none;
 	text-align: center;
 	cursor: pointer;
-	height: 88px;
+	height: 30px;
 	width: 88px;
-}
-#bottom {
-	width:100%;
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	z-index: 1;
 }
 
-#bottom {
-   display: flex;
-   justify-content: center;
-   margin-top: auto;
-}
-
-#bottom a {
-   font-size : 12px;
-}
-
-a {
+#registerBtn {
+	background-color: #000000;
+	color: #ffffff;
+	border: none;
 	text-decoration: none;
-	color: black;
-}
-form {
-	margin-bottom: 5px;
+	text-align: center;
+	cursor: pointer;
+	height: 40px;
+	width: 350px;
+	margin-top: 10px;
+	
 }
