@@ -61,3 +61,21 @@ carousel.addEventListener("mousedown", dragStart);
 carousel.addEventListener("mousemove", dragging);
 carousel.addEventListener("mouseup", dragStop);
 carousel.addEventListener("mouseleave", dragStop);
+
+
+
+
+
+
+
+//지호꺼
+function checkEmpty(){
+	var keyword = $("#kewword").val();
+
+    if (keyword == "") {
+        alert("검색어를 입력하세요.");
+        event.preventDefault();
+        return;
+    }
+	
+}

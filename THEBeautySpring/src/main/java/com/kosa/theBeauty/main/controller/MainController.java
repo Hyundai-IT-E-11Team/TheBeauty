@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.user.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -12,12 +13,11 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("main")
 @RequiredArgsConstructor
 public class MainController {
-   
-   // 회원가입 페이지로 이동
-   @GetMapping("mainPage")
-   public String registerPage() {
-      return "main/userMain";
-   }
-   
-
+	
+	@DebugLog
+	@GetMapping("mainPage")
+	public String login() {
+		return "main/userMain";
+	}
+	
 }

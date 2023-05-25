@@ -41,7 +41,7 @@ public class UserController {
 		} else {
 			model.addAttribute("currU"
 					+ "ser", vo);
-			return "redirect:/main";
+			return "redirect:../main/mainPage";
 		}
 	}
 
