@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>THEBeauty 아이디 찾기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user/findEmail.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>			
+<script src="${pageContext.request.contextPath}/resources/js/user/findEmail.js"></script>
 <style>
 #idSearchBtn {
 	background-color: #000000;
@@ -37,8 +38,5 @@
 					<input id="idSearchBtn" type="submit" value="아이디찾기" onclick="findEmail()">
 				</div>
 			</form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>			
-<script src="${pageContext.request.contextPath}/resources/js/user/findEmail.js"></script>
-
 </body>
 </html>

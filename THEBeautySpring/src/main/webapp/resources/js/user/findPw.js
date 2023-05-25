@@ -2,8 +2,8 @@ $(document).ready(function() {
     $("#passwordFindForm").submit(function(event) {
         event.preventDefault();
 
-        var userMail = $("#email").val();
-        var userRegistration = $("#registration").val();
+        let userMail = $("#email").val();
+        let userRegistration = $("#registration").val();
 
         $.post("/passwordChange", {
             'userMail': userMail,

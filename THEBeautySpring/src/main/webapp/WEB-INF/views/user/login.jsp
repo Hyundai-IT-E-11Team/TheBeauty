@@ -21,12 +21,6 @@
 				</div>
 				<input id="loginBtn"  type="submit" value="로그인">
 			</form>
-			<br>
-			<div id="bottom">
-				<a href="findEmail">아이디 찾기</a>&nbsp;/&nbsp;
-				<a href="password">비밀번호 찾기</a>&nbsp;/&nbsp;
-				<a href="registerPage">회원가입</a>
-			</div>
 		</div>
 	</div>
 </body>
