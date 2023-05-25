@@ -1,28 +1,205 @@
-/* 주원 css */
+/* 상위 헤더 css */
+#totalContainer {
+	width: 1690px;
+	height: 100%;
+}
+
+#header {
+	position: relative;
+	display: flex;
+	height: 150px;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+	margin-left: 100px;
+}
+
+.category {
+	position: relative;
+	display: flex;
+	width: 1300px;
+	height: 70px;
+	align-items: center;
+	flex-wrap: nowrap;
+	margin-left: 100px;
+	height: 70px;
+}
+
+#mainLogo {
+	width: 300px;
+	height: 75px;
+	align-items: center;
+	justify-content: center;
+}
+
+#mainLogo img {
+	width: 270px;
+	height: 75px;
+	margin: 10px;
+}
+
+#searchBox {
+	width: 790px;
+	height: 75px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.search-input {
+	width: 600px;
+	padding-top: 4px;
+	height: 40px;
+	font-size: 15px;
+	color: #333;
+	border: 0;
+	border-bottom: 2px solid #36433b;
+	align-items: center;
+}
+
+#searchClick {
+	background: none;
+	border: none;
+	padding: 0;
+	width: 30px;
+	height: 30px;
+}
+
+#searchClick img {
+	width: 30px;
+	height: 30px;
+}
+
+#userInterface {
+	width: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.bigButton {
+	display: flex;
+	width: 150px;
+	height: 75px;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	text-decoration: none;
+}
+
+.smallButton {
+	display: flex;
+	width: 80px;
+	height: 75px;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	text-decoration: none;
+}
+
+/* 카테고리 css  */
+.dropdown {
+	display: flex;
+	width: 80px;
+	height: 70px;
+	align-items: center;
+	gap: 10px;
+	/* Adjust this as needed for space between the image and the menu items */
+}
+
+.dropdown a img {
+	margin-right: 15px;
+	/* Adjust this value to add space between the image and the menu */
+}
+
+.category .nav-links {
+	display: inline-flex;
+}
+
+.nav-links li {
+	list-style-type: none;
+}
+
+.nav-links li a { 
+	color: #000;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.nav-links li a img {
+	width: 23px;
+	height: auto;
+}
+
+.additional-menu {
+	width: 440px;
+	flex-shrink: 0;
+}
+
+.additional-menu a {
+	margin-left: 10px; 
+	padding: 0 20px; 
+	color: #000;
+	text-decoration: none;
+}
+
+.mega-box {
+	width: 850px;
+	height: 200px;
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: 100%;
+	z-index: 2;
+	transition: all 0.3s ease;
+	transition-delay: 0.5s;
+}
+
+.dropdown:hover .mega-box {
+	visibility: visible;
+	opacity: 1;
+}
+
+.mega-box .content {
+	background: #fff;
+	padding: 15px 20px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.row .mega-links li {
+	margin: 5px 0; 
+	padding: 0 20px;
+	list-style-type: none;
+}
+
+.row .mega-links li a {
+	padding: 0 20px;
+	color: #000;
+	font-size: 12px; 
+	display: block;
+}
+
+/* 이미지 슬라이드 css */
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap')
 	;
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
-}
-
-body {
+#mainImg {
 	display: flex;
-	padding: 0 35px;
+	height: 700px;
 	align-items: center;
 	justify-content: center;
-	min-height: 100vh;
 }
 
-.title{
+.title {
 	padding: 35px 0;
 }
 
-.title img{
+.title img {
 	max-width: 50%;
 	margin: auto;
 }
@@ -55,6 +232,10 @@ body {
 	right: -23px;
 }
 
+.fa-solid.fa-angle-left, .fa-solid.fa-angle-right {
+	z-index: 1; 
+}
+
 .wrapper .carousel {
 	font-size: 0px;
 	cursor: pointer;
@@ -63,12 +244,12 @@ body {
 	scroll-behavior: smooth;
 }
 
-.carousel .dragging{
+.carousel .dragging {
 	cursor: grab;
 	scroll-behavior: auto;
 }
 
-.carousel .dragging img{
+.carousel .dragging img {
 	poionter-events: none;
 }
 
@@ -80,18 +261,13 @@ body {
 	transition: transform 0.3s ease;
 }
 
-/* .carousel img:first-child {
-	margin-left: 0px;
-} */
-
 .carousel img:hover {
-  transform: scale(1.02);
+	transform: scale(1.02);
 }
-
 
 @media screen and (max-width: 900px) {
 	.carousel img {
-		width: calc(100% / 2);
+		width: calc(100%/ 2);
 	}
 }
 
@@ -99,187 +275,4 @@ body {
 	.carousel img {
 		width: 100%;
 	}
-
-  /* 지호 css */
-#outter {
-	display: flex;
-	justify-content: space-between;
-}
-
-#container {
-	display: flex;
-	flex-direction: column;
-}
-
-#mainlogo img {
-	width: 300px;
-	height: 90px;
-	float: left;
-	margin: 10px;
-}
-
-#mainsearch {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-#searchItem {
-	background: none;
-	border: none;
-	padding: 0;
-}
-
-#searchItem img {
-	width: 30px;
-	height: 30px;
-}
-
-#keyword {
-	width: 500px;
-	height: 50px;
-}
-
-.top-con-search-input {
-	width: 400px;
-	padding-top: 4px;
-	height: 40px;
-	font-size: 15px;
-	color: #333;
-	border: 0;
-	border-bottom: 2px solid #36433b;
-	align-items: center;
-}
-
-#userInterface {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: 10px;
-	gap: 10px;
-}
-/* 
-	혜원이거
- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-nav {
-    background: white;
-    position: fixed; 
-    width : 100%;
-    z-index: 999;
-    width: 100%;
-    height: 65px;
-    line-height: 65px;
-}
-
-nav .wrapper {
-    position: relative;
-    max-width: 1250px;
-    padding: 0 30px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.wrapper .nav-links{
-    display: inline-flex;
-    
-}
-
-.nav-links li {
-    list-style: none;
-}
-
-.nav-links li a {
-    color: #000; /* 변경된 부분 */
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.nav-links li:hover .mega-box{
-    top: 65px;
-    opacity: 1;
-    visibility: visible;
-    transition: all 0.3s ease;
-    
-}
-
-.mega-box{
-    position: absolute;
-    top: 85px;
-    width: 100%;
-    left: 0;
-    opacity: 0;
-    visibility: hidden;
-    
-}
-
-.mega-box .content{
-    background: #fff; 
-    padding: 15px 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.content .row header{
-    color: #000; 
-    font-size: 15px;   /* 화장품 */
-    font-weight: 500;
-}
-
-.content .row .mega-links{
-    margin-left: -40px;
-    border-left: 1px solid rgba(255,255,255,0.6))
-    
-}
-
-
-.row .mega-links li{
-    /* padding: 5px 20px;   *//* 브랜드 리스트의 위아래 간격 10px, 좌우 간격 20px */
-    margin: 5px 0;  /* 위아래 간격 10px */
-    padding: 0 20px;  /* 좌우 간격 20px */
-    
-}
-
-.row .mega-links li a{
-    padding: 0 20px;
-    color: #000; 
-    font-size: 12px;  /* 브랜드 리스트 */
-    display: block;
-    
-}
-
-
-
-.nav-links li a img {
-    width: 23px;
-    height: auto;
-}
-
-.additional-menu {
-    display: flex;
-    justify-content: space-around;
-    padding-left: 20px;
-}
-
-.additional-menu li {
-    margin: 0 10px; /* SKINCARE, FOUNDATION, LIP, EYE 사이의 간격 조정 */
-}
-
-
-
-.mega-box .content {
-    display: flex;
-    justify-content: flex-start; 
-    gap: 30px; /* row 사이의 간격 설정 */
 }
