@@ -17,7 +17,7 @@
 </head>
 <body>
 	<!-- 상위 헤더 파트-->
-	<div id=totalContatiner">
+	<div id=totalContainer">
 		<div id="header">
 			<div id="mainLogo">
 				<a href="mainPage"><img
