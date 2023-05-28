@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa.theBeauty.product.dao.ProductDAO">
+	<resultMap type="ProductDetailVO" id="ProductDetailVOMap">
+		<association property="productVO" javaType="ProductVO">
+			<result column="product_seq" property="productSeq" />
+			<result column="brand_seq" property="brandSeq" />
+			<result column="product_name" property="productName" />
+			<result column="product_price" property="productPrice" />
+			<result column="product_imgurl" property="productImgurl" />
+			<result column="product_category" property="productCategory" />
+		</association>
+
+		<association property="brandVO" javaType="BrandVO">
+			<result column="brand_seq" property="brandSeq" />
+			<result column="brand_name" property="brandName" />
+			<result column="brand_imgurl" property="brandImgurl" />
+		</association>
+	</resultMap>
+	
+		<!-- 상품 상세정보 페이지 -->
+	<select id="getProductDetails" resultMap="ProductDetailVOMap">
+		SELECT p.*, b.brand_imgurl
+		  FROM tb_product_v5 p
+		  JOIN tb_brand_v3 b
+		    ON p.brand_seq = b.brand_seq
+		 WHERE p.product_seq = #{productSeq}
+	</select>
+
+</mapper>
+
