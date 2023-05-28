@@ -253,6 +253,10 @@
 	justify-content: space-between; /* 버튼 간의 공간을 균등하게 배분 */
 }
 
+.button-option button {
+	margin-right: 10px; /* 버튼 간의 간격 설정 */
+}
+
 .prd-info-box .cart-button, .prd-info-box .consulting-button,
 	.prd-info-box .pay-button {
 	margin-bottom: 10px;
@@ -300,11 +304,10 @@ li {
 	margin-right: 10px;
 }
 
-.benefit-info-list{
+.benefit-info-list {
 	padding: 10px 0px;
-	
-	
 }
+
 .benefit-info-list li {
 	display: flex;
 	flex-direction: row;
@@ -323,12 +326,12 @@ li {
 
 /* 이미지 크기 변경  */
 .prd-info-box .imgview {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .prd-info-box .imgview img {
-    max-width: 100%;
-    max-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 }
