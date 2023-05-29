@@ -18,17 +18,22 @@
 			<result column="brand_seq" property="brandSeq" />
 			<result column="brand_name" property="brandName" />
 			<result column="brand_imgurl" property="brandImgurl" />
+			<result column="brand_img1" property="brandImg1" />
+			<result column="brand_img2" property="brandImg2" />
+			<result column="brand_img3" property="brandImg3" />
+			<result column="brand_img4" property="brandImg4" />
 		</association>
 	</resultMap>
 	
-		<!-- 상품 상세정보 페이지 -->
+	<!-- 상품 상세정보 페이지 -->
 	<select id="getProductDetails" resultMap="ProductDetailVOMap">
-		SELECT p.*, b.brand_imgurl
+		SELECT p.*, b.*
 		  FROM tb_product_v5 p
 		  JOIN tb_brand_v3 b
 		    ON p.brand_seq = b.brand_seq
 		 WHERE p.product_seq = #{productSeq}
 	</select>
+	
 
 </mapper>
 

@@ -36,12 +36,18 @@
 			</div>
 			<div class="prd-info-box">
 				<div class="prd-shop">
-					<h3>
-						<form action="/theBeauty/main/brandPage" method="post">
-							<input type="hidden" id="brandSeq" name="brandSeq" value="${productDetail.brandVO.brandSeq}" />
-							<button type="submit" class="moveBrandbutton"><img src="${productDetail.brandVO.brandImgurl}" alt="Brand Image"></button>	
-						</form>
-					</h3>
+				  <form action="/theBeauty/main/brandPage" method="post">
+				    <input type="hidden" name="brandSeq" value="${productDetail.brandVO.brandSeq}" />
+				    <input type="hidden" name="brandName" value="${productDetail.brandVO.brandName}" />
+				    <input type="hidden" name="brandImgurl" value="${productDetail.brandVO.brandImgurl}" />
+				    <input type="hidden" name="brandImg1" value="${productDetail.brandVO.brandImg1}" />
+				    <input type="hidden" name= "brandImg2" value="${productDetail.brandVO.brandImg2}" />
+				    <input type="hidden" name="brandImg3" value="${productDetail.brandVO.brandImg3}" />
+				    <input type="hidden" name="brandImg4" value="${productDetail.brandVO.brandImg4}" />
+				    <button type="submit" class="moveBrandButton">
+				      <img src="${productDetail.brandVO.brandImgurl}" alt="Brand Image">
+				    </button>
+				  </form>
 				</div>
 
 				<div class="prd-title">

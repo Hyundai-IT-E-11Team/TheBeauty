@@ -17,6 +17,29 @@
 	<!-- header추가 -->
 	<%@ include file="/WEB-INF/views/header/header.jsp"%>
 	brandSeq : ${brand.brandSeq}
-
+	<div class="container">
+		<div class="brand">
+			<img class="brand-imgurl" src="${brand.brandImgurl}"
+				alt="Brand Image">
+		</div>
+		<div class="product">
+			<div class="product-img">
+				<img class="product-img-1" src="${brand.brandImg1}"
+					alt="Brand Image">
+			</div>
+			<div class="product-img">
+				<img class="product-img-2" src="${brand.brandImg2}"
+					alt="Brand Image">
+			</div>
+			<div class="product-img">
+				<img class="product-img-3" src="${brand.brandImg3}"
+					alt="Brand Image">
+			</div>
+			<div class="product-img">
+				<img class="product-img-4" src="${brand.brandImg4}"
+					alt="Brand Image">
+			</div>
+		</div>
+	</div>
 </body>
 </html>

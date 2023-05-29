@@ -25,12 +25,14 @@ public class ProductController {
 
 	@DebugLog
 	@GetMapping("detailPage/{product_seq}")
-	public String getProductDetails(@PathVariable("product_seq") int product_seq, Model model) {
-		log.debug("전달받은 product_seq는" + product_seq + "입니다");
-		if (product_seq == 0) {
+	public String getProductDetails(@PathVariable ("product_seq") int productSeq, Model model) {
+
+		log.debug("전달받은 product_seq는" + productSeq + "입니다");
+
+		if (productSeq == 0) {
 			return "product/productList";
 		} else {
-			ProductDetailVO productDetail = service.getProductDetail(product_seq);
+			ProductDetailVO productDetail = service.getProductDetail(productSeq);
 			model.addAttribute("productDetail", productDetail);
 			return "product/productDetail";
 		}

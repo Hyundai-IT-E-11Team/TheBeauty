@@ -25,7 +25,7 @@ public class MainController {
 	@DebugLog
 	@PostMapping("brandPage")
 	public String brandPage(BrandVO vo, Model model) {
-		model.addAttribute("brand",vo);
+		model.addAttribute("brand", vo);
 		return "main/brand";
 	}
 }

@@ -12,7 +12,8 @@ public class ProductService {
 	private final ProductDAO dao;
 	
 	public ProductDetailVO getProductDetail(int product_seq) {
-		
+
 		return dao.getProductDetails(product_seq);
 	}
+	
 }
