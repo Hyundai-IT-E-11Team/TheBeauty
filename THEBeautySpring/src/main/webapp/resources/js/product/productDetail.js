@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
     // 가격 정보 가져오기
     var priceString = productDetail.productVO.productPrice;
@@ -7,8 +5,8 @@ $(document).ready(function() {
 
     // 할인 금액 계산
     var discountAmount = price * 0.95;
-    var discountMessage = '현대백화점카드 5% ' + discountAmount.toLocaleString() + '원';
-    $("#card-benefit").text(discountMessage);
+    var discountMessage = '현대백화점카드 5% <strong>' + discountAmount.toLocaleString() + '원</strong>';
+    $("#card-benefit").html(discountMessage); // 수정: text 대신 html 메서드를 사용하여 태그를 적용합니다.
     
     // 배송비 계산 함수 호출
     calculateShippingFee(price);
