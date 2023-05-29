@@ -34,6 +34,15 @@
 		 WHERE p.product_seq = #{productSeq}
 	</select>
 	
+	<!-- 브랜드관 페이지 상품리스트-->
+	<select id="getProductsByBrand" resultMap="ProductDetailVOMap">
+		SELECT p.*, b.*
+		  FROM tb_product_v5 p
+		  JOIN tb_brand_v3 b
+		    ON p.brand_seq = b.brand_seq
+		 WHERE b.brand_seq = #{brandSeq}
+	</select>
+	
 
 </mapper>
 
