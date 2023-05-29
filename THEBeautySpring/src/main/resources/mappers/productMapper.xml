@@ -30,5 +30,10 @@
 		 WHERE p.product_seq = #{productSeq}
 	</select>
 
+	<select id="selectProductByBrandName" parameterType="String" resultMap="ProductDetailVOMap">
+		SELECT *
+		  FROM tb_product
+		 WHERE brand_seq = 21 
+	</select>
 </mapper>
 
