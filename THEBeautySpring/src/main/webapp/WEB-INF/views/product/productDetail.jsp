@@ -37,7 +37,10 @@
 			<div class="prd-info-box">
 				<div class="prd-shop">
 					<h3>
-						<img src="${productDetail.brandVO.brandImgurl}" alt="Brand Image">
+						<form action="/theBeauty/main/brandPage" method="post">
+							<input type="hidden" id="brandSeq" name="brandSeq" value="${productDetail.brandVO.brandSeq}" />
+							<button type="submit" class="moveBrandbutton"><img src="${productDetail.brandVO.brandImgurl}" alt="Brand Image"></button>	
+						</form>
 					</h3>
 				</div>
 
@@ -63,8 +66,16 @@
 					</ul>
 				</div>
 				<div class="button-option">
-					<button type="button" class="cart-button">장바구니</button>
-					<button type="button" class="consulting-button">상담신청</button>
+					<form action="장바구니" method="post">
+						<input type="hidden" id="user" name="user" value="${session.userId}"/> <!-- 수정 필요 -->
+						<input type="hidden" id="product" name="product" value="${productDetail.productVO}"/>
+						<button type="submit" class="cart-button">장바구니</button>
+					</form>
+					<form action="reserve/reservation" method="post">
+						<input type="hidden" id="brandSeq" name="brandSeq" value="${productDetail.brandVO.brandSeq}" />
+						<button type="submit" class="consulting-button">상담신청</button>
+					</form>
+			
 					<button type="button" class="pay-button">바로구매</button>
 				</div>
 			</div>
