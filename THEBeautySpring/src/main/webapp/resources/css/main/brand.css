@@ -55,3 +55,20 @@
 	height: 250px;
 	object-fit: cover;
 }
+
+.product-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between; /* 각 아이템이 동일한 간격을 가지도록 변경 */
+}
+
+.product-info {
+	width: 23%; /* 각 제품이 23% 너비를 가지도록 설정. 4개의 제품이 한 줄에 들어가도록 설정 */
+	margin-bottom: 20px; /* 하단 간격 추가 */
+}
+
+.product-info img {
+	width: 220px;
+	height: 180px;
+	object-fit: cover;
+}
