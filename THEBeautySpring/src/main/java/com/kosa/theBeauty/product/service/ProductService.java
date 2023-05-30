@@ -13,12 +13,12 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ProductService {
-	
+
 	// 상품 리스트 페이지 - pjw
 	private final ProductDAO dao;
-	
-	public List<ProductVO> search(ProductVO vo){
-		
+
+	public List<ProductVO> search(ProductVO vo) {
+
 		return dao.selectProductByKeyword(vo);
 	}
 	
