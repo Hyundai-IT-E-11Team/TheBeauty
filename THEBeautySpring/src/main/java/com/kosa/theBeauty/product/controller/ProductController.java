@@ -1,7 +1,11 @@
 package com.kosa.theBeauty.product.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.product.domain.ProductDetailVO;
+import com.kosa.theBeauty.product.domain.ProductVO;
 import com.kosa.theBeauty.product.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -34,5 +39,12 @@ public class ProductController {
 			model.addAttribute("productDetail", productDetail);
 			return "product/productDetail";
 		}
+	}
+	
+	@DebugLog
+	@GetMapping("list/{brandName}")
+	public ResponseEntity<List<ProductVO>> list(@PathVariable String brandName) {
+		
+		return new ResponseEntity<>(service.getListByBrandName(brandName), HttpStatus.OK);
 	}
 }
