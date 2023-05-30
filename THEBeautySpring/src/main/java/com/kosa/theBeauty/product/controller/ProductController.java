@@ -66,7 +66,6 @@ public class ProductController {
 	@DebugLog
 	@GetMapping("category/{productCategory}")
 	public String getCategoryProduct(@PathVariable("productCategory") String productCategory, Model model) {
-		
 		List<ProductVO> list = service.getProductByCategory(productCategory);
 		// 리스트를 JSP에 넘겨주기
 		model.addAttribute("products", list);
