@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,40 +18,50 @@
 	src="${pageContext.request.contextPath}/resources/consult/app.js"></script>
 </head>
 <body>
-	<div id="join">
-		<h1>${currUser.userName }님 환영 합니다.</h1>
-		<form onsubmit="joinSession(); return false">
-			<p>
-				<label>Session:</label> <input type="text" id="sessionId"
-					value="SessionA" required>
-			</p>
-			<p>
-				<input type="submit" value="JOIN">
-			</p>
-		</form>
-	</div>
+	<div id="consult-container">
+		<div id="join">
+			<h1>${currUser.userName }님환영합니다.</h1>
+			<form onsubmit="joinSession(); return false">
+				<p>
+					<label>상담 브랜드:</label> <input type="text" id="sessionId"
+						value="chanel" required>
+				</p>
+				<p>
+					<input type="submit" value="상담 시작하기">
+				</p>
+			</form>
+		</div>
 
-	<div id="session" style="display: none;">
-		<h1 id="session-header"></h1>
-		<input type="button" onclick="leaveSession()" value="LEAVE">
-		<div>
-			<div id="publisher">
-				<h3>YOU</h3>
+		<div id="session" style="display: none;">
+			<h1 id="session-header"></h1>
+			<div id="video-container">
+				<div id="publisher"></div>
+				<div id="subscriber"></div>
 			</div>
-			<div id="subscriber">
-				<h3>OTHERS</h3>
+		</div>
+
+
+		<div id="c-container"
+			${currUser.roleName.equals('user') ? "style='display:none'" : ""}>
+			<div>
+				<c:if test="${!empty currUser && currUser.roleName ne 'user'}">
+					<button onclick="getProducts('${currUser.roleName}')">우리
+						제품 불러오기</button>
+				</c:if>
+				<input type="button" onclick="leaveSession()" value="LEAVE">
+			</div>
+			<div class="items" id="c-items">
+			</div>
+		</div>
+		<div id="u-container"
+			${!currUser.roleName.equals('user') ? "style='display:none'" : ""}>
+			<div>
+			<input type="button" onclick="leaveSession()" value="LEAVE">
+			</div>
+			<div class="items" id="u-items">
 			</div>
 		</div>
 	</div>
-	<div>"${currUser.roleName }"</div>
-	<c:if test="${currUser.roleName ne 'user'  }">
-		<button onclick="getProducts('${currUser.roleName}')">우리 제품 불러오기</button>
-	</c:if>
-	<div>
-		<input id="message" type="text"/>
-		<button onclick="sendMessage()">전송</button>
-	</div>
-	<div id="data-container"></div>
 </body>
 
 </html>

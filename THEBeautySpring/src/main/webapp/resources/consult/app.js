@@ -11,15 +11,23 @@ function joinSession() {
     session.subscribe(event.stream, "subscriber");
   });
 
-  session.on('signal: my-chat', (event) => {
-	  console.log(event)
-  })
+  session.on('signal', function (event) {
+	  let item = JSON.parse(event.data)
+	  let card = `
+		    <div class="card">
+		        <img src="${item.productImgurl}" alt="Product 1">
+		        <h3>${item.productName}</h3>
+		        <p class="price">${item.productPrice}</p>
+		    </div>
+		`;
+		$('#u-items').append(card);
+  });
   
   getToken(mySessionId).then((token) => { 
     session
       .connect(token)
       .then(() => {
-        document.getElementById("session-header").innerText = mySessionId;
+// document.getElementById("session-header").innerText = mySessionId;
         document.getElementById("join").style.display = "none";
         document.getElementById("session").style.display = "block";
 
@@ -46,18 +54,18 @@ window.onbeforeunload = function () {
   if (session) session.disconnect();
 };
 
-function sendMessage() {
-	session.signal({
-		data: '안녕하세요 채팅입니다.',
-		to: [],
-		type: 'my-chat'
-	})
-	.then(() => {
-		console.log("일단 전송은 성공")
-	})
-	.catch((error) => {
-		console.error(error)
-	})
+function sendMessage(product) {
+ session.signal({
+ data: JSON.stringify(product),
+ to: [],
+ type: 'my-chat'
+ })
+ .then(() => {
+ console.log("전송성공")
+ })
+ .catch((error) => {
+ console.error(error)
+ })
 }
 
 var APPLICATION_SERVER_URL = "https://192.168.0.89/theBeauty/";
@@ -68,10 +76,18 @@ function getProducts(roleName) {
         url: APPLICATION_SERVER_URL + 'product/list/' + roleName,
         type: 'GET',
         success: function(data) {
-          // 요청이 성공했을 때 실행되는 콜백 함수
-          // 데이터를 화면에 추가
-//          $('#data-container').append(data);
-        	console.log(data)
+        	for(let i = 0; i < 20; i++) {
+        		let card = `
+        		    <div class="card">
+        		        <img src="${data[i].productVO.productImgurl}" alt="Product 1">
+        		        <h3>${data[i].productVO.productName}</h3>
+        		        <p class="price">${data[i].productVO.productPrice}</p>
+        		        <button onclick="sendMessage(${JSON.stringify(data[i].productVO).replace(/"/g, '&quot;')})">전송</button>
+        		    </div>
+        		`;
+        		$('#c-items').append(card);
+            }
+  
         },
         error: function() {
           // 요청이 실패했을 때 실행되는 콜백 함수
