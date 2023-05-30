@@ -3,8 +3,6 @@ package com.kosa.theBeauty.product.controller;
 import java.awt.print.Pageable;
 import java.util.List;
 
-import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosa.theBeauty.annotation.DebugLog;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import com.kosa.theBeauty.product.domain.ProductDetailVO;
 import com.kosa.theBeauty.product.domain.ProductVO;
 import com.kosa.theBeauty.product.service.ProductService;
 
@@ -38,5 +40,24 @@ public class ProductController {
 
 		return "product/productSearchResult";
 
+	}
+		
+	@DebugLog
+	@GetMapping("detailPage/{product_seq}")
+	public String getProductDetails(@PathVariable("product_seq") int product_seq, Model model) {
+		if (product_seq == 0) {
+			return "product/productList";
+		} else {
+			ProductDetailVO productDetail = service.getProductDetail(product_seq);
+			model.addAttribute("productDetail", productDetail);
+			return "product/productDetail";
+		}
+	}
+	
+	@DebugLog
+	@GetMapping("list/{brandName}")
+	public ResponseEntity<List<ProductVO>> list(@PathVariable String brandName) {
+		
+		return new ResponseEntity<>(service.getListByBrandName(brandName), HttpStatus.OK);
 	}
 }

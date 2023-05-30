@@ -118,7 +118,10 @@
    justify-content: center;
    color: #000;
    text-decoration: none;
+/* 	width: 1690px;
+	height: 100%; */
 }
+
 
 /* 카테고리 css  */
 .line {
@@ -208,4 +211,7 @@
    color: #000;
    font-size: 14px;
    display: block;
+	border: 1px solid #bababa;
+	width: 87%
 }
+
