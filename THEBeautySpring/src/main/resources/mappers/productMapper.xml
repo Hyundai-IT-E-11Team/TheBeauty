@@ -26,6 +26,10 @@
 			<result column="brand_seq" property="brandSeq" />
 			<result column="brand_name" property="brandName" />
 			<result column="brand_imgurl" property="brandImgurl" />
+			<result column="brand_img1" property="brandImg1" />
+			<result column="brand_img2" property="brandImg2" />
+			<result column="brand_img3" property="brandImg3" />
+			<result column="brand_img4" property="brandImg4" />
 		</association>
 	</resultMap>
 
@@ -39,17 +43,6 @@
 			]]> 
 	</select>
 
-	<!-- 상품 상세정보 페이지 -->
-	<select id="getProductDetails" resultMap="ProductDetailVOMap">
-		<![CDATA[
-			SELECT p.*, b.brand_imgurl
-			  FROM tb_product p
-			  JOIN tb_brand b
-			    ON p.brand_seq = b.brand_seq
-			 WHERE p.product_seq = #{productSeq}
-			 ]]>
-	</select>
-
 	<!-- 브랜드관 페이지 -->
 	<select id="selectProductByBrandName" parameterType="String"
 		resultMap="ProductDetailVOMap">
@@ -58,6 +51,23 @@
 			  FROM tb_product
 			 WHERE brand_seq = 21
 			 ]]>
+	</select>
+	<!-- 상품 상세정보 페이지 -->
+	<select id="getProductDetails" resultMap="ProductDetailVOMap">
+		SELECT p.*, b.*
+		  FROM tb_product p
+		  JOIN tb_brand b
+		    ON p.brand_seq = b.brand_seq
+		 WHERE p.product_seq = #{productSeq}
+	</select>
+	
+	<!-- 브랜드관 페이지 상품리스트-->
+	<select id="getProductsByBrand" resultMap="ProductDetailVOMap">
+		SELECT p.*, b.*
+		  FROM tb_product p
+		  JOIN tb_brand b
+		    ON p.brand_seq = b.brand_seq
+		 WHERE b.brand_seq = #{brandSeq}
 	</select>
 
 </mapper>

@@ -24,7 +24,7 @@ public class ProductService {
 	
 	// 상품 상세페이지 - phw
 	public ProductDetailVO getProductDetail(int product_seq) {
-		
+
 		return dao.getProductDetails(product_seq);
 	}
 	
@@ -32,4 +32,11 @@ public class ProductService {
 	public List<ProductVO> getListByBrandName(String brandName) {
 		return dao.selectProductByBrandName(brandName);
 	}
+	
+	// 브랜드별 상품 목록 조회 (브랜드관 페이지)
+	public List<ProductDetailVO> getProductsByBrand(int brandSeq) {
+		
+		return dao.getProductsByBrand(brandSeq);
+	}
+	
 }

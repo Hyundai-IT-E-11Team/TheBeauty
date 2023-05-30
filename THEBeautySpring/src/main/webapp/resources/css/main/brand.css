@@ -1,0 +1,74 @@
+.container {
+	width: 1300px;
+	margin: 0 auto;
+}
+
+.consulting-btn {
+	color: #0B5345;
+	background-color: white;
+	border: none;
+	border-bottom: 1px solid #0B5345;
+	font-weight: bold;
+	font-size: 22px
+}
+
+.brand-consulting {
+	display: flex;
+	width: 100%;
+	margin: 7px 0;
+}
+
+.brand-consulting div {
+	display: flex;
+	width: 33%;
+}
+
+.brand-consulting div:nth-child(2) {
+	justify-content: center;
+}
+
+.brand-consulting div:nth-child(3) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.brand-imgurl {
+	width: 250px; /* 지정하신 너비에 따라 변경해 주세요 */
+	object-fit: contain;
+}
+
+.product {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center; /* 가로축 중앙 정렬 */
+	align-items: center; /* 세로축 중앙 정렬 */
+}
+
+.product-img {
+	margin: 10px; /* 상하좌우 마진을 자동으로 설정하여 중앙정렬을 가능하게 함 */
+}
+
+.product-img img {
+	width: 480px;
+	height: 250px;
+	object-fit: cover;
+}
+
+.product-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between; /* 각 아이템이 동일한 간격을 가지도록 변경 */
+}
+
+.product-info {
+	width: 23%; /* 각 제품이 23% 너비를 가지도록 설정. 4개의 제품이 한 줄에 들어가도록 설정 */
+	margin-bottom: 20px; /* 하단 간격 추가 */
+}
+
+.product-info img {
+	width: 220px;
+	height: 180px;
+	object-fit: cover;
+}

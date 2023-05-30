@@ -18,4 +18,7 @@ public interface ProductDAO {
 	
 	// 브랜드명을 통해 브랜드별 상품 리스트 검색 - phw
 	List<ProductVO> selectProductByBrandName(String brandName);
+	
+	// 브랜드별 상품 목록 조회 (브랜드관 페이지)
+	List<ProductDetailVO> getProductsByBrand(int brandSeq);
 }
