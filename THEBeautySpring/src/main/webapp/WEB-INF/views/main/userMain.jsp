@@ -13,7 +13,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </head>
 <body>
 	<!-- 상위 헤더 파트-->
@@ -31,8 +30,9 @@
 				</button>
 			</form>
 			<div id="userInterface">
-				<a class="bigButton" href="../user/login">로그인 / 회원가입</a> <a
-					class="smallButton" href="">마이뷰티</a> <a class="smallButton" href="">장바구니</a>
+				<a class="bigButton" href="../user/login">로그인 / 회원가입</a>
+				<a class="smallButton" href="">마이뷰티</a> 
+				<a class="smallButton" href="">장바구니</a>
 				<a class="smallButton" href="">바로상담</a>
 			</div>
 		</div>
