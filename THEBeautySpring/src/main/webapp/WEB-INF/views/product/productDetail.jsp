@@ -77,7 +77,7 @@
 						<input type="hidden" id="product" name="product" value="${productDetail.productVO}"/>
 						<button type="submit" class="cart-button">장바구니</button>
 					</form>
-					<form action="reserve/reservation" method="post">
+					<form action="/theBeauty/reserve/reservePage" method="post">
 						<input type="hidden" id="brandSeq" name="brandSeq" value="${productDetail.brandVO.brandSeq}" />
 						<button type="submit" class="consulting-button">상담신청</button>
 					</form>
