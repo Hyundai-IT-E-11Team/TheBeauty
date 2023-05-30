@@ -19,7 +19,7 @@
 			SELECT *
 			  FROM tb_product
 			 WHERE product_name LIKE '%' || #{productName} || '%'
-			]]>
+			]]> 
 	</select>
 
 </mapper>

@@ -9,6 +9,9 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/product/productList.css" />
 <title>Insert title here</title>
+<!-- Fontawesome CDN Link -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head>
 <body>
 	<!-- header추가 -->
@@ -27,8 +30,8 @@
 			</div>
 			<div class="product-list">
 				<c:forEach items="${products}" var="p">
-					<a href="#" class="product"> 
-						<img src="${p.productImgurl}" width="256px" height="256px">
+					<a href="#" class="product"> <img src="${p.productImgurl}"
+						width="256px" height="256px">
 						<div class="product-price">${p.productPrice}</div>
 						<div class="product-name">${p.productName}</div>
 					</a>
@@ -43,7 +46,10 @@
 
 		</div>
 	</div>
-
+	
+	<!-- pagination 추가 -->
+	<%@ include file="/WEB-INF/views/product/pagination.jsp"%>
+	
 	<script
 		src="${pageContext.request.contextPath}/resources/js/product/productList.js"></script>
 </body>

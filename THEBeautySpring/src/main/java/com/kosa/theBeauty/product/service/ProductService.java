@@ -12,11 +12,11 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ProductService {
-	
+
 	private final ProductDAO dao;
-	
-	public List<ProductVO> search(ProductVO vo){
-		
+
+	public List<ProductVO> search(ProductVO vo) {
+
 		return dao.selectProductByKeyword(vo);
 	}
 }
