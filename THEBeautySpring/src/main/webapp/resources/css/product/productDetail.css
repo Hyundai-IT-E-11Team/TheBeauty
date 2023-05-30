@@ -1,0 +1,125 @@
+/* 상품 상세정보 css */
+.prd-detail-content {
+	position: relative;
+	margin: 0 auto;
+	width: 1120px;
+}
+
+.prd-info {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+}
+
+.prd-info-box {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.prd-info-box.left {
+	margin-right: 30px;
+}
+
+.prd-info-box .imgview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 80px;
+}
+
+.prd-info-box .prd-shop, .prd-info-box .prd-title, .prd-info-box .prd-price-wrap
+	{
+	text-align: left;
+	width: 100%;
+}
+
+.button-option {
+	display: flex; /*  버튼들이 한 행에 나열되도록  */
+	width: 100%;
+	justify-content: space-between; /* 버튼 간의 공간을 균등하게 배분 */
+}
+
+.button-option button {
+	margin-right: 10px; /* 버튼 간의 간격 설정 */
+}
+
+.prd-info-box .cart-button, .prd-info-box .consulting-button,
+	.prd-info-box .pay-button {
+	margin-bottom: 10px;
+	border: none;
+	border-radius: 1px;
+	padding: 15px;
+	color: #fff;
+	flex-grow: 1; /* 각 버튼이 동일한 공간을 차지하도록 */
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.prd-info-box .cart-button {
+	background-color: #A6ACAF;
+}
+
+.prd-info-box .consulting-button {
+	background-color: #0B5345;
+}
+
+.prd-info-box .pay-button {
+	background-color: #e35c61;
+}
+
+.prd-title h2 { /* 상품명 폰트 관련  */
+	font-size: 23px;
+	font-weight: 400;
+	color: #000;
+}
+
+.prd-price-wrap h3 { /* 상품 가격 폰트 관련  */
+	color: #e35c61;
+	font-size: 39px;
+	font-weight: 700;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+li {
+	list-style-type: none;
+}
+
+.shipping-info dt, .shipping-info dd {
+	display: inline;
+	margin-right: 10px;
+}
+
+.benefit-info-list {
+	padding: 10px 0px;
+}
+
+.benefit-info-list li {
+	display: flex;
+	flex-direction: row;
+	padding: 10px 0;
+}
+
+.benefit-title {
+	flex: 0 0 30%;
+}
+
+.benefit-desc {
+	flex: 0 0 70%;
+	text-align: left;
+	padding-left: 10px;
+}
+  
+/* 이미지 크기 변경  */
+.prd-info-box .imgview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.prd-info-box .imgview img {
+	max-width: 100%;
+	max-height: 100%;
+}

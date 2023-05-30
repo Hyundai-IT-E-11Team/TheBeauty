@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 </head>
 <body>
 	<div id="join">
-		<h1>Join a video session</h1>
+		<h1>${currUser.userName }님 환영 합니다.</h1>
 		<form onsubmit="joinSession(); return false">
 			<p>
 				<label>Session:</label> <input type="text" id="sessionId"
@@ -42,6 +43,15 @@
 			</div>
 		</div>
 	</div>
+	<div>"${currUser.roleName }"</div>
+	<c:if test="${currUser.roleName ne 'user'  }">
+		<button onclick="getProducts('${currUser.roleName}')">우리 제품 불러오기</button>
+	</c:if>
+	<div>
+		<input id="message" type="text"/>
+		<button onclick="sendMessage()">전송</button>
+	</div>
+	<div id="data-container"></div>
 </body>
 
 </html>

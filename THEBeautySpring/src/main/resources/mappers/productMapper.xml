@@ -6,10 +6,27 @@
 <mapper namespace="com.kosa.theBeauty.product.dao.ProductDAO">
 
 	<resultMap type="ProductVO" id="ProductVOMap">
-		<result column="product_name" property="productName"/>
-		<result column="product_price" property="productPrice"/>
-		<result column="product_imgurl" property="productImgurl"/>
-		<result column="product_category" property="productCategory"/>
+		<result column="product_name" property="productName" />
+		<result column="product_price" property="productPrice" />
+		<result column="product_imgurl" property="productImgurl" />
+		<result column="product_category" property="productCategory" />
+	</resultMap>
+
+	<resultMap type="ProductDetailVO" id="ProductDetailVOMap">
+		<association property="productVO" javaType="ProductVO">
+			<result column="product_seq" property="productSeq" />
+			<result column="brand_seq" property="brandSeq" />
+			<result column="product_name" property="productName" />
+			<result column="product_price" property="productPrice" />
+			<result column="product_imgurl" property="productImgurl" />
+			<result column="product_category" property="productCategory" />
+		</association>
+
+		<association property="brandVO" javaType="BrandVO">
+			<result column="brand_seq" property="brandSeq" />
+			<result column="brand_name" property="brandName" />
+			<result column="brand_imgurl" property="brandImgurl" />
+		</association>
 	</resultMap>
 
 	<!-- 상품 검색 -->
@@ -22,4 +39,26 @@
 			]]>
 	</select>
 
+	<!-- 상품 상세정보 페이지 -->
+	<select id="getProductDetails" resultMap="ProductDetailVOMap">
+		<![CDATA[
+			SELECT p.*, b.brand_imgurl
+			  FROM tb_product p
+			  JOIN tb_brand b
+			    ON p.brand_seq = b.brand_seq
+			 WHERE p.product_seq = #{productSeq}
+			 ]]>
+	</select>
+
+	<!-- 브랜드관 페이지 -->
+	<select id="selectProductByBrandName" parameterType="String"
+		resultMap="ProductDetailVOMap">
+		<![CDATA[
+			SELECT *
+			  FROM tb_product
+			 WHERE brand_seq = 21
+			 ]]>
+	</select>
+
 </mapper>
+

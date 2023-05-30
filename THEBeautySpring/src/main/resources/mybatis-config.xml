@@ -23,6 +23,10 @@
 			type="com.kosa.theBeauty.user.domain.UserDTO" />
 		<typeAlias alias="ProductVO"
 			type="com.kosa.theBeauty.product.domain.ProductVO" />
+		<typeAlias alias="BrandVO"
+			type="com.kosa.theBeauty.product.domain.BrandVO" />
+		<typeAlias alias="ProductDetailVO"
+			type="com.kosa.theBeauty.product.domain.ProductDetailVO" />
 
 	</typeAliases>
 

@@ -11,7 +11,11 @@ function joinSession() {
     session.subscribe(event.stream, "subscriber");
   });
 
-  getToken(mySessionId).then((token) => {
+  session.on('signal: my-chat', (event) => {
+	  console.log(event)
+  })
+  
+  getToken(mySessionId).then((token) => { 
     session
       .connect(token)
       .then(() => {
@@ -42,23 +46,54 @@ window.onbeforeunload = function () {
   if (session) session.disconnect();
 };
 
-/**
- * --------------------------------------------
- * GETTING A TOKEN FROM YOUR APPLICATION SERVER
- * --------------------------------------------
- * The methods below request the creation of a Session and a Token to
- * your application server. This keeps your OpenVidu deployment secure.
- *
- * In this sample code, there is no user control at all. Anybody could
- * access your application server endpoints! In a real production
- * environment, your application server must identify the user to allow
- * access to the endpoints.
- *
- * Visit https://docs.openvidu.io/en/stable/application-server to learn
- * more about the integration of OpenVidu in your application server.
- */
+function sendMessage() {
+	session.signal({
+		data: '안녕하세요 채팅입니다.',
+		to: [],
+		type: 'my-chat'
+	})
+	.then(() => {
+		console.log("일단 전송은 성공")
+	})
+	.catch((error) => {
+		console.error(error)
+	})
+}
 
 var APPLICATION_SERVER_URL = "https://192.168.0.89/theBeauty/";
+
+function getProducts(roleName) {
+      // AJAX GET 요청
+      $.ajax({
+        url: APPLICATION_SERVER_URL + 'product/list/' + roleName,
+        type: 'GET',
+        success: function(data) {
+          // 요청이 성공했을 때 실행되는 콜백 함수
+          // 데이터를 화면에 추가
+//          $('#data-container').append(data);
+        	console.log(data)
+        },
+        error: function() {
+          // 요청이 실패했을 때 실행되는 콜백 함수
+          console.log('데이터를 불러오는데 실패했습니다.');
+        }
+      });
+}
+
+/**
+ * -------------------------------------------- GETTING A TOKEN FROM YOUR
+ * APPLICATION SERVER -------------------------------------------- The methods
+ * below request the creation of a Session and a Token to your application
+ * server. This keeps your OpenVidu deployment secure.
+ * 
+ * In this sample code, there is no user control at all. Anybody could access
+ * your application server endpoints! In a real production environment, your
+ * application server must identify the user to allow access to the endpoints.
+ * 
+ * Visit https://docs.openvidu.io/en/stable/application-server to learn more
+ * about the integration of OpenVidu in your application server.
+ */
+
 
 function getToken(mySessionId) {
   return createSession(mySessionId).then((sessionId) => createToken(sessionId));
