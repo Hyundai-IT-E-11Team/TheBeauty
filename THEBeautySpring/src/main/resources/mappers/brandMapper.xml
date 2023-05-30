@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa.theBeauty.reservation.dao.reserveDAO">
+	<resultMap type="BrandVO" id="BrandVOMap">
+		<result column="brand_name" property="brandName" />
+		<result column="brand_imgurl" property="brandImgurl" />
+	</resultMap>
+	<resultMap type="ProductVO" id="ProductVOMap">
+		<result column="PRODUCT_SEQ" property="productSeq" />
+		<result column="BRAND_SEQ" property="brandSeq" />
+		<result column="PRODUCT_NAME" property="productName" />
+		<result column="PRODUCT_PRICE" property="productPrice" />
+		<result column="PRODUCT_IMGURL" property="productImgurl" />
+		<result column="PRODUCT_CATEGORY" property="productCategory" />
+	</resultMap>
+
+	<!-- 브랜드 정보 찾기 -->
+	<select id="selectBrandInfo" parameterType="BrandVO" resultMap="BrandVOMap">
+		SELECT brand_name,brand_imgurl
+		FROM tb_brand
+		WHERE brand_name = #{brandName}
+	</select>
+	<!-- 해당 브랜드 상품 정보 찾기 --><!-- 쿼리문 수정필요 -->
+	<select id="selectProductInfo" parameterType="BrandVO" resultMap="ProductVOMap">
+		SELECT *
+		FROM tb_product
+		WHERE product_seq = (SELECT MIN(product_seq)
+  							   FROM tb_product
+ 							  WHERE brand_seq = (SELECT brand_seq
+    						   FROM tb_brand
+    						  WHERE brand_name = #{brandName}))
+	</select>
+	
+</mapper>  
