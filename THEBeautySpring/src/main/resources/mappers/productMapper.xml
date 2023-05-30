@@ -69,6 +69,13 @@
 		    ON p.brand_seq = b.brand_seq
 		 WHERE b.brand_seq = #{brandSeq}
 	</select>
+	
+	<!--  header에서 카테고리 별로 상품 검색-->
+	<select id="selectProductByCategory" resultMap="ProductDetailVOMap">
+		SELECT *
+		  FROM tb_product
+		 WHERE product_category = #{productCategory}
+	</select>
 
 </mapper>
 

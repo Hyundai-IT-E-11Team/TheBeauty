@@ -82,8 +82,10 @@
 					</div></li>
 			</ul>
 			<div class="additional-menu">
-				<a href="#">SKINCARE</a> <a href="#">FOUNDATION</a> <a href="#">LIP</a>
-				<a href="#">EYE</a>
+				<a href="/theBeauty/product/category/스킨">SKINCARE</a> 
+				<a href="/theBeauty/product/category/파운데이션">FOUNDATION</a> 
+				<a href="/theBeauty/product/category/립">LIP</a>
+				<a href="/theBeauty/product/category/아이">EYE</a>
 			</div>
 		</div>
 	</div>

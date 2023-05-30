@@ -28,15 +28,20 @@ public class ProductService {
 		return dao.getProductDetails(product_seq);
 	}
 	
-	// 브랜드관 페이지 - phw
+	// 브랜드관 페이지  - kww
 	public List<ProductVO> getListByBrandName(String brandName) {
 		return dao.selectProductByBrandName(brandName);
 	}
 	
-	// 브랜드별 상품 목록 조회 (브랜드관 페이지)
+	// 브랜드별 상품 목록 조회 (브랜드관 페이지) - phw
 	public List<ProductDetailVO> getProductsByBrand(int brandSeq) {
 		
 		return dao.getProductsByBrand(brandSeq);
 	}
-	
+
+	// header에서 카테고리 별로 상품 검색 - phw
+	public List<ProductVO> getProductByCategory(String productCategory) {
+
+		return dao.selectProductByCategory(productCategory);
+	}
 }

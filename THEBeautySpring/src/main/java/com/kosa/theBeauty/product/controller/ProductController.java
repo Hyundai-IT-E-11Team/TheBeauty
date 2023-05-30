@@ -47,7 +47,7 @@ public class ProductController {
 	public String getProductDetails(@PathVariable ("product_seq") int productSeq, Model model) {
 
 		if (productSeq == 0) {
-			return "product/productList";
+			return "product/productSearchResult";
 		} else {
 			ProductDetailVO productDetail = service.getProductDetail(productSeq);
 			model.addAttribute("productDetail", productDetail);
@@ -60,5 +60,18 @@ public class ProductController {
 	public ResponseEntity<List<ProductVO>> list(@PathVariable String brandName) {
 		
 		return new ResponseEntity<>(service.getListByBrandName(brandName), HttpStatus.OK);
+	}
+	
+	// header에서 카테고리 별로 상품 검색 - phw
+	@DebugLog
+	@GetMapping("category/{productCategory}")
+	public String getCategoryProduct(@PathVariable("productCategory") String productCategory, Model model) {
+		
+		List<ProductVO> list = service.getProductByCategory(productCategory);
+		// 리스트를 JSP에 넘겨주기
+		model.addAttribute("products", list);
+		model.addAttribute("productCategory", productCategory);
+		
+		return "product/categoryProduct";
 	}
 }
