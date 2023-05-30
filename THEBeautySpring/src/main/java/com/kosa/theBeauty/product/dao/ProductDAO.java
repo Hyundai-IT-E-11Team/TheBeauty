@@ -16,9 +16,12 @@ public interface ProductDAO {
 	// 상품 시퀀스를 통해 상품 상세정보 검색 - phw
 	ProductDetailVO getProductDetails(int product_seq);
 	
-	// 브랜드명을 통해 브랜드별 상품 리스트 검색 - phw
+	// kww
 	List<ProductVO> selectProductByBrandName(String brandName);
-	
-	// 브랜드별 상품 목록 조회 (브랜드관 페이지)
+	 
+	// 브랜드별 상품 목록 조회 (브랜드관 페이지) - phw
 	List<ProductDetailVO> getProductsByBrand(int brandSeq);
+	
+	// header에서 카테고리 별로 상품 검색 - phw
+	List<ProductVO> selectProductByCategory(String productCategory);
 }

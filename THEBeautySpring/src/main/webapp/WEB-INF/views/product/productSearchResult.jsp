@@ -22,7 +22,7 @@
 		<div class="products">
 			<div class="keyword-wrap">
 				<div class="keyword">
-					<span>${keyword }</span>
+					<span>${keyword}</span>
 					<p>
 						<span>검색결과</span> 상품 <em id="totalCnt">${ products.size() }</em> 개
 					</p>
