@@ -5,8 +5,13 @@
 
 <mapper namespace="com.kosa.theBeauty.reservation.dao.reserveDAO">
 	<resultMap type="BrandVO" id="BrandVOMap">
+		<result column="brand_seq" property="brandSeq" />
 		<result column="brand_name" property="brandName" />
 		<result column="brand_imgurl" property="brandImgurl" />
+		<result column="brand_img1" property="brandImg1" />
+		<result column="brand_img2" property="brandImg2" />
+		<result column="brand_img3" property="brandImg3" />
+		<result column="brand_img4" property="brandImg4" />
 	</resultMap>
 	<resultMap type="ProductVO" id="ProductVOMap">
 		<result column="PRODUCT_SEQ" property="productSeq" />
@@ -19,19 +24,19 @@
 
 	<!-- 브랜드 정보 찾기 -->
 	<select id="selectBrandInfo" parameterType="BrandVO" resultMap="BrandVOMap">
-		SELECT brand_name,brand_imgurl
-		FROM tb_brand
-		WHERE brand_name = #{brandName}
+		SELECT *
+		  FROM tb_brand
+		 WHERE brand_seq = #{brandSeq}
 	</select>
 	<!-- 해당 브랜드 상품 정보 찾기 --><!-- 쿼리문 수정필요 -->
 	<select id="selectProductInfo" parameterType="BrandVO" resultMap="ProductVOMap">
 		SELECT *
-		FROM tb_product
-		WHERE product_seq = (SELECT MIN(product_seq)
-  							   FROM tb_product
- 							  WHERE brand_seq = (SELECT brand_seq
-    						   FROM tb_brand
-    						  WHERE brand_name = #{brandName}))
+		  FROM tb_product
+		 WHERE product_seq = (SELECT MIN(product_seq)
+  							    FROM tb_product
+ 							   WHERE brand_seq = (SELECT brand_seq
+    						    FROM tb_brand
+    						   WHERE brand_name = #{brandName}))
 	</select>
 	
 </mapper>  
