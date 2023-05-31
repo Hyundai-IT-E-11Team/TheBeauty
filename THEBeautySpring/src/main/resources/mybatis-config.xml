@@ -27,7 +27,9 @@
 			type="com.kosa.theBeauty.product.domain.BrandVO" />
 		<typeAlias alias="ProductDetailVO"
 			type="com.kosa.theBeauty.product.domain.ProductDetailVO" />
-
+		<typeAlias alias="PaginationVO"
+			type="com.kosa.theBeauty.product.domain.PaginationVO" />
+	
 	</typeAliases>
 
 </configuration>	

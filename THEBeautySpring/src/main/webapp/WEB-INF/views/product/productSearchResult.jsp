@@ -22,9 +22,9 @@
 		<div class="products">
 			<div class="keyword-wrap">
 				<div class="keyword">
-					<span>${keyword }</span>
+					<span>${productName }</span>
 					<p>
-						<span>검색결과</span> 상품 <em id="totalCnt">${ products.size() }</em> 개
+						<span>검색결과 </span> 상품  <em id="totalCnt">${ totalNum }</em>개
 					</p>
 				</div>
 			</div>
@@ -48,7 +48,13 @@
 	</div>
 	
 	<!-- pagination 추가 -->
-	<%@ include file="/WEB-INF/views/product/pagination.jsp"%>
+	<jsp:include page="/WEB-INF/views/product/pagination.jsp">
+    	<jsp:param name="productName" value="${productName }" />
+    	<jsp:param name="paginationNum" value="${paginationNum }" />
+    	<jsp:param name="page" value="${page}" />
+		    	
+	</jsp:include>
+	
 	
 	<script
 		src="${pageContext.request.contextPath}/resources/js/product/productList.js"></script>

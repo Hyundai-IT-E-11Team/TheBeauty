@@ -40,7 +40,28 @@
 			SELECT *
 			  FROM tb_product
 			 WHERE product_name LIKE '%' || #{productName} || '%'
-			]]> 
+			]]>
+	</select>
+
+	<!-- pagination 검색 상품 개수 구하기 -->
+	<select id="selectProductCountByKeyword" parameterType="PaginationVO"
+		resultType="_int">
+			<![CDATA[
+			SELECT count(*)
+			  FROM tb_product
+			 WHERE product_name LIKE '%' || #{productName} || '%'
+			 ]]>
+	</select>
+	
+	<!-- pagination 페이지네이션된 상품 리스트 (20개씩 나오는 거) -->
+	<select id="selectProductListByKeywordPaged" parameterType="PaginationVO"
+		resultMap="ProductVOMap">
+			<![CDATA[
+			SELECT *
+			  FROM tb_product
+			 WHERE product_name LIKE '%' || #{productName} || '%'
+            OFFSET #{offset} ROWS FETCH NEXT 20 ROWS ONLY
+		]]>
 	</select>
 
 	<!-- 브랜드관 페이지 -->
@@ -55,19 +76,19 @@
 	<!-- 상품 상세정보 페이지 -->
 	<select id="getProductDetails" resultMap="ProductDetailVOMap">
 		SELECT p.*, b.*
-		  FROM tb_product p
-		  JOIN tb_brand b
-		    ON p.brand_seq = b.brand_seq
-		 WHERE p.product_seq = #{productSeq}
+		FROM tb_product p
+		JOIN tb_brand b
+		ON p.brand_seq = b.brand_seq
+		WHERE p.product_seq = #{productSeq}
 	</select>
-	
-	<!-- 브랜드관 페이지 상품리스트-->
+
+	<!-- 브랜드관 페이지 상품리스트 -->
 	<select id="getProductsByBrand" resultMap="ProductDetailVOMap">
 		SELECT p.*, b.*
-		  FROM tb_product p
-		  JOIN tb_brand b
-		    ON p.brand_seq = b.brand_seq
-		 WHERE b.brand_seq = #{brandSeq}
+		FROM tb_product p
+		JOIN tb_brand b
+		ON p.brand_seq = b.brand_seq
+		WHERE b.brand_seq = #{brandSeq}
 	</select>
 
 </mapper>

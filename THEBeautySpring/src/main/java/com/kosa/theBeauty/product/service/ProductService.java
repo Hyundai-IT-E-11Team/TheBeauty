@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.kosa.theBeauty.product.dao.ProductDAO;
+import com.kosa.theBeauty.product.domain.PaginationVO;
 import com.kosa.theBeauty.product.domain.ProductDetailVO;
 import com.kosa.theBeauty.product.domain.ProductVO;
 
@@ -17,10 +18,39 @@ public class ProductService {
 	// 상품 리스트 페이지 - pjw
 	private final ProductDAO dao;
 
-	public List<ProductVO> search(ProductVO vo) {
-
-		return dao.selectProductByKeyword(vo);
+	public int selectProductCountByKeyword(PaginationVO vo) {
+		return dao.selectProductCountByKeyword(vo);
 	}
+	
+//	
+//	public void calculateAndSetOffset(PaginationVO vo) {
+//		if(vo.getPage() == 0) {
+//			vo.setPage(1);
+//		}
+//		
+//		int offset = 20 * (vo.getPage() - 1);
+//		
+//		vo.setOffset(offset);
+//	}
+//	
+	public List<ProductVO> selectProductListByKeywordPaged(PaginationVO vo) {
+
+		// vo에 offset 바꿔주기
+		if (vo.getPage() == 0) {
+			vo.setPage(1);
+		}
+		int offset = 20 * (vo.getPage() - 1);
+		vo.setOffset(offset);
+		
+		return dao.selectProductListByKeywordPaged(vo);
+	} 
+	
+	public int calculatePaginationNum(int totalNum) {
+		
+		return (int)Math.ceil((double)totalNum / 20);
+	}
+	
+	
 	
 	// 상품 상세페이지 - phw
 	public ProductDetailVO getProductDetail(int product_seq) {
