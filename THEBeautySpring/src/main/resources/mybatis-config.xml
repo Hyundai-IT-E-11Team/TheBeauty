@@ -29,7 +29,10 @@
 			type="com.kosa.theBeauty.product.domain.ProductDetailVO" />
 		<typeAlias alias="PaginationVO"
 			type="com.kosa.theBeauty.product.domain.PaginationVO" />
-	
+		<typeAlias alias="CartVO"
+			type="com.kosa.theBeauty.cart.domain.CartVO" />
+		<typeAlias alias="CartListVO"
+			type="com.kosa.theBeauty.cart.domain.CartListVO" />
 	</typeAliases>
 
 </configuration>	
