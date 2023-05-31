@@ -10,13 +10,14 @@
 <!-- Fontawesome CDN Link -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+	
 </head>
 <body>
 	<div class="container">
-		<button class="button" id="startBtn" disabled>
+		<button class="button" id="startBtn" >
 			<i class="fa-solid fa-angles-left"></i>
 		</button>
-		<button class="button prevNext" id="prev" disabled>
+		<button class="button prevNext" id="prev" >
 			<i class="fa-solid fa-angle-left"></i>
 		</button>
 
@@ -25,19 +26,25 @@
 			<%
 				int paginationNum = Integer.parseInt(request.getParameter("paginationNum"));
 				int currentPage = Integer.parseInt(request.getParameter("page"));
+				int displayPageRange = 10;
 			%>
 
 			<%-- 일반적인 for 루프를 사용하여 반복 작업 수행 --%>
 			<%
-				for (int i = 0; i < paginationNum; i++) {
-					int pageNum = i + 1;
+				int startPage = (currentPage - 1) / displayPageRange * displayPageRange + 1;
+				int endPage = Math.min(startPage + displayPageRange - 1, paginationNum); // 페이지 수를 넘지 않도록 제한
+
+				for (int i = startPage; i <= endPage; i++) {
+					int pageNum = i;
 					String linkClass = (pageNum == currentPage) ? "link active" : "link";
 			%>
-			<a href="${pageContext.request.contextPath}/product/search?productName=${productName}&page=<%= pageNum %>" 
-			class="<%= linkClass %>"><%= pageNum %></a>
+			<a
+				href="${pageContext.request.contextPath}/product/search?productName=${productName}&page=<%= pageNum %>"
+				class="<%= linkClass %>"><%=pageNum%></a>
 			<%
 				}
 			%>
+
 		</div>
 
 		<button class="button prevNext" id="next">
