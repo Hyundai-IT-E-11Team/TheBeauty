@@ -14,25 +14,26 @@
 </head>
 <body>
 	<div class="container">
-		<button class="button" id="startBtn" >
+		<%-- 자식 페이지에서 받은 int 변수 --%>
+		<%
+			int paginationNum = Integer.parseInt(request.getParameter("paginationNum"));
+			int currentPage = Integer.parseInt(request.getParameter("page"));
+			int displayPageRange = 10;
+				int startPage = (currentPage - 1) / displayPageRange * displayPageRange + 1;
+				int endPage = Math.min(startPage + displayPageRange - 1, paginationNum); // 페이지 수를 넘지 않도록 제한
+		%>
+		<button class="button" id="startBtn" onclick="location.href='${pageContext.request.contextPath}/product/search?productName=${productName}&page=1'">
 			<i class="fa-solid fa-angles-left"></i>
 		</button>
-		<button class="button prevNext" id="prev" >
+		<button class="button prevNext" id="prev" onclick="location.href='${pageContext.request.contextPath}/product/search?productName=${productName}&page=<%=currentPage-1%>'">
 			<i class="fa-solid fa-angle-left"></i>
 		</button>
 
 		<div class="links">
-			<%-- 자식 페이지에서 받은 int 변수 --%>
-			<%
-				int paginationNum = Integer.parseInt(request.getParameter("paginationNum"));
-				int currentPage = Integer.parseInt(request.getParameter("page"));
-				int displayPageRange = 10;
-			%>
+			
 
 			<%-- 일반적인 for 루프를 사용하여 반복 작업 수행 --%>
 			<%
-				int startPage = (currentPage - 1) / displayPageRange * displayPageRange + 1;
-				int endPage = Math.min(startPage + displayPageRange - 1, paginationNum); // 페이지 수를 넘지 않도록 제한
 
 				for (int i = startPage; i <= endPage; i++) {
 					int pageNum = i;
@@ -47,10 +48,10 @@
 
 		</div>
 
-		<button class="button prevNext" id="next">
+		<button class="button prevNext" id="next" onclick="location.href='${pageContext.request.contextPath}/product/search?productName=${productName}&page=<%=currentPage+1%>'">
 			<i class="fa-solid fa-angle-right"></i>
 		</button>
-		<button class="button" id="endBtn">
+		<button class="button" id="endBtn" onclick="location.href='${pageContext.request.contextPath}/product/search?productName=${productName}&page=<%=paginationNum%>'">
 			<i class="fa-solid fa-angles-right"></i>
 		</button>
 	</div>
