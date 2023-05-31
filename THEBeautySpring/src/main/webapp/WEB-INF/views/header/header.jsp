@@ -31,7 +31,7 @@
 				</button>
 			</form>
 			<div id="userInterface">
-				<a class="bigButton" href="../user/login">로그인 / 회원가입</a> <a
+				<a class="bigButton" href="/theBeauty/user/login">로그인 / 회원가입</a> <a
 					class="smallButton" href="">마이뷰티</a> <a class="smallButton" href="">장바구니</a>
 				<a class="smallButton" href="">바로상담</a>
 			</div>
@@ -82,8 +82,10 @@
 					</div></li>
 			</ul>
 			<div class="additional-menu">
-				<a href="#">SKINCARE</a> <a href="#">FOUNDATION</a> <a href="#">LIP</a>
-				<a href="#">EYE</a>
+				<a href="/theBeauty/product/category/SKINCARE">SKINCARE</a> 
+				<a href="/theBeauty/product/category/FOUNDATION">FOUNDATION</a> 
+				<a href="/theBeauty/product/category/LIP">LIP</a>
+				<a href="/theBeauty/product/category/EYE">EYE</a>
 			</div>
 		</div>
 	</div>

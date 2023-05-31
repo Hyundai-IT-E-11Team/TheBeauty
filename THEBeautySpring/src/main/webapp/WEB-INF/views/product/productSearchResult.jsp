@@ -22,7 +22,9 @@
 		<div class="products">
 			<div class="keyword-wrap">
 				<div class="keyword">
+
 					<span>${productName }</span>
+
 					<p>
 						<span>검색결과 </span> 상품  <em id="totalCnt">${ totalNum }</em>개
 					</p>

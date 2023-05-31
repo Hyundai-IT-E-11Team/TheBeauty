@@ -83,4 +83,16 @@ public class ProductController {
 		
 		return new ResponseEntity<>(service.getListByBrandName(brandName), HttpStatus.OK);
 	}
+	
+	// header에서 카테고리 별로 상품 검색 - phw
+	@DebugLog
+	@GetMapping("category/{productCategory}")
+	public String getCategoryProduct(@PathVariable("productCategory") String productCategory, Model model) {
+		List<ProductVO> list = service.getProductByCategory(productCategory);
+		// 리스트를 JSP에 넘겨주기
+		model.addAttribute("products", list);
+		model.addAttribute("productCategory", productCategory);
+		
+		return "product/categoryProduct";
+	}
 }

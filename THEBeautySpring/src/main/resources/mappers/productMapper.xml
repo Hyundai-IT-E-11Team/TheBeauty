@@ -6,6 +6,8 @@
 <mapper namespace="com.kosa.theBeauty.product.dao.ProductDAO">
 
 	<resultMap type="ProductVO" id="ProductVOMap">
+		<result column="product_seq" property="productSeq" />
+		<result column="brand_seq" property="brandSeq" />
 		<result column="product_name" property="productName" />
 		<result column="product_price" property="productPrice" />
 		<result column="product_imgurl" property="productImgurl" />
@@ -89,6 +91,13 @@
 		JOIN tb_brand b
 		ON p.brand_seq = b.brand_seq
 		WHERE b.brand_seq = #{brandSeq}
+	</select>
+	
+	<!--  header에서 카테고리 별로 상품 검색-->
+	<select id="selectProductByCategory" parameterType="String" resultMap="ProductVOMap">
+		SELECT *
+		  FROM tb_product
+		 WHERE product_category = #{productCategory}
 	</select>
 
 </mapper>
