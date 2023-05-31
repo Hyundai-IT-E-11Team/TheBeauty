@@ -39,4 +39,14 @@ public class CartController {
 		
 		return "redirect:cartPage";
 	}
+	
+	// 장바구니 페이지로 이동
+	@DebugLog
+	@GetMapping("cartPage")
+	public String getCartPage(@SessionAttribute UserVO currUser, Model model) {
+		
+		List<CartListVO> list = service.getCartList(currUser.getUserSeq());
+		model.addAttribute("cartList", list);
+		return "cart/cartPage";
+	}
 }
