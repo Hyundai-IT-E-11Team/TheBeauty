@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.product.dao.ProductDAO;
 import com.kosa.theBeauty.product.domain.PaginationVO;
 import com.kosa.theBeauty.product.domain.ProductDetailVO;
@@ -59,8 +60,8 @@ public class ProductService {
 	}
 	
 	// 브랜드관 페이지  - kww
-	public List<ProductVO> getListByBrandName(String brandName) {
-		return dao.selectProductByBrandName(brandName);
+	public List<ProductVO> getListByBrandName(int brandSeq) {
+		return dao.selectProductByBrandName(brandSeq);
 	}
 	
 	// 브랜드별 상품 목록 조회 (브랜드관 페이지) - phw
@@ -73,5 +74,11 @@ public class ProductService {
 	public List<ProductVO> getProductByCategory(String productCategory) {
 
 		return dao.selectProductByCategory(productCategory);
+	}
+
+	@DebugLog
+	public List<ProductVO> getListByBrandSeqAndQuery(int brandSeq, String query) {
+		
+		return dao.selectProductByBrandAndQuery(brandSeq, query);
 	}
 }
