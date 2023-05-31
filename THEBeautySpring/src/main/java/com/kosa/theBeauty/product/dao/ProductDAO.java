@@ -4,15 +4,19 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.kosa.theBeauty.product.domain.PaginationVO;
 import com.kosa.theBeauty.product.domain.ProductDetailVO;
 import com.kosa.theBeauty.product.domain.ProductVO;
 
 @Mapper
 public interface ProductDAO {
 	
+	// pagination 검색 상품 개수 구하기 -pjw
+	int selectProductCountByKeyword(PaginationVO vo);
+	
 	// 상품 키워드를 통해 검색 - pjw
-	List<ProductVO> selectProductByKeyword(ProductVO vo);
-
+	List<ProductVO> selectProductListByKeywordPaged(PaginationVO vo);
+	
 	// 상품 시퀀스를 통해 상품 상세정보 검색 - phw
 	ProductDetailVO getProductDetails(int product_seq);
 	

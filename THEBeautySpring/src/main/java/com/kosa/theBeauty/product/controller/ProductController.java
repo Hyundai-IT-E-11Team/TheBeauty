@@ -12,6 +12,8 @@ import com.kosa.theBeauty.annotation.DebugLog;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import com.kosa.theBeauty.product.domain.PaginationVO;
 import com.kosa.theBeauty.product.domain.ProductDetailVO;
 import com.kosa.theBeauty.product.domain.ProductVO;
 import com.kosa.theBeauty.product.service.ProductService;
@@ -27,19 +29,39 @@ public class ProductController {
 
 	@DebugLog
 	@GetMapping("search")
-	public String searchProduct(@RequestParam("productName") String keyword, ProductVO vo, Model model) {
+	public String searchProduct(PaginationVO vo, Model model) {
 
-		List<ProductVO> list = service.search(vo);
+	
+		
+		// DB 가져와서 보내줘야 하는 것
+		// 1. 검색한 상품의 개수
+		int totalNum = service.selectProductCountByKeyword(vo);
+		// 2. 페이지네이션된 상품 리스트 (20개씩 나오는 거)
+		List<ProductVO> products = service.selectProductListByKeywordPaged(vo);
+		
+		// 그냥 보내줘야 하는 것
+		// 3. 페이지네이션 개수
+		int paginationNum = service.calculatePaginationNum(totalNum);
+		// 4. PaginationVO (productName 키워드주는거)
+			
+		
+		model.addAttribute("totalNum", totalNum);
 
+		model.addAttribute("products", products);
+		
+		model.addAttribute("paginationNum", paginationNum);
+		
+		model.addAttribute("productName", vo.getProductName());
+		
+		model.addAttribute("page", vo.getPage());
+		
 		// list를 JSP에 넘겨주기
-		model.addAttribute("products", list);
 
-		// 검색받은 keyword를 JSP에 넘겨주기
-		model.addAttribute("keyword", keyword);
 
 		return "product/productSearchResult";
 
 	}
+	
 		
 	@DebugLog
 	@GetMapping("detailPage/{product_seq}")
