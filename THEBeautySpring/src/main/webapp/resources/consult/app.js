@@ -1,9 +1,9 @@
 var OV;
 var session;
 
-function joinSession() {
-  var mySessionId = document.getElementById("sessionId").value;
 
+function joinSession(currUserRole) {
+  var mySessionId = document.getElementById("sessionId").value;
   OV = new OpenVidu();
   session = OV.initSession();
 
@@ -14,20 +14,26 @@ function joinSession() {
   session.on('signal', function (event) {
 	  let item = JSON.parse(event.data)
 	  let card = `
-		    <div class="card">
+		    <div id="${item.productSeq}" class="card" >
 		        <img src="${item.productImgurl}" alt="Product 1">
+		        <a href="product/detailPage/${item.productSeq}"
+		        onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;"
+		        style="text-decoration: none; color: black;"
+		        >
 		        <h3>${item.productName}</h3>
+				</a>
 		        <p class="price">${item.productPrice}</p>
+		        <button onclick="deleteCard('${item.productSeq}')">삭제</button>
 		    </div>
 		`;
 		$('#u-items').append(card);
   });
   
-  getToken(mySessionId).then((token) => { 
+  getToken(mySessionId, currUserRole).then((token) => { 
     session
       .connect(token)
       .then(() => {
-// document.getElementById("session-header").innerText = mySessionId;
+    	// document.getElementById("session-header").innerText = mySessionId;
         document.getElementById("join").style.display = "none";
         document.getElementById("session").style.display = "block";
 
@@ -44,6 +50,9 @@ function joinSession() {
   });
 }
 
+function deleteCard(cardId) {
+	$("#"+cardId ).remove();
+}
 function leaveSession() {
   session.disconnect();
   document.getElementById("join").style.display = "block";
@@ -70,13 +79,41 @@ function sendMessage(product) {
 
 var APPLICATION_SERVER_URL = "https://192.168.0.89/theBeauty/";
 
-function getProducts(roleName) {
+function search(roleNum) {
+	$('#c-items').html("");
+    // AJAX GET 요청
+    $.ajax({
+      url: APPLICATION_SERVER_URL + 'product/list/' + roleNum + '/' + $(".search-input").val(),
+      type: 'GET',
+      success: function(data) {
+    	  console.log(data)
+      	for(let i = 0; i < data.length; i++) {
+      		let card = `
+      		    <div class="card">
+      		        <img src="${data[i].productImgurl}" alt="Product 1">
+      		        <h3>${data[i].productName}</h3>
+      		        <p class="price">${data[i].productPrice}</p>
+      		        <button onclick="sendMessage(${JSON.stringify(data[i]).replace(/"/g, '&quot;')})">전송</button>
+      		    </div>
+      		`;
+      		$('#c-items').append(card);
+          }
+
+      },
+      error: function() {
+        // 요청이 실패했을 때 실행되는 콜백 함수
+        console.log('데이터를 불러오는데 실패했습니다.');
+      }
+    });
+}
+function getProducts(roleNum) {
+	$('#c-items').html("");
       // AJAX GET 요청
       $.ajax({
-        url: APPLICATION_SERVER_URL + 'product/list/' + roleName,
+        url: APPLICATION_SERVER_URL + 'product/list/' + roleNum,
         type: 'GET',
         success: function(data) {
-        	for(let i = 0; i < 20; i++) {
+        	for(let i = 0; i < data.length; i++) {
         		let card = `
         		    <div class="card">
         		        <img src="${data[i].productVO.productImgurl}" alt="Product 1">
@@ -111,8 +148,9 @@ function getProducts(roleName) {
  */
 
 
-function getToken(mySessionId) {
-  return createSession(mySessionId).then((sessionId) => createToken(sessionId));
+function getToken(mySessionId, currUserRole) {
+	if(currUserRole == 0) {return createToken(mySessionId);}
+	else return createSession(mySessionId).then((sessionId) => createToken(sessionId));
 }
 
 function createSession(sessionId) {
@@ -137,7 +175,10 @@ function createToken(sessionId) {
       data: JSON.stringify({}),
       headers: { "Content-Type": "application/json" },
       success: (response) => resolve(response), // The token
-      error: (error) => reject(error),
+      error: (error) => {
+    	  alert('아직 상담사가 상담을 시작하지 않았습니다.')
+    	  reject(error)
+    	  },
     });
   });
 }

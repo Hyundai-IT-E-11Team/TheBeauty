@@ -21,7 +21,7 @@
 	<div id="consult-container">
 		<div id="join">
 			<h1>${currUser.userName }님환영합니다.</h1>
-			<form onsubmit="joinSession(); return false">
+			<form onsubmit="joinSession('${currUser.roleNum}'); return false">
 				<p>
 					<label>상담 브랜드:</label> <input type="text" id="sessionId"
 						value="chanel" required>
@@ -33,34 +33,35 @@
 		</div>
 
 		<div id="session" style="display: none;">
-			<h1 id="session-header"></h1>
 			<div id="video-container">
 				<div id="publisher"></div>
 				<div id="subscriber"></div>
 			</div>
 		</div>
 
+		<c:if test="${currUser.roleNum > 0}">
+			<div id="c-container">
+				<div>
+					<input type="text" class="search-input" placeholder="검색어를 입력하세요">
+					<button class="button" onclick="search('${currUser.roleNum}')">검색</button>
 
-		<div id="c-container"
-			${currUser.roleName.equals('user') ? "style='display:none'" : ""}>
-			<div>
-				<c:if test="${!empty currUser && currUser.roleName ne 'user'}">
-					<button onclick="getProducts('${currUser.roleName}')">우리
-						제품 불러오기</button>
-				</c:if>
-				<input type="button" onclick="leaveSession()" value="LEAVE">
+					<button class="button" onclick="getProducts('${currUser.roleNum}')">전체
+						보기</button>
+					<input class="button" type="button" onclick="leaveSession()"
+						value="LEAVE">
+				</div>
+				<div class="items" id="c-items"></div>
 			</div>
-			<div class="items" id="c-items">
+		</c:if>
+		<c:if test="${currUser.roleNum == 0}">
+			<div id="u-container">
+				<div>
+					<input class="button" type="button" onclick="leaveSession()"
+						value="LEAVE">
+				</div>
+				<div class="items" id="u-items"></div>
 			</div>
-		</div>
-		<div id="u-container"
-			${!currUser.roleName.equals('user') ? "style='display:none'" : ""}>
-			<div>
-			<input type="button" onclick="leaveSession()" value="LEAVE">
-			</div>
-			<div class="items" id="u-items">
-			</div>
-		</div>
+		</c:if>
 	</div>
 </body>
 
