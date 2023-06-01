@@ -64,7 +64,6 @@ public class ProductController {
 		
 	@DebugLog
 	@GetMapping("detailPage/{product_seq}")
-
 	public String getProductDetails(@PathVariable ("product_seq") int productSeq, Model model) {
 
 		if (productSeq == 0) {
@@ -77,10 +76,10 @@ public class ProductController {
 	}
 	
 	@DebugLog
-	@GetMapping("list/{brandName}")
-	public ResponseEntity<List<ProductVO>> list(@PathVariable String brandName) {
+	@GetMapping("list/{brandSeq}")
+	public ResponseEntity<List<ProductVO>> list(@PathVariable int brandSeq) {
 		
-		return new ResponseEntity<>(service.getListByBrandName(brandName), HttpStatus.OK);
+		return new ResponseEntity<>(service.getListByBrandName(brandSeq), HttpStatus.OK);
 	}
 	
 	// header에서 카테고리 별로 상품 검색 - phw
@@ -93,5 +92,12 @@ public class ProductController {
 		model.addAttribute("productCategory", productCategory);
 		
 		return "product/categoryProduct";
+	}
+	
+	//자기 브랜드 내의 상품 검색 - kww
+	@DebugLog
+	@GetMapping("list/{brandSeq}/{query}")
+	public ResponseEntity<List<ProductVO>> search(@PathVariable int brandSeq, @PathVariable String query) {
+		return new ResponseEntity<List<ProductVO>> (service.getListByBrandSeqAndQuery(brandSeq, query), HttpStatus.OK);
 	}
 }
