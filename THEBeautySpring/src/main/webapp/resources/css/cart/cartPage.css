@@ -1,3 +1,12 @@
+@import
+	url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap")
+	;
+
+* {
+	font-family: "Poppins", sans-serif;
+}
+
+
 .header {
 	display: flex;
 	justify-content: center;
@@ -159,7 +168,7 @@ p {
 
 .billprice-wrap{
 	flex: 0 0 25%;
-	height: 700px;
+	height: 580px;
 	border: 2px solid #efefef;
 	border-radius: 5px;
 }
@@ -267,7 +276,7 @@ ul li {
 
 
 .billprice-wrap h3 {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -389,4 +398,19 @@ ul li {
 
 .billprice-wrap .billprice ul.sub.plus li h5:after {
     background: url(https://image.thehyundai.com/hdmall/images/co/icon_lt.png) no-repeat;
+}
+
+
+.btn.color9 {
+    color: #fff!important;
+    border: 1px solid #e35c61;
+    background: #e35c61;
+    text-align: center;
+    text-decoration-line: none;
+    margin: 10px;
+}
+
+.attention {
+    color: #888;
+    margin: 0 10px;
 }

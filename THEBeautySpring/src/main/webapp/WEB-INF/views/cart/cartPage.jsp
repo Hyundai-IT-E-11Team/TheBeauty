@@ -99,7 +99,7 @@
 	           <div class="option-price">
 	           		<div class="item-price">${item.productVO.productPrice}</div>
 	           		<div class="btn-area">
-	           			<button class="btn size4 color15" type="button">옵션변경</button>
+	           			<button class="btn size4 color15" type="button">삭제</button>
 	           			<button class="btn size4 color4" type="button">바로주문</button>
 	           		</div>
 	           </div>
@@ -110,29 +110,29 @@
 	   
 	   <div class="cart-bill-gap"></div>
 	   <div class="billprice-wrap">
-	   		<h3>결제금액</h3>
+	   		<h3 style="margin-top: 0px">결제금액</h3>
 	   		<ul class="billprice" style="padding-left: 0px;">
 				<li>
-					<div>
-						<h4>총 주문금액</h4>
-						<p><strong><span id="totOrdPrc">128,000</span></strong> 원</p>
+					<div style="margin-bottom: 0px; padding-bottom: 40px;">
+						<h4 style="margin-top: 0px; margin-bottom: 0px;">총 주문금액</h4>
+						<p style="margin-top: 0px; margin-bottom: 0px;"><strong><span id="totOrdPrc">128,000</span></strong> 원</p>
 					</div>
 					<ul class="sub plus" style="padding-left: 0px;">
 						<li>
 							<h5>상품금액</h5>
-							<p><span id="totProdPrc">128,000</span> 원</p>
+							<p style="margin-top: 0px;"><span id="totProdPrc">128,000</span> 원</p>
 						</li>
 						<li>
-							<h5>배송비</h5>
+							<h5 style="margin-bottom: 0px; margin-top: 50px;">배송비</h5>
 							<p><span id="totDlvCost">무료</span></p>
 						</li>
 					</ul>
 				</li>
 
-				<li class="total">
+				<li class="total" style="margin-top: 30px;">
 					<div>
-						<h4>결제 예정 금액</h4>
-						<p><strong><span id="payPrc">128,000</span></strong> 원</p>
+						<h4 style="margin-bottom: 0px; margin-top: 0px;">결제 예정 금액</h4>
+						<p style=" padding-top: 0px; margin-top: 0px; margin-bottom: 0px;"><strong><span id="payPrc">128,000</span></strong> 원</p>
 					</div>
 					
 				</li>
