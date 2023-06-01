@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/survey/survey.css" />
-<title>Insert title here</title>
+<title>사전설문작성</title>
 </head>
 <body>
 	<!-- header추가 -->

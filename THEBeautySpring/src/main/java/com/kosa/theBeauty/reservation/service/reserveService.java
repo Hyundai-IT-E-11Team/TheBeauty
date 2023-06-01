@@ -30,11 +30,16 @@ public class reserveService {
 		}
 	}
 
-	public int setReservation(ReservationVO vo) {
+	public boolean setReservation(ReservationVO vo) {
 		try {
-			return  dao.insertReservationInfo(vo);
+			
+			if(dao.insertReservationInfo(vo)==1) {
+				return true;
+			} else {
+				return  false;
+			}
 		} catch (Exception e) {
-			return 0;
+			return false;
 		}
 	}
 

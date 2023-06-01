@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/survey/survey.css" />
+<title>myBeauty</title>
 </head>
 <body>
-<h1>제출완료</h1>
+	<!-- header추가 -->
+	<%@ include file="/WEB-INF/views/header/header.jsp"%>
+	
+    <h1>제출완료</h1>
 </body>
 </html>

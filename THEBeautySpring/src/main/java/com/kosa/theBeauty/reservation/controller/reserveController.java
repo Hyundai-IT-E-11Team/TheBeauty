@@ -25,13 +25,6 @@ public class reserveController {
 	private final reserveService service;
 	
 	@DebugLog
-	@GetMapping("test")
-	public String reservePage() {
-		//확인용
-		return "reservation/test";
-	}
-	
-	@DebugLog
 	@PostMapping("reservePage")
 	public String reservePage(@SessionAttribute UserVO currUser, BrandVO vo, Model model) {
 		//상담예약버튼을 누르면 실행
@@ -51,27 +44,26 @@ public class reserveController {
 	//예약저장
 	@DebugLog
 	@PostMapping("myReservation")
-	public String myReservation(@SessionAttribute UserVO currUser,ReservationVO reservationvo, Model model) {
-		System.out.println(reservationvo);
+	public ResponseEntity<String> myReservation(@SessionAttribute UserVO currUser,ReservationVO reservationvo, Model model) {
 		reservationvo.setUserSeq(currUser.getUserSeq());
 		reservationvo.setUserName(currUser.getUserName());
-		int check = service.setReservation(reservationvo);
-		System.out.println(check);
-		return "redirect:../main/mainPage";
+		if(service.setReservation(reservationvo)) {
+			return  new ResponseEntity<>("/theBeauty/survey/surveyPage", HttpStatus.OK);
+		} else {
+			return  new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+		}
+		
 	}
 	
 	@DebugLog
 	@PostMapping("checkSchedule")
 	public  ResponseEntity<String> checkSchedule(ReservationVO reservationvo) {
 		String response = null;
-		boolean status = service.getSchedule(reservationvo);
-		if(status) {
+		if(service.getSchedule(reservationvo)) {
 			response = "notEmpty";
-			System.out.println(response);
 		} else {
 			response = reservationvo.getReserveTime();
 		}
-		/* System.out.println(response); */
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
