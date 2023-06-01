@@ -8,16 +8,16 @@
 
 
 .header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-width: 0 0 1.5px;
-	border-style: solid;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-width: 0 0 1.5px;
+   border-style: solid;
 }
 
 .header img {
-	height: 60px;
-	margin: 20px;
+   height: 60px;
+   margin: 20px;
 }
 
 .container {
@@ -123,8 +123,8 @@ p {
    flex-direction: row;
    margin-bottom: 20px; /* 상품 사이의 간격을 설정합니다. 필요에 따라 변경하세요. */
    border: 2px solid #efefef;
-	border-radius: 5px;
-	padding: 20px;
+   border-radius: 5px;
+   padding: 20px;
 }
 
 .product img {
@@ -155,15 +155,15 @@ p {
 }
 
 .cart-bill-container{
-	display:flex;
+   display:flex;
 }
 
 .cart-list-wrapper{
-	flex: 0 0 70%;
+   flex: 0 0 70%;
 }
 
 .cart-bill-gap {
-	flex: 0 0 5%;
+   flex: 0 0 5%;
 }
 
 .billprice-wrap{
@@ -174,7 +174,7 @@ p {
 }
 
 ul li {
-	list-style-type: none;
+   list-style-type: none;
 }
 
 .cnt-ctrl {
@@ -237,14 +237,14 @@ ul li {
 }
 
 .option-info {
-	border-width: 0 0 1.5px;
-	border-style: dashed;
-	border-color: #e1e1e1;
-	margin-bottom: 10px;
+   border-width: 0 0 1.5px;
+   border-style: dashed;
+   border-color: #e1e1e1;
+   margin-bottom: 10px;
 }
 
 .option-price {
-	display: flex;
+   display: flex;
     justify-content: space-between;
 }
 

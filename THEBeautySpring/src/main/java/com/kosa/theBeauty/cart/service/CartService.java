@@ -13,18 +13,22 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class CartService {
+
+	private final CartDAO dao;
+
+	// 상품(CartVO)을 장바구니에 추가
+	public void addToCart(CartVO cartvo) {
+
+		dao.addToCart(cartvo);
+	}
+
+	// 사용자 시퀀스(userSeq)에 대한 장바구니 목록 반환
+	public List<CartListVO> getCartList(int userSeq) {
+		return dao.getCartList(userSeq);
+	}
 	
-    private final CartDAO dao;
-
-    // 상품(CartVO)을 장바구니에 추가 
- public void addToCart(CartVO cartvo) {
-     
-	 dao.addToCart(cartvo);  
- }
-
-
-    // 사용자 시퀀스(userSeq)에 대한 장바구니 목록 반환
-    public List<CartListVO> getCartList(int userSeq) {
-        return dao.getCartList(userSeq);
-    }   
+	// 상품 삭제
+	public void deleteProduct(int userSeq, int productSeq) {
+	    dao.deleteProduct(userSeq, productSeq);
+	}
 }

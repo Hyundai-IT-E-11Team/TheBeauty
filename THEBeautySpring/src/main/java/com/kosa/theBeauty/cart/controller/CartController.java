@@ -2,6 +2,8 @@ package com.kosa.theBeauty.cart.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +36,7 @@ public class CartController {
 		System.out.println(currUser);
 		cartvo.setUserSeq(currUser.getUserSeq());
 		cartvo.setProductSeq(productSeq);
+		System.out.println(productCount);
 		cartvo.setProductCount(productCount);
 		service.addToCart(cartvo);
 		
@@ -50,4 +53,11 @@ public class CartController {
 		return "cart/cartPage";
 	}
 	
+	// 상품 삭제
+	@DebugLog
+	@PostMapping("deleteProduct")
+	public ResponseEntity<String> deleteProduct(@SessionAttribute UserVO currUser, @RequestParam(value="productSeq") int productSeq) {
+	    service.deleteProduct(currUser.getUserSeq(), productSeq);
+	    return new ResponseEntity<String>("sucess", HttpStatus.OK);
+	}
 }

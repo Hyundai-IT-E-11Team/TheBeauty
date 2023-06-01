@@ -37,4 +37,11 @@
 		WHERE c.user_seq = #{userSeq}
 	</select>
 
+	<!-- 상품 삭제 -->
+	<delete id="deleteProduct">
+	    DELETE FROM tb_cart 
+	    	  WHERE user_seq = #{userSeq} 
+	    	    AND product_seq = #{productSeq}
+	</delete>
+	
 </mapper>  

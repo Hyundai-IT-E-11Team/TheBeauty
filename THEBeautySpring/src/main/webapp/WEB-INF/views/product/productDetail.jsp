@@ -69,25 +69,7 @@
                      class="benefit-desc"><strong id="shipping-fee"></strong></span></li>
                </ul>
             </div>
-            
-            <!-- 수량 조정 form -->
-<%-- 			<form action="#" method="post" class="quantity_update_form">
-				<input type="hidden" name="cartId" class="update_cartId">
-				<input type="hidden" name="productSeq" class="update_productSeq">
-				<input type="hidden" name="memberId" value="${user.userSeq}">
-			</form> --%>
-			
-     <%--     <div class="prd-cnt">
-             <div class="prd-cnt-sum">
-                 <button id="decrease-button">-</button>
-                 <button id="increase-button">+</button>
-             </div>
-             <div class="prd-price-sum">
-                 <span class="sum-text">합계<br></span>
-                <span class="price-text">${productDetail.productVO.productPrice}</span>
-             </div>
-            </div> --%>
-            
+
             <div>
             	<button id="decrease-button" onclick="productCounting('-')">-</button>
             	<div id="currCount">1</div>
@@ -96,7 +78,7 @@
             </div>
             <div class="button-option">
                <form action="/theBeauty/cart/addToCart" method="post">
-            	  <input type="hidden" id="productCount" name="productCount" value=""/>
+            	  <input type="hidden" id="productCount" name="productCount"/>
                   <input type="hidden" id="productSeq" name="productSeq" value="${productDetail.productVO.productSeq}"/>
                   <button type="submit" class="cart-button">장바구니</button>
                </form>
