@@ -34,6 +34,7 @@ public class CartController {
 		System.out.println(currUser);
 		cartvo.setUserSeq(currUser.getUserSeq());
 		cartvo.setProductSeq(productSeq);
+		System.out.println(productCount);
 		cartvo.setProductCount(productCount);
 		service.addToCart(cartvo);
 		

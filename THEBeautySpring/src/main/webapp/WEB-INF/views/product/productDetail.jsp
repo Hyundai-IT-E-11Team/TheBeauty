@@ -96,7 +96,7 @@
             </div>
             <div class="button-option">
                <form action="/theBeauty/cart/addToCart" method="post">
-            	  <input type="hidden" id="productCount" name="productCount" value=""/>
+            	  <input type="hidden" id="productCount" name="productCount"/>
                   <input type="hidden" id="productSeq" name="productSeq" value="${productDetail.productVO.productSeq}"/>
                   <button type="submit" class="cart-button">장바구니</button>
                </form>
