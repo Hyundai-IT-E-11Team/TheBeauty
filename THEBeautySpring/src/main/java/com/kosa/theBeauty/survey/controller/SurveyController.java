@@ -32,10 +32,10 @@ public class SurveyController {
 	// 설문 가져오기
 	@DebugLog
 	@PostMapping("surveyPage")
-	public String surveyResult(SurveyVO vo) {
-		
+	public String surveyResult(currUser,SurveyVO vo) {
 		service.insertSurvey(vo);
-		return "myBeauty"; // 임시페이지
+		
+		return "/reservation/reservationDetail"; 
 		
 	}
 }

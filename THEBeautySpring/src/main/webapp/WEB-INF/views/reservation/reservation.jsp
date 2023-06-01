@@ -18,7 +18,7 @@
 	<div id=totalContatiner">
 		<div id="header">
 			<div id="mainLogo">
-				<a href="mainPage"><img
+				<a href="/theBeauty/main/mainPage"><img
 					src="${pageContext.request.contextPath}/resources/images/mainlogo.png"></a>
 			</div>
 			<div id="reservement">
