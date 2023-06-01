@@ -36,11 +36,11 @@ public class UserController {
 	@PostMapping("login")
 	public String login(UserDTO dto, Model model) {
 		UserVO vo = service.login(dto);
+		System.out.println(vo);
 		if (vo == null) {
 			return "redirect:/user/login";
 		} else {
-			model.addAttribute("currU"
-					+ "ser", vo);
+			model.addAttribute("currUser", vo);
 			return "redirect:../main/mainPage";
 		}
 	}
@@ -122,7 +122,5 @@ public class UserController {
 			return "redirect:/user/changePw";
 		}
 	}
-	
-
 
 }

@@ -5,7 +5,8 @@
 
 <mapper namespace="com.kosa.theBeauty.user.dao.UserDAO">
 	<resultMap type="UserVO" id="UserVOMap">		
-		<result column="role_name" property="roleName" />
+		<result column="user_seq" property="userSeq" />
+		<result column="role_num" property="roleNum" />
 		<result column="user_name" property="userName" />
 		<result column="user_pw" property="userPw" />
 		<result column="user_mail" property="userMail" />

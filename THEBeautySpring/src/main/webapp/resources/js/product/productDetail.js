@@ -30,3 +30,9 @@ function calculateShippingFee(price) {
     // 배송비 업데이트
     $("#shipping-fee").text(shippingFeeMessage);
 }
+
+
+// 장바구니로 이동 확인
+function confirmAddToCart() {
+    return confirm('장바구니에 추가하시겠습니까?');
+}

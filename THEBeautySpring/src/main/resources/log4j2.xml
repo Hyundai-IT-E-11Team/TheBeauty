@@ -38,6 +38,7 @@
         
         <Logger name="com.kosa.theBeauty.test.dao.TestDAO" level="debug"></Logger>
         <Logger name="com.kosa.theBeauty.user.dao.UserDAO" level="debug"></Logger>
+        <Logger name="com.kosa.theBeauty.product.dao.ProductDAO" level="debug"></Logger>
   
   
         <Root level="INFO">

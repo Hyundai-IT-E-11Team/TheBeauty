@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserVO {
 	private int userSeq;
-	private String roleName;
+	private int roleNum;
 	private String userName;
 	private String userMail;
 	private String userPw;

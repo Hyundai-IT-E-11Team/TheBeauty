@@ -35,6 +35,13 @@
 	width: 100%;
 }
 
+.prd-shop button {
+	border: none; 
+	background: #f0f0f0;
+	width: 20px;
+	height: 20px;
+}
+
 .button-option {
 	display: flex; /*  버튼들이 한 행에 나열되도록  */
 	width: 100%;
@@ -111,7 +118,7 @@ li {
 	text-align: left;
 	padding-left: 10px;
 }
-  
+
 /* 이미지 크기 변경  */
 .prd-info-box .imgview {
 	display: flex;
@@ -122,4 +129,43 @@ li {
 .prd-info-box .imgview img {
 	max-width: 100%;
 	max-height: 100%;
+}
+
+/* 상품개수 조절 및 합계 부분 */
+.prd-cnt {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.prd-cnt-sum {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.prd-cnt-sum button {
+	border: none;
+	background: #f0f0f0;
+	padding: 10px 15px;
+	margin: 0 10px;
+	font-size: 18px;
+	color: #000;
+}
+
+.prd-price-sum {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	color: #e35c61;
+}
+
+.sum-text {
+	font-size: 15px;
+}
+
+.price-text {
+	font-size: 25px;
 }
