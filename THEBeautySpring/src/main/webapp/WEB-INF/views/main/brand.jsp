@@ -25,7 +25,6 @@
 			<div>
 				<form action="/theBeauty/reserve/reservePage" method="POST">
 					<input type="hidden" type="userSeq" value="user.userSeq">
-					<!-- 수정필요 -->
 					<input type="hidden" name="brandSeq" value="${brand.brandSeq}">
 					<button class="consulting-btn" type="submit">▶ 상담예약</button>
 				</form>
