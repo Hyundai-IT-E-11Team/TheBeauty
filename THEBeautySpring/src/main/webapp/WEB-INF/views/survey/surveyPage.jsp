@@ -57,7 +57,7 @@
 			</div>
 		</div>
 
-		<form action="surveyPage" method="post">
+		<form action="surveyPage" method="post" onsubmit="return validateForm()">
 			<input type="hidden" name="userSeq" value="${currUser.userSeq }">
 
 			<div class="surveywrap">
