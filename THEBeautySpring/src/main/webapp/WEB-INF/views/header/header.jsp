@@ -1,19 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Welcome The Beauty</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/header/header.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta charset="UTF-8" />
+  <title>Welcome The Beauty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="${pageContext.request.contextPath}/resources/css/header/header.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    let nextReservation = "${nextReservation}";
+    let [year, month, day] = "${nextReservation.reserveDate}".split("-");
+    let [hour, min] = "${nextReservation.reserveTime}".split(":");
+    let open = new Date(year, month - 1, day, hour, min);
 
+    function remaindTime() {
+      if (nextReservation) {
+        let now = new Date();
+        let nt = now.getTime();
+        let ot = open.getTime();
+        if (nt < ot) {
+          // 현재시간이 오픈시간보다 이르면 오픈시간까지의 남은 시간을 구한다.
+          sec = parseInt(ot - nt) / 1000;
+          hour = parseInt(sec / 60 / 60);
+          sec = sec - hour * 60 * 60;
+          min = parseInt(sec / 60);
+          sec = parseInt(sec - min * 60);
+
+          if (hour < 10) {
+            hour = "0" + hour;
+          }
+          if (min < 10) {
+            min = "0" + min;
+          }
+          if (sec < 10) {
+            sec = "0" + sec;
+          }
+          $("#d-day-hour").html(hour);
+          $("#d-day-min").html(min);
+          $("#d-day-sec").html(sec);
+        } else {
+          // 현재시간이 종료시간보다 크면
+          clearInterval(counter);
+          $("#alert-box").html(
+            "<a href='/theBeauty/consult'>상담 시작하기</a>"
+          );
+        }
+      }
+    }
+    let counter = setInterval(remaindTime, 1000);
+  </script>
 </head>
 <body>
 	<!-- 상위 헤더 파트-->
@@ -23,17 +67,30 @@
 				<a href="/theBeauty/main/mainPage"><img
 					src="${pageContext.request.contextPath}/resources/images/mainlogo.png"></a>
 			</div>
-			<form id="searchBox" action="${pageContext.request.contextPath}/product/search" method="get">
-				<input type="text" class="search-input" id="keyword" name="productName">
+			<form id="searchBox"
+				action="${pageContext.request.contextPath}/product/search"
+				method="get">
+				<input type="text" class="search-input" id="keyword"
+					name="productName">
 				<button type="submit" id="searchClick" onclick="checkEmpty()">
 					<img
 						src="${pageContext.request.contextPath}/resources/images/searchButton.png">
 				</button>
 			</form>
+
 			<div id="userInterface">
 				<a class="bigButton" href="/theBeauty/user/login">로그인 / 회원가입</a> <a
 					class="smallButton" href="">마이뷰티</a> <a class="smallButton" href="">장바구니</a>
-				<a class="smallButton" href="/theBeauty/consult">바로상담</a>
+				<c:if test="${not empty nextReservation }">
+					<div id="alert-box">
+						<div>상담까지 남은 시간</div>
+						<div>
+							<span id="d-day-hour">00</span> <span class="col">:</span> <span
+								id="d-day-min">00</span> <span class="col">:</span> <span
+								id="d-day-sec">00</span>
+						</div>
+					</div>
+				</c:if>
 			</div>
 		</div>
 		<!-- 카테고리 파트-->
@@ -82,10 +139,10 @@
 					</div></li>
 			</ul>
 			<div class="additional-menu">
-				<a href="/theBeauty/product/category/SKINCARE">SKINCARE</a> 
-				<a href="/theBeauty/product/category/FOUNDATION">FOUNDATION</a> 
-				<a href="/theBeauty/product/category/LIP">LIP</a>
-				<a href="/theBeauty/product/category/EYE">EYE</a>
+				<a href="/theBeauty/product/category/SKINCARE">SKINCARE</a> <a
+					href="/theBeauty/product/category/FOUNDATION">FOUNDATION</a> <a
+					href="/theBeauty/product/category/LIP">LIP</a> <a
+					href="/theBeauty/product/category/EYE">EYE</a>
 			</div>
 		</div>
 	</div>

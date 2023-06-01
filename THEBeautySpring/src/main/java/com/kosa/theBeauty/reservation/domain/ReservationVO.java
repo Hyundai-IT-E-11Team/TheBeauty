@@ -13,5 +13,5 @@ public class ReservationVO {
 	private String reserveDate;
 	private String reserveTime;
 	private String reserveStatus;
-	
+	private String consultRoomId;
 }

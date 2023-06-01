@@ -34,6 +34,7 @@ public class reserveService {
 		try {
 			return  dao.insertReservationInfo(vo);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return 0;
 		}
 	}
@@ -47,6 +48,10 @@ public class reserveService {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+	
+	public ReservationVO getReservation(int userSeq) {
+		return dao.selectReservationByUser(userSeq);
 	}
 	
 }
