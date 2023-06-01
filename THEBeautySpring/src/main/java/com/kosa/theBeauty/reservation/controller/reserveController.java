@@ -66,7 +66,7 @@ public class reserveController {
 		String response = null;
 		boolean status = service.getSchedule(reservationvo);
 		if(status) {
-			response = "예약완료";
+			response = "notEmpty";
 			System.out.println(response);
 		} else {
 			response = reservationvo.getReserveTime();
