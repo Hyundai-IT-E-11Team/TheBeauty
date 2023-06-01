@@ -29,12 +29,12 @@ public class CartController {
 	@DebugLog
 	@PostMapping("addToCart")
 	public String addToCart(@SessionAttribute UserVO currUser, @RequestParam(value="productSeq") int productSeq, Model model) {
-		//plsql로 상품시퀀스를 가져가서 상품vo에 정보를 꺼내온뒤 장바구니테이블에 유저시퀀스와 함께 인서트
+
 		CartVO cartvo = new CartVO();
 		System.out.println(currUser);
 		cartvo.setUserSeq(currUser.getUserSeq());
 		cartvo.setProductSeq(productSeq);
-
+		System.out.println(cartvo);
 		service.addToCart(cartvo);
 		
 		return "redirect:cartPage";

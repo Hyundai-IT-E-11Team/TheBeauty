@@ -15,4 +15,10 @@ public interface CartDAO {
     
     // 사용자 시퀀스(userSeq)에 대한 장바구니 목록 반환
     List<CartListVO> getCartList(int userSeq);
+    
+    // 장바구니에   상품이 있는지 확인
+    CartVO checkProductIncart(CartVO cartvo);
+    
+    // 장바구니에 있는 수량 업데이트 
+    void updateCartProductQuantity(CartVO cartvo);
 }
