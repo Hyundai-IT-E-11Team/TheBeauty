@@ -10,6 +10,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/reservation/calendar.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/reservation/reservation.js"></script>
 <title>reservePage</title>
 </head>
 <body>
@@ -32,16 +34,16 @@
 				<div id="innermain">
 					<div id="brand">
 						<div id="brandlogo">
-							<img src="${brandImgurl}">
+							<img src="${brandInfo.brandImgurl}">
 						</div>
 						<div id="brandproductimg">
-							<img src="${productImgurl}">
+							<img src="${brandInfo.brandImg1}">
 						</div>
 					</div>
-					<form action="myReservation" method="post">
 						<div id="schedule">
+						<input type="hidden" id="brandSeq" name="brandSeq" value="${brandInfo.brandSeq}" />
 							<div id="dateContainer">
-								<div id="choice">
+								<div id="choiceDate">
 									<div>날 짜 :</div>
 									<div id="inputDate"></div>
 								</div>
@@ -74,20 +76,16 @@
 								
 							</div>
 							<div id="timeContainer">
-								<div id="choice">
+								<div id="choiceTime">
 									<div>시 간 :</div>
 									<div id="inputTime"></div>
 								</div>
-								
 								<div id="timeTable"></div>
 							</div>
 							<div id="submitschedule">
-								<button type="submit" id="submitbutton" name="submitbutton">
-									<h3>예약하기</h3>
-								</button>
+								<input type="button" id="submitbutton" name="submitbutton" onclick="submitReserveController()" value="예약하기"/>
 							</div>
 						</div>
-					</form>
 				</div>
 			</div>
 		</div>

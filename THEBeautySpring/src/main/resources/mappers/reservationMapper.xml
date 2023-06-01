@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa.theBeauty.reservation.dao.reserveDAO">
+	<resultMap type="ReservationVO" id="ReservationVOMap">
+		<result column="USER_SEQ" property="userSeq"/>
+		<result column="BRAND_SEQ" property="brandSeq" />
+		<result column="USER_NAME" property="userName"/>
+		<result column="RESERVE_DATE" property="reserveDate"/>
+		<result column="RESERVE_TIME" property="reserveTime"/>
+		<result column="RESERVE_STATUS" property="reserveStatus"/>
+	</resultMap>
+
+	<!-- 예약내역삽입 -->
+	<insert id="insertReservationInfo" parameterType="ReservationVO">
+		INSERT INTO tb_reservation (USER_SEQ,USER_NAME,BRAND_SEQ,RESERVE_DATE,RESERVE_TIME)
+			 VAlUES	(#{userSeq},#{userName},#{brandSeq},#{reserveDate},#{reserveTime})
+	</insert>
+	
+	<!-- 예약가능확인 -->
+	<select id="selectReservationInfo" parameterType="ReservationVO" resultType="String">
+		SELECT reserve_status
+		  FROM tb_reservation
+		 WHERE brand_seq = #{brandSeq}
+		   AND reserve_date = #{reserveDate}
+		   AND reserve_time = #{reserveTime}
+ 	</select>
+ 	
+</mapper> 

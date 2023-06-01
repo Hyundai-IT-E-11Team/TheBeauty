@@ -74,6 +74,7 @@ function nextCalendar() {
 }
 
 function selectDate(pTag) {
+	document.getElementById("inputTime").innerHTML = "";
 	document.getElementById("inputDate").innerHTML = "";
 	document.getElementById("inputDate").value = pTag.innerHTML;
 
@@ -86,31 +87,67 @@ function selectDate(pTag) {
 	inputDate.innerHTML = result;
 }
 
+
+
 function showTimeTable() {
 	document.getElementById("timeTable").innerHTML = "";
-	var timeTable = document.getElementById('timeTable');
-
+	let timeTable = document.getElementById('timeTable');
+	let inputDate = document.getElementById("inputDate").innerHTML;
+	let brandSeq = document.getElementById("brandSeq").value;
+	
 	for (Hour = 10; Hour <= 19; Hour++) {
-		
-	    var timeItem = document.createElement('div');
+	    timeItem = document.createElement('div');
 	    timeItem.className = "time";
 	    timeString = String(Hour)+':'+'00';
-	    timeItem.textContent = timeString;
-	    timeTable.appendChild(timeItem);
-	    timeItem.addEventListener("click", function() {
-	        var selectedTime = this.textContent;
-	        document.getElementById("inputTime").textContent = selectedTime;
+	    $.ajax({
+	    	url: "/theBeauty/reserve/checkSchedule",
+	    	async : false,
+	        type: "POST",
+	        data: {
+	        	brandSeq : brandSeq,
+	        	reserveDate : inputDate,
+	        	reserveTime : timeString
+	        },
+	        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+	        success: function(response) {
+	        	console.log(response);	
+	        	timeItem.textContent = response;
+	        	timeTable.appendChild(timeItem);
+	        	timeItem.addEventListener("click", function() {
+	        	let selectedTime = this.textContent;
+	        	document.getElementById("inputTime").textContent = selectedTime;
+	        	});
+	        },
+	        error: function() {
+	        	console.log("시간로딩실패");
+	        }
 	    });
 	    
 	    timeItem = document.createElement('div');
 	    timeItem.className = "time";
 	    timeString = String(Hour)+':'+'30';
-	    timeItem.textContent = timeString;
-	    timeTable.appendChild(timeItem);
-	    timeItem.addEventListener("click", function() {
-	        var selectedTime = this.textContent;
-	        document.getElementById("inputTime").textContent = selectedTime;
+	    $.ajax({
+	    	url: "/theBeauty/reserve/checkSchedule",
+	    	async : false,
+	        type: "POST",
+	        data: {
+	        	reserveDate : inputDate,
+	        	reserveTime : timeString
+	        },
+	        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+	        success: function(response) {
+	        	console.log(response);	
+	        	timeItem.textContent = response;
+	        	timeTable.appendChild(timeItem);
+	        	timeItem.addEventListener("click", function() {
+	        	let selectedTime = this.textContent;
+	        	document.getElementById("inputTime").textContent = selectedTime;
+	        	});
+	        },
+	        error: function() {
+	        	console.log("시간로딩실패");
+	        }
 	    });
-
+	    
 	}
 }
