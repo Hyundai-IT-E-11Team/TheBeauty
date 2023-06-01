@@ -34,8 +34,7 @@ public class CartController {
 		System.out.println(currUser);
 		cartvo.setUserSeq(currUser.getUserSeq());
 		cartvo.setProductSeq(productSeq);
-		System.out.println(cartvo);
-		service.addToCart(cartvo);
+		cartvo.setProductCount(1);
 		
 		return "redirect:cartPage";
 	}
