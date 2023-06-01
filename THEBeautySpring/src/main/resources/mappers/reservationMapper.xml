@@ -11,6 +11,7 @@
 		<result column="RESERVE_DATE" property="reserveDate"/>
 		<result column="RESERVE_TIME" property="reserveTime"/>
 		<result column="RESERVE_STATUS" property="reserveStatus"/>
+		<result column="CONSULT_ROOM_ID" property="consultRoomId"/>
 	</resultMap>
 
 	<!-- 예약내역삽입 -->
@@ -28,4 +29,9 @@
 		   AND reserve_time = #{reserveTime}
  	</select>
  	
+ 	<select id="selectReservationByUser" resultMap="ReservationVOMap">
+ 		SELECT *
+ 		  FROM tb_reservation
+ 		 WHERE user_seq = #{userSeq}
+ 	</select>
 </mapper> 
