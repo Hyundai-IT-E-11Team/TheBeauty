@@ -7,25 +7,20 @@ let nowMonth = new Date(); // 현재 달을 페이지를 로드한 날의 달로
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
 
-	let firstDay = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1); // 이번달
-	// 1일
-	let lastDay = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0); // 이번달
-	// 마지막날
+	let firstDay = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1); // 이번달 1일
+	let lastDay = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0); // 이번달 말일
 
 	let calendar = document.querySelector(".Calendar > tbody");
 	document.getElementById("calYear").innerText = nowMonth.getFullYear(); // 연도
-	// 숫자
-	// 갱신
-	document.getElementById("calMonth").innerText = nowMonth.getMonth() + 1; // 월 숫자
-	// 갱신
+	document.getElementById("calMonth").innerText = leftPad(nowMonth.getMonth() + 1); // 월
 
-	while (calendar.rows.length > 0) { // 이전 출력결과가 남아있는 경우 초기화
+	while (calendar.rows.length > 0) { // 달력 초기화
 		calendar.deleteRow(calendar.rows.length - 1);
 	}
 
 	let nowRow = calendar.insertRow(); // 첫번째 행 추가
 
-	for (let j = 0; j < firstDay.getDay(); j++) { // 이번달 1일의 요일만큼
+	for (let j = 0; j < firstDay.getDay(); j++) { // 이번달 1일의 요일까지
 		let nowColumn = nowRow.insertCell(); // 열 추가
 	}
 	
@@ -37,7 +32,7 @@ function buildCalendar() {
 		let nowColumn = nowRow.insertCell(); // 새 열을 추가하고
 
 		let newDIV = document.createElement("p");
-		newDIV.innerHTML = nowDay.getDate(); // 추가한 열에 날짜 입력
+		newDIV.innerHTML = leftPad(nowDay.getDate());  // 추가한 열에 날짜 입력
 		newDIV.onclick = function() {
 			selectDate(this);
 			showTimeTable(this);
@@ -58,6 +53,13 @@ function buildCalendar() {
 		}
 		nd++;
 	}
+}
+
+function leftPad(value) {
+    if (value < 10) {
+        value = "0" + value;
+    }
+    return value;
 }
 
 // 이전달 버튼 클릭
@@ -111,12 +113,23 @@ function showTimeTable() {
 	        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 	        success: function(response) {
 	        	console.log(response);	
-	        	timeItem.textContent = response;
-	        	timeTable.appendChild(timeItem);
-	        	timeItem.addEventListener("click", function() {
-	        	let selectedTime = this.textContent;
-	        	document.getElementById("inputTime").textContent = selectedTime;
-	        	});
+	        	//timeItem.textContent = response;
+	        	if(response === 'notEmpty') {
+	        		timeItem.textContent = "예약완료";
+	        		timeTable.appendChild(timeItem);
+		        	timeItem.addEventListener("click", function() {
+		        	let selectedTime = this.textContent;
+		        	document.getElementById("inputTime").textContent = selectedTime;
+		        	});
+	        	} else {
+	        		timeItem.textContent = response;
+	        		timeTable.appendChild(timeItem);
+		        	timeItem.addEventListener("click", function() {
+		        	let selectedTime = this.textContent;
+		        	document.getElementById("inputTime").textContent = selectedTime;
+		        	});
+	        	}
+	        	
 	        },
 	        error: function() {
 	        	console.log("시간로딩실패");
@@ -137,12 +150,22 @@ function showTimeTable() {
 	        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 	        success: function(response) {
 	        	console.log(response);	
-	        	timeItem.textContent = response;
-	        	timeTable.appendChild(timeItem);
-	        	timeItem.addEventListener("click", function() {
-	        	let selectedTime = this.textContent;
-	        	document.getElementById("inputTime").textContent = selectedTime;
-	        	});
+	        	//timeItem.textContent = response;
+	        	if(response === 'notEmpty') {
+	        		timeItem.textContent = "예약완료";
+	        		timeTable.appendChild(timeItem);
+		        	timeItem.addEventListener("click", function() {
+		        	let selectedTime = this.textContent;
+		        	document.getElementById("inputTime").textContent = selectedTime;
+		        	});
+	        	} else {
+	        		timeItem.textContent = response;
+	        		timeTable.appendChild(timeItem);
+		        	timeItem.addEventListener("click", function() {
+		        	let selectedTime = this.textContent;
+		        	document.getElementById("inputTime").textContent = selectedTime;
+		        	});
+	        	}
 	        },
 	        error: function() {
 	        	console.log("시간로딩실패");

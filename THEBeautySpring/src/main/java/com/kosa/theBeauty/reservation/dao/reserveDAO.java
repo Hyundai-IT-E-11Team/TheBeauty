@@ -10,5 +10,5 @@ public interface reserveDAO {
 	ProductVO selectProductInfo(BrandVO vo);
 	int insertReservationInfo(ReservationVO vo);
 	String selectReservationInfo(ReservationVO reservationvo);
-	
+	ReservationVO selectReservationByUser(int userSeq);
 }
