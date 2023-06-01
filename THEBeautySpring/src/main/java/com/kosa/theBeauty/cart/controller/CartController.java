@@ -28,13 +28,13 @@ public class CartController {
 	// 상품을 장바구니에 추가
 	@DebugLog
 	@PostMapping("addToCart")
-	public String addToCart(@SessionAttribute UserVO currUser, @RequestParam(value="productSeq") int productSeq, Model model) {
+	public String addToCart(@SessionAttribute UserVO currUser, @RequestParam(value="productSeq") int productSeq,@RequestParam(value="productCount") int productCount, Model model) {
 
 		CartVO cartvo = new CartVO();
 		System.out.println(currUser);
 		cartvo.setUserSeq(currUser.getUserSeq());
 		cartvo.setProductSeq(productSeq);
-		System.out.println(cartvo);
+		cartvo.setProductCount(productCount);
 		service.addToCart(cartvo);
 		
 		return "redirect:cartPage";
@@ -49,4 +49,5 @@ public class CartController {
 		model.addAttribute("cartList", list);
 		return "cart/cartPage";
 	}
+	
 }

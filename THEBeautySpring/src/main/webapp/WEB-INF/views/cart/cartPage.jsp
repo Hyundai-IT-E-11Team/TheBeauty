@@ -145,8 +145,6 @@
    </div>
 </div>   
 
-
-
  <script
       src="${pageContext.request.contextPath}/resources/js/product/productDetail.js"></script>
 </body>

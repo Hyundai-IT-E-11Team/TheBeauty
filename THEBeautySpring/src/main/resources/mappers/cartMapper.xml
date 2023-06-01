@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kosa.theBeauty.cart.dao.CartDAO">
+
 	<resultMap type="CartListVO" id="CartListVOMap">
 		<association property="cartVO" javaType="CartVO">
 			<result column="product_seq" property="productSeq" />
@@ -18,34 +19,23 @@
 			<result column="product_imgurl" property="productImgurl" />
 		</association>
 	</resultMap>
-	
+
 	<!-- 장바구니에 상품 추가 -->
 	<insert id="addToCart" parameterType="CartVO">
-		INSERT INTO tb_cart(user_seq, product_seq, product_count)
-		     VALUES(#{userSeq}, #{productSeq}, #{productCount}) 
+		{call tb_cart_insert(
+		#{userSeq, mode=IN, jdbcType=NUMERIC},
+		#{productSeq, mode=IN, jdbcType=NUMERIC},
+		#{productCount, mode=IN, jdbcType=NUMERIC}
+		)}
 	</insert>
 
-    <!-- 장바구니 목록 가져오기 -->
-    <select id="getCartList" resultMap="CartListVOMap">
-        SELECT c.user_seq, c.product_count, p.product_seq, p.product_name, p.product_price, p.product_imgurl
-          FROM tb_cart c
-          JOIN tb_product p ON c.product_seq = p.product_seq
-         WHERE c.user_seq = #{userSeq}
-    </select>
-    
-    <!-- 장바구니에 동일 상품이 있는지 확인  -->
-    <select id="checkProductIncart" parameterType="CartVO" resultType="CartVO">
-    	SELECT *
-    	  FROM tb_cart
-    	 WHERE user_seq = #{userSeq} 
-    	   AND product_seq = #{productSeq}
-    </select>
-    
-    <!-- 장바구니에 있는 상품의 수량 업데이트  -->
-    <update id="updateCartProductQuantity" parameterType="CartVO">
-    	UPDATE tb_cart 
-    	   SET product_count = product_count + #{productCount}
-    	 WHERE user_seq = #{userSeq} AND product_seq = #{productSeq}
-    </update>
-    
+	<!-- 장바구니 목록 가져오기 -->
+	<select id="getCartList" resultMap="CartListVOMap">
+		SELECT c.user_seq, c.product_count, p.product_seq, p.product_name,
+		p.product_price, p.product_imgurl
+		FROM tb_cart c
+		JOIN tb_product p ON c.product_seq = p.product_seq
+		WHERE c.user_seq = #{userSeq}
+	</select>
+
 </mapper>  

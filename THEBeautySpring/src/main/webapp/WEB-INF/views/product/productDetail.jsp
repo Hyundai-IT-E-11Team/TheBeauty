@@ -54,7 +54,7 @@
                <h2>${productDetail.productVO.productName}</h2>
             </div>
             <div class="prd-price-wrap">
-               <h3>${productDetail.productVO.productPrice}</h3>
+               <h3 id="productPrice">${productDetail.productVO.productPrice}</h3>
                <ul class="benefit-info-list">
                   <li><span class="benefit-title">카드혜택</span> <span
                      class="benefit-desc" id="card-benefit"></span></li>
@@ -70,20 +70,33 @@
                </ul>
             </div>
             
-			<div class="prd-cnt">
-			    <div class="prd-cnt-sum">
-			        <button id="decrease-button">-</button>
-			        <span>0</span>
-			        <button id="increase-button">+</button>
-			    </div>
-			    <div class="prd-price-sum">
-		    	    <span class="sum-text">합계<br></span>
-    				<span class="price-text">${productDetail.productVO.productPrice}</span>
-			    </div>
-            </div>
+            <!-- 수량 조정 form -->
+<%-- 			<form action="#" method="post" class="quantity_update_form">
+				<input type="hidden" name="cartId" class="update_cartId">
+				<input type="hidden" name="productSeq" class="update_productSeq">
+				<input type="hidden" name="memberId" value="${user.userSeq}">
+			</form> --%>
+			
+     <%--     <div class="prd-cnt">
+             <div class="prd-cnt-sum">
+                 <button id="decrease-button">-</button>
+                 <button id="increase-button">+</button>
+             </div>
+             <div class="prd-price-sum">
+                 <span class="sum-text">합계<br></span>
+                <span class="price-text">${productDetail.productVO.productPrice}</span>
+             </div>
+            </div> --%>
             
+            <div>
+            	<button id="decrease-button" onclick="productCounting('-')">-</button>
+            	<div id="currCount">1</div>
+                <button id="increase-button" onclick="productCounting('+')">+</button>
+                <div id="sumPrice">${productDetail.productVO.productPrice}</div>
+            </div>
             <div class="button-option">
                <form action="/theBeauty/cart/addToCart" method="post">
+            	  <input type="hidden" id="productCount" name="productCount" value=""/>
                   <input type="hidden" id="productSeq" name="productSeq" value="${productDetail.productVO.productSeq}"/>
                   <button type="submit" class="cart-button">장바구니</button>
                </form>
