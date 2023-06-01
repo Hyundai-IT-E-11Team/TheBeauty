@@ -33,9 +33,9 @@ public class SurveyController {
 	@DebugLog
 	@PostMapping("surveyPage")
 	public String surveyResult(SurveyVO vo) {
-		
 		service.insertSurvey(vo);
-		return "myBeauty"; // 임시페이지
+		
+		return "/reservation/reservationDetail"; 
 		
 	}
 }

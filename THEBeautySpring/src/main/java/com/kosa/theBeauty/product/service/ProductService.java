@@ -23,25 +23,23 @@ public class ProductService {
 		return dao.selectProductCountByKeyword(vo);
 	}
 	
-//	
-//	public void calculateAndSetOffset(PaginationVO vo) {
-//		if(vo.getPage() == 0) {
-//			vo.setPage(1);
-//		}
-//		
-//		int offset = 20 * (vo.getPage() - 1);
-//		
-//		vo.setOffset(offset);
-//	}
-//	
+	
+	public PaginationVO calculateAndSetOffset(PaginationVO vo) {
+		if(vo.getPage() == 0) {
+			vo.setPage(1);
+		}
+		
+		int offset = 20 * (vo.getPage() - 1);
+		
+		vo.setOffset(offset);
+		
+		return vo;
+	}
+	
 	public List<ProductVO> selectProductListByKeywordPaged(PaginationVO vo) {
 
 		// vo에 offset 바꿔주기
-		if (vo.getPage() == 0) {
-			vo.setPage(1);
-		}
-		int offset = 20 * (vo.getPage() - 1);
-		vo.setOffset(offset);
+		vo = calculateAndSetOffset(vo);
 		
 		return dao.selectProductListByKeywordPaged(vo);
 	} 

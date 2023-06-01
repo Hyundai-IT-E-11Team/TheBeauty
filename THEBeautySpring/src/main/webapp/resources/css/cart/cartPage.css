@@ -1,9 +1,9 @@
 @import
-   url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap")
-   ;
+	url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap")
+	;
 
 * {
-   font-family: "Poppins", sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
 
@@ -167,10 +167,10 @@ p {
 }
 
 .billprice-wrap{
-   flex: 0 0 25%;
-   height: 580px;
-   border: 2px solid #efefef;
-   border-radius: 5px;
+	flex: 0 0 25%;
+	height: 580px;
+	border: 2px solid #efefef;
+	border-radius: 5px;
 }
 
 ul li {
