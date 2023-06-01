@@ -3,6 +3,7 @@ package com.kosa.theBeauty.product.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.kosa.theBeauty.product.domain.PaginationVO;
 import com.kosa.theBeauty.product.domain.ProductDetailVO;
@@ -21,11 +22,13 @@ public interface ProductDAO {
 	ProductDetailVO getProductDetails(int product_seq);
 	
 	// kww
-	List<ProductVO> selectProductByBrandName(String brandName);
+	List<ProductVO> selectProductByBrandName(int brandSeq);
 	 
 	// 브랜드별 상품 목록 조회 (브랜드관 페이지) - phw
 	List<ProductDetailVO> getProductsByBrand(int brandSeq);
 	
 	// header에서 카테고리 별로 상품 검색 - phw
 	List<ProductVO> selectProductByCategory(String productCategory);
+
+	List<ProductVO> selectProductByBrandAndQuery(@Param("brandSeq") int brandSeq,@Param("query") String query);
 }

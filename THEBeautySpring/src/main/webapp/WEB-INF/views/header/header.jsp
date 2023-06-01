@@ -33,7 +33,7 @@
 			<div id="userInterface">
 				<a class="bigButton" href="/theBeauty/user/login">로그인 / 회원가입</a> <a
 					class="smallButton" href="">마이뷰티</a> <a class="smallButton" href="">장바구니</a>
-				<a class="smallButton" href="">바로상담</a>
+				<a class="smallButton" href="/theBeauty/consult">바로상담</a>
 			</div>
 		</div>
 		<!-- 카테고리 파트-->
