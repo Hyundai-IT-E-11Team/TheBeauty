@@ -93,6 +93,14 @@
 		WHERE b.brand_seq = #{brandSeq}
 	</select>
 	
+	<!-- 브랜드관 페이지 상품리스트 -->
+	<select id="selectProductByBrandAndQuery" parameterType="String" resultMap="ProductVOMap">
+		SELECT *
+		  FROM tb_product
+		 WHERE brand_seq = #{brandSeq}
+		   AND product_name like '%${query}%'
+	</select>
+	
 	<!--  header에서 카테고리 별로 상품 검색-->
 	<select id="selectProductByCategory" parameterType="String" resultMap="ProductVOMap">
 		SELECT *
