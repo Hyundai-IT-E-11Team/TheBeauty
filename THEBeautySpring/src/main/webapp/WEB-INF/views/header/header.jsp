@@ -80,7 +80,7 @@
 
 			<div id="userInterface">
 				<a class="bigButton" href="/theBeauty/user/login">로그인 / 회원가입</a> <a
-					class="smallButton" href="">마이뷰티</a> <a class="smallButton" href="">장바구니</a>
+					class="smallButton" href="/theBeauty/reservation/reservationDetail">마이뷰티</a> <a class="smallButton" href="${pageContext.request.contextPath}/cart/cartPage">장바구니</a>
 				<c:if test="${not empty nextReservation }">
 					<div id="alert-box">
 						<div>상담까지 남은 시간</div>

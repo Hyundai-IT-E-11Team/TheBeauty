@@ -32,7 +32,7 @@ public class SurveyController {
 	// 설문 가져오기
 	@DebugLog
 	@PostMapping("surveyPage")
-	public String surveyResult(currUser,SurveyVO vo) {
+	public String surveyResult(SurveyVO vo) {
 		service.insertSurvey(vo);
 		
 		return "/reservation/reservationDetail"; 
