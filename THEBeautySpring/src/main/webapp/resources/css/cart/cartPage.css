@@ -1,0 +1,124 @@
+.container {
+	position: relative;
+	font-size: 13px;
+	padding-top: 60px;
+	margin: 0 auto;
+	width: 1120px;
+	z-index: 1;
+	*zoom: 1
+}
+
+p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+
+.pcontainer>p:first-child {
+	margin-bottom: 5px;
+}
+
+.pcontainer>p:last-child {
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+.title-head {
+	margin: 0 0 70px 0;
+	padding: 0 0 14px;
+	height: 114px;
+	background:
+		url(https://image.thehyundai.com/hdmall/images/co/bg_order_head_bottom.png)
+		repeat-x left bottom
+}
+
+.title-head:after {
+	display: block;
+	clear: both;
+	content: ""
+}
+
+.title-head h2 {
+	margin-top: 34px;
+	float: left;
+	height: 38px;
+	font-size: 38px;
+	line-height: 38px;
+	color: #222
+}
+
+.title-head .stepwrap {
+	float: right;
+	margin-top: 34px
+}
+
+.current {
+	color: #46685e;
+	font-weight: bold;
+}
+
+;
+.stepwrap .stepwrap .step-box .mark {
+	background:
+		url(https://image.thehyundai.com/hdmall/images/co/ic_step.png)
+		no-repeat;
+}
+
+.stepwrap {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.stepwrap .step-box {
+	margin-right: 10px;
+}
+
+.stepwrap .step-mark {
+	margin-right: 10px;
+}
+
+.stepwrap .step-box:last-child {
+	margin-right: 0;
+}
+
+.step-box {
+	display: flex;
+	align-items: center;
+}
+
+.step-box .mark {
+	margin-right: 10px;
+}
+
+/* 상품 부분 */
+.product {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 20px; /* 상품 사이의 간격을 설정합니다. 필요에 따라 변경하세요. */
+}
+
+.product img {
+	width: 150px; /* 이미지의 너비를 설정합니다. 필요에 따라 변경하세요. */
+	height: 150px; /* 이미지의 높이를 설정합니다. 필요에 따라 변경하세요. */
+	margin-right: 10px;
+}
+
+.product-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.item-name {
+	font-size: 18px;
+	font-weight: bold;
+	bott
+}
+
+.item-price {
+	font-size: 25px;
+	font-weight: bold;
+}

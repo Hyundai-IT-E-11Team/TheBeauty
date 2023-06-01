@@ -2,7 +2,7 @@ $(document).ready(function() {
     // 가격 정보 가져오기
     var priceString = productDetail.productVO.productPrice;
     var price = parseFloat(priceString.replace(/[^0-9.]+/g, ""));
-
+    
     // 할인 금액 계산
     var discountAmount = price * 0.95;
     var discountMessage = '현대백화점카드 5% <strong>' + discountAmount.toLocaleString() + '원</strong>';
@@ -31,8 +31,23 @@ function calculateShippingFee(price) {
     $("#shipping-fee").text(shippingFeeMessage);
 }
 
-
-// 장바구니로 이동 확인
-function confirmAddToCart() {
-    return confirm('장바구니에 추가하시겠습니까?');
+function productCounting(value) {
+	var currCount = Number(document.getElementById("currCount").innerHTML);
+	var productPrice = parseFloat(productDetail.productVO.productPrice.replace(/[^0-9.]+/g, ""));
+	document.getElementById("sumPrice").innerHTML = "";
+	document.getElementById("currCount").innerHTML = "";
+		
+	if(value==="+"){
+		currCount += 1;
+	}
+	else if(value === "-" && currCount > 0){
+		currCount -= 1;
+	} else {
+		console.log("수량카운팅실패");
+	}
+	
+	console.log(productPrice);
+	productPrice = productPrice * currCount;
+	document.getElementById("currCount").innerHTML = currCount;
+	document.getElementById("sumPrice").innerHTML = parseInt(productPrice);
 }
