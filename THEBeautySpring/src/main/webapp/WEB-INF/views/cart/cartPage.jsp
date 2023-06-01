@@ -8,6 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
    href="${pageContext.request.contextPath}/resources/css/cart/cartPage.css" />
+  <script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>장바구니 페이지</title>
 </head>
 <body>
@@ -99,7 +101,7 @@
 	           <div class="option-price">
 	           		<div class="item-price">${item.productVO.productPrice}</div>
 	           		<div class="btn-area">
-	           			<button class="btn size4 color15" type="button">옵션변경</button>
+	           			<button class="btn size4 color15" type="button" data-product-id="${item.cartVO.productSeq}">상품삭제</button>
 	           			<button class="btn size4 color4" type="button">바로주문</button>
 	           		</div>
 	           </div>
@@ -146,6 +148,6 @@
 </div>   
 
  <script
-      src="${pageContext.request.contextPath}/resources/js/product/productDetail.js"></script>
+      src="${pageContext.request.contextPath}/resources/js/cart/cartPage.js"></script>
 </body>
 </html>

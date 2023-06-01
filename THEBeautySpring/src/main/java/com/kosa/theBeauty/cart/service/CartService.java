@@ -26,5 +26,9 @@ public class CartService {
 	public List<CartListVO> getCartList(int userSeq) {
 		return dao.getCartList(userSeq);
 	}
-
+	
+	// 상품 삭제
+	public void deleteProduct(int userSeq, int productSeq) {
+	    dao.deleteProduct(userSeq, productSeq);
+	}
 }
