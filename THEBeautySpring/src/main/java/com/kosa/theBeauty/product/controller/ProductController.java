@@ -30,7 +30,6 @@ public class ProductController {
 	@DebugLog
 	@GetMapping("search")
 	public String searchProduct(PaginationVO vo, Model model) {
-
 	
 		
 		// DB 가져와서 보내줘야 하는 것

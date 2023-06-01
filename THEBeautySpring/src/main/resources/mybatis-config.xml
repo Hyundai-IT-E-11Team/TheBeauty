@@ -29,6 +29,8 @@
 			type="com.kosa.theBeauty.product.domain.ProductDetailVO" />
 		<typeAlias alias="PaginationVO"
 			type="com.kosa.theBeauty.product.domain.PaginationVO" />
+		<typeAlias alias="SurveyVO"
+			type="com.kosa.theBeauty.survey.domain.SurveyVO" />
 		<typeAlias alias="ReservationVO"
 			type="com.kosa.theBeauty.reservation.domain.ReservationVO" />
 
