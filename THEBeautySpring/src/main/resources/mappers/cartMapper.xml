@@ -19,22 +19,23 @@
 			<result column="product_imgurl" property="productImgurl" />
 		</association>
 	</resultMap>
-	
+
 	<!-- 장바구니에 상품 추가 -->
 	<insert id="addToCart" parameterType="CartVO">
 		{call tb_cart_insert(
-			#{userSeq, mode=IN, jdbcType=NUMERIC}, 
-			#{productSeq, mode=IN, jdbcType=NUMERIC}, 
-			#{productCount, mode=IN, jdbcType=NUMERIC}
+		#{userSeq, mode=IN, jdbcType=NUMERIC},
+		#{productSeq, mode=IN, jdbcType=NUMERIC},
+		#{productCount, mode=IN, jdbcType=NUMERIC}
 		)}
 	</insert>
 
-    <!-- 장바구니 목록 가져오기 -->
-    <select id="getCartList" resultMap="CartListVOMap">
-        SELECT c.user_seq, c.product_count, p.product_seq, p.product_name, p.product_price, p.product_imgurl
-          FROM tb_cart c
-          JOIN tb_product p ON c.product_seq = p.product_seq
-         WHERE c.user_seq = #{userSeq}
-    </select>
-    
+	<!-- 장바구니 목록 가져오기 -->
+	<select id="getCartList" resultMap="CartListVOMap">
+		SELECT c.user_seq, c.product_count, p.product_seq, p.product_name,
+		p.product_price, p.product_imgurl
+		FROM tb_cart c
+		JOIN tb_product p ON c.product_seq = p.product_seq
+		WHERE c.user_seq = #{userSeq}
+	</select>
+
 </mapper>  

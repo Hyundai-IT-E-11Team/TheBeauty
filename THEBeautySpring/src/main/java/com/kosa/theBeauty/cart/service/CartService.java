@@ -26,5 +26,5 @@ public class CartService {
     // 사용자 시퀀스(userSeq)에 대한 장바구니 목록 반환
     public List<CartListVO> getCartList(int userSeq) {
         return dao.getCartList(userSeq);
-    }    
+    }   
 }
