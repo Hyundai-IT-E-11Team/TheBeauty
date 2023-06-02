@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.kosa.theBeauty.annotation.DebugLog;
+import com.kosa.theBeauty.reservation.domain.ReservationVO;
+import com.kosa.theBeauty.reservation.service.reserveService;
 import com.kosa.theBeauty.survey.domain.SurveyVO;
 import com.kosa.theBeauty.survey.service.SurveyService;
 import com.kosa.theBeauty.user.domain.UserVO;
@@ -22,26 +24,27 @@ import lombok.RequiredArgsConstructor;
 public class SurveyController {
 
 	private final SurveyService service;
-
+	private final reserveService reserveService;
+	
 	// 설문 페이지로 이동
 	@DebugLog
 	@GetMapping("surveyPage")
-	public String surveyPage(@SessionAttribute UserVO currUser, Model model) {
-
-		return "survey/surveyPage";
+	public String surveyPage() {
+		return "/survey/surveyPage";
 	}
-
-	// 설문 가져오기
+	
+	// 설문 저장 및 상세 페이지 이동
 	@DebugLog
 	@PostMapping("surveyResult")
-	public ResponseEntity<String> surveyResult(@SessionAttribute UserVO currUser, SurveyVO surveyvo) {
+	public ResponseEntity<String> surveyResult(@SessionAttribute UserVO currUser,SurveyVO surveyvo) {
 		String response;
-		if (service.insertSurvey(surveyvo)) {
-			response = "";
-			return new ResponseEntity<>(response, HttpStatus.OK);
+		if(service.insertSurvey(surveyvo)) {
+			response = "/theBeauty/reserve/reservationDetailPage";
+			return new ResponseEntity<>(response,HttpStatus.OK);
 		} else {
-			response = "";
-			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+			response = "/theBeauty/main/mainPage";
+			return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
 		}
+
 	}
 }

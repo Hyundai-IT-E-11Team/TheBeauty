@@ -30,12 +30,29 @@
 		   AND reserve_time = #{reserveTime}
  	</select>
  	
- 	<select id="selectReservationByUser" resultMap="ReservationVOMap">
- 		SELECT r.*, b.brand_name
- 		  FROM tb_reservation r
- 		  JOIN tb_brand b
- 		    ON r.brand_seq = b.brand_seq
- 		 WHERE r.user_seq = #{userSeq}
- 		   AND r.reserve_status = 0
+ 	<!-- 예약정보불러오기 -->
+ 	<select id="selectReservationforDetail"  parameterType="ReservationVO" resultMap="ReservationVOMap">
+ 		SELECT *
+ 		  FROM (
+		 		SELECT r.*, b.brand_name
+		 		  FROM tb_reservation r
+		 		  JOIN tb_brand b
+		 		    ON r.brand_seq = b.brand_seq
+		 		 WHERE r.user_seq = #{userSeq}
+		 		   AND r.reserve_status = 0
+ 		 		 ORDER BY r.reserve_date, r.reserve_time
+ 		  )
+ 		 WHERE ROWNUM = 1 
  	</select>
+ 	
+ 	<!-- 예약취소 -->
+ 	<update id="updateReservation" parameterType="ReservationVO">
+ 		UPDATE tb_reservation
+		   SET reserve_status = '예약취소'
+	     WHERE brand_seq = #{brandSeq}
+	       AND user_Name = #{userName}
+ 		   AND reserve_date = #{reserveDate}
+		   AND reserve_time = #{reserveTime}
+ 	</update>
+ 	
 </mapper> 
