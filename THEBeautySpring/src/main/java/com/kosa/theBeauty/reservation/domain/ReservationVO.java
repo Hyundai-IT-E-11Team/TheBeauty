@@ -10,6 +10,7 @@ public class ReservationVO {
 	private int userSeq;
 	private String userName;
 	private int brandSeq;
+	private String brandName;
 	private String reserveDate;
 	private String reserveTime;
 	private String reserveStatus;
