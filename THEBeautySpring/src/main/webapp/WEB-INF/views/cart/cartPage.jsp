@@ -86,9 +86,8 @@
 							<div class="option-info">
 								<p class="cnt-ctrl">
 									<button id="cnt-down-${item.cartVO.productSeq}" onclick="productCounting('-', '${item.cartVO.productSeq}')">-</button>
-									<input type="text" id="productCount-${item.cartVO.productCount}" class="onlyNumberInput" name="cnt" onclick="this.focus();" value="${item.cartVO.productCount}">
-									<button id="cnt-up-${item.cartVO.productSeq}" onclick="productCounting('+', '${item.cartVO.productSeq}')">+</button>
-									
+									<input type="text" id="productCount-${item.cartVO.productSeq}" class="onlyNumberInput" name="cnt" onclick="this.focus();" value="${item.cartVO.productCount}">
+									<button id="cnt-up-${item.cartVO.productSeq}" onclick="productCounting('+', '${item.cartVO.productSeq}',)">+</button>
 								</p>
 								<!-- 기본구성 / 추가구성 정보 -->
 								<p class="cnt-deliver">

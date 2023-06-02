@@ -72,7 +72,7 @@
 
             <div>
             	<button id="decrease-button" onclick="productCounting('-')">-</button>
-            	<div id="currCount">1</div>
+            	<div id="currCount"></div>
                 <button id="increase-button" onclick="productCounting('+')">+</button>
                 <div id="sumPrice">${productDetail.productVO.productPrice}</div>
             </div>
@@ -95,6 +95,10 @@
 
    <script
       src="${pageContext.request.contextPath}/resources/js/product/productDetail.js"></script>
-
+	<script>
+	   var defaultCount = 1;
+	   document.getElementById("currCount").innerHTML = Number(defaultCount);
+   	   document.getElementById("productCount").value = Number(defaultCount);
+   </script>
 </body>
 </html>
