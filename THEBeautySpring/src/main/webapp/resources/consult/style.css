@@ -1,6 +1,45 @@
 body {
-	margin : 0 20px;
+	margin: 0 20px;
+	background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
 }
+
+#join {
+	width: 400px;
+	margin: 0 auto;
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+#join h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+#join p {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+#join input[type="button"] {
+	background-color: #000000;
+	color: #ffffff;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+#join input[type="button"]:hover {
+	background-color: #333333;
+}
+
 #consult-container {
 	display: flex;
 	width: 100%;
@@ -126,16 +165,16 @@ video {
 }
 
 .search-input {
-  padding: 10px;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  width: 300px;
-  background-color: #f2f2f2;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 10px;
+	border: none;
+	border-radius: 20px;
+	font-size: 16px;
+	width: 300px;
+	background-color: #f2f2f2;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search-input:focus {
-  outline: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	outline: none;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

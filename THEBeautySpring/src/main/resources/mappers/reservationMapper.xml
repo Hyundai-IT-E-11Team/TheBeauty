@@ -7,6 +7,7 @@
 	<resultMap type="ReservationVO" id="ReservationVOMap">
 		<result column="USER_SEQ" property="userSeq"/>
 		<result column="BRAND_SEQ" property="brandSeq" />
+		<result column="BRAND_NAME" property="brandName" />
 		<result column="USER_NAME" property="userName"/>
 		<result column="RESERVE_DATE" property="reserveDate"/>
 		<result column="RESERVE_TIME" property="reserveTime"/>
@@ -30,8 +31,11 @@
  	</select>
  	
  	<select id="selectReservationByUser" resultMap="ReservationVOMap">
- 		SELECT *
- 		  FROM tb_reservation
- 		 WHERE user_seq = #{userSeq}
+ 		SELECT r.*, b.brand_name
+ 		  FROM tb_reservation r
+ 		  JOIN tb_brand b
+ 		    ON r.brand_seq = b.brand_seq
+ 		 WHERE r.user_seq = #{userSeq}
+ 		   AND r.reserve_status = 0
  	</select>
 </mapper> 

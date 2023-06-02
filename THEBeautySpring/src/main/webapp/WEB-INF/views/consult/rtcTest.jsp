@@ -20,16 +20,14 @@
 <body>
 	<div id="consult-container">
 		<div id="join">
-			<h1>${currUser.userName }님환영합니다.</h1>
-			<form onsubmit="joinSession('${currUser.roleNum}'); return false">
-				<p>
-					<label>상담 브랜드:</label> <input type="text" id="sessionId"
-						value="chanel" required>
-				</p>
-				<p>
-					<input type="submit" value="상담 시작하기">
-				</p>
-			</form>
+			<h1>${currUser.userName }님 환영합니다.</h1>
+			<p>상담 브랜드</p>
+			<p>${reservation.brandName }</p>
+			<p>
+				<input type="button"
+					onclick="joinSession('${currUser.roleNum}', '${reservation.consultRoomId }')"
+					value="상담 시작하기">
+			</p>
 		</div>
 
 		<div id="session" style="display: none;">
@@ -40,7 +38,7 @@
 		</div>
 
 		<c:if test="${currUser.roleNum > 0}">
-			<div id="c-container">
+			<div id="c-container" style="display: none;">
 				<div>
 					<input type="text" class="search-input" placeholder="검색어를 입력하세요">
 					<button class="button" onclick="search('${currUser.roleNum}')">검색</button>
@@ -54,7 +52,7 @@
 			</div>
 		</c:if>
 		<c:if test="${currUser.roleNum == 0}">
-			<div id="u-container">
+			<div id="u-container" style="display: none;">
 				<div>
 					<input class="button" type="button" onclick="leaveSession()"
 						value="LEAVE">
