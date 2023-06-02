@@ -5,54 +5,75 @@
 
 <mapper namespace="com.kosa.theBeauty.reservation.dao.reserveDAO">
 	<resultMap type="ReservationVO" id="ReservationVOMap">
-		<result column="USER_SEQ" property="userSeq"/>
+		<result column="USER_SEQ" property="userSeq" />
 		<result column="BRAND_SEQ" property="brandSeq" />
 		<result column="BRAND_NAME" property="brandName" />
-		<result column="USER_NAME" property="userName"/>
-		<result column="RESERVE_DATE" property="reserveDate"/>
-		<result column="RESERVE_TIME" property="reserveTime"/>
-		<result column="RESERVE_STATUS" property="reserveStatus"/>
-		<result column="CONSULT_ROOM_ID" property="consultRoomId"/>
+		<result column="USER_NAME" property="userName" />
+		<result column="RESERVE_DATE" property="reserveDate" />
+		<result column="RESERVE_TIME" property="reserveTime" />
+		<result column="RESERVE_STATUS" property="reserveStatus" />
+		<result column="CONSULT_ROOM_ID" property="consultRoomId" />
 	</resultMap>
-
+   
 	<!-- 예약내역삽입 -->
 	<insert id="insertReservationInfo" parameterType="ReservationVO">
-		INSERT INTO tb_reservation (USER_SEQ,USER_NAME,BRAND_SEQ,RESERVE_DATE,RESERVE_TIME)
-			 VAlUES	(#{userSeq},#{userName},#{brandSeq},#{reserveDate},#{reserveTime})
+		INSERT INTO
+		tb_reservation
+		(USER_SEQ,USER_NAME,BRAND_SEQ,RESERVE_DATE,RESERVE_TIME)
+		VAlUES
+		(#{userSeq},#{userName},#{brandSeq},#{reserveDate},#{reserveTime})
 	</insert>
-	
+
 	<!-- 예약가능확인 -->
-	<select id="selectReservationInfo" parameterType="ReservationVO" resultType="String">
+	<select id="selectReservationInfo" parameterType="ReservationVO"
+		resultType="String">
 		SELECT reserve_status
-		  FROM tb_reservation
-		 WHERE brand_seq = #{brandSeq}
-		   AND reserve_date = #{reserveDate}
-		   AND reserve_time = #{reserveTime}
- 	</select>
- 	
- 	<!-- 예약정보불러오기 -->
- 	<select id="selectReservationforDetail"  parameterType="ReservationVO" resultMap="ReservationVOMap">
- 		SELECT *
- 		  FROM (
-		 		SELECT r.*, b.brand_name
-		 		  FROM tb_reservation r
-		 		  JOIN tb_brand b
-		 		    ON r.brand_seq = b.brand_seq
-		 		 WHERE r.user_seq = #{userSeq}
-		 		   AND r.reserve_status = 0
- 		 		 ORDER BY r.reserve_date, r.reserve_time
- 		  )
- 		 WHERE ROWNUM = 1 
- 	</select>
- 	
- 	<!-- 예약취소 -->
- 	<update id="updateReservation" parameterType="ReservationVO">
- 		UPDATE tb_reservation
-		   SET reserve_status = '예약취소'
-	     WHERE brand_seq = #{brandSeq}
-	       AND user_Name = #{userName}
- 		   AND reserve_date = #{reserveDate}
-		   AND reserve_time = #{reserveTime}
- 	</update>
- 	
+		FROM tb_reservation
+		WHERE brand_seq =
+		#{brandSeq}
+		AND reserve_date = #{reserveDate}
+		AND reserve_time =
+		#{reserveTime}
+	</select>
+
+	<!-- 예약 취소 -->
+	<update id="updateReservation" parameterType="ReservationVO">
+		UPDATE
+		tb_reservation
+		SET reserve_status = '예약취소'
+		WHERE brand_seq = #{brandSeq}
+		AND user_Name = #{userName}
+		AND reserve_date = #{reserveDate}
+		AND
+		reserve_time = #{reserveTime}
+	</update>
+
+	<!-- 예약정보불러오기 -->
+	<select id="selectReservationByUser"
+		parameterType="ReservationVO" resultMap="ReservationVOMap">
+		SELECT *
+		FROM (
+		SELECT r.*,
+		b.brand_name
+		FROM tb_reservation r
+		JOIN tb_brand b
+		ON r.brand_seq =
+		b.brand_seq
+		WHERE r.user_seq = #{userSeq}
+		AND r.reserve_status = 0
+		ORDER
+		BY r.reserve_date, r.reserve_time
+		)
+		WHERE ROWNUM = 1
+	</select>
+
+	<!-- 예약정보불러오기 -->
+	<select id="selectReservationforDetail"
+		parameterType="ReservationVO" resultMap="ReservationVOMap">
+		SELECT *
+		FROM tb_reservation
+		WHERE user_seq = #{userSeq}
+		AND reserve_status != '예약취소'
+	</select>
+
 </mapper> 

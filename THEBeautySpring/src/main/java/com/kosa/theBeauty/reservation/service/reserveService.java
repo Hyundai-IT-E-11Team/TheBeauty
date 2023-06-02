@@ -1,6 +1,7 @@
 package com.kosa.theBeauty.reservation.service;
 
 import java.util.List;
+
 import org.springframework.jdbc.UncategorizedSQLException;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 public class reserveService {
 
 	private final reserveDAO dao;
-
 	public BrandVO getBrandInfo(BrandVO vo) {
 		try {
 			return dao.selectBrandInfo(vo);
@@ -24,17 +24,21 @@ public class reserveService {
 		}
 	}
 
-	public String getProductInfo(BrandVO vo) {
-		try {
-			return dao.selectProductInfo(vo).getProductImgurl();
-		} catch (Exception e) {
-			return null;
-		}
-	}
 
 	public void setReservation(ReservationVO vo) throws UncategorizedSQLException {
 		dao.insertReservationInfo(vo);
 	}
+	
+	public boolean cancelReservation(ReservationVO reservationvo) {
+	      try {
+	         if(dao.updateReservation(reservationvo)==1) {
+	            return true;
+	         }
+	         return false;
+	      } catch (Exception e) {
+	         return false;
+	      }
+	  }
 
 	public boolean getSchedule(ReservationVO reservationvo) {
 		try {
@@ -46,20 +50,13 @@ public class reserveService {
 			return false;
 		}
 	}
-  
-	public boolean cancelReservation(ReservationVO reservationvo) {
-		try {
-			if(dao.updateReservation(reservationvo)==1) {
-				return true;
-			}
-			return false;
-		} catch (Exception e) {
-			return false;
-		}
-  }
 
 	public ReservationVO getReservation(int userSeq) {
 		return dao.selectReservationByUser(userSeq);
 	}
+	
+	public List<ReservationVO> getReservation(ReservationVO reservationvo) {
+	      return dao.selectReservationforDetail(reservationvo);
+	   }
 
 }
