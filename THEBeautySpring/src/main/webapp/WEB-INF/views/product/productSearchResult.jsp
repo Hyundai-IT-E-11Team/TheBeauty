@@ -32,7 +32,7 @@
 			</div>
 			<div class="product-list">
 				<c:forEach items="${products}" var="p">
-					<a href="#" class="product"> <img src="${p.productImgurl}"
+					<a href="${pageContext.request.contextPath}/product/detailPage/${p.productSeq}" class="product"> <img src="${p.productImgurl}"
 						width="256px" height="256px">
 						<div class="product-price">${p.productPrice}</div>
 						<div class="product-name">${p.productName}</div>
