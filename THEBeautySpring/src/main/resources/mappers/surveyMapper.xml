@@ -14,8 +14,18 @@
 	
 	<!-- 설문 답변 등록 -->
 	<insert id="insertSurvey" parameterType="SurveyVO">
-		INSERT INTO tb_survey (user_seq, survey_skintype, survey_personal_color, survey_jewelry_color, survey_skintone)
-		VALUES(#{userSeq}, #{surveySkintype}, #{surveyPersonalColor}, #{surveyJewelryColor}, #{surveySkintone})
-	</insert>
+  <![CDATA[
+  BEGIN
+    tb_survey_insert(
+      #{userSeq, mode=IN, jdbcType=NUMERIC},
+      #{surveySkintype, mode=IN, jdbcType=VARCHAR},
+      #{surveyPersonalColor, mode=IN, jdbcType=VARCHAR},
+      #{surveyJewelryColor, mode=IN, jdbcType=VARCHAR},
+      #{surveySkintone, mode=IN, jdbcType=VARCHAR}
+    );
+  END;
+  ]]>
+</insert>
+
 	
 </mapper>

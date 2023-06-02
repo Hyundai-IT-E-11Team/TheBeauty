@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("survey")
 @RequiredArgsConstructor
 public class SurveyController {
-	
+
 	private final SurveyService service;
 	private final reserveService reserveService;
 	

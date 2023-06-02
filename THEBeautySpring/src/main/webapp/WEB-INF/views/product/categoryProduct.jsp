@@ -39,6 +39,14 @@
         </div>
     </div>
     
+    <!-- pagination 추가 -->
+	<jsp:include page="/WEB-INF/views/product/categoryPagination.jsp">
+    	<jsp:param name="productCategory" value="${productCategory }" />
+    	<jsp:param name="paginationNum" value="${paginationNum }" />
+    	<jsp:param name="page" value="${page}" />
+		    	
+	</jsp:include>
+    
     <script
         src="${pageContext.request.contextPath}/resources/js/product/productList.js"></script>
 </body>

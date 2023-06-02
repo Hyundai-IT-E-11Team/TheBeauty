@@ -31,7 +31,6 @@ function safeANDmove(userSeq) {
     var surveyPersonalColor = document.querySelector('input[name="surveyPersonalColor"]:checked').value;
     var surveyJewelryColor = document.querySelector('input[name="surveyJewelryColor"]:checked').value;
     var surveySkintone = document.querySelector('input[name="surveySkintone"]:checked').value;
-
 			
 	 $.ajax({
 	        url: "/theBeauty/survey/surveyResult",
@@ -56,4 +55,3 @@ function safeANDmove(userSeq) {
 	    });
 	
 }
-

@@ -28,7 +28,9 @@ public interface ProductDAO {
 	List<ProductDetailVO> getProductsByBrand(int brandSeq);
 	
 	// header에서 카테고리 별로 상품 검색 - phw
-	List<ProductVO> selectProductByCategory(String productCategory);
+	int selectProductCountByCategory(PaginationVO vo);
+	
+	List<ProductVO> selectProductByCategoryPaged(PaginationVO vo);
 
 	List<ProductVO> selectProductByBrandAndQuery(@Param("brandSeq") int brandSeq,@Param("query") String query);
 }

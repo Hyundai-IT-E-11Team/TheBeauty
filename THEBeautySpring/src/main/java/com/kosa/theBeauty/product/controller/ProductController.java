@@ -85,11 +85,24 @@ public class ProductController {
 	// header에서 카테고리 별로 상품 검색 - phw
 	@DebugLog
 	@GetMapping("category/{productCategory}")
-	public String getCategoryProduct(@PathVariable("productCategory") String productCategory, Model model) {
-		List<ProductVO> list = service.getProductByCategory(productCategory);
+	public String getCategoryProductPaged(@PathVariable("productCategory") String productCategory, PaginationVO vo, Model model) {
+		
+		vo.setProductCategory(productCategory);
+		int totalNum = service.selectProductCountByCategory(vo);
+		List<ProductVO> products = service.getProductByCategoryPaged(vo);
+		int paginationNum = service.calculatePaginationNum(totalNum);
+		
+		
 		// 리스트를 JSP에 넘겨주기
-		model.addAttribute("products", list);
+		model.addAttribute("totalNum", totalNum);
+
+		model.addAttribute("products", products);
+		
+		model.addAttribute("paginationNum", paginationNum);
+		
 		model.addAttribute("productCategory", productCategory);
+		
+		model.addAttribute("page", vo.getPage());
 		
 		return "product/categoryProduct";
 	}
