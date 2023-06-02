@@ -1,5 +1,6 @@
 package com.kosa.theBeauty.reservation.dao;
 
+import java.util.List;
 import org.springframework.jdbc.UncategorizedSQLException;
 
 import com.kosa.theBeauty.product.domain.BrandVO;
@@ -12,5 +13,6 @@ public interface reserveDAO {
 	ProductVO selectProductInfo(BrandVO vo);
 	int insertReservationInfo(ReservationVO vo) throws UncategorizedSQLException;
 	String selectReservationInfo(ReservationVO reservationvo);
-	ReservationVO selectReservationByUser(int userSeq);
+	List<ReservationVO> selectReservationforDetail(ReservationVO reservationvo);
+	int updateReservation(ReservationVO reservationvo);
 }

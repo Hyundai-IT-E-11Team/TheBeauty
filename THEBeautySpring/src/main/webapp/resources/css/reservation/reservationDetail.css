@@ -8,8 +8,6 @@
    *zoom: 1
 }
 
-
-
 p {
    display: block;
    margin-block-start: 1em;
@@ -94,3 +92,41 @@ p {
 .step-box .mark {
    margin-right: 10px;
 }
+
+#reservationContent {
+	width: 700px;
+	height: 120px;
+	display:flex;
+	flex-direction: column;
+	margin : auto;
+	border: 1px solid black;
+}
+
+#consultingName {
+	width: 500px;
+	height: 50px;
+	display: flex;
+}
+
+#contsultingContent {
+	width: 600px;
+	height: 100px;
+	display: flex;
+	flex-direction: row;
+	margin-left: 20px;
+}
+
+#contentDetail {
+	width: 420px;
+	height: 100px;
+	display:flex;
+	flex-direction: column;
+}
+
+#contentButton {
+	width: 180px;
+	height: 100px;
+	display:flex;
+	flex-direction: column;
+}
+

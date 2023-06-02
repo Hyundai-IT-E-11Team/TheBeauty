@@ -1,5 +1,6 @@
 package com.kosa.theBeauty.reservation.service;
 
+import java.util.List;
 import org.springframework.jdbc.UncategorizedSQLException;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,17 @@ public class reserveService {
 			return false;
 		}
 	}
+  
+	public boolean cancelReservation(ReservationVO reservationvo) {
+		try {
+			if(dao.updateReservation(reservationvo)==1) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
+  }
 
 	public ReservationVO getReservation(int userSeq) {
 		return dao.selectReservationByUser(userSeq);
