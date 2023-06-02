@@ -68,6 +68,12 @@
 		<div class="cart-bill-container">
 			<div class="cart-list-wrapper">
 				<c:forEach var="item" items="${cartList}">
+					
+					<!-- 수정! -->
+				    <c:set var="productPrice" value="${item.productVO.productPrice}" />
+				    <c:set var="formattedPrice" value="${productPrice.replace(',', '').replace('원', '')}" />
+				    <c:set var="itemPrice" value="${formattedPrice * item.cartVO.productCount}" />
+					
 
 					<div class="product">
 						<!-- 체크 영역 -->
@@ -98,7 +104,9 @@
 							</div>
 							<!-- 상품가격 및 버튼 -->
 							<div class="option-price">
-								<div class="item-price">${item.productVO.productPrice}</div>
+							    <div id="itemPrice-${item.cartVO.productSeq}" class="item-price" data-price="${formattedPrice}">
+							        <c:out value="${itemPrice}" />
+							    </div>
 								<div class="btn-area">
 									<button class="btn size4 color15" type="button"
 										data-product-id="${item.cartVO.productSeq}">상품삭제</button>
@@ -125,7 +133,7 @@
 							<li>
 								<h5>상품금액</h5>
 								<p style="margin-top: 0px;">
-									<span id="totProdPrc">128,000</span> 원
+									<span id="totProdPrc">128,000</span>
 								</p>
 							</li>
 							<li>
@@ -141,7 +149,7 @@
 						<div>
 							<h4 style="margin-bottom: 0px; margin-top: 0px;">결제 예정 금액</h4>
 							<p style="padding-top: 0px; margin-top: 0px; margin-bottom: 0px;">
-								<strong><span id="payPrc">128,000</span></strong> 원
+								<strong><span id="payPrc">128,000</span></strong>
 							</p>
 						</div>
 

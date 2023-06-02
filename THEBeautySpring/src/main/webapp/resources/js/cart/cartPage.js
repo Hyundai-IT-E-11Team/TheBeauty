@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	
   // 상품삭제 함수 정의
   deleteProduct = function() {
 	let container = $(this);
@@ -19,33 +19,32 @@ $(document).ready(function() {
   
 });
 
+
+
+
 // 장바구니 상품 개수 조절
 function productCounting(operation, productSeq) {
 	let productCountElement  = document.getElementById("productCount-"+productSeq);
 	let currentCount = parseInt(productCountElement.value);
-	
-    console.log(operation);
-    console.log(productSeq);
-    console.log(currentCount);
+
+    let productPriceElement = document.getElementById("itemPrice-"+productSeq);
+    let productPrice = parseFloat(productPriceElement.getAttribute("data-price"));
+
     if (operation === '+') {
         currentCount += 1;
     } else if (operation === '-') {
         if (currentCount > 1) {
             currentCount -= 1;
         } else {
-            alert("Product count can't be less than 0");
+            alert("상품의 수량이 0개보다 많아야 합니다.");
             return;
         }
     }
 
-    document.getElementById("productCount-"+productSeq).value = currentCount;
+    productCountElement.value = currentCount;
 
+    // 장바구니 개수에 따른 가격 변경
+    let totalPrice = currentCount * productPrice;
+    productPriceElement.innerHTML = totalPrice.toLocaleString("ko-KR") + "원";
 }
 
-function updatePrice(productDetail, productSeq) {
-    // Assuming productDetail has price and count
-    let newPrice = productDetail.productPrice * productDetail.productCount;
-    
-    // Update price on the page
-    $('#item-price-'+productSeq).text(newPrice);
-}
