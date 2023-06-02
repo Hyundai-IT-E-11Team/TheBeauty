@@ -45,7 +45,7 @@
                 <input type="hidden" name="brandImg3" value="${productDetail.brandVO.brandImg3}" />
                 <input type="hidden" name="brandImg4" value="${productDetail.brandVO.brandImg4}" />
                 <button type="submit" class="moveBrandButton">
-                  <img src="${productDetail.brandVO.brandImgurl}" alt="Brand Image">
+                  <img id="logoImg" src="${productDetail.brandVO.brandImgurl}" alt="Brand Image">
                 </button>
               </form>
             </div>
@@ -70,11 +70,12 @@
                </ul>
             </div>
 
-            <div>
+            <div class="product-control">
             	<button id="decrease-button" onclick="productCounting('-')">-</button>
             	<div id="currCount"></div>
                 <button id="increase-button" onclick="productCounting('+')">+</button>
-                <div id="sumPrice">${productDetail.productVO.productPrice}</div>
+                <div class="sumPrice">합계</div>
+                <div class="sumPrice">${productDetail.productVO.productPrice}</div>
             </div>
             <div class="button-option">
                <form action="/theBeauty/cart/addToCart" method="post">
