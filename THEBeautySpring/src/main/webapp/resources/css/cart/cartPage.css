@@ -140,10 +140,11 @@ p {
    flex: 1;
 }
 
-.item-name {
+.item-name>a {
    font-size: 16px;
     color: #333;
     line-height: 1.5em;
+    text-decoration: none;
 }
 
 .item-price {
@@ -178,7 +179,9 @@ ul li {
 }
 
 .cnt-ctrl {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     line-height: 0;
     width: 100px
 }

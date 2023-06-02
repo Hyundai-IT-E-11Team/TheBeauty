@@ -26,6 +26,7 @@
 		#{userSeq, mode=IN, jdbcType=NUMERIC},
 		#{productSeq, mode=IN, jdbcType=NUMERIC},
 		#{productCount, mode=IN, jdbcType=NUMERIC}
+   	)}
 	</insert>
 
 	<!-- 장바구니 목록 가져오기 -->

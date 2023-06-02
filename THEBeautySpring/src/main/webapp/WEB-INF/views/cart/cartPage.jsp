@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/cart/cartPage.css" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <title>장바구니 페이지</title>
 </head>
 <body>
@@ -68,6 +69,12 @@
 		<div class="cart-bill-container">
 			<div class="cart-list-wrapper">
 				<c:forEach var="item" items="${cartList}">
+					
+					<!-- 수정! -->
+				    <c:set var="productPrice" value="${item.productVO.productPrice}" />
+				    <c:set var="formattedPrice" value="${productPrice.replace(',', '').replace('원', '')}" />
+				    <c:set var="itemPrice" value="${formattedPrice * item.cartVO.productCount}" />
+					
 
 					<div class="product">
 						<!-- 체크 영역 -->
@@ -81,14 +88,15 @@
 						<!-- 상품 내용 -->
 						<div class="product-info">
 							<!-- 상품명 -->
-							<div class="item-name">${item.productVO.productName}</div>
+							<div class="item-name">
+							    <a href="${pageContext.request.contextPath}/product/detailPage/${item.productVO.productSeq}">${item.productVO.productName}</a>
+							</div>
 							<!-- 상품옵션 -->
 							<div class="option-info">
 								<p class="cnt-ctrl">
 									<button id="cnt-down-${item.cartVO.productSeq}" onclick="productCounting('-', '${item.cartVO.productSeq}')">-</button>
-									<input type="text" id="productCount-${item.cartVO.productCount}" class="onlyNumberInput" name="cnt" onclick="this.focus();" value="${item.cartVO.productCount}">
-									<button id="cnt-up-${item.cartVO.productSeq}" onclick="productCounting('+', '${item.cartVO.productSeq}')">+</button>
-									
+									<input type="text" id="productCount-${item.cartVO.productSeq}" class="onlyNumberInput" name="cnt" onclick="this.focus();" value="${item.cartVO.productCount}">
+									<button id="cnt-up-${item.cartVO.productSeq}" onclick="productCounting('+', '${item.cartVO.productSeq}',)">+</button>
 								</p>
 								<!-- 기본구성 / 추가구성 정보 -->
 								<p class="cnt-deliver">
@@ -99,7 +107,9 @@
 							</div>
 							<!-- 상품가격 및 버튼 -->
 							<div class="option-price">
-								<div class="item-price">${item.productVO.productPrice}</div>
+							    <div id="itemPrice-${item.cartVO.productSeq}" class="item-price" data-price="${formattedPrice}">
+							        <c:out value="${itemPrice}" />
+							    </div>
 								<div class="btn-area">
 									<button class="btn size4 color15" type="button"
 										data-product-id="${item.cartVO.productSeq}">상품삭제</button>
@@ -119,14 +129,14 @@
 						<div style="margin-bottom: 0px; padding-bottom: 40px;">
 							<h4 style="margin-top: 0px; margin-bottom: 0px;">총 주문금액</h4>
 							<p style="margin-top: 0px; margin-bottom: 0px;">
-								<strong><span id="totOrdPrc">128,000</span></strong> 원
+								<strong><span id="totOrdPrc"></span></strong> 원
 							</p>
 						</div>
 						<ul class="sub plus" style="padding-left: 0px;">
 							<li>
 								<h5>상품금액</h5>
 								<p style="margin-top: 0px;">
-									<span id="totProdPrc">128,000</span> 원
+									<span id="totProdPrc"></span>
 								</p>
 							</li>
 							<li>
@@ -142,7 +152,7 @@
 						<div>
 							<h4 style="margin-bottom: 0px; margin-top: 0px;">결제 예정 금액</h4>
 							<p style="padding-top: 0px; margin-top: 0px; margin-bottom: 0px;">
-								<strong><span id="payPrc">128,000</span></strong> 원
+								<strong><span id="payPrc">아직 안 함</span></strong>
 							</p>
 						</div>
 
