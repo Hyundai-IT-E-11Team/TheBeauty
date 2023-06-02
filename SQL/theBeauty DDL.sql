@@ -37,6 +37,7 @@ CREATE TABLE tb_user
     user_pw           VARCHAR2(255) NOT NULL,
     user_registration NUMBER        NOT NULL,
     user_mobile       NUMBER,
+    remain_cnt        NUMBER DEFAULT 10,
     FOREIGN KEY (role_num)
         REFERENCES tb_brand (brand_seq)
 );
@@ -54,15 +55,15 @@ CREATE SEQUENCE tb_reservation_seq START WITH 1 INCREMENT BY 1;
 CREATE TABLE tb_reservation
 (
     reservation_seq NUMBER DEFAULT tb_reservation_seq.NEXTVAL,
-    user_seq        NUMBER(10)    not null,
-    user_name       VARCHAR2(50)  not null,
-    brand_seq       NUMBER(10)    not null,
-    reserve_date    VARCHAR2(100) not null,
-    reserve_time    VARCHAR2(100) not null,
-    reserve_status  VARCHAR2(30),
-    consult_room_id VARCHAR2(255,
-        FOREIGN KEY ( user_seq )
-        REFERENCES tb_user ( user_seq ),
+    user_seq        NUMBER(10)    NOT NULL,
+    user_name       VARCHAR2(50)  NOT NULL,
+    brand_seq       NUMBER(10)    NOT NULL,
+    reserve_date    VARCHAR2(100) NOT NULL,
+    reserve_time    VARCHAR2(100) NOT NULL,
+    reserve_status  NUMBER DEFAULT 0,
+    consult_room_id VARCHAR2(255),
+    FOREIGN KEY (user_seq)
+        REFERENCES tb_user (user_seq),
     FOREIGN KEY (brand_seq)
         REFERENCES tb_brand (brand_seq)
 );
@@ -106,9 +107,12 @@ ALTER TABLE tb_product
     ADD CONSTRAINT tb_product_pk PRIMARY KEY (product_seq);
 
 -- tb_survey
-drop table tb_survey cascade constraints;
+DROP TABLE tb_survey CASCADE CONSTRAINTS;
+
 DROP SEQUENCE tb_survey_seq;
+
 CREATE SEQUENCE tb_survey_seq START WITH 1 INCREMENT BY 1;
+
 CREATE TABLE tb_survey
 (
     survey_seq            NUMBER DEFAULT tb_survey_seq.NEXTVAL,
@@ -117,17 +121,20 @@ CREATE TABLE tb_survey
     survey_personal_color VARCHAR2(2000) NOT NULL,
     survey_jewelry_color  VARCHAR2(2000) NOT NULL,
     survey_skintone       VARCHAR2(2000) NOT NULL,
-    FOREIGN KEY (user_seq) REFERENCES tb_user (user_seq)
+    FOREIGN KEY (user_seq)
+        REFERENCES tb_user (user_seq)
 );
-alter table tb_survey
-    add constraint tb_survey_pk primary key (survey_seq);
+
+ALTER TABLE tb_survey
+    ADD CONSTRAINT tb_survey_pk PRIMARY KEY (survey_seq);
 
 
 -- tb_cart
-drop table tb_cart cascade constraints;
-create table tb_cart
+DROP TABLE tb_cart CASCADE CONSTRAINTS;
+
+CREATE TABLE tb_cart
 (
-    user_seq      number(10) NOT NULL,
-    product_seq   number     NOT NULL,
-    product_count number
+    user_seq      NUMBER(10) NOT NULL,
+    product_seq   NUMBER     NOT NULL,
+    product_count NUMBER
 );

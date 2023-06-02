@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.UncategorizedSQLException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,23 +50,8 @@ public class reserveController {
 		model.addAttribute("reservationList", reservationList);
 		return "reservation/reservationDetail";
 	}
-
-	// 예약저장하고 설문페이지로
-	@DebugLog
-	@PostMapping("myReservation")
-	public ResponseEntity<String> myReservation(@SessionAttribute UserVO currUser, ReservationVO reservationvo) {
-		String response = null;
-		reservationvo.setUserSeq(currUser.getUserSeq());
-		reservationvo.setUserName(currUser.getUserName());
-		if (service.setReservation(reservationvo)) {
-			response = "/theBeauty/survey/surveyPage";
-
-		} else {
-			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-		}
-		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
-	
+  
+	//예약취소
 	@DebugLog
 	@PostMapping("cancelReservation")
 	public ResponseEntity<String> cancelReservation(ReservationVO reservationvo) {
@@ -73,11 +59,23 @@ public class reserveController {
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+  }
+  
+  // 예약저장하고 설문페이지로
+  @DebugLog
+	@PostMapping(value = "myReservation", produces = "application/json; charset=utf8")
+	public ResponseEntity<String> myReservation(@SessionAttribute UserVO currUser,ReservationVO reservationvo, Model model) {
+		reservationvo.setUserSeq(currUser.getUserSeq());
+		reservationvo.setUserName(currUser.getUserName());
+		try {
+			service.setReservation(reservationvo);
+			return  new ResponseEntity<>("/theBeauty/survey/surveyPage", HttpStatus.OK);
+		} catch (UncategorizedSQLException e) {
+			return  new ResponseEntity<>(e.getMessage().split(":")[3],HttpStatus.BAD_REQUEST);
+
 		}
-		
 	}
-	
-	
 
 	// 예약 가능,불가능 시간 출력
 	@DebugLog

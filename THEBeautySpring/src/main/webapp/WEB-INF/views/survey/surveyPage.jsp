@@ -59,8 +59,7 @@
 			</div>
 		</div>
 
-			<input type="hidden" name="userSeq" value="${currUser.userSeq}">
-
+			<input type="hidden" name="userSeq" value="${currUser.userSeq }">
 			<div class="surveywrap">
 				<div class="survey">
 

@@ -45,5 +45,6 @@ public class SurveyController {
 			response = "/theBeauty/main/mainPage";
 			return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
 		}
+
 	}
 }

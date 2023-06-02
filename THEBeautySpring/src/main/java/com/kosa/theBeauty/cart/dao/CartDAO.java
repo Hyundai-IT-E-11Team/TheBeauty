@@ -3,6 +3,7 @@ package com.kosa.theBeauty.cart.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.kosa.theBeauty.cart.domain.CartListVO;
 import com.kosa.theBeauty.cart.domain.CartVO;
@@ -15,4 +16,7 @@ public interface CartDAO {
     
     // 사용자 시퀀스(userSeq)에 대한 장바구니 목록 반환
     List<CartListVO> getCartList(int userSeq);
+    
+    // 상품 삭제
+    void deleteProduct(@Param("userSeq") int userSeq, @Param("productSeq") int productSeq);
 }

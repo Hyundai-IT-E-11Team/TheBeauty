@@ -33,7 +33,7 @@ function calculateShippingFee(price) {
 
 function productCounting(value) {
 	var currCount = Number(document.getElementById("currCount").innerHTML);
-	var productPrice = parseFloat(productDetail.productVO.productPrice.replace(/[^0-9.]+/g, ""));
+	var productPrice = parseInt(productDetail.productVO.productPrice.replace(/[^0-9.]+/g, ""));
 	document.getElementById("sumPrice").innerHTML = "";
 	document.getElementById("currCount").innerHTML = "";
 		
@@ -49,5 +49,6 @@ function productCounting(value) {
 	console.log(productPrice);
 	productPrice = productPrice * currCount;
 	document.getElementById("currCount").innerHTML = currCount;
-	document.getElementById("sumPrice").innerHTML = parseInt(productPrice);
+	document.getElementById("productCount").value = currCount;
+	document.getElementById("sumPrice").innerHTML = productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원";
 }
