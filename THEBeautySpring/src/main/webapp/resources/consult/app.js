@@ -2,8 +2,8 @@ var OV;
 var session;
 
 
-function joinSession(currUserRole) {
-  var mySessionId = document.getElementById("sessionId").value;
+function joinSession(currUserRole, mySessionId) {
+	console.log(mySessionId)
   OV = new OpenVidu();
   session = OV.initSession();
 
@@ -36,7 +36,8 @@ function joinSession(currUserRole) {
     	// document.getElementById("session-header").innerText = mySessionId;
         document.getElementById("join").style.display = "none";
         document.getElementById("session").style.display = "block";
-
+        document.getElementByClass("c-container").style.display = "block";
+        document.getElementByClass("u-container").style.display = "block";
         var publisher = OV.initPublisher("publisher");
         session.publish(publisher);
       })
