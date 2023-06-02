@@ -31,11 +31,16 @@
  	</select>
  	
  	<select id="selectReservationByUser" resultMap="ReservationVOMap">
- 		SELECT r.*, b.brand_name
- 		  FROM tb_reservation r
- 		  JOIN tb_brand b
- 		    ON r.brand_seq = b.brand_seq
- 		 WHERE r.user_seq = #{userSeq}
- 		   AND r.reserve_status = 0
+ 		SELECT *
+ 		  FROM (
+		 		SELECT r.*, b.brand_name
+		 		  FROM tb_reservation r
+		 		  JOIN tb_brand b
+		 		    ON r.brand_seq = b.brand_seq
+		 		 WHERE r.user_seq = #{userSeq}
+		 		   AND r.reserve_status = 0
+ 		 		 ORDER BY r.reserve_date, r.reserve_time
+ 		  )
+ 		 WHERE ROWNUM = 1 
  	</select>
 </mapper> 

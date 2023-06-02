@@ -2,6 +2,7 @@ package com.kosa.theBeauty.reservation.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.UncategorizedSQLException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,16 +44,16 @@ public class reserveController {
 	
 	//예약저장
 	@DebugLog
-	@PostMapping("myReservation")
+	@PostMapping(value = "myReservation", produces = "application/json; charset=utf8")
 	public ResponseEntity<String> myReservation(@SessionAttribute UserVO currUser,ReservationVO reservationvo, Model model) {
 		reservationvo.setUserSeq(currUser.getUserSeq());
 		reservationvo.setUserName(currUser.getUserName());
-		if(service.setReservation(reservationvo)) {
+		try {
+			service.setReservation(reservationvo);
 			return  new ResponseEntity<>("/theBeauty/survey/surveyPage", HttpStatus.OK);
-		} else {
-			return  new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+		} catch (UncategorizedSQLException e) {
+			return  new ResponseEntity<>(e.getMessage().split(":")[3],HttpStatus.BAD_REQUEST);
 		}
-		
 	}
 	
 	@DebugLog
