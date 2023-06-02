@@ -35,10 +35,10 @@ public class reserveController {
 	}
 	
 	@DebugLog
-	@GetMapping("")
-	public String myReservation() {
+	@GetMapping("reservationDetailPage")
+	public String reservationDetailPage() {
 		//예약내역 불러오기 로직
-		return "reservation/myReservation";
+		return "reservation/reservationDetail";
 	}
 	
 	//예약저장

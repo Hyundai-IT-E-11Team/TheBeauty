@@ -141,7 +141,7 @@
 				</div>
 
 				<div class="survey-submit">
-					<input class="submit" type="submit" value="제출하기"/>
+					<input class="submit" type="button" value="제출하기" onclick="saveAndGoToDetailPage('${currUser.userSeq}')" />
 				</div>
 			</div>
 		</form>

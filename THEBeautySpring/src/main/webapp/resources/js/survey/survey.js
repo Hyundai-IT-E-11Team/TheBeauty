@@ -23,3 +23,35 @@ function validateForm() {
         checked = false; // 다음 라디오 버튼 그룹을 위해 checked 변수 초기화
     }
 }
+
+function saveAndGoToDetailPage(userSeq) {
+	   console.log(userSeq);
+	var userSeq = userSeq; // JSP 변수의 값을 JavaScript 변수에 할당
+    var surveySkintype = document.querySelector('input[name="surveySkintype"]:checked').value;
+    var surveyPersonalColor = document.querySelector('input[name="surveyPersonalColor"]:checked').value;
+    var surveyJewelryColor = document.querySelector('input[name="surveyJewelryColor"]:checked').value;
+    var surveySkintone = document.querySelector('input[name="surveySkintone"]:checked').value;
+
+  $.ajax({
+         url: "/theBeauty/survey/surveyResult",
+         type: "POST",
+         data: {
+            userSeq :userSeq,
+            surveySkintype : surveySkintype,
+            surveyPersonalColor : surveyPersonalColor,
+            surveyJewelryColor : surveyJewelryColor,
+            surveySkintone : surveySkintone
+         },
+         success: function(response) {
+        	 console.log(response);
+            alert("설문이 완료되었습니다.");
+            window.location.href = "/theBeauty/reserve/reservationDetailPage";
+         },
+         error: function(response) {
+        	 console.log(response);
+             alert("설문저장에 실패하였습니다. 메인페이지로 이동합니다.");
+             window.location.href = "/theBeauty/main/mainPage";
+         }
+     });
+ 
+}

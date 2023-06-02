@@ -1,5 +1,7 @@
 package com.kosa.theBeauty.survey.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,24 +20,28 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("survey")
 @RequiredArgsConstructor
 public class SurveyController {
-	
+
 	private final SurveyService service;
-	
+
 	// 설문 페이지로 이동
 	@DebugLog
 	@GetMapping("surveyPage")
 	public String surveyPage(@SessionAttribute UserVO currUser, Model model) {
-		
+
 		return "survey/surveyPage";
 	}
-	
+
 	// 설문 가져오기
 	@DebugLog
-	@PostMapping("surveyPage")
-	public String surveyResult(SurveyVO vo) {
-		service.insertSurvey(vo);
-		
-		return "/reservation/reservationDetail"; 
-		
+	@PostMapping("surveyResult")
+	public ResponseEntity<String> surveyResult(@SessionAttribute UserVO currUser, SurveyVO surveyvo) {
+		String response;
+		if (service.insertSurvey(surveyvo)) {
+			response = "";
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		} else {
+			response = "";
+			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+		}
 	}
 }

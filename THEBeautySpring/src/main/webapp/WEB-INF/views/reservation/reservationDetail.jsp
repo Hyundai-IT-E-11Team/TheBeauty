@@ -52,7 +52,7 @@
                </div>
             </div>
          </div>
-         
+         예약상세페이지 입니다.
       </div>
 </body>
 </html>

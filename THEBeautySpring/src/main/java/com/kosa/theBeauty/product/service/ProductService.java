@@ -51,6 +51,7 @@ public class ProductService {
 	
 	
 	
+	
 	// 상품 상세페이지 - phw
 	public ProductDetailVO getProductDetail(int product_seq) {
 
@@ -67,13 +68,24 @@ public class ProductService {
 		
 		return dao.getProductsByBrand(brandSeq);
 	}
+	
+	////////////////////////////////////////////////////////////////
 
 	// header에서 카테고리 별로 상품 검색 - phw
-	public List<ProductVO> getProductByCategory(String productCategory) {
+	public int selectProductCountByCategory(PaginationVO vo) {
+		return dao.selectProductCountByCategory(vo);
+	}
+	
+	public List<ProductVO> getProductByCategoryPaged(PaginationVO vo) {
 
-		return dao.selectProductByCategory(productCategory);
+		// vo에 offset 바꿔주기
+		vo = calculateAndSetOffset(vo);
+		
+		return dao.selectProductByCategoryPaged(vo);
 	}
 
+	
+	/////////////////////////////////////////////////////////////
 	@DebugLog
 	public List<ProductVO> getListByBrandSeqAndQuery(int brandSeq, String query) {
 		

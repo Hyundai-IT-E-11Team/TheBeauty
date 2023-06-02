@@ -102,10 +102,21 @@
 	</select>
 	
 	<!--  header에서 카테고리 별로 상품 검색-->
-	<select id="selectProductByCategory" parameterType="String" resultMap="ProductVOMap">
+	<select id="selectProductByCategoryPaged" parameterType="PaginationVO" resultMap="ProductVOMap">
 		SELECT *
 		  FROM tb_product
 		 WHERE product_category = #{productCategory}
+		 OFFSET #{offset} ROWS FETCH NEXT 20 ROWS ONLY
+	</select>
+	
+	<!-- pagination 검색 상품 개수 구하기 -->
+	<select id="selectProductCountByCategory" parameterType="PaginationVO"
+		resultType="_int">
+			<![CDATA[
+			SELECT count(*)
+			  FROM tb_product
+			 WHERE product_category = #{productCategory}
+			 ]]>
 	</select>
 
 </mapper>
