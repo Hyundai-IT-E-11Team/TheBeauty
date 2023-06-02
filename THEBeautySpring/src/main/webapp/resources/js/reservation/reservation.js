@@ -16,8 +16,8 @@ function submitReserveController() {
 	        	alert("예약이 완료되었습니다.");
 	        	window.location.href = response;
 	        },
-	        error: function() {
-	            alert("예약에 실패하였습니다. 다시 시도해주세요");
+	        error: function(e) {
+	            alert(e.responseText.split("\n")[0])
 	        }
 	    });
 }
