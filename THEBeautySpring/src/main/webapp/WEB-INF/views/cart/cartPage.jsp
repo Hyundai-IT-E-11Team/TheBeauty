@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/cart/cartPage.css" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <title>장바구니 페이지</title>
 </head>
 <body>
@@ -87,7 +88,9 @@
 						<!-- 상품 내용 -->
 						<div class="product-info">
 							<!-- 상품명 -->
-							<div class="item-name">${item.productVO.productName}</div>
+							<div class="item-name">
+							    <a href="${pageContext.request.contextPath}/product/detailPage/${item.productVO.productSeq}">${item.productVO.productName}</a>
+							</div>
 							<!-- 상품옵션 -->
 							<div class="option-info">
 								<p class="cnt-ctrl">
@@ -126,14 +129,14 @@
 						<div style="margin-bottom: 0px; padding-bottom: 40px;">
 							<h4 style="margin-top: 0px; margin-bottom: 0px;">총 주문금액</h4>
 							<p style="margin-top: 0px; margin-bottom: 0px;">
-								<strong><span id="totOrdPrc">128,000</span></strong> 원
+								<strong><span id="totOrdPrc"></span></strong> 원
 							</p>
 						</div>
 						<ul class="sub plus" style="padding-left: 0px;">
 							<li>
 								<h5>상품금액</h5>
 								<p style="margin-top: 0px;">
-									<span id="totProdPrc">128,000</span>
+									<span id="totProdPrc"></span>
 								</p>
 							</li>
 							<li>
@@ -149,7 +152,7 @@
 						<div>
 							<h4 style="margin-bottom: 0px; margin-top: 0px;">결제 예정 금액</h4>
 							<p style="padding-top: 0px; margin-top: 0px; margin-bottom: 0px;">
-								<strong><span id="payPrc">128,000</span></strong>
+								<strong><span id="payPrc">아직 안 함</span></strong>
 							</p>
 						</div>
 
