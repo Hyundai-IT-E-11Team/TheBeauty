@@ -60,7 +60,7 @@ CREATE TABLE tb_reservation
     reserve_date    VARCHAR2(100) not null,
     reserve_time    VARCHAR2(100) not null,
     reserve_status  VARCHAR2(30),
-    consult_room_id VARCHAR2(255)
+    consult_room_id VARCHAR2(255,
         FOREIGN KEY ( user_seq )
         REFERENCES tb_user ( user_seq ),
     FOREIGN KEY (brand_seq)

@@ -7,6 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/survey/survey.css" />
+	<script
+	src="${pageContext.request.contextPath}/resources/js/survey/survey.js"></script>
 <title>사전설문작성</title>
 </head>
 <body>
@@ -57,8 +59,7 @@
 			</div>
 		</div>
 
-		<form action="surveyPage" method="post">
-			<input type="hidden" name="userSeq" value="${currUser.userSeq }">
+			<input type="hidden" name="userSeq" value="${currUser.userSeq}">
 
 			<div class="surveywrap">
 				<div class="survey">
@@ -141,10 +142,9 @@
 				</div>
 
 				<div class="survey-submit">
-					<input class="submit" type="submit" value="제출하기"/>
+					<input class="submit" type="button" onclick="safeANDmove('${currUser.userSeq}')" value="제출하기"/>
 				</div>
 			</div>
-		</form>
 
 	</div>
 	<script	src="${pageContext.request.contextPath}/resources/js/survey/survey.js"></script>

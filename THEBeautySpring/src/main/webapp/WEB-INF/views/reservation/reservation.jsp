@@ -41,13 +41,12 @@
 						</div>
 					</div>
 						<div id="schedule">
-						<input type="hidden" id="brandSeq" name="brandSeq" value="${brandInfo.brandSeq}" />
+							 <input type="hidden" id="brandSeq" name="brandSeq" value="${brandInfo.brandSeq}" />
 							<div id="dateContainer">
 								<div id="choiceDate">
 									<div>날 짜 :</div>
 									<div id="inputDate"></div>
 								</div>
-								
 								<div id="calendar">
 									<table class="Calendar">
 										<thead>

@@ -1,5 +1,7 @@
 package com.kosa.theBeauty.reservation.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.kosa.theBeauty.product.domain.BrandVO;
@@ -55,8 +57,20 @@ public class reserveService {
 		}
 	}
 	
-	public ReservationVO getReservation(int userSeq) {
-		return dao.selectReservationByUser(userSeq);
+	public List<ReservationVO> getReservation(ReservationVO reservationvo) {
+		return dao.selectReservationforDetail(reservationvo);
+	}
+
+	public boolean cancelReservation(ReservationVO reservationvo) {
+		try {
+			if(dao.updateReservation(reservationvo)==1) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
+		
 	}
 	
 }
