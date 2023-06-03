@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReservationVO {
 
+	private int reservationSeq;
 	private int userSeq;
 	private String userName;
 	private int brandSeq;

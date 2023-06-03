@@ -14,4 +14,6 @@ public interface reserveDAO {
 	List<ReservationVO> selectReservationforDetail(ReservationVO reservationvo);
 	int updateReservation(ReservationVO reservationvo);
 	ReservationVO selectReservationByUser(int userSeq);
+	List<ReservationVO> selectReservationBrand(int brandSeq);
+	ReservationVO selectReservationBySeq(int reservationSeq);
 }

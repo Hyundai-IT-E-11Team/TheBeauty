@@ -59,4 +59,14 @@ public class reserveService {
 	      return dao.selectReservationforDetail(reservationvo);
 	   }
 
+
+	public List<ReservationVO> getBrandReservation(int brandSeq) {
+		return dao.selectReservationBrand(brandSeq);
+	}
+
+
+	public ReservationVO getReservationBySeq(int reservationSeq) {
+		return dao.selectReservationBySeq(reservationSeq);
+	}
+
 }

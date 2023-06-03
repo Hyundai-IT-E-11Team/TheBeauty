@@ -5,6 +5,7 @@
 
 <mapper namespace="com.kosa.theBeauty.reservation.dao.reserveDAO">
 	<resultMap type="ReservationVO" id="ReservationVOMap">
+		<result column="RESERVATION_SEQ" property="reservationSeq" />
 		<result column="USER_SEQ" property="userSeq" />
 		<result column="BRAND_SEQ" property="brandSeq" />
 		<result column="BRAND_NAME" property="brandName" />
@@ -75,5 +76,17 @@
 		WHERE user_seq = #{userSeq}
 		AND reserve_status = 0 
 	</select>
+	
+	<select id="selectReservationBrand" resultMap="ReservationVOMap">
+		SELECT *
+		FROM tb_reservation
+		WHERE brand_seq = #{brandSeq}
+		AND reserve_status = 0 
+	</select>
 
+	<select id="selectReservationBySeq" resultMap="ReservationVOMap">
+		SELECT *
+		FROM tb_reservation
+		WHERE reservation_seq = #{reservationSeq} 
+	</select>
 </mapper> 
