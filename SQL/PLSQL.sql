@@ -5,7 +5,7 @@ CREATE OR REPLACE TRIGGER trg_generate_consult_room_id BEFORE
 DECLARE
     v_consult_room_id  VARCHAR2(255);
     v_pending_count    NUMBER;
-    v_remain_cnt   NUMBER;
+    v_remain_cnt       NUMBER;
 BEGIN
     v_consult_room_id := :new.user_seq
                          || '_'
@@ -14,22 +14,21 @@ BEGIN
                          || :new.reservation_seq;
 
     :new.consult_room_id := v_consult_room_id;
-
     SELECT
         COUNT(*)
     INTO v_pending_count
     FROM
         tb_reservation
     WHERE
-        RESERVE_STATUS = 0
-        AND RESERVE_DATE = :new.reserve_date
-        AND RESERVE_TIME = :new.reserve_time;
+            reserve_status = 0
+        AND reserve_date = :new.reserve_date
+        AND reserve_time = :new.reserve_time;
 
     SELECT
-        REMAIN_CNT
+        remain_cnt
     INTO v_remain_cnt
     FROM
-        TB_USER u
+        tb_user u
     WHERE
         user_seq = :new.user_seq;
 
@@ -38,10 +37,14 @@ BEGIN
     ELSIF v_remain_cnt <= 0 THEN
         raise_application_error(-20001, '이번 달 예약 가능 횟수를 모두 소진 하였습니다.');
     ELSE
-        UPDATE TB_USER
-        SET REMAIN_CNT = v_remain_cnt - 1
-        WHERE user_seq = :new.user_seq;
+        UPDATE tb_user
+        SET
+            remain_cnt = v_remain_cnt - 1
+        WHERE
+            user_seq = :new.user_seq;
+
     END IF;
+
 END;
 /
 
@@ -55,7 +58,7 @@ BEGIN
             reserve_status = 0
         AND to_date(reserve_date
                     || ' '
-                    || reserve_time, 'YYYY-MM-DD HH24:MI') <= current_timestamp;
+                    || reserve_time, 'YYYY-MM-DD HH24:MI') < current_timestamp;
 
 END;
 /
@@ -70,7 +73,7 @@ BEGIN
                              job_action => 'ace.expired_reservations',
                              number_of_arguments => 0,
                              start_date => NULL,
-                             repeat_interval => 'FREQ=MINUTELY;BYMINUTE=0, 30;BYSECOND=0',
+                             repeat_interval => 'FREQ=MINUTELY;BYMINUTE=59, 29;BYSECOND=0',
                              end_date => NULL,
                              enabled => false,
                              auto_drop => false,
@@ -97,7 +100,8 @@ BEGIN
     SET
         remain_cnt = 10
     WHERE
-            role_num = 0;
+        role_num = 0;
+
 END;
 /
 
@@ -110,7 +114,7 @@ BEGIN
     dbms_scheduler.create_job(job_name => 'ace.update_user_remain_cnt', job_type => 'STORED_PROCEDURE',
                              job_action => 'ace.reset_user_remain_cnt',
                              number_of_arguments => 0,
-                             start_date => NULL,
+                             start_date => trunc(sysdate, 'MM') + INTERVAL '1' MONTH,
                              repeat_interval => 'FREQ=MONTHLY; BYMONTHDAY=1',
                              end_date => NULL,
                              enabled => false,
@@ -130,4 +134,3 @@ END;
 -- 	DBMS_SCHEDULER.disable(name=>'ace.update_user_remain_cnt', force => TRUE);
 -- END;
 --/
-
