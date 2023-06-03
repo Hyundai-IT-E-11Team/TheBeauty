@@ -71,7 +71,7 @@
 						<div id="reservationBrand"> 예약브랜드 : ${reservationInfo.brandSeq}</div>					
 					</div>
 					<div id="contentButton">
-						<input type="button" onclick="window.location.href='/theBeauty/consult'" value="상담시작"/>
+						<input type="button" onclick="window.location.href='/theBeauty/consult/${reservationInfo.reservationSeq}'" value="상담시작"/>
 						<input type="button" onclick="cancelReservation('${reservationInfo.userName}','${reservationInfo.reserveDate}','${reservationInfo.reserveTime}','${reservationInfo.brandSeq}')" value="예약취소"/>
 					</div>
 				</div>

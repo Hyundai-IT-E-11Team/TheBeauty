@@ -20,6 +20,7 @@
     let nextReservation = "${nextReservation}";
     let [year, month, day] = "${nextReservation.reserveDate}".split("-");
     let [hour, min] = "${nextReservation.reserveTime}".split(":");
+    let seq = "${nextReservation.reservationSeq}";
     let open = new Date(year, month - 1, day, hour, min);
 
     function remaindTime() {
@@ -50,8 +51,9 @@
         } else {
           // 현재시간이 종료시간보다 크면
           clearInterval(counter);
+          let link = "<a href='/theBeauty/consult/" + seq + "'>상담 시작하기</a>"
           $("#alert-box").html(
-            "<a href='/theBeauty/consult'>상담 시작하기</a>"
+            link
           );
         }
       }

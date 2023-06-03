@@ -19,8 +19,8 @@
 </head>
 <body>
 	<div id="consult-container">
-		<div id="join">
-			<h1>${currUser.userName }님 환영합니다.</h1>
+		<div id="join" style="display: block;">
+			<h1>${currUser.userName }님환영합니다.</h1>
 			<p>상담 브랜드</p>
 			<p>${reservation.brandName }</p>
 			<p>
@@ -36,7 +36,6 @@
 				<div id="subscriber"></div>
 			</div>
 		</div>
-
 		<c:if test="${currUser.roleNum > 0}">
 			<div id="c-container" style="display: none;">
 				<div>

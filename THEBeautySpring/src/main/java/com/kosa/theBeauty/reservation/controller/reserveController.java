@@ -43,11 +43,16 @@ public class reserveController {
 	@DebugLog
 	@GetMapping("reservationDetailPage")
 	public String reservationDetailPage(@SessionAttribute UserVO currUser, Model model) {
-		ReservationVO reservationvo = new ReservationVO();
-		List<ReservationVO> reservationList = new ArrayList<ReservationVO>();
-		reservationvo.setUserSeq(currUser.getUserSeq());
-		reservationList = service.getReservation(reservationvo);
-		model.addAttribute("reservationList", reservationList);
+		if (currUser.getRoleNum() == 0) {
+			ReservationVO reservationvo = new ReservationVO();
+			List<ReservationVO> reservationList = new ArrayList<ReservationVO>();
+			reservationvo.setUserSeq(currUser.getUserSeq());
+			reservationList = service.getReservation(reservationvo);
+			model.addAttribute("reservationList", reservationList);
+		} else {
+			model.addAttribute("reservationList", service.getBrandReservation(currUser.getRoleNum()));
+		}
+
 		return "reservation/reservationDetail";
 	}
 

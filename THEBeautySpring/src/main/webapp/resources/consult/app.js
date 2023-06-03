@@ -3,7 +3,6 @@ var session;
 
 
 function joinSession(currUserRole, mySessionId) {
-	console.log(mySessionId)
   OV = new OpenVidu();
   session = OV.initSession();
 
@@ -16,7 +15,7 @@ function joinSession(currUserRole, mySessionId) {
 	  let card = `
 		    <div id="${item.productSeq}" class="card" >
 		        <img src="${item.productImgurl}" alt="Product 1">
-		        <a href="product/detailPage/${item.productSeq}"
+		        <a href="/theBeauty/product/detailPage/${item.productSeq}"
 		        onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;"
 		        style="text-decoration: none; color: black;"
 		        >
@@ -34,10 +33,11 @@ function joinSession(currUserRole, mySessionId) {
       .connect(token)
       .then(() => {
     	// document.getElementById("session-header").innerText = mySessionId;
-        document.getElementById("join").style.display = "none";
+    	document.getElementById("join").style.display = "none";
         document.getElementById("session").style.display = "block";
-        document.getElementByClass("c-container").style.display = "block";
-        document.getElementByClass("u-container").style.display = "block";
+        if(currUserRole > 0) document.getElementById("c-container").style.display = "block";
+        else document.getElementById("u-container").style.display = "block";
+
         var publisher = OV.initPublisher("publisher");
         session.publish(publisher);
       })
