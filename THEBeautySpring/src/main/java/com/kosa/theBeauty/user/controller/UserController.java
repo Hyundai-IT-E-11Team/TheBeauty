@@ -96,7 +96,7 @@ public class UserController {
 	}
 
 	// 비밀번호 변경 페이지로 이동
-	@PostMapping("passwordChange")
+	@PostMapping("changePassword")
 	public String showChangePwPage(UserVO user, Model model) {
 		// db 검색
 		boolean ck = service.findPassword(user);
