@@ -42,7 +42,7 @@ public class reserveController {
 	// 예약완료 후 예약상세페이지 아니고 메인에서 바로 누를 때
 	@DebugLog
 	@GetMapping("reservationDetailPage")
-	public String reservationDetailPage(@SessionAttribute UserVO currUser,Model model) {
+	public String reservationDetailPage(@SessionAttribute UserVO currUser, Model model) {
 		ReservationVO reservationvo = new ReservationVO();
 		List<ReservationVO> reservationList = new ArrayList<ReservationVO>();
 		reservationvo.setUserSeq(currUser.getUserSeq());
@@ -50,29 +50,31 @@ public class reserveController {
 		model.addAttribute("reservationList", reservationList);
 		return "reservation/reservationDetail";
 	}
-  
-	//예약취소
+
+	// 예약취소
 	@DebugLog
 	@PostMapping("cancelReservation")
 	public ResponseEntity<String> cancelReservation(ReservationVO reservationvo) {
-		if(service.cancelReservation(reservationvo)) {
+		if (service.cancelReservation(reservationvo)) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-  }
-  
-  // 예약저장하고 설문페이지로
-  @DebugLog
-	@PostMapping(value = "myReservation", produces = "application/json; charset=utf8")
-	public ResponseEntity<String> myReservation(@SessionAttribute UserVO currUser,ReservationVO reservationvo, Model model) {
+		}
+	}
+
+	// 예약저장하고 설문페이지로
+	@DebugLog
+	@PostMapping(value = "myReservation", produces = "application/text; charset=utf8")
+	public ResponseEntity<String> myReservation(@SessionAttribute UserVO currUser, ReservationVO reservationvo,
+			Model model) {
 		reservationvo.setUserSeq(currUser.getUserSeq());
 		reservationvo.setUserName(currUser.getUserName());
 		try {
 			service.setReservation(reservationvo);
-			return  new ResponseEntity<>("/theBeauty/survey/surveyPage", HttpStatus.OK);
+			System.out.println("예약성공");
+			return new ResponseEntity<>("/theBeauty/survey/surveyPage", HttpStatus.OK);
 		} catch (UncategorizedSQLException e) {
-			return  new ResponseEntity<>(e.getMessage().split(":")[3],HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(e.getMessage().split(":")[3], HttpStatus.BAD_REQUEST);
 
 		}
 	}

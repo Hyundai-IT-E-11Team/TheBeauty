@@ -24,7 +24,6 @@ import lombok.RequiredArgsConstructor;
 public class SurveyController {
 
 	private final SurveyService service;
-	private final reserveService reserveService;
 	
 	// 설문 페이지로 이동
 	@DebugLog

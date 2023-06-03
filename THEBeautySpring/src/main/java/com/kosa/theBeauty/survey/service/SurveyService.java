@@ -15,7 +15,7 @@ public class SurveyService {
 	
 	public boolean insertSurvey(SurveyVO surveyVO) {
 		int cnt = dao.insertSurvey(surveyVO);
-	      if (cnt != 1) {
+	      if (cnt != -1) {
 	         return false;
 	      } else {
 	         return true;
