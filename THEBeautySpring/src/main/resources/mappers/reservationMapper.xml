@@ -73,7 +73,7 @@
 		SELECT *
 		FROM tb_reservation
 		WHERE user_seq = #{userSeq}
-		AND reserve_status != '예약취소'
+		AND reserve_status = 0 
 	</select>
 
 </mapper> 
