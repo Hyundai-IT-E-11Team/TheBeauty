@@ -1,5 +1,7 @@
 package com.kosa.theBeauty.user.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -97,14 +99,14 @@ public class UserController {
 
 	// 비밀번호 변경 페이지로 이동
 	@PostMapping("changePassword")
-	public String showChangePwPage(UserVO user, Model model) {
+	public String showChangePwPage(UserVO user, HttpSession session, Model model) {
 		// db 검색
 		boolean ck = service.findPassword(user);
 
 		if (ck) {
+			session.setAttribute("userMail", user.getUserMail());
 			return "user/changePw";
 		} else {
-			// model.addAttribute("message", "잘못된 요청입니다. 다시 입력해주세요.");
 			return "redirect:/user/password";
 		}
 	}
@@ -118,7 +120,6 @@ public class UserController {
 		if (isUpdated) {
 			return "redirect:login"; // 비밀번호 업데이트 성공 시 보여줄 뷰 이름
 		} else {
-			// model.addAttribute("message", "비밀번호 업데이트에 실패했습니다.");
 			return "redirect:/user/changePw";
 		}
 	}
