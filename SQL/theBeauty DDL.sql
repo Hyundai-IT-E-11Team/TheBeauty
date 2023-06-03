@@ -32,7 +32,7 @@ CREATE TABLE tb_user (
     user_name          VARCHAR2(255) NOT NULL,
     user_mail          VARCHAR2(255) NOT NULL,
     user_pw            VARCHAR2(255) NOT NULL,
-    user_registration  NUMBER NOT NULL,
+    user_registration  VARCHAR2(255) NOT NULL,
     user_mobile        NUMBER,
     remain_cnt         NUMBER DEFAULT 10,
     FOREIGN KEY ( role_num )
