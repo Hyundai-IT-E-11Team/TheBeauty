@@ -30,7 +30,9 @@ public class MainController {
 	@DebugLog
 	@GetMapping("mainPage")
 	public String login(@SessionAttribute(required = false) UserVO currUser, Model model) {
-		
+		if(currUser != null && currUser.getRoleNum() == 0) {
+			model.addAttribute("nextReservation", reService.getReservation(currUser.getUserSeq()));
+		}
 		return "main/userMain";
 	}
 	
