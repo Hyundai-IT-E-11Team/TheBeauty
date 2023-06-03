@@ -40,7 +40,7 @@
 	<update id="updateReservation" parameterType="ReservationVO">
 		UPDATE
 		tb_reservation
-		SET reserve_status = '예약취소'
+		SET reserve_status = 3
 		WHERE brand_seq = #{brandSeq}
 		AND user_Name = #{userName}
 		AND reserve_date = #{reserveDate}
