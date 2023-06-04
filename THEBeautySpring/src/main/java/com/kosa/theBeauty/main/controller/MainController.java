@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.product.domain.BrandVO;
+import com.kosa.theBeauty.product.domain.PaginationVO;
 import com.kosa.theBeauty.product.domain.ProductDetailVO;
 import com.kosa.theBeauty.product.service.ProductService;
 import com.kosa.theBeauty.reservation.service.reserveService;
@@ -38,10 +40,24 @@ public class MainController {
 	
 	@DebugLog
 	@PostMapping("brandPage")
-	public String brandPage(BrandVO vo, Model model) {
-		List<ProductDetailVO> products = service.getProductsByBrand(vo.getBrandSeq());
-		model.addAttribute("brand", vo);
+	public String getProductsByBrandPaged(int brandSeq, PaginationVO vo, BrandVO bvo, Model model) {
+		int totalNum = service.getProductsCountByBrand(vo);
+		List<ProductDetailVO> products = service.getProductsByBrandPaged(vo);
+		int paginationNum = service.calculatePaginationNum(totalNum);
+		
+		model.addAttribute("totalNum", totalNum);
+
 		model.addAttribute("products", products);
+		
+		model.addAttribute("paginationNum", paginationNum);
+		
+		model.addAttribute("productName", vo.getProductName());
+		
+		model.addAttribute("page", vo.getPage());
+		
+
+		model.addAttribute("brand", bvo);
+
 		return "main/brand";
 	}
 }

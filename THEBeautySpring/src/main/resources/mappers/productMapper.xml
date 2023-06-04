@@ -84,9 +84,20 @@
 		WHERE p.product_seq = #{productSeq}
 	</select>
 
-	<!-- 브랜드관 페이지 상품리스트 -->
-	<select id="getProductsByBrand" resultMap="ProductDetailVOMap">
+	<!-- 브랜드관 페이지 상품리스트 hw -->
+	<select id="getProductsByBrandPaged" parameterType="PaginationVO" resultMap="ProductDetailVOMap">
 		SELECT p.*, b.*
+		FROM tb_product p
+		JOIN tb_brand b
+		ON p.brand_seq = b.brand_seq
+		WHERE b.brand_seq = #{brandSeq}
+		OFFSET #{offset} ROWS FETCH NEXT 20 ROWS ONLY
+	</select>
+	
+	<!-- pagination 검색 상품 개수 구하기 -->
+	<select id="getProductsCountByBrand" parameterType="PaginationVO"
+		resultType="_int">
+		SELECT COUNT(*) AS count
 		FROM tb_product p
 		JOIN tb_brand b
 		ON p.brand_seq = b.brand_seq

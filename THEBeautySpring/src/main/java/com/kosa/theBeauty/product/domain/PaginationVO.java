@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 public class PaginationVO {
 	private String productName;
 	private String productCategory;
+	private int brandSeq;
 	private int offset;
 	private int page;
 }

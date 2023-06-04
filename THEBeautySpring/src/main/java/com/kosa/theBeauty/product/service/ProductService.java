@@ -64,9 +64,16 @@ public class ProductService {
 	}
 	
 	// 브랜드별 상품 목록 조회 (브랜드관 페이지) - phw
-	public List<ProductDetailVO> getProductsByBrand(int brandSeq) {
+	public int getProductsCountByBrand(PaginationVO vo) {
+		return dao.getProductsCountByBrand(vo);
+	}
+	
+	public List<ProductDetailVO> getProductsByBrandPaged(PaginationVO vo) {
 		
-		return dao.getProductsByBrand(brandSeq);
+		// vo에 offset 바꿔주기
+		vo = calculateAndSetOffset(vo);
+		
+		return dao.getProductsByBrandPaged(vo);
 	}
 	
 	////////////////////////////////////////////////////////////////
