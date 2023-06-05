@@ -18,8 +18,8 @@
 	<select id="selectUserByDTO" parameterType="userDTO" resultMap="UserVOMap">
 		SELECT *
 		  FROM tb_user
-		 WHERE user_mail = #{mail}
-		   AND user_pw = #{pw}
+		 WHERE user_mail = #{userMail}
+		   AND user_pw = #{userPw}
 	</select>
 	
 	<!-- 아이디 찾기 -->

@@ -15,9 +15,9 @@
 			<h3>더뷰티닷컴 회원</h3>
 			<form action="" method="POST">
 				<div>
-					<input placeholder="더현대닷컴 이메일" class="textInput" type="email" name="mail"> <br> 
+					<input placeholder="더현대닷컴 이메일" class="textInput" type="email" name="userMail"> <br> 
 					<input placeholder="더현대닷컴 비밀번호" class="textInput"
-						type="password" name="pw">
+						type="password" name="userPw">
 				</div>
 				<input id="loginBtn"  type="submit" value="로그인">
 			</form>

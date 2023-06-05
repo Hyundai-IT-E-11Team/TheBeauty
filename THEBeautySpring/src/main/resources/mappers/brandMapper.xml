@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kosa.theBeauty.reservation.dao.reserveDAO">
+<mapper namespace="com.kosa.theBeauty.main.dao.mainDAO">
 	<resultMap type="BrandVO" id="BrandVOMap">
 		<result column="brand_seq" property="brandSeq" />
 		<result column="brand_name" property="brandName" />
@@ -13,30 +13,13 @@
 		<result column="brand_img3" property="brandImg3" />
 		<result column="brand_img4" property="brandImg4" />
 	</resultMap>
-	<resultMap type="ProductVO" id="ProductVOMap">
-		<result column="PRODUCT_SEQ" property="productSeq" />
-		<result column="BRAND_SEQ" property="brandSeq" />
-		<result column="PRODUCT_NAME" property="productName" />
-		<result column="PRODUCT_PRICE" property="productPrice" />
-		<result column="PRODUCT_IMGURL" property="productImgurl" />
-		<result column="PRODUCT_CATEGORY" property="productCategory" />
-	</resultMap>
-
-	<!-- 브랜드 정보 찾기 -->
-	<select id="selectBrandInfo" parameterType="BrandVO" resultMap="BrandVOMap">
+	
+	<!-- 브랜드정보 계정 롤넘으로 찾기 -->
+	<select id="selectBrnadByUser" parameterType="int" resultMap="BrandVOMap">
 		SELECT *
 		  FROM tb_brand
-		 WHERE brand_seq = #{brandSeq}
+		 WHERE brand_seq = #{rollNum}
 	</select>
-	<!-- 해당 브랜드 상품 정보 찾기 --><!-- 쿼리문 수정필요 -->
-	<select id="selectProductInfo" parameterType="BrandVO" resultMap="ProductVOMap">
-		SELECT *
-		  FROM tb_product
-		 WHERE product_seq = (SELECT MIN(product_seq)
-  							    FROM tb_product
- 							   WHERE brand_seq = (SELECT brand_seq
-    						    FROM tb_brand
-    						   WHERE brand_name = #{brandName}))
-	</select>
+	
 	
 </mapper>  

@@ -16,6 +16,7 @@ import com.kosa.theBeauty.product.domain.PaginationVO;
 import com.kosa.theBeauty.product.domain.ProductDetailVO;
 import com.kosa.theBeauty.product.service.ProductService;
 import com.kosa.theBeauty.reservation.service.reserveService;
+import com.kosa.theBeauty.main.service.mainService;
 import com.kosa.theBeauty.user.domain.UserVO;
 
 import lombok.RequiredArgsConstructor;
@@ -28,12 +29,19 @@ public class MainController {
 	// 스프링 의존성 주입에 의해 다른 패키지에있는 ProductService 클래스를 사용 가능
     private final ProductService service;
 	private final reserveService reService;
+	private final mainService mainService;
     
 	@DebugLog
 	@GetMapping("mainPage")
 	public String login(@SessionAttribute(required = false) UserVO currUser, Model model) {
 		if(currUser != null && currUser.getRoleNum() == 0) {
 			model.addAttribute("nextReservation", reService.getReservation(currUser.getUserSeq()));
+			return "main/userMain";
+		}
+		else if(currUser != null && currUser.getRoleNum() != 0) {
+			BrandVO adminBrandvo = mainService.getBrandInfo(currUser.getRoleNum());
+			model.addAttribute("adminBrand",adminBrandvo);
+			return "main/adminMain";
 		}
 		return "main/userMain";
 	}

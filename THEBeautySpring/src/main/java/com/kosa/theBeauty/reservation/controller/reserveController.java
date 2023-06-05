@@ -49,10 +49,7 @@ public class reserveController {
 			reservationvo.setUserSeq(currUser.getUserSeq());
 			reservationList = service.getReservation(reservationvo);
 			model.addAttribute("reservationList", reservationList);
-		} else {
-			model.addAttribute("reservationList", service.getBrandReservation(currUser.getRoleNum()));
 		}
-
 		return "reservation/reservationDetail";
 	}
 
@@ -83,6 +80,16 @@ public class reserveController {
 
 		}
 	}
+	
+	//관리자 예약관리 페이지
+	@DebugLog
+	@PostMapping("reserveManaging")
+	public String reserveManaging(BrandVO brandvo,Model model) {
+		brandvo = service.getBrandInfo(brandvo);
+		model.addAttribute("brandInfo", brandvo);
+		return "reservation/adminReservation";
+	}
+	
 
 	// 예약 가능,불가능 시간 출력
 	@DebugLog
@@ -96,5 +103,6 @@ public class reserveController {
 		}
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+	
 
 }
