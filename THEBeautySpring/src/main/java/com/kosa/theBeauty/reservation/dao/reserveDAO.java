@@ -8,7 +8,7 @@ import com.kosa.theBeauty.reservation.domain.ReservationVO;
 
 public interface reserveDAO {
 	
-	BrandVO selectBrandInfo(BrandVO vo);
+	BrandVO selectBrandInfo(int roleNum);
 	int insertReservationInfo(ReservationVO vo) throws UncategorizedSQLException;
 	ReservationVO selectReservationInfo(ReservationVO reservationvo);
 	List<ReservationVO> selectReservationforDetail(ReservationVO reservationvo);
