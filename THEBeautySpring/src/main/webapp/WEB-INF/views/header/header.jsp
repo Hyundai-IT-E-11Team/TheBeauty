@@ -85,7 +85,7 @@
 				<a class="bigButton" href="/theBeauty/user/login">로그인 / 회원가입</a>
 			</c:if>
 			<c:if test = "${not empty currUser }">
-				<a class="bigButton" href="/theBeauty/user/logout">${currUser.userName} 님 환영합니다.</a>
+				<a class="bigButton" href="/theBeauty/user/logout">${currUser.userName}님 환영합니다.</a>
 			</c:if>
 				<a class="smallButton" href="/theBeauty/reserve/reservationDetailPage">마이뷰티</a>
 				<a class="smallButton" href="${pageContext.request.contextPath}/cart/cartPage">장바구니</a>
