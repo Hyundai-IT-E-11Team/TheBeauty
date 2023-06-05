@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
@@ -47,25 +46,31 @@ public class MainController {
 	}
 	
 	@DebugLog
-	@PostMapping("brandPage")
-	public String getProductsByBrandPaged(int brandSeq, PaginationVO vo, BrandVO bvo, Model model) {
+	@GetMapping("brand/{brandName}")
+	public String getProductsByBrandPaged(@PathVariable("brandName") String brandName,  PaginationVO vo, Model model) {
+		
+		BrandVO brand =  mainService.getBrandInfoByBrandName(brandName);
+		vo.setBrandName(brandName);
+		vo.setBrandSeq(brand.getBrandSeq());
+		
 		int totalNum = service.getProductsCountByBrand(vo);
+		
 		List<ProductDetailVO> products = service.getProductsByBrandPaged(vo);
+		
 		int paginationNum = service.calculatePaginationNum(totalNum);
 		
+		model.addAttribute("brand", brand);
+
 		model.addAttribute("totalNum", totalNum);
 
 		model.addAttribute("products", products);
 		
 		model.addAttribute("paginationNum", paginationNum);
 		
-		model.addAttribute("productName", vo.getProductName());
+		model.addAttribute("brandName", brandName);
 		
 		model.addAttribute("page", vo.getPage());
 		
-
-		model.addAttribute("brand", bvo);
-
 		return "main/brand";
 	}
 }
