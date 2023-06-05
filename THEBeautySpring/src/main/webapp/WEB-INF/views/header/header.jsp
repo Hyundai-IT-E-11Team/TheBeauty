@@ -113,34 +113,34 @@
 							</div>
 							<div class="row">
 								<ul class="mega-links">
-									<li><a href="#">& Other Stories</a></li>
-									<li><a href="#">CHANNEL BEAUTY</a></li>
-									<li><a href="#">Dior</a></li>
-									<li><a href="#">아모레퍼시픽</a></li>
-									<li><a href="#">SISLEY</a></li>
-									<li><a href="#">L'OCCITANE</a></li>
-									<li><a href="#">CREED</a></li>
-									<li><a href="#">Hermes</a></li>
-									<li><a href="#">TOM FORD BEAUTY</a></li>
-									<li><a href="#">GUCCI BEAUTY</a></li>
-									<li><a href="#">LANCOME</a></li>
-									<li><a href="#">GUERLAIN</a></li>
+									<li><a href="/theBeauty/main/brand/샤넬">& Other Stories</a></li>
+									<li><a href="/theBeauty/main/brand/샤넬">CHANNEL BEAUTY</a></li>
+									<li><a href="/theBeauty/main/brand/디올">Dior</a></li>
+									<li><a href="/theBeauty/main/brand/에스티로더">ESTEE LAUDER</a></li>
+									<li><a href="/theBeauty/main/brand/시슬리">SISLEY</a></li>
+									<li><a href="/theBeauty/main/brand/록시땅">L'OCCITANE</a></li>
+									<li><a href="/theBeauty/main/brand/디올">CREED</a></li>
+									<li><a href="/theBeauty/main/brand/에르메스">Hermes</a></li>
+									<li><a href="/theBeauty/main/brand/톰포드">TOM FORD BEAUTY</a></li>
+									<li><a href="/theBeauty/main/brand/구찌">GUCCI BEAUTY</a></li>
+									<li><a href="/theBeauty/main/brand/랑콤">LANCOME</a></li>
+									<li><a href="/theBeauty/main/brand/랑콤">GUERLAIN</a></li>
 								</ul>
 							</div>
 							<div class="row">
 								<ul class="mega-links">
-									<li><a href="#">Augustinus Bader</a></li>
-									<li><a href="#">GIVENCHY</a></li>
-									<li><a href="#">CLARINS</a></li>
-									<li><a href="#">LA MER</a></li>
-									<li><a href="#">LA PRAIRIE</a></li>
-									<li><a href="#">VALMONT</a></li>
-									<li><a href="#">Be CLEAN</a></li>
-									<li><a href="#">Oera</a></li>
-									<li><a href="#">SK-||</a></li>
-									<li><a href="#">NARS</a></li>
-									<li><a href="#">메종 마르지엘라</a></li>
-									<li><a href="#">리바이리</a></li>
+									<li><a href="/theBeauty/main/brand/브이디엘">VDL</a></li>
+									<li><a href="/theBeauty/main/brand/브이디엘">GIVENCHY</a></li>
+									<li><a href="/theBeauty/main/brand/이솝">AESOP</a></li>
+									<li><a href="/theBeauty/main/brand/록시땅">LA MER</a></li>
+									<li><a href="/theBeauty/main/brand/록시땅">LA PRAIRIE</a></li>
+									<li><a href="/theBeauty/main/brand/록시땅">VALMONT</a></li>
+									<li><a href="/theBeauty/main/brand/디올">Be CLEAN</a></li>
+									<li><a href="/theBeauty/main/brand/디올">Oera</a></li>
+									<li><a href="/theBeauty/main/brand/에스케이투">SK-||</a></li>
+									<li><a href="/theBeauty/main/brand/나스">NARS</a></li>
+									<li><a href="/theBeauty/main/brand/나스">메종 마르지엘라</a></li>
+									<li><a href="/theBeauty/main/brand/나스">리바이리</a></li>
 								</ul>
 							</div>
 						</div>
