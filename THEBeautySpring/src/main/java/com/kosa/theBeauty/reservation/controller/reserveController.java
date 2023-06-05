@@ -87,8 +87,8 @@ public class reserveController {
 	@DebugLog
 	@GetMapping("reserveManaging")
 	public String reserveManaging(@SessionAttribute UserVO currUser,Model model) {
-		BrandVO brandvo = service.getBrandInfo(currUser.getRoleNum());
-		model.addAttribute("brandInfo", brandvo);
+		BrandVO brandVo = service.getBrandInfo(currUser.getRoleNum());
+		model.addAttribute("brandInfo", brandVo);
 		return "reservation/adminReservation";
 	}
 	

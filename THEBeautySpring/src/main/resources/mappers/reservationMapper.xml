@@ -115,5 +115,14 @@
 		WHERE reservation_seq = #{reservationSeq}
 	</select>
 	
+	<update id="updateReservationStatus">
+		UPDATE tb_reservation
+		   SET reserve_status = 1
+		 WHERE reservation_seq = #{reservationSeq}
+	</update>
 	
+	<insert id="createStatisfaction" parameterType="SatisfactionVO">
+		INSERT INTO tb_satisfaction (reservation_seq, user_score, user_comment)
+		VALUES (#{reservationSeq}, #{score}, #{comment} )
+	</insert>
 </mapper> 

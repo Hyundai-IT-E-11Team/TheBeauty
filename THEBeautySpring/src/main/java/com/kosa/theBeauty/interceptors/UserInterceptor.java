@@ -15,7 +15,7 @@ public class UserInterceptor implements HandlerInterceptor {
     	UserVO user = (UserVO) WebUtils.getSessionAttribute(request, "currUser");
         // 만약 사용자가 로그인하지 않았다면, 로그인 페이지로 리다이렉트하고 현재 요청 중단
         if(user == null) {
-            response.sendRedirect("/user/login");
+            response.sendRedirect("/theBeauty/user/login");
             return false;
         }
         // 사용자가 로그인한 경우, 요청 처리

@@ -37,6 +37,8 @@
 			type="com.kosa.theBeauty.survey.domain.SurveyVO" />
 		<typeAlias alias="ReservationVO"
 			type="com.kosa.theBeauty.reservation.domain.ReservationVO" />
+		<typeAlias alias="SatisfactionVO"
+			type="com.kosa.theBeauty.reservation.domain.SatisfactionVO" />
 
 	</typeAliases>
 
