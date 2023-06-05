@@ -64,4 +64,12 @@ public class CartController {
 	    service.deleteProduct(currUser.getUserSeq(), productSeq);
 	    return new ResponseEntity<String>("sucess", HttpStatus.OK);
 	}
+	
+	// 장바구니에서 상품의 개수 변경 시 db업데이트
+	@DebugLog
+	@PostMapping("updateProductCount")
+	public ResponseEntity<String> updateProductCount(@SessionAttribute UserVO currUser, @RequestParam(value="productSeq") int productSeq, @RequestParam(value="productCount") int productCount) {
+	    service.updateProductCount(currUser.getUserSeq(), productSeq, productCount);
+	    return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 }

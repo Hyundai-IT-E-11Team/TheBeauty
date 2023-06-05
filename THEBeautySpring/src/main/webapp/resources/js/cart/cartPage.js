@@ -58,6 +58,21 @@ $(document).ready(function() {
         // 장바구니 개수에 따른 가격 변경
         let totalPrice = currentCount * productPrice;
         productPriceElement.innerHTML = totalPrice.toLocaleString("ko-KR") + "원";
+       
+        // 장바구니 상품 개수 업데이트 (DB 업데이트)
+        $.ajax({
+            url: '/theBeauty/cart/updateProductCount',
+            type: 'POST',
+            data: {
+                productSeq: productSeq,
+                productCount: currentCount
+            }
+        }).done(function(response) {
+            console.log(response);
+        }).fail(function(error) {
+            console.log(error);
+        });
+        
         updateTotalPrice()
     }
 

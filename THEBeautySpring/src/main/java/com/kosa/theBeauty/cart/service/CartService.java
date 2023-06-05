@@ -31,4 +31,10 @@ public class CartService {
 	public void deleteProduct(int userSeq, int productSeq) {
 	    dao.deleteProduct(userSeq, productSeq);
 	}
+	
+	// 장바구니에서 상품의 개수 변경 시 db업데이트
+	public void updateProductCount(int userSeq, int productSeq, int productCount) {
+	    dao.updateProductCount(userSeq, productSeq, productCount);
+	}
+	
 }
