@@ -15,6 +15,7 @@
 <body>
 	<!-- header추가 -->
 	<%@ include file="/WEB-INF/views/header/header.jsp"%>
+	<div class="productlist-wrap">
 	<div class="brand-container">
 		<div class="brand-consulting">
 			<div></div>
@@ -24,8 +25,8 @@
 			</div>
 			<div>
 				<form action="/theBeauty/reserve/reservePage" method="POST">
-					<input type="hidden" type="userSeq" value="user.userSeq">
-					<input type="hidden" name="brandSeq" value="${brand.brandSeq}">
+					<input type="hidden" type="userSeq" value="user.userSeq"> <input
+						type="hidden" name="brandSeq" value="${brand.brandSeq}">
 					<button class="consulting-btn" type="submit">▶ 상담예약</button>
 				</form>
 			</div>
@@ -49,26 +50,25 @@
 			</div>
 		</div>
 		<div class="product-list">
-			<c:forEach var="productDetail" items="${products}" varStatus="loop">
-				<div class="product-info">
-					<div><img src="${productDetail.productVO.productImgurl}"
-						alt="Product Image">
-					</div>
+			<c:forEach var="productDetail" items="${products}">
+				<a
+					href="${pageContext.request.contextPath}/product/detailPage/${productDetail.productVO.productSeq}"
+					class="product"><img
+					src="${productDetail.productVO.productImgurl}" width="256px"
+					height="256px">
 					<div class="product-price">${productDetail.productVO.productPrice}</div>
 					<div class="product-name">${productDetail.productVO.productName}</div>
-				</div>
-				<c:if test="${loop.index % 4 == 3}">
-					<div style="clear: both;"></div>
-				</c:if>
+				</a>
 			</c:forEach>
 		</div>
 	</div>
+	</div>
 	<!-- pagination 추가 -->
 	<jsp:include page="/WEB-INF/views/main/brandPagination.jsp">
-    	<jsp:param name="brandSeq" value="${brandSeq }" />
-    	<jsp:param name="paginationNum" value="${paginationNum }" />
-    	<jsp:param name="page" value="${page}" />
-		    	
+		<jsp:param name="brandSeq" value="${brandSeq }" />
+		<jsp:param name="paginationNum" value="${paginationNum }" />
+		<jsp:param name="page" value="${page}" />
+
 	</jsp:include>
 </body>
 </html>

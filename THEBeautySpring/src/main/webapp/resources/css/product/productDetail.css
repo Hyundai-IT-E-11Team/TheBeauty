@@ -6,11 +6,18 @@
 	font-family: "Poppins", sans-serif;
 }
 
-#logoImg {
-	width: 180px;
-	height: 60px;
+#prd-shop-form {
+	diplay: flex;
+	justify-content: center;
+	align-items: center;
 }
 
+#logoImg {
+	width: auto;
+	height: 40px;
+	margin-top: 10px;
+	cursor:pointer;
+}
 
 /* 상품 상세정보 css */
 .prd-detail-content {
@@ -50,36 +57,37 @@
 }
 
 .product-control {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-    float: right;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: flex-start;
+	margin-bottom: 20px;
+	float: right;
 }
 
-.product-control > * {
-    margin-right: 10px; /* 간격을 조절합니다. 필요에 따라 변경하세요. */
+.product-control>* {
+	margin-right: 10px; /* 간격을 조절합니다. 필요에 따라 변경하세요. */
 }
+
 #decrease-button, #increase-button {
 	border: none;
+	cursor: pointer;
 }
-
 
 .sumPrice:first-child {
-  color: #e35c61;
-  font-size: 20px;
-  align-items: flex-end;
-  margin-right: 4px;
+	color: #e35c61;
+	font-size: 20px;
+	align-items: flex-end;
+	margin-right: 4px;
 }
 
-.sumPrice:last-child{
+.sumPrice:last-child {
 	color: #e35c61;
 	font-size: 24px;
 }
 
 .prd-shop button {
-	border: none; 
+	border: none;
 	background: #fff;
 	width: 20px;
 	height: 20px;
@@ -105,6 +113,7 @@
 	flex-grow: 1; /* 각 버튼이 동일한 공간을 차지하도록 */
 	text-align: center;
 	box-sizing: border-box;
+	cursor: pointer;
 }
 
 .prd-info-box .cart-button {

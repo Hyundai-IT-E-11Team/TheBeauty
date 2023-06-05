@@ -21,5 +21,10 @@
 		 WHERE brand_seq = #{rollNum}
 	</select>
 	
+	<select id="selectBrandByName" resultMap="BrandVOMap">
+		SELECT *
+		  FROM tb_brand
+		 WHERE brand_name = #{brandName}
+	</select>
 	
 </mapper>  

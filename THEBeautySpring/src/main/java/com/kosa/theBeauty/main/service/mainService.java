@@ -17,4 +17,8 @@ public class mainService {
 
 	      return dao.selectBrnadByUser(roleNum);
 	   }
+	 
+	 public BrandVO getBrandInfoByBrandName(String brandName) {
+		 return dao.selectBrandByName(brandName);
+	 }
 }
