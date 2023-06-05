@@ -34,8 +34,6 @@ function calculateShippingFee(price) {
 function productCounting(value) {
 	var currCount = Number(document.getElementById("currCount").innerHTML);
 	var productPrice = parseInt(productDetail.productVO.productPrice.replace(/[^0-9.]+/g, ""));
-	document.getElementById("sumPrice").innerHTML = "";
-	document.getElementById("currCount").innerHTML = "";
 		
 	if(value==="+"){
 		currCount += 1;
@@ -50,5 +48,9 @@ function productCounting(value) {
 	productPrice = productPrice * currCount;
 	document.getElementById("currCount").innerHTML = currCount;
 	document.getElementById("productCount").value = currCount;
+	
+	// 합계 가격 업데이트
+    var sumPriceElement = document.getElementsByClassName("sumPrice")[1];
+    sumPriceElement.innerHTML = productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원";
 	document.getElementById("sumPrice").innerHTML = productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원";
 }

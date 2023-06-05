@@ -15,7 +15,7 @@
    	<div id="outter">
 		<div id="container">
 	    <h3>더뷰티닷컴 비밀번호 찾기</h3>
-	    <form id="passwordFindForm" class="content" action="passwordChange" method="post">
+	    <form id="passwordFindForm" class="content" action="changePassword" method="post">
 	        <div>
 	            <input placeholder="더현대닷컴 이메일" class="textInput" name="userMail" type="email" required /> <br>
 	            <input placeholder="더현대닷컴 주민번호" class="textInput" name="userRegistration" id="userRegistration" type="text" required />

@@ -134,7 +134,6 @@ END;
 -- 	DBMS_SCHEDULER.disable(name=>'ace.update_user_remain_cnt', force => TRUE);
 -- END;
 --/
-
 CREATE OR REPLACE PROCEDURE tb_survey_insert (
   user_seq_param IN tb_survey.user_seq%TYPE,
   survey_skintype_param IN tb_survey.survey_skintype%TYPE,
@@ -177,4 +176,41 @@ EXCEPTION
     -- 에러 메시지 출력
     DBMS_OUTPUT.PUT_LINE('에러: ' || SQLERRM);
 END;
+/
+-- 한 user의 cart에 같은 상품이 추가될 때 product_count만 증가하도록 설정
+create or replace procedure tb_cart_insert 
+(
+  user_seq_param IN tb_cart.user_seq%TYPE,
+  product_seq_param IN tb_cart.product_seq%TYPE,
+  product_count_param IN tb_cart.product_count%TYPE
+)
+is
+  v_cnt NUMBER;
+begin
+  -- user_seq와 product_seq를 기준으로 장바구니에서 상품 개수를 조회
+  SELECT count(*) INTO v_cnt
+  FROM tb_cart 
+  WHERE user_seq = user_seq_param 
+  AND product_seq = p roduct_seq_param;
+  
+  -- 조회한 상품 개수가 0보다 크면     
+  IF v_cnt > 0 THEN
+    -- 장바구니의 해당 상품 개수를 증가
+    UPDATE tb_cart
+    SET product_count = product_count + product_count_param
+    WHERE user_seq = user_seq_param 
+    AND product_seq = product_seq_param;
+  ELSE
+	  -- 아니라면 새로운 상품을 장바구니에 추가
+    INSERT INTO tb_cart (user_seq, product_seq, product_count)
+    VALUES (user_seq_param, product_seq_param, product_count_param);
+  END IF;
+
+  COMMIT;
+  
+EXCEPTION
+  WHEN OTHERS THEN
+    ROLLBACK;
+    RAISE;
+end tb_cart_insert;
 /
