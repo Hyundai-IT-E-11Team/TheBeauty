@@ -3,6 +3,8 @@ package com.kosa.theBeauty.reservation.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.UncategorizedSQLException;
@@ -39,18 +41,23 @@ public class reserveController {
 		return "reservation/reservation";
 	}
 
-	// 예약완료 후 예약상세페이지 아니고 메인에서 바로 누를 때
+	 // 예약완료 후 예약상세페이지 아니고 메인에서 바로 누를 때
 	@DebugLog
 	@GetMapping("reservationDetailPage")
-	public String reservationDetailPage(@SessionAttribute UserVO currUser, Model model) {
-		if (currUser.getRoleNum() == 0) {
+	public String reservationDetailPage(HttpSession session, Model model) {
+		if (session == null || session.getAttribute("currUser") == null) {
+			return "redirect:/user/login";
+		}
+		UserVO currUser = (UserVO) session.getAttribute("currUser");
+		if (currUser != null && currUser.getRoleNum() == 0) {
 			ReservationVO reservationvo = new ReservationVO();
 			List<ReservationVO> reservationList = new ArrayList<ReservationVO>();
 			reservationvo.setUserSeq(currUser.getUserSeq());
 			reservationList = service.getReservation(reservationvo);
 			model.addAttribute("reservationList", reservationList);
+			return "reservation/reservationDetail";
 		}
-		return "reservation/reservationDetail";
+		return "redirect:/main/mainPage";
 	}
 
 	// 예약취소
