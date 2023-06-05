@@ -25,19 +25,19 @@
 				</div>
 				<i id="left" class="fa-solid fa-angle-left"></i>
 				<div class="carousel">
-					<a href="#"><img
+					<a href="/theBeauty/main/brand/헤라"><img
 						src="${pageContext.request.contextPath}/resources/images/img01.jpg"
-						alt="img"></a> <a href="#"><img
+						alt="img"></a> <a href="/theBeauty/main/brand/디올"><img
 						src="${pageContext.request.contextPath}/resources/images/img02.jpg"
-						alt="img"></a> <a href="#"><img
+						alt="img"></a> <a href="/theBeauty/main/brand/에스티로더"><img
 						src="${pageContext.request.contextPath}/resources/images/img03.jpg"
-						alt="img"></a> <a href="#"><img
+						alt="img"></a> <a href="/theBeauty/main/brand/시슬리"><img
 						src="${pageContext.request.contextPath}/resources/images/img04.jpg"
-						alt="img"></a> <a href="#"><img
+						alt="img"></a> <a href="/theBeauty/main/brand/나스"><img
 						src="${pageContext.request.contextPath}/resources/images/img08.jpg"
-						alt="img"></a> <a href="#"><img
+						alt="img"></a> <a href="/theBeauty/main/brand/랑콤"><img
 						src="${pageContext.request.contextPath}/resources/images/img09.jpg"
-						alt="img"></a> <a href="#"><img
+						alt="img"></a> <a href="/theBeauty/main/brand/바비브라운"><img
 						src="${pageContext.request.contextPath}/resources/images/img10.jpg"
 						alt="img"></a>
 				</div>

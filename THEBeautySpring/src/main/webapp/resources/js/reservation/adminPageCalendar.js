@@ -78,6 +78,7 @@ function prevCalendar() {
 	document.getElementById("inputDate").innerHTML = "";
 	document.getElementById("inputTime").innerHTML = "";
 	document.getElementById("timeTable").innerHTML = "";
+	clearSpan();
 	buildCalendar(); // 달력재로딩
 }
 
@@ -88,6 +89,7 @@ function nextCalendar() {
 	document.getElementById("inputDate").innerHTML = "";
 	document.getElementById("inputTime").innerHTML = "";
 	document.getElementById("timeTable").innerHTML = "";
+	clearSpan();
 	buildCalendar(); // 달력재로딩
 }
 // 날짜선택 >> inputTime에 입력
@@ -95,7 +97,6 @@ function selectDate(pTag) {
 	document.getElementById("inputTime").innerHTML = "";
 	document.getElementById("inputDate").innerHTML = "";
 	document.getElementById("inputDate").value = pTag.innerHTML;
-
 	let year = document.getElementById("calYear").innerText;
 	let month = document.getElementById("calMonth").innerText;
 	let date = pTag.innerHTML;
@@ -109,6 +110,7 @@ function selectDate(pTag) {
 // 날짜 click시 >> 하위 timeTable출력
 function showTimeTable() {
 	document.getElementById("timeTable").innerHTML = "";
+	clearSpan();
 	let timeTable = document.getElementById('timeTable');
 	let inputDate = document.getElementById("inputDate").innerHTML;
 	let brandSeq = document.getElementById("brandSeq").value;
@@ -134,7 +136,7 @@ function showTimeTable() {
 		        	timeItem.addEventListener("click", function() {
 		        	let selectedTime = this.textContent;
 		        	document.getElementById("inputTime").textContent = selectedTime;
-		        	
+		        	floatToInfo();
 		        	});
 	        	} else {
 		        	timeItem.textContent = "예약없음";
@@ -166,6 +168,7 @@ function showTimeTable() {
 		        	timeItem.addEventListener("click", function() {
 		        	let selectedTime = this.textContent;
 		        	document.getElementById("inputTime").textContent = selectedTime;
+		        	floatToInfo();
 		        	});
 	        	} else {
 		        	timeItem.textContent = "예약없음";
@@ -176,8 +179,48 @@ function showTimeTable() {
 	        	console.log("시간로딩실패");
 	        }
 	    });
-	    
 	}
 }
 
-
+function floatToInfo() {
+	let inputDate = document.getElementById("inputDate").innerHTML;
+	let inputTime = document.getElementById("inputTime").innerHTML;
+	let brandSeq = document.getElementById("brandSeq").value;
+	
+	$.ajax({
+	    url: "/theBeauty/reserve/getReserveforManage",
+	    type: "POST",
+	    data: {
+	    	brandSeq : brandSeq,
+        	reserveDate : inputDate,
+        	reserveTime : inputTime
+	    },
+	    success: function(data) {
+	        $("#userName").text("고객명 : "+data.userName);
+	        $("#consultDate").text("일   자 : "+data.reserveDate);
+	        $("#consultTime").text("시   간 : "+data.reserveTime);
+	        $("#consultContent").text("상담내용 : 1대1 Premium Consulting");
+	        
+	        switch(data.reserveStatus){
+	        case 0: data.reserveStatus = '예약확정';
+	        	break;
+	        case 1: data.reserveStatus = '상담종료';
+	        	break;
+	        case 2: data.reserveStatus = 'NoShow';
+	        	break;
+	        }
+	        $("#consultStatus").text("예약상태 : "+data.reserveStatus);
+	        $("#consultLink").attr("href", function(i, val) {
+	        	  return val + data.reservationSeq;
+	        	});
+	    }
+	});
+}
+function clearSpan(){
+	document.getElementById("userName").innerHTML = "";
+	document.getElementById("consultDate").innerHTML = "";
+	document.getElementById("consultTime").innerHTML = "";
+	document.getElementById("consultContent").innerHTML = "";
+	document.getElementById("consultStatus").innerHTML = "";
+	
+}

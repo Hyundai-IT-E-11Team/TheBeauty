@@ -121,7 +121,18 @@ ALTER TABLE tb_survey ADD CONSTRAINT tb_survey_pk PRIMARY KEY ( survey_seq );
 DROP TABLE tb_cart CASCADE CONSTRAINTS;
 
 CREATE TABLE tb_cart (
-    user_seq       NUMBER(10) NOT NULL,
+    user_seq       NUMBER NOT NULL,
     product_seq    NUMBER NOT NULL,
     product_count  NUMBER
+);
+
+-- tb_satisfaction
+DROP TABLE tb_satisfaction CASCADE CONSTRAINTS;
+
+CREATE TABLE tb_satisfaction (
+    user_seq         NUMBER ,
+    brand_seq        NUMBER ,
+    reservation_seq  NUMBER NOT NULL,
+    user_score       NUMBER NOT NULL,
+    user_comment     VARCHAR2(255)
 );
