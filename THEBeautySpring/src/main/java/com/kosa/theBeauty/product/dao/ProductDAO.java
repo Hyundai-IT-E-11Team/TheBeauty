@@ -25,7 +25,9 @@ public interface ProductDAO {
 	List<ProductVO> selectProductByBrandName(int brandSeq);
 	 
 	// 브랜드별 상품 목록 조회 (브랜드관 페이지) - phw
-	List<ProductDetailVO> getProductsByBrand(int brandSeq);
+	int getProductsCountByBrand(PaginationVO vo);
+	
+	List<ProductDetailVO> getProductsByBrandPaged(PaginationVO vo);
 	
 	// header에서 카테고리 별로 상품 검색 - phw
 	int selectProductCountByCategory(PaginationVO vo);

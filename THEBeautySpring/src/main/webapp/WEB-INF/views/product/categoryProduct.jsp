@@ -24,7 +24,7 @@
                 <div class="keyword">
                     <span>${productCategory}</span>
                     <p>
-                        <span>검색결과</span> 상품 <em id="totalCnt">${ products.size() }</em> 개
+                        <span>검색결과</span> 상품 <em id="totalCnt">${ totalNum }</em> 개
                     </p>
                 </div>
             </div>

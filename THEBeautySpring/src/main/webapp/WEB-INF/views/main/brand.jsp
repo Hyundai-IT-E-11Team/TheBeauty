@@ -15,7 +15,7 @@
 <body>
 	<!-- header추가 -->
 	<%@ include file="/WEB-INF/views/header/header.jsp"%>
-	<div class="container">
+	<div class="brand-container">
 		<div class="brand-consulting">
 			<div></div>
 			<div>
@@ -63,5 +63,12 @@
 			</c:forEach>
 		</div>
 	</div>
+	<!-- pagination 추가 -->
+	<jsp:include page="/WEB-INF/views/main/brandPagination.jsp">
+    	<jsp:param name="brandSeq" value="${brandSeq }" />
+    	<jsp:param name="paginationNum" value="${paginationNum }" />
+    	<jsp:param name="page" value="${page}" />
+		    	
+	</jsp:include>
 </body>
 </html>
