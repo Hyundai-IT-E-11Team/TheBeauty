@@ -2,6 +2,8 @@ package com.kosa.theBeauty.cart.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -46,8 +48,15 @@ public class CartController {
 	// 장바구니 페이지로 이동
 	@DebugLog
 	@GetMapping("cartPage")
-	public String getCartPage(@SessionAttribute UserVO currUser, Model model) {
+	public String getCartPage(HttpSession session, Model model) {
 		
+		// 세션이 null이거나 세션에 "currUser"이 없는 경우 로그인 페이지로 리다이렉트
+		if (session == null || session.getAttribute("currUser") == null) {
+			return "redirect:/user/login";
+		}
+		// 세션에서 currUser을 가져와 UserVO객체를 얻기
+		UserVO currUser = (UserVO) session.getAttribute("currUser");
+		// 사용자의 장바구니에 담긴 항목 목록을 가져오기
 		List<CartListVO> list = service.getCartList(currUser.getUserSeq());
 		model.addAttribute("cartList", list);
 		return "cart/cartPage";
