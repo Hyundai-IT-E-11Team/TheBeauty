@@ -6,10 +6,6 @@
 	font-family: "Poppins", sans-serif;
 }
 
-.brand-container {
-	width: 1300px;
-	margin: 0 auto;
-}
 
 .consulting-btn {
 	color: #0B5345;
@@ -24,11 +20,13 @@
 	display: flex;
 	width: 100%;
 	margin: 7px 0;
+	justify-content: flex-end;
 }
 
 .brand-consulting div {
 	display: flex;
 	width: 33%;
+	justify-content: space-around;
 }
 
 .brand-consulting div:nth-child(2) {
@@ -49,18 +47,9 @@
 
 .product-imgs {
 	display: flex;
-	flex-direction:column;
 	flex-wrap: wrap;
 	justify-content: center; /* 가로축 중앙 정렬 */
 	align-items: center; /* 세로축 중앙 정렬 */
-}
-
-#prodImgset {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
 }
 
 .product-img {
@@ -77,6 +66,8 @@
 .productlist-wrap {
 	display: flex;
 	justify-content: center;
+	width: 1300px;
+	margin: 0 auto;
 }
 
 .product-list {
