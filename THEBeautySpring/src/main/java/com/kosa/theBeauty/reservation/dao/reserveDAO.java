@@ -10,7 +10,7 @@ public interface reserveDAO {
 	
 	BrandVO selectBrandInfo(BrandVO vo);
 	int insertReservationInfo(ReservationVO vo) throws UncategorizedSQLException;
-	String selectReservationInfo(ReservationVO reservationvo);
+	ReservationVO selectReservationInfo(ReservationVO reservationvo);
 	List<ReservationVO> selectReservationforDetail(ReservationVO reservationvo);
 	int updateReservation(ReservationVO reservationvo);
 	ReservationVO selectReservationByUser(int userSeq);

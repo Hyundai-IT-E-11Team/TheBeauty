@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.user.domain.UserDTO;
@@ -43,6 +45,14 @@ public class UserController {
 			model.addAttribute("currUser", vo);
 			return "redirect:../main/mainPage";
 		}
+	}
+	
+	//로그아웃>>일단 임시로 메인페이지에서 사용자 이름을 클릭하면 로그아웃처리되도록..수정 필요
+	@DebugLog
+	@GetMapping("logout")
+	public String logout(@SessionAttribute UserVO currUser,SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
+		return "redirect:../main/mainPage";
 	}
 
 	// 회원가입 페이지로 이동

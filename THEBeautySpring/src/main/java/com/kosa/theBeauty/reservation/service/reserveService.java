@@ -42,11 +42,19 @@ public class reserveService {
 
 	public boolean getSchedule(ReservationVO reservationvo) {
 		try {
-			if (dao.selectReservationInfo(reservationvo).equals("예약확정")) {
+			System.out.println(reservationvo);
+			reservationvo = dao.selectReservationInfo(reservationvo);
+			System.out.println("try");
+			System.out.println(reservationvo);
+			if (reservationvo.getReserveStatus()==0) {
+				System.out.println("success");
+				System.out.println(reservationvo.getReserveStatus());
 				return true;
 			}
 			return false;
 		} catch (Exception e) {
+			System.out.println("catch");
+			System.out.println(reservationvo);
 			return false;
 		}
 	}
