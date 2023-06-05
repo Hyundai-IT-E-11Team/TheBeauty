@@ -36,7 +36,7 @@
          </div>
          <div class="prd-info-box">
             <div class="prd-shop">
-              <form id="prd-shop-form" action="/theBeauty/main/brandPage" method="post">
+              <%-- <form id="prd-shop-form" action="/theBeauty/main/brand/${productDetail.brandVO.brandName}" method="get">
                 <input type="hidden" name="brandSeq" value="${productDetail.brandVO.brandSeq}" />
                 <input type="hidden" name="brandName" value="${productDetail.brandVO.brandName}" />
                 <input type="hidden" name="brandImgurl" value="${productDetail.brandVO.brandImgurl}" />
@@ -44,11 +44,14 @@
                 <input type="hidden" name= "brandImg2" value="${productDetail.brandVO.brandImg2}" />
                 <input type="hidden" name="brandImg3" value="${productDetail.brandVO.brandImg3}" />
                 <input type="hidden" name="brandImg4" value="${productDetail.brandVO.brandImg4}" />
-                <button type="submit" class="moveBrandButton">
-                  <img id="logoImg" src="${productDetail.brandVO.brandImgurl}" alt="Brand Image">
-                </button>
-              </form>
-            </div>
+              </form> --%>
+					<a href="/theBeauty/main/brand/${productDetail.brandVO.brandName}">
+						<button onclick="move()" class="moveBrandButton">
+							<img id="logoImg" src="${productDetail.brandVO.brandImgurl}"
+								alt="Brand Image">
+						</button>
+					</a>
+				</div>
 
             <div class="prd-title">
                <h2>${productDetail.productVO.productName}</h2>
@@ -100,6 +103,7 @@
 	   var defaultCount = 1;
 	   document.getElementById("currCount").innerHTML = Number(defaultCount);
    	   document.getElementById("productCount").value = Number(defaultCount);
+   	  
    </script>
 </body>
 </html>
