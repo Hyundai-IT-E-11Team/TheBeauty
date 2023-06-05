@@ -109,7 +109,7 @@
 					<div class="mega-box">
 						<div class="content">
 							<div class="row">
-								<header>화장품</header>
+								<header class="mega-text">Cosmetic Brand</header>
 							</div>
 							<div class="row">
 								<ul class="mega-links">
