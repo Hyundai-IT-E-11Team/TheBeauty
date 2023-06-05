@@ -44,7 +44,7 @@
 
 					<button class="button" onclick="getProducts('${currUser.roleNum}')">전체
 						보기</button>
-					<input class="button" type="button" onclick="leaveSession()"
+					<input class="button" type="button" onclick="leaveSession(${reservation.reservationSeq})"
 						value="LEAVE">
 				</div>
 				<div class="items" id="c-items"></div>
@@ -53,7 +53,7 @@
 		<c:if test="${currUser.roleNum == 0}">
 			<div id="u-container" style="display: none;">
 				<div>
-					<input class="button" type="button" onclick="leaveSession()"
+					<input class="button" type="button" onclick="leaveSession('${reservation.reservationSeq}')"
 						value="LEAVE">
 				</div>
 				<div class="items" id="u-items"></div>

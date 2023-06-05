@@ -54,10 +54,13 @@ function joinSession(currUserRole, mySessionId) {
 function deleteCard(cardId) {
 	$("#"+cardId ).remove();
 }
-function leaveSession() {
-  session.disconnect();
-  document.getElementById("join").style.display = "block";
-  document.getElementById("session").style.display = "none";
+function leaveSession(reservationSeq) {
+	if(confirm("상담을 종료하시겠습니까? 다시 입장할 수 없습니다.")) {
+		session.disconnect();
+		window.location.replace('/theBeauty/consult/end/' + reservationSeq)
+		document.getElementById("join").style.display = "block";
+		document.getElementById("session").style.display = "none";	
+	}
 }
 
 window.onbeforeunload = function () {

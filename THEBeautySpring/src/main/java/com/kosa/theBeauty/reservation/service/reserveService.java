@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kosa.theBeauty.product.domain.BrandVO;
 import com.kosa.theBeauty.reservation.dao.reserveDAO;
 import com.kosa.theBeauty.reservation.domain.ReservationVO;
+import com.kosa.theBeauty.reservation.domain.SatisfactionVO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,9 +17,10 @@ import lombok.RequiredArgsConstructor;
 public class reserveService {
 
 	private final reserveDAO dao;
-	public BrandVO getBrandInfo(BrandVO vo) {
+	
+	public BrandVO getBrandInfo(int brandSeq) {
 		try {
-			return dao.selectBrandInfo(vo);
+			return dao.selectBrandInfo(brandSeq);
 		} catch (Exception e) {
 			return null;
 		}
@@ -75,6 +77,16 @@ public class reserveService {
 
 	public ReservationVO getReservationBySeq(int reservationSeq) {
 		return dao.selectReservationBySeq(reservationSeq);
+	}
+	
+	public int setReservationStatusSuccess(int reservationSeq) {
+		return dao.updateReservationStatus(reservationSeq);
+	}
+
+
+	public void createSatisfaction(SatisfactionVO satisfaction) {
+		dao.createStatisfaction(satisfaction);
+		
 	}
 
 }
