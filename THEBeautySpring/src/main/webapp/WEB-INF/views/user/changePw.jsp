@@ -18,7 +18,8 @@
 
 	    <form id="passwordChangeForm" class="content" action="updatePassword" method="post">
 	    	<div>
-		        <input placeholder="더현대닷컴 이메일" class="textInput" name="userMail" type="mail" required/><br>
+    		    <c:set var="userMail" value="${sessionScope.userMail}" />
+				<input placeholder="더현대닷컴 이메일" class="textInput" name="userMail" type="mail" value="${userMail}" required readonly/><br>
     		    <input placeholder="새 비밀번호" class="textInput" name="userPw" type="password" id="newPassword"required/><br>
 		        <input placeholder="새 비밀번호 확인" class="textInput" name="confirmPassword" type="password" id="confirmPassword"required/><br>
 			</div>
