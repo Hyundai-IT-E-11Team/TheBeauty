@@ -221,10 +221,17 @@
 	border-bottom: 2px solid #bababa;
 }
 
+.mega-text {
+  font-weight: bold;
+  color: #46675c;
+  font-size: 22px;
+}
+
 .row .mega-links li {
 	margin: 8px 0;
 	padding: 0 10px;
 	list-style-type: none;
+	border: none;
 }
 
 .row .mega-links li a {
@@ -232,6 +239,5 @@
 	color: #000;
 	font-size: 14px;
 	display: block;
-	border: 1px solid #bababa;
-	width: 87%
+	width: 87%;
 }
