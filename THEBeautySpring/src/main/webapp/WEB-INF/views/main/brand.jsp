@@ -31,22 +31,22 @@
 				</form>
 			</div>
 		</div>
-		<div class="product-imgs">
-			<div class="product-img">
-				<img class="product-img-1" src="${brand.brandImg1}"
-					alt="Brand Image">
+		<div class="product">
+			<div id="prodImgset">
+				<div class="product-img">
+					<img class="product-img-1" src="${brand.brandImg1}"	alt="Brand Image">
+				</div>
+				<div class="product-img">
+					<img class="product-img-2" src="${brand.brandImg2}" alt="Brand Image">
+				</div>
 			</div>
-			<div class="product-img">
-				<img class="product-img-2" src="${brand.brandImg2}"
-					alt="Brand Image">
-			</div>
-			<div class="product-img">
-				<img class="product-img-3" src="${brand.brandImg3}"
-					alt="Brand Image">
-			</div>
-			<div class="product-img">
-				<img class="product-img-4" src="${brand.brandImg4}"
-					alt="Brand Image">
+			<div id="prodImgset">
+				<div class="product-img">
+					<img class="product-img-3" src="${brand.brandImg3}" alt="Brand Image">
+				</div>
+				<div class="product-img">
+					<img class="product-img-4" src="${brand.brandImg4}"	alt="Brand Image">
+				</div>
 			</div>
 		</div>
 		<div class="product-list">

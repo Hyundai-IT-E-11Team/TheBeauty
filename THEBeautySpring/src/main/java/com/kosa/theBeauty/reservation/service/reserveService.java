@@ -16,19 +16,22 @@ import lombok.RequiredArgsConstructor;
 public class reserveService {
 
 	private final reserveDAO dao;
-	public BrandVO getBrandInfo(BrandVO vo) {
+	
+	//페이지 출력을 위한 브랜드 정보 가져오기
+	public BrandVO getBrandInfo(int roleNum) {
 		try {
-			return dao.selectBrandInfo(vo);
+			return dao.selectBrandInfo(roleNum);
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-
+	//예약저장
 	public void setReservation(ReservationVO vo) throws UncategorizedSQLException {
 		dao.insertReservationInfo(vo);
 	}
 	
+	//예약취소
 	public boolean cancelReservation(ReservationVO reservationvo) {
 	      try {
 	         if(dao.updateReservation(reservationvo)==1) {
@@ -39,22 +42,16 @@ public class reserveService {
 	         return false;
 	      }
 	  }
-
+	
+	//시간출력을 위해 기존 예약스케줄 가져오기
 	public boolean getSchedule(ReservationVO reservationvo) {
 		try {
-			System.out.println(reservationvo);
 			reservationvo = dao.selectReservationInfo(reservationvo);
-			System.out.println("try");
-			System.out.println(reservationvo);
-			if (reservationvo.getReserveStatus()==0) {
-				System.out.println("success");
-				System.out.println(reservationvo.getReserveStatus());
-				return true;
+			if (reservationvo == null || reservationvo.getReserveStatus() == 3) {
+				return false;
 			}
-			return false;
+			return true;
 		} catch (Exception e) {
-			System.out.println("catch");
-			System.out.println(reservationvo);
 			return false;
 		}
 	}
@@ -63,16 +60,21 @@ public class reserveService {
 		return dao.selectReservationByUser(userSeq);
 	}
 	
+	//마이뷰티에서 고객예약리스트가져오기
 	public List<ReservationVO> getReservation(ReservationVO reservationvo) {
 	      return dao.selectReservationforDetail(reservationvo);
-	   }
+	}
 
-
+	//관리자페이지에서 시간클릭시 단일예약내역 가져오기
+	public ReservationVO getReserveforManage(ReservationVO reservationvo) {
+		return dao.selectReservationInfo(reservationvo);
+	}
+	//정체 무엇?
 	public List<ReservationVO> getBrandReservation(int brandSeq) {
 		return dao.selectReservationBrand(brandSeq);
 	}
 
-
+	//이거는?
 	public ReservationVO getReservationBySeq(int reservationSeq) {
 		return dao.selectReservationBySeq(reservationSeq);
 	}

@@ -87,6 +87,7 @@
 			<c:if test = "${not empty currUser }">
 				<a class="bigButton" href="/theBeauty/user/logout">${currUser.userName}님 환영합니다.</a>
 			</c:if>
+			<c:if test="${empty currUser  || currUser.roleNum == 0 }">
 				<a class="smallButton" href="/theBeauty/reserve/reservationDetailPage">마이뷰티</a>
 				<a class="smallButton" href="${pageContext.request.contextPath}/cart/cartPage">장바구니</a>
 				<c:if test="${not empty nextReservation }">
@@ -99,6 +100,7 @@
 						</div>
 					</div>
 				</c:if>
+			</c:if>
 			</div>
 		</div>
 		<!-- 카테고리 파트-->

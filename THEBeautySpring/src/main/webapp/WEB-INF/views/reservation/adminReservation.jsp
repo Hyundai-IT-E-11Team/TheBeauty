@@ -82,14 +82,14 @@
 					 </div> 
 					 <div id="detail">
 					 	<div id="reserveInfo">
-					 		 고객명 : <br>
-					 		 <br>
-					 		 시   간 : <br>
-					 		 <br>
-					 		 상   담 : 1대1 Premium Consulting
+					 		 <span id="userName" class="getInfo"></span>
+					 		 <span id="consultDate" class="getInfo"></span>
+					 		 <span id="consultTime" class="getInfo"></span>
+					 		 <span id="consultContent" class="getInfo"></span>
+					 		 <span id="consultStatus" class="getInfo"></span>
 					 	</div>
 					 	<div id="submitschedule">
-								<input type="button" id="submitbutton" name="submitbutton" onclick="" value="상담시작하기"/>
+							<a id="consultLink" href="/theBeauty/consult/">상담시작하기</a>
 						</div>
 					</div>
 				</div>
