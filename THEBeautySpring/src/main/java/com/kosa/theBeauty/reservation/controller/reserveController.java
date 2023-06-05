@@ -3,6 +3,8 @@ package com.kosa.theBeauty.reservation.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.UncategorizedSQLException;
@@ -50,9 +52,9 @@ public class reserveController {
 	         reservationvo.setUserSeq(currUser.getUserSeq());
 	         reservationList = service.getReservation(reservationvo);
 	         model.addAttribute("reservationList", reservationList);
-	         return "reservation/reservationDetail";
+	        
 	      }
-	      return "redirect:/main/mainPage";
+      return "reservation/reservationDetail";
 	   }
 
 	// 예약취소
