@@ -15,6 +15,8 @@
 <body>
 	<!-- header추가 -->
 	<%@ include file="/WEB-INF/views/header/header.jsp"%>
+	<div class="productlist-wrap">
+	<div class="brand-container">
 	<div class="container">
 		<div class="brand-consulting">
 			<div></div>
@@ -28,24 +30,26 @@
 					<a href="/theBeauty/reserve/reserveManaging" class="consulting-btn" >▶ 상담진행하기</a>
 			</div>
 		</div>
-		<div class="product">
-			<div id="prodImgset">
-				<div class="product-img">
-					<img class="product-img-1" src="${adminBrand.brandImg1}"	alt="Brand Image">
-				</div>
-				<div class="product-img">
-					<img class="product-img-2" src="${adminBrand.brandImg2}" alt="Brand Image">
-				</div>
+		<div class="product-imgs">
+			<div class="product-img">
+				<img class="product-img-1" src="${adminBrand.brandImg1}"
+					alt="Brand Image">
 			</div>
-			<div id="prodImgset">
-				<div class="product-img">
-					<img class="product-img-3" src="${adminBrand.brandImg3}" alt="Brand Image">
-				</div>
-				<div class="product-img">
-					<img class="product-img-4" src="${adminBrand.brandImg4}"	alt="Brand Image">
-				</div>
+			<div class="product-img">
+				<img class="product-img-2" src="${adminBrand.brandImg2}"
+					alt="Brand Image">
+			</div>
+			<div class="product-img">
+				<img class="product-img-3" src="${adminBrand.brandImg3}"
+					alt="Brand Image">
+			</div>
+			<div class="product-img">
+				<img class="product-img-4" src="${adminBrand.brandImg4}"
+					alt="Brand Image">
 			</div>
 		</div>
+	</div>
+	</div>
 	</div>
 </body>
 </html>
