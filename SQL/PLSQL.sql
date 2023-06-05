@@ -134,3 +134,47 @@ END;
 -- 	DBMS_SCHEDULER.disable(name=>'ace.update_user_remain_cnt', force => TRUE);
 -- END;
 --/
+
+CREATE OR REPLACE PROCEDURE tb_survey_insert (
+  user_seq_param IN tb_survey.user_seq%TYPE,
+  survey_skintype_param IN tb_survey.survey_skintype%TYPE,
+  survey_personal_color_param IN tb_survey.survey_personal_color%TYPE,
+  survey_jewelry_color_param IN tb_survey.survey_jewelry_color%TYPE,
+  survey_skintone_param IN tb_survey.survey_skintone%TYPE
+)
+IS
+  v_count NUMBER;
+BEGIN
+  -- 해당 사용자의 설문 결과가 이미 존재하는지 확인
+  SELECT COUNT(*) INTO v_count FROM tb_survey WHERE user_seq = user_seq_param;
+  
+  IF v_count > 0 THEN
+    -- 설문 결과가 존재하는 경우 UPDATE 수행
+    UPDATE tb_survey
+    SET survey_skintype = survey_skintype_param,
+        survey_personal_color = survey_personal_color_param,
+        survey_jewelry_color = survey_jewelry_color_param,
+        survey_skintone = survey_skintone_param
+    WHERE user_seq = user_seq_param;
+    
+    -- UPDATE가 수행되었음을 출력
+    DBMS_OUTPUT.PUT_LINE('설문 결과가 업데이트되었습니다.');
+  ELSE
+    -- 설문 결과가 존재하지 않는 경우 INSERT 수행
+    INSERT INTO tb_survey (user_seq, survey_skintype, survey_personal_color, survey_jewelry_color, survey_skintone)
+    VALUES (user_seq_param, survey_skintype_param, survey_personal_color_param, survey_jewelry_color_param, survey_skintone_param);
+    
+    -- INSERT가 수행되었음을 출력
+    DBMS_OUTPUT.PUT_LINE('설문 결과가 저장되었습니다.');
+  END IF;
+  
+  -- 커밋
+  COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    -- 에러 발생 시 롤백
+    ROLLBACK;
+    -- 에러 메시지 출력
+    DBMS_OUTPUT.PUT_LINE('에러: ' || SQLERRM);
+END;
+/
