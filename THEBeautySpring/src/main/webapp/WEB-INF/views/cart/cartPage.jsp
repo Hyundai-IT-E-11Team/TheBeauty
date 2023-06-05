@@ -70,16 +70,15 @@
 			<div class="cart-list-wrapper">
 				<c:forEach var="item" items="${cartList}">
 					
-					<!-- 수정! -->
 				    <c:set var="productPrice" value="${item.productVO.productPrice}" />
 				    <c:set var="formattedPrice" value="${productPrice.replace(',', '').replace('원', '')}" />
 				    <c:set var="itemPrice" value="${formattedPrice * item.cartVO.productCount}" />
 					
 
 					<div class="product">
-						<!-- 체크 영역 -->
+						<!-- 체크박스 영역 -->
 						<div class="check-group">
-							<div class="icheckbox type-green" style="position: relative;"></div>
+						    <input type="checkbox" class="product-checkbox icheckbox type-green" style="position: relative;">
 						</div>
 						<!-- 이미지 영역 -->
 						<div class="product-img">
@@ -129,7 +128,7 @@
 						<div style="margin-bottom: 0px; padding-bottom: 40px;">
 							<h4 style="margin-top: 0px; margin-bottom: 0px;">총 주문금액</h4>
 							<p style="margin-top: 0px; margin-bottom: 0px;">
-								<strong><span id="totOrdPrc"></span></strong> 원
+								<strong><span id="totOrdPrc"></span></strong>
 							</p>
 						</div>
 						<ul class="sub plus" style="padding-left: 0px;">

@@ -70,9 +70,9 @@
                </ul>
             </div>
 
-            <div class="product-control">
+            <div class="product-control" id="product-control">
             	<button id="decrease-button" onclick="productCounting('-')">-</button>
-            	<div id="currCount"></div>
+            	<div id="currCount">1</div>
                 <button id="increase-button" onclick="productCounting('+')">+</button>
                 <div class="sumPrice">합계</div>
                 <div class="sumPrice">${productDetail.productVO.productPrice}</div>
