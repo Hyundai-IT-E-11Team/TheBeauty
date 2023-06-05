@@ -33,7 +33,7 @@ public class reserveController {
 	@PostMapping("reservePage")
 	public String reservePage(@SessionAttribute UserVO currUser, BrandVO vo, Model model) {
 		// 상담예약버튼을 누르면 실행
-		vo = service.getBrandInfo(vo);
+		vo = service.getBrandInfo(vo.getBrandSeq());
 		model.addAttribute("brandInfo", vo);
 		model.addAttribute(currUser);
 		return "reservation/reservation";
@@ -83,10 +83,10 @@ public class reserveController {
 	
 	//관리자 예약관리 페이지
 	@DebugLog
-	@PostMapping("reserveManaging")
-	public String reserveManaging(BrandVO brandvo,Model model) {
-		brandvo = service.getBrandInfo(brandvo);
-		model.addAttribute("brandInfo", brandvo);
+	@GetMapping("reserveManaging")
+	public String reserveManaging(@SessionAttribute UserVO currUser,Model model) {
+		BrandVO brandVo = service.getBrandInfo(currUser.getRoleNum());
+		model.addAttribute("brandInfo", brandVo);
 		return "reservation/adminReservation";
 	}
 	

@@ -49,11 +49,6 @@ public class CartController {
 	@DebugLog
 	@GetMapping("cartPage")
 	public String getCartPage(HttpSession session, Model model) {
-		
-		// 세션이 null이거나 세션에 "currUser"이 없는 경우 로그인 페이지로 리다이렉트
-		if (session == null || session.getAttribute("currUser") == null) {
-			return "redirect:/user/login";
-		}
 		// 세션에서 currUser을 가져와 UserVO객체를 얻기
 		UserVO currUser = (UserVO) session.getAttribute("currUser");
 		// 사용자의 장바구니에 담긴 항목 목록을 가져오기
