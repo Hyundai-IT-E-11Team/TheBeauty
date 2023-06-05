@@ -23,32 +23,29 @@
 					alt="Brand Image">
 			</div>
 			<div>
-				<form action="/theBeauty/reserve/reserveManaging" method="POST">
 					<input type="hidden" type="userSeq" value="user.userSeq">
 					<input type="hidden" name="brandSeq" value="${adminBrand.brandSeq}">
-					<button class="consulting-btn" type="submit">▶ 상담진행하기</button>
-				</form>
+					<a href="/theBeauty/reserve/reserveManaging" class="consulting-btn" >▶ 상담진행하기</a>
 			</div>
 		</div>
 		<div class="product">
-			<div class="product-img">
-				<img class="product-img-1" src="${adminBrand.brandImg1}"
-					alt="Brand Image">
+			<div id="prodImgset">
+				<div class="product-img">
+					<img class="product-img-1" src="${adminBrand.brandImg1}"	alt="Brand Image">
+				</div>
+				<div class="product-img">
+					<img class="product-img-2" src="${adminBrand.brandImg2}" alt="Brand Image">
+				</div>
 			</div>
-			<div class="product-img">
-				<img class="product-img-2" src="${adminBrand.brandImg2}"
-					alt="Brand Image">
-			</div>
-			<div class="product-img">
-				<img class="product-img-3" src="${adminBrand.brandImg3}"
-					alt="Brand Image">
-			</div>
-			<div class="product-img">
-				<img class="product-img-4" src="${adminBrand.brandImg4}"
-					alt="Brand Image">
+			<div id="prodImgset">
+				<div class="product-img">
+					<img class="product-img-3" src="${adminBrand.brandImg3}" alt="Brand Image">
+				</div>
+				<div class="product-img">
+					<img class="product-img-4" src="${adminBrand.brandImg4}"	alt="Brand Image">
+				</div>
 			</div>
 		</div>
-
 	</div>
 </body>
 </html>

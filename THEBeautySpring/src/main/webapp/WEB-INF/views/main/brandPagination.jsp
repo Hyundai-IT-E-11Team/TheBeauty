@@ -22,10 +22,10 @@
 				int startPage = (currentPage - 1) / displayPageRange * displayPageRange + 1;
 				int endPage = Math.min(startPage + displayPageRange - 1, paginationNum); // 페이지 수를 넘지 않도록 제한
 		%>
-		<button class="button" id="startBtn" onclick="location.href='${pageContext.request.contextPath}/main/brandPage?page=1'">
+		<button class="button" id="startBtn" onclick="location.href='${pageContext.request.contextPath}/main/brand/${brandName }?page=1'">
 			<i class="fa-solid fa-angles-left"></i>
 		</button>
-		<button class="button prevNext" id="prev" onclick="location.href='${pageContext.request.contextPath}/main/brandPage'">
+		<button class="button prevNext" id="prev" onclick="location.href='${pageContext.request.contextPath}/main/brand/${brandName }?page=<%=currentPage-1%>'">
 			<i class="fa-solid fa-angle-left"></i>
 		</button>
 
@@ -40,7 +40,7 @@
 					String linkClass = (pageNum == currentPage) ? "link active" : "link";
 			%>
 			<a
-				href="${pageContext.request.contextPath}/main/brandPage"
+				href="${pageContext.request.contextPath}/main/brand/${brandName}?page=<%= pageNum %>"
 				class="<%= linkClass %>"><%=pageNum%></a>
 			<%
 				}
@@ -48,10 +48,10 @@
 
 		</div>
 
-		<button class="button prevNext" id="next" onclick="location.href='${pageContext.request.contextPath}/main/brandPage'">
+		<button class="button prevNext" id="next" onclick="location.href='${pageContext.request.contextPath}/main/brand/${brandName }?page=<%=currentPage+1%>'">
 			<i class="fa-solid fa-angle-right"></i>
 		</button>
-		<button class="button" id="endBtn" onclick="location.href='${pageContext.request.contextPath}/main/brandPage'">
+		<button class="button" id="endBtn" onclick="location.href='${pageContext.request.contextPath}/main/brand/${brandName }?page=<%=paginationNum%>'">
 			<i class="fa-solid fa-angles-right"></i>
 		</button>
 	</div>

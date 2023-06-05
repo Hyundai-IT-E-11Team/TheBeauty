@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.kosa.theBeauty.annotation.DebugLog;
@@ -39,19 +40,20 @@ public class reserveController {
 		return "reservation/reservation";
 	}
 
-	// 예약완료 후 예약상세페이지 아니고 메인에서 바로 누를 때
+	// 예약완료 후 예약상세페이지 이동 및 메인페이지에서 마이뷰티 클릭 시
 	@DebugLog
 	@GetMapping("reservationDetailPage")
 	public String reservationDetailPage(@SessionAttribute UserVO currUser, Model model) {
-		if (currUser.getRoleNum() == 0) {
-			ReservationVO reservationvo = new ReservationVO();
-			List<ReservationVO> reservationList = new ArrayList<ReservationVO>();
-			reservationvo.setUserSeq(currUser.getUserSeq());
-			reservationList = service.getReservation(reservationvo);
-			model.addAttribute("reservationList", reservationList);
-		}
-		return "reservation/reservationDetail";
-	}
+	      if (currUser.getRoleNum() == 0) {
+	         ReservationVO reservationvo = new ReservationVO();
+	         List<ReservationVO> reservationList = new ArrayList<ReservationVO>();
+	         reservationvo.setUserSeq(currUser.getUserSeq());
+	         reservationList = service.getReservation(reservationvo);
+	         model.addAttribute("reservationList", reservationList);
+	         return "reservation/reservationDetail";
+	      }
+	      return "redirect:/main/mainPage";
+	   }
 
 	// 예약취소
 	@DebugLog
@@ -90,6 +92,14 @@ public class reserveController {
 		return "reservation/adminReservation";
 	}
 	
+	//관리자 예약관리 페이지,,단일 예약만 가져와서 출력
+	@DebugLog
+	@PostMapping(value = "getReserveforManage",
+	produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public ReservationVO getReserveforManage(ReservationVO reservationvo) {
+		return service.getReserveforManage(reservationvo);
+	}
 
 	// 예약 가능,불가능 시간 출력
 	@DebugLog

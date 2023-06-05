@@ -6,4 +6,6 @@ public interface mainDAO {
 
 	BrandVO selectBrnadByUser(int roleNum);
 
+	BrandVO selectBrandByName(String brandName);
+
 }
