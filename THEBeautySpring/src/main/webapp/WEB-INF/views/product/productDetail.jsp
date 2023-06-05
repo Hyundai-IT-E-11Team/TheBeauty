@@ -36,7 +36,7 @@
          </div>
          <div class="prd-info-box">
             <div class="prd-shop">
-              <%-- <form action="/theBeauty/main/brand/${productDetail.brandVO.brandName}" method="get">
+              <%-- <form id="prd-shop-form" action="/theBeauty/main/brand/${productDetail.brandVO.brandName}" method="get">
                 <input type="hidden" name="brandSeq" value="${productDetail.brandVO.brandSeq}" />
                 <input type="hidden" name="brandName" value="${productDetail.brandVO.brandName}" />
                 <input type="hidden" name="brandImgurl" value="${productDetail.brandVO.brandImgurl}" />
