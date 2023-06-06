@@ -44,6 +44,8 @@
 			<i id="right" class="fa-solid fa-angle-right"></i>
 		</div>
 	</div>
+	<!-- footer추가 -->
+	<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 	<script	src="${pageContext.request.contextPath}/resources/js/main/userMain.js"></script>
 </body>
 </html>

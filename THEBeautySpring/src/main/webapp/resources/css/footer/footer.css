@@ -1,0 +1,166 @@
+#footer{
+	margin-top: 100px;
+	background: #fff;
+	width: 100%;
+	position: relative;
+}
+
+#footer .top{
+	line-height: 40px;
+	height: 40px;
+	border-style: solid;
+	border-width: 3px 0 1px 0;
+	border-color: #666;
+}
+
+.top>.row{
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+	font-size: 13px;
+	color: #666;
+}
+
+#footer span{
+	padding: 0 10px 0 0;
+}
+
+#bold{
+	font-weight: bold;
+}
+
+#footer span:last-child{
+	margin: 0 0 0 620px;
+}
+
+#footer .bottom .row{
+	padding: 27px 160px 0 175px;
+    position: relative;
+    overflow: hidden
+}
+
+#footer a {
+    color: #666;
+    text-underline-position: under;
+    text-decoration: none;
+}
+
+#footer .logo{
+	position: absolute;
+    top: 28px;
+    left: 0
+}
+
+#footer p{
+	margin: 0;
+	color: #72656c;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+.bottom>.row{
+	width: 865px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#footer .bottom .checkguarantee {
+    position: relative;
+    background: url(https://image.thehyundai.com/hdmall/images/co/txt_bottom_checkguarantee.png) no-repeat 0 0;
+    font-size: 0;
+    line-height: 0;
+    float: right;
+    width: 272px;
+    height: 26px
+}
+
+#footer .bottom .checkguarantee span {
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0
+}
+
+#footer .bottom .checkguarantee a {
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    color: #46675c;
+    text-decoration: underline;
+    width: 86px;
+    height: 20px;
+    background: url(https://image.thehyundai.com/hdmall/images/co/bg_blank.png);
+    font-size: 0;
+    line-height: 0
+}
+
+#footer .bottom .certi-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#footer .bottom .certi-wrap .certi {
+  display: flex;
+}
+
+#footer .bottom .sns-quickgo {
+    position: absolute;
+    top: 28px;
+    right: 4px;
+    width: 200px
+}
+
+#footer .bottom .sns-quickgo:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+#footer .bottom .sns-quickgo ul {
+    margin: 0 -7px;
+    overflow: hidden
+    padding-left: 0;
+}
+
+#footer .bottom .sns-quickgo li {
+    float: left;
+    padding: 0 7px
+}
+
+#footer .bottom .sns-quickgo a {
+    display: block;
+    width: 27px;
+    height: 27px
+}
+
+#footer .bottom .sns-quickgo i {
+    display: block;
+    width: 27px;
+    height: 27px;
+    background: url(https://image.thehyundai.com/hdmall/images/co/ic_footer_v2_sns.png) no-repeat 0 0;
+    font-size: 0;
+    line-height: 0;
+    font-size: 0
+}
+
+li{
+	list-style: none;
+}
+
+#footer .bottom .sns-quickgo i.twitter {
+    background-position: -41px 0
+}
+
+#footer .bottom .sns-quickgo i.pinterest {
+    background-position: -82px 0
+}
+
+#footer .bottom .sns-quickgo i.tistory {
+    background-position: -123px 0
+}
+
+#footer .bottom .sns-quickgo i.instagram {
+    background-position: -164px 0;
+}
