@@ -51,12 +51,10 @@
 									<table class="Calendar">
 										<thead>
 											<tr id="ymd">
-												<td onClick="prevCalendar();" style="cursor: pointer;">&#60;
-													이전달</td>
+												<td onClick="prevCalendar();" id="changeMonth">&#60;이전달</td>
 												<td colspan="5"><span id="calYear"></span>년 <span
 													id="calMonth"></span>월</td>
-												<td onClick="nextCalendar();" style="cursor: pointer;"
-													class="">다음달 &#62;</td>
+												<td onClick="nextCalendar();" id="changeMonth">다음달 &#62;</td>
 											</tr>
 											<tr id="day">
 												<td>일</td>
