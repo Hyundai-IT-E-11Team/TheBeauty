@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SurveyVO {
 	private int userSeq;
+	private String userName;
 	private String surveySkintype;
 	private String surveyPersonalColor;
 	private String surveyJewelryColor;

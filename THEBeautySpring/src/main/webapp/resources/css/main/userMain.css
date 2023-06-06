@@ -13,13 +13,13 @@
 
 #mainImg {
 	display: flex;
-	height: 700px;
+	height: 650px;
 	align-items: center;
 	justify-content: center;
 }
 
 .title {
-	padding: 35px 0;
+	padding: 20px 0;
 }
 
 .title img {

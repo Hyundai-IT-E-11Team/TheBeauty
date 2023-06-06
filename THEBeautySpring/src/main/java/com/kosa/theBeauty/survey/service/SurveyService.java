@@ -21,4 +21,9 @@ public class SurveyService {
 	         return true;
 	      }
 	}
+	
+	public SurveyVO seleSurveyVO(int userSeq) {
+		return dao.selectSurveyByUser(userSeq);
+		
+	}
 }
