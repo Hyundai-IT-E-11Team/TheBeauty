@@ -32,7 +32,7 @@ $(document).ready(function() {
 
     // 페이지 로딩 시 각 상품 가격을 한국 화폐 형식으로 표시
     $(".item-price").each(function() {
-        let price = $(this).data("price");
+    	let price = parseFloat(this.innerHTML);
         $(this).text(formatCurrency(price) + " 원");
     });
 
@@ -54,12 +54,25 @@ $(document).ready(function() {
                 return;
             }
         }
-
         productCountElement.value = currentCount;
-
         // 장바구니 개수에 따른 가격 변경
         let totalPrice = currentCount * productPrice;
         productPriceElement.innerHTML = totalPrice.toLocaleString("ko-KR") + "원";
+       
+        // 장바구니 상품 개수 업데이트 (DB 업데이트)
+        $.ajax({
+            url: '/theBeauty/cart/updateProductCount',
+            type: 'POST',
+            data: {
+                productSeq: productSeq,
+                productCount: currentCount
+            }
+        }).done(function(response) {
+            console.log(response);
+        }).fail(function(error) {
+            console.log(error);
+        });
+        
         updateTotalPrice()
     }
 
@@ -92,3 +105,6 @@ $(document).ready(function() {
 
     updateTotalPrice();
 });
+
+
+

@@ -161,7 +161,7 @@
 						<div>
 							<h4 style="margin-bottom: 0px; margin-top: 0px;">결제 예정 금액</h4>
 							<p style="padding-top: 0px; margin-top: 0px; margin-bottom: 0px;">
-								<strong><span id="payPrc">아직 안 함</span></strong>
+								<strong><span id="payPrc"></span></strong>
 							</p>
 						</div>
 

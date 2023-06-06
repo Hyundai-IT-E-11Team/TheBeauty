@@ -19,4 +19,7 @@ public interface CartDAO {
     
     // 상품 삭제
     void deleteProduct(@Param("userSeq") int userSeq, @Param("productSeq") int productSeq);
+    
+	// 장바구니에서 상품의 개수 변경 시 db업데이트
+    void updateProductCount(@Param("userSeq") int userSeq, @Param("productSeq") int productSeq, @Param("productCount") int productCount);
 }
