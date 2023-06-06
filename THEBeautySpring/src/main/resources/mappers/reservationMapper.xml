@@ -57,6 +57,7 @@
 		WHERE brand_seq = #{brandSeq}
 		AND reserve_date = #{reserveDate}
 		AND reserve_time = #{reserveTime}
+		AND (reserve_status = 0 OR reserve_status = 1 OR reserve_status = 2)
 	</select>
 	
 	<!-- 예약정보불러오기 -->
