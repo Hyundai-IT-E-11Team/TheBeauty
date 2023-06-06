@@ -16,40 +16,46 @@
 	<!-- header추가 -->
 	<%@ include file="/WEB-INF/views/header/header.jsp"%>
 	<div class="productlist-wrap">
-	<div class="brand-container">
-	<div class="container">
-		<div class="brand-consulting">
-			<div></div>
-			<div>
-				<img class="brand-imgurl" src="${adminBrand.brandImgurl}"
-					alt="Brand Image">
-			</div>
-			<div>
-					<input type="hidden" type="userSeq" value="user.userSeq">
-					<input type="hidden" name="brandSeq" value="${adminBrand.brandSeq}">
-					<a href="/theBeauty/reserve/reserveManaging" class="consulting-btn" >▶ 상담진행하기</a>
+		<div class="brand-container">
+			<div class="container">
+				<div class="brand-consulting">
+					<div></div>
+					<div>
+						<img class="brand-imgurl" src="${adminBrand.brandImgurl}"
+							alt="Brand Image">
+					</div>
+					<div>
+						<input type="hidden" type="userSeq" value="user.userSeq">
+						<input type="hidden" name="brandSeq"
+							value="${adminBrand.brandSeq}"> <a
+							href="/theBeauty/reserve/reserveManaging" class="consulting-btn">▶
+							상담진행하기</a>
+					</div>
+				</div>
+				<div class="product-imgs">
+					<div class="product-img">
+						<img class="product-img-1" src="${adminBrand.brandImg1}"
+							alt="Brand Image">
+					</div>
+					<div class="product-img">
+						<img class="product-img-2" src="${adminBrand.brandImg2}"
+							alt="Brand Image">
+					</div>
+					<div class="product-img">
+						<img class="product-img-3" src="${adminBrand.brandImg3}"
+							alt="Brand Image">
+					</div>
+					<div class="product-img">
+						<img class="product-img-4" src="${adminBrand.brandImg4}"
+							alt="Brand Image">
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="product-imgs">
-			<div class="product-img">
-				<img class="product-img-1" src="${adminBrand.brandImg1}"
-					alt="Brand Image">
-			</div>
-			<div class="product-img">
-				<img class="product-img-2" src="${adminBrand.brandImg2}"
-					alt="Brand Image">
-			</div>
-			<div class="product-img">
-				<img class="product-img-3" src="${adminBrand.brandImg3}"
-					alt="Brand Image">
-			</div>
-			<div class="product-img">
-				<img class="product-img-4" src="${adminBrand.brandImg4}"
-					alt="Brand Image">
-			</div>
-		</div>
 	</div>
-	</div>
-	</div>
+	<!-- footer추가 -->
+	<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/main/userMain.js"></script>
 </body>
 </html>
