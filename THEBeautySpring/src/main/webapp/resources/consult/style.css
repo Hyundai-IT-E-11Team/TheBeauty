@@ -4,6 +4,13 @@ body {
 	font-family: Arial, sans-serif;
 }
 
+#consult-container {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	align-items: center;
+}
+
 #join {
 	width: 400px;
 	margin: 0 auto;
@@ -40,11 +47,18 @@ body {
 	background-color: #333333;
 }
 
-#consult-container {
+#after-join {
 	display: flex;
+	flex-direction: column;
 	width: 100%;
-	height: 100vh;
-	align-items: center;
+}
+
+#control-box {
+	text-align: right;
+}
+
+#main-container {
+	display: flex;
 }
 
 #session {
@@ -53,8 +67,6 @@ body {
 
 #c-container {
 	width: 40%;
-	max-height: 95vh;
-	text-align: right;
 }
 
 #u-container {
@@ -64,10 +76,8 @@ body {
 }
 
 .items {
-	max-height: 80vh;
-	height: 80vh; border-style : solid;
+	height: 745px;
 	border-width: 3px;
-	padding: 10px;
 	overflow: auto;
 	text-align: center;
 	border-style: solid;
@@ -82,6 +92,22 @@ body {
 	z-index: 1;
 	width: 20%;
 	position: absolute;
+}
+
+#user-info {
+	background-color: #f2f2f2;
+	width: 20%;
+	height: auto;
+	position: absolute;
+	top: 20%;
+	z-index: 1;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#user-info p {
+  margin: 0;
+  padding: 5px 0;
 }
 
 #subscriber {
