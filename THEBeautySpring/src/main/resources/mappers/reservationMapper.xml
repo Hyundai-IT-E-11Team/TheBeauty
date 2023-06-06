@@ -63,10 +63,11 @@
 	<!-- 예약정보불러오기 -->
 	<select id="selectReservationforDetail"
 		parameterType="ReservationVO" resultMap="ReservationVOMap">
-		SELECT *
-		FROM tb_reservation
-		WHERE user_seq = #{userSeq}
-		AND reserve_status = 0
+		SELECT r.*, b.brand_name
+		  FROM tb_reservation r
+		  JOIN tb_brand b ON r.brand_seq = b.brand_seq
+		 WHERE r.user_seq = #{userSeq}
+		   AND r.reserve_status = #{reserveStatus}
 	</select>
 	
 	<!-- 예약 취소 -->
