@@ -45,15 +45,12 @@ public class reserveService {
 	
 	//시간출력을 위해 기존 예약스케줄 가져오기
 	public boolean getSchedule(ReservationVO reservationvo) {
-		try {
-			reservationvo = dao.selectReservationInfo(reservationvo);
-			if (reservationvo == null || reservationvo.getReserveStatus() == 3) {
-				return false;
+	
+			if(dao.selectReservationInfo(reservationvo) != null) {
+				return true;
 			}
-			return true;
-		} catch (Exception e) {
 			return false;
-		}
+		
 	}
 
 	public ReservationVO getReservation(int userSeq) {
