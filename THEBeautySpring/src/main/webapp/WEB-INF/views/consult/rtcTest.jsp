@@ -29,37 +29,54 @@
 					value="상담 시작하기">
 			</p>
 		</div>
-
-		<div id="session" style="display: none;">
-			<div id="video-container">
-				<div id="publisher"></div>
-				<div id="subscriber"></div>
-			</div>
-		</div>
-		<c:if test="${currUser.roleNum > 0}">
-			<div id="c-container" style="display: none;">
-				<div>
+		<div id="after-join" style="display: none;">
+			<c:if test="${currUser.roleNum > 0}">
+				<div id="control-box">
 					<input type="text" class="search-input" placeholder="검색어를 입력하세요">
 					<button class="button" onclick="search('${currUser.roleNum}')">검색</button>
 
 					<button class="button" onclick="getProducts('${currUser.roleNum}')">전체
 						보기</button>
-					<input class="button" type="button" onclick="leaveSession(${reservation.reservationSeq})"
+					<input class="button" type="button"
+						onclick="leaveSession(${reservation.reservationSeq})"
 						value="LEAVE">
 				</div>
-				<div class="items" id="c-items"></div>
-			</div>
-		</c:if>
-		<c:if test="${currUser.roleNum == 0}">
-			<div id="u-container" style="display: none;">
-				<div>
-					<input class="button" type="button" onclick="leaveSession('${reservation.reservationSeq}')"
+			</c:if>
+			<c:if test="${currUser.roleNum == 0}">
+				<div id="control-box">
+					<input class="button" type="button"
+						onclick="leaveSession('${reservation.reservationSeq}')"
 						value="LEAVE">
 				</div>
-				<div class="items" id="u-items"></div>
+			</c:if>
+			<div id="main-container">
+				<div id="session">
+					<div id="video-container">
+						<div id="publisher"></div>
+						<c:if test="${currUser.roleNum > 0}">
+							<div id="user-info">
+								<p>이름 : ${userInfo.userName }</p>
+								<p>피부타입 : ${userInfo.surveySkintype }</p>
+								<p>퍼스널 컬러 : ${userInfo.surveyPersonalColor }</p>
+								<p>선호 주얼리 색 : ${userInfo.surveyJewelryColor }</p>
+								<p>피부 톤 : ${userInfo.surveySkintone }</p>
+							</div>
+						</c:if>
+						<div id="subscriber"></div>
+					</div>
+				</div>
+				<c:if test="${currUser.roleNum > 0}">
+					<div id="c-container">
+						<div class="items" id="c-items"></div>
+					</div>
+				</c:if>
+				<c:if test="${currUser.roleNum == 0}">
+					<div id="u-container">
+						<div class="items" id="u-items"></div>
+					</div>
+				</c:if>
 			</div>
-		</c:if>
+		</div>
 	</div>
 </body>
-
 </html>

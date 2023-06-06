@@ -5,27 +5,37 @@
 
 <mapper namespace="com.kosa.theBeauty.survey.dao.SurveyDAO">
 	<resultMap type="SurveyVO" id="SurveyVOMap">
-		<result column="user_seq" property="userSeq"/>
-		<result column="survey_skintype" property="surveySkintype"/>
-		<result column="survey_personal_color" property="surveyPersonalColor"/>
-		<result column="survey_jewelry_color" property="surveyJewelryColor"/>
-		<result column="survey_skintone" property="surveySkintone"/>
+		<result column="user_seq" property="userSeq" />
+		<result column="user_name" property="userName" />
+		<result column="survey_skintype" property="surveySkintype" />
+		<result column="survey_personal_color"
+			property="surveyPersonalColor" />
+		<result column="survey_jewelry_color"
+			property="surveyJewelryColor" />
+		<result column="survey_skintone" property="surveySkintone" />
 	</resultMap>
-	
+
 	<!-- 설문 답변 등록 -->
 	<insert id="insertSurvey" parameterType="SurveyVO">
-  <![CDATA[
-  BEGIN
-    tb_survey_insert(
-      #{userSeq, mode=IN, jdbcType=NUMERIC},
-      #{surveySkintype, mode=IN, jdbcType=VARCHAR},
-      #{surveyPersonalColor, mode=IN, jdbcType=VARCHAR},
-      #{surveyJewelryColor, mode=IN, jdbcType=VARCHAR},
-      #{surveySkintone, mode=IN, jdbcType=VARCHAR}
-    );
-  END;
-  ]]>
-</insert>
-
+	  <![CDATA[
+	  BEGIN
+	    tb_survey_insert(
+	      #{userSeq, mode=IN, jdbcType=NUMERIC},
+	      #{surveySkintype, mode=IN, jdbcType=VARCHAR},
+	      #{surveyPersonalColor, mode=IN, jdbcType=VARCHAR},
+	      #{surveyJewelryColor, mode=IN, jdbcType=VARCHAR},
+	      #{surveySkintone, mode=IN, jdbcType=VARCHAR}
+	    );
+	  END;
+	  ]]>
+	</insert>
 	
+	<select id="selectSurveyByUser" resultMap="SurveyVOMap">
+		SELECT s.*, u.user_name
+		  FROM tb_survey s
+		  JOIN tb_user u
+		    ON s.user_seq = u.user_seq
+		 WHERE s.user_seq = #{userSeq}
+	</select>
+
 </mapper>

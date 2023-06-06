@@ -15,6 +15,7 @@ import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.reservation.domain.ReservationVO;
 import com.kosa.theBeauty.reservation.domain.SatisfactionVO;
 import com.kosa.theBeauty.reservation.service.reserveService;
+import com.kosa.theBeauty.survey.service.SurveyService;
 import com.kosa.theBeauty.user.domain.UserVO;
 
 import lombok.RequiredArgsConstructor;
@@ -26,12 +27,14 @@ import lombok.RequiredArgsConstructor;
 public class ConsultController {
 
 	private final reserveService service;
+	private final SurveyService surveyService;
 	
 	@DebugLog
 	@GetMapping("/{reservationSeq}")
 	public String index(@SessionAttribute UserVO currUser,@PathVariable("reservationSeq") int reservationSeq ,Model model) {
 		ReservationVO reserve = service.getReservationBySeq(reservationSeq);
 		model.addAttribute("reservation", reserve);
+		model.addAttribute("userInfo", surveyService.seleSurveyVO(reserve.getUserSeq()));
 		return "consult/rtcTest";
 	}
 	

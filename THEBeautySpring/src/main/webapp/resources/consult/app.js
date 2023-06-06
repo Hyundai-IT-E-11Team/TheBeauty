@@ -1,7 +1,6 @@
 var OV;
 var session;
 
-
 function joinSession(currUserRole, mySessionId) {
   OV = new OpenVidu();
   session = OV.initSession();
@@ -10,9 +9,9 @@ function joinSession(currUserRole, mySessionId) {
     session.subscribe(event.stream, "subscriber");
   });
 
-  session.on('signal', function (event) {
-	  let item = JSON.parse(event.data)
-	  let card = `
+  session.on("signal", function (event) {
+    let item = JSON.parse(event.data);
+    let card = `
 		    <div id="${item.productSeq}" class="card" >
 		        <img src="${item.productImgurl}" alt="Product 1">
 		        <a href="/theBeauty/product/detailPage/${item.productSeq}"
@@ -25,19 +24,15 @@ function joinSession(currUserRole, mySessionId) {
 		        <button onclick="deleteCard('${item.productSeq}')">삭제</button>
 		    </div>
 		`;
-		$('#u-items').append(card);
+    $("#u-items").append(card);
   });
-  
-  getToken(mySessionId, currUserRole).then((token) => { 
+
+  getToken(mySessionId, currUserRole).then((token) => {
     session
       .connect(token)
       .then(() => {
-    	// document.getElementById("session-header").innerText = mySessionId;
-    	document.getElementById("join").style.display = "none";
-        document.getElementById("session").style.display = "block";
-        if(currUserRole > 0) document.getElementById("c-container").style.display = "block";
-        else document.getElementById("u-container").style.display = "block";
-
+        $("#after-join").css("display", "block");
+        $("#join").css("display", "none");
         var publisher = OV.initPublisher("publisher");
         session.publish(publisher);
       })
@@ -52,15 +47,14 @@ function joinSession(currUserRole, mySessionId) {
 }
 
 function deleteCard(cardId) {
-	$("#"+cardId ).remove();
+  $("#" + cardId).remove();
 }
+
 function leaveSession(reservationSeq) {
-	if(confirm("상담을 종료하시겠습니까? 다시 입장할 수 없습니다.")) {
-		session.disconnect();
-		window.location.replace('/theBeauty/consult/end/' + reservationSeq)
-		document.getElementById("join").style.display = "block";
-		document.getElementById("session").style.display = "none";	
-	}
+  if (confirm("상담을 종료하시겠습니까? 다시 입장할 수 없습니다.")) {
+    session.disconnect();
+    window.location.replace("/theBeauty/consult/end/" + reservationSeq);
+  }
 }
 
 window.onbeforeunload = function () {
@@ -68,73 +62,83 @@ window.onbeforeunload = function () {
 };
 
 function sendMessage(product) {
- session.signal({
- data: JSON.stringify(product),
- to: [],
- type: 'my-chat'
- })
- .then(() => {
- console.log("전송성공")
- })
- .catch((error) => {
- console.error(error)
- })
+  session
+    .signal({
+      data: JSON.stringify(product),
+      to: [],
+      type: "my-chat",
+    })
+    .then(() => {
+      console.log("전송성공");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 var APPLICATION_SERVER_URL = "https://192.168.0.89/theBeauty/";
 
 function search(roleNum) {
-	$('#c-items').html("");
-    // AJAX GET 요청
-    $.ajax({
-      url: APPLICATION_SERVER_URL + 'product/list/' + roleNum + '/' + $(".search-input").val(),
-      type: 'GET',
-      success: function(data) {
-    	  console.log(data)
-      	for(let i = 0; i < data.length; i++) {
-      		let card = `
+  $("#c-items").html("");
+  // AJAX GET 요청
+  $.ajax({
+    url:
+      APPLICATION_SERVER_URL +
+      "product/list/" +
+      roleNum +
+      "/" +
+      $(".search-input").val(),
+    type: "GET",
+    success: function (data) {
+      console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        let card = `
       		    <div class="card">
       		        <img src="${data[i].productImgurl}" alt="Product 1">
       		        <h3>${data[i].productName}</h3>
       		        <p class="price">${data[i].productPrice}</p>
-      		        <button onclick="sendMessage(${JSON.stringify(data[i]).replace(/"/g, '&quot;')})">전송</button>
+      		        <button onclick="sendMessage(${JSON.stringify(data[i]).replace(
+                    /"/g,
+                    "&quot;"
+                  )})">전송</button>
       		    </div>
       		`;
-      		$('#c-items').append(card);
-          }
-
-      },
-      error: function() {
-        // 요청이 실패했을 때 실행되는 콜백 함수
-        console.log('데이터를 불러오는데 실패했습니다.');
+        $("#c-items").append(card);
       }
-    });
+    },
+    error: function () {
+      // 요청이 실패했을 때 실행되는 콜백 함수
+      console.log("데이터를 불러오는데 실패했습니다.");
+    },
+  });
 }
+
 function getProducts(roleNum) {
-	$('#c-items').html("");
-      // AJAX GET 요청
-      $.ajax({
-        url: APPLICATION_SERVER_URL + 'product/list/' + roleNum,
-        type: 'GET',
-        success: function(data) {
-        	for(let i = 0; i < data.length; i++) {
-        		let card = `
+  $("#c-items").html("");
+  // AJAX GET 요청
+  $.ajax({
+    url: APPLICATION_SERVER_URL + "product/list/" + roleNum,
+    type: "GET",
+    success: function (data) {
+      for (let i = 0; i < data.length; i++) {
+        let card = `
         		    <div class="card">
         		        <img src="${data[i].productVO.productImgurl}" alt="Product 1">
         		        <h3>${data[i].productVO.productName}</h3>
         		        <p class="price">${data[i].productVO.productPrice}</p>
-        		        <button onclick="sendMessage(${JSON.stringify(data[i].productVO).replace(/"/g, '&quot;')})">전송</button>
+        		        <button onclick="sendMessage(${JSON.stringify(
+                      data[i].productVO
+                    ).replace(/"/g, "&quot;")})">전송</button>
         		    </div>
         		`;
-        		$('#c-items').append(card);
-            }
-  
-        },
-        error: function() {
-          // 요청이 실패했을 때 실행되는 콜백 함수
-          console.log('데이터를 불러오는데 실패했습니다.');
-        }
-      });
+        $("#c-items").append(card);
+      }
+    },
+    error: function () {
+      // 요청이 실패했을 때 실행되는 콜백 함수
+      console.log("데이터를 불러오는데 실패했습니다.");
+    },
+  });
 }
 
 /**
@@ -142,19 +146,22 @@ function getProducts(roleNum) {
  * APPLICATION SERVER -------------------------------------------- The methods
  * below request the creation of a Session and a Token to your application
  * server. This keeps your OpenVidu deployment secure.
- * 
+ *
  * In this sample code, there is no user control at all. Anybody could access
  * your application server endpoints! In a real production environment, your
  * application server must identify the user to allow access to the endpoints.
- * 
+ *
  * Visit https://docs.openvidu.io/en/stable/application-server to learn more
  * about the integration of OpenVidu in your application server.
  */
 
-
 function getToken(mySessionId, currUserRole) {
-	if(currUserRole == 0) {return createToken(mySessionId);}
-	else return createSession(mySessionId).then((sessionId) => createToken(sessionId));
+  if (currUserRole == 0) {
+    return createToken(mySessionId);
+  } else
+    return createSession(mySessionId).then((sessionId) =>
+      createToken(sessionId)
+    );
 }
 
 function createSession(sessionId) {
@@ -180,9 +187,9 @@ function createToken(sessionId) {
       headers: { "Content-Type": "application/json" },
       success: (response) => resolve(response), // The token
       error: (error) => {
-    	  alert('아직 상담사가 상담을 시작하지 않았습니다.')
-    	  reject(error)
-    	  },
+        alert("아직 상담사가 상담을 시작하지 않았습니다.");
+        reject(error);
+      },
     });
   });
 }
