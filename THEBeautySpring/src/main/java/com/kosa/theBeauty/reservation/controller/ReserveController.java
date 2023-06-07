@@ -92,7 +92,6 @@ public class ReserveController {
 		reservationvo.setUserName(currUser.getUserName());
 		try {
 			reserveService.setReservation(reservationvo);
-			System.out.println("예약성공");
 			return new ResponseEntity<>("/theBeauty/survey/surveyPage", HttpStatus.OK);
 		} catch (UncategorizedSQLException e) {
 			return new ResponseEntity<>(e.getMessage().split(":")[3], HttpStatus.BAD_REQUEST);
@@ -119,7 +118,6 @@ public class ReserveController {
 	}
 
 	// 예약 가능,불가능 시간 출력
-	@DebugLog
 	@PostMapping("checkSchedule")
 	public ResponseEntity<String> checkSchedule(ReservationVO reservationvo) {
 
