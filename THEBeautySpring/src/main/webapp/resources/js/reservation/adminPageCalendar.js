@@ -35,8 +35,6 @@ function buildCalendar() {
 		newDIV.innerHTML = leftPad(nowDay.getDate());  // 추가한 열에 날짜 입력
 		let currDay = new Date();
 		let checkDay = new Date(document.getElementById("calYear").innerText + "-" + document.getElementById("calMonth").innerText + "-" + newDIV.innerHTML);
-		console.log(checkDay);
-		console.log(nowMonth);
 		newDIV.onclick = function() {
 		selectDate(this);
 		showTimeTable(this);
@@ -141,7 +139,7 @@ function showTimeTable() {
 	        	}
 	        },
 	        error: function() {
-	        	console.log("시간로딩실패");
+	        	alert("시간로딩실패. 다시 시도해주세요.");
 	        }
 	    });
 	    
@@ -174,7 +172,7 @@ function showTimeTable() {
 	        	}
 	        },
 	        error: function() {
-	        	console.log("시간로딩실패");
+	        	alert("시간로딩실패. 다시 시도해주세요.");
 	        }
 	    });
 	}

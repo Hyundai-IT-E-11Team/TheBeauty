@@ -13,7 +13,6 @@ function checkMail() {
 			$('#userMail').attr('status', 'yes');
 		},
 		error : function(err) {
-			console.log(err);
 			alert("사용불가능");
 		}
 	});

@@ -12,7 +12,7 @@
 	src="${pageContext.request.contextPath}/resources/js/reservation/adminPageCalendar.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/reservation/managingReserve.js"></script>
-<title>BrandManage</title>
+<title>ManageReservation</title>
 </head>
 <body>
 	<div id=totalContatiner">
