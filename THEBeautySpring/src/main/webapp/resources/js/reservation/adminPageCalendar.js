@@ -33,10 +33,6 @@ function buildCalendar() {
 
 		let newDIV = document.createElement("p");
 		newDIV.innerHTML = leftPad(nowDay.getDate());  // 추가한 열에 날짜 입력
-//		newDIV.onclick = function() {
-//			selectDate(this);
-//			showTimeTable(this);
-//		};
 		let currDay = new Date();
 		let checkDay = new Date(document.getElementById("calYear").innerText + "-" + document.getElementById("calMonth").innerText + "-" + newDIV.innerHTML);
 		console.log(checkDay);
@@ -45,7 +41,7 @@ function buildCalendar() {
 		selectDate(this);
 		showTimeTable(this);
 		};
-		
+		newDIV.classList.add("add-hover");
 		nowColumn.appendChild(newDIV);
 
 		if (nowDay.getDay() == 6) { // 토요일인 경우
@@ -132,12 +128,13 @@ function showTimeTable() {
 	        success: function(response) {
 	        	if(response === 'notEmpty') {
 	        		timeItem.textContent = timeString;
-	        		timeTable.appendChild(timeItem);
+	        		timeItem.classList.add("add-hover");
 		        	timeItem.addEventListener("click", function() {
 		        	let selectedTime = this.textContent;
 		        	document.getElementById("inputTime").textContent = selectedTime;
 		        	floatToInfo();
 		        	});
+		        	timeTable.appendChild(timeItem);
 	        	} else {
 		        	timeItem.textContent = "예약없음";
 	        		timeTable.appendChild(timeItem);
@@ -164,12 +161,13 @@ function showTimeTable() {
 	        success: function(response) {
 	        	if(response === 'notEmpty') {
 	        		timeItem.textContent = timeString;
-	        		timeTable.appendChild(timeItem);
+	        		timeItem.classList.add("add-hover");
 		        	timeItem.addEventListener("click", function() {
 		        	let selectedTime = this.textContent;
 		        	document.getElementById("inputTime").textContent = selectedTime;
 		        	floatToInfo();
 		        	});
+		        	timeTable.appendChild(timeItem);
 	        	} else {
 		        	timeItem.textContent = "예약없음";
 	        		timeTable.appendChild(timeItem);

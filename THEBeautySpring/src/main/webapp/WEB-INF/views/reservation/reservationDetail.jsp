@@ -67,18 +67,19 @@
 			</div>
 			<br>
 			<div id="currReserve">
-				<a href="/theBeauty/reserve/reservationDetailPage?reserveStatus=0">- 현재 예약 내역</a> 
+				<a href="/theBeauty/reserve/reservationDetailPage?reserveStatus=0">- 현재 예약 내역 </a> 
 			</div>
 			<br>
 			<div id="cancelReserve">
-				<a href="/theBeauty/reserve/reservationDetailPage?reserveStatus=3">- 취소한 예약 내역</a>
+				<a href="/theBeauty/reserve/reservationDetailPage?reserveStatus=3">- 취소 예약 내역</a>
 			</div>
 			<br>
 			<div id="preReserve">
-				<a href="/theBeauty/reserve/reservationDetailPage?reserveStatus=1">- 지난 예약 내역</a>
+				<a href="/theBeauty/reserve/reservationDetailPage?reserveStatus=1">- 지난 예약 내역 </a>
 			</div>
 		</div>
 		<div id="reserveContent">
+		<c:if test="${not empty reservationList}">
 		<c:forEach var="reservationInfo" items="${reservationList}">
            <div id="contentBox">
 		   		<div id="consultingName">
@@ -107,14 +108,17 @@
 							<div id="status">예약취소</div>
 						</c:if>
 					</div>
-					
-					
-						
 				</div>
 			</div>
 			<br>
         </c:forEach>
+        </c:if>
+        <c:if test="${ empty reservationList}">
+        	<span style="color: #888888; font-weight: bold;margin-top:100px; height: 300px;" >상세 내역 없음</span>
+        </c:if>
 		</div>
         </div>
+        <!-- footer추가 -->
+	<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>
