@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.product.dao.ProductDAO;
 import com.kosa.theBeauty.product.domain.PaginationVO;
 import com.kosa.theBeauty.product.domain.ProductDetailVO;
