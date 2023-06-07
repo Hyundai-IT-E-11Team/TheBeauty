@@ -11,7 +11,7 @@
 <script
 	src="${pageContext.request.contextPath}/resources/js/reservation/adminPageCalendar.js"></script>
 <script
-	src="${pageContext.request.contextPath}/resources/js/reservation/managingReserve.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/reservation/reservation.js"></script>
 <title>ManageReservation</title>
 </head>
 <body>
