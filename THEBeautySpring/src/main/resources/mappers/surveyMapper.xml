@@ -37,5 +37,4 @@
 		    ON s.user_seq = u.user_seq
 		 WHERE s.user_seq = #{userSeq}
 	</select>
-
 </mapper>

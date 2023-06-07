@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class MainController {
 	
 	// 스프링 의존성 주입에 의해 다른 패키지에있는 ProductService 클래스를 사용 가능
-    private final ProductService service;
+    private final ProductService productService;
 	private final reserveService reService;
 	private final mainService mainService;
     
@@ -47,29 +47,21 @@ public class MainController {
 	
 	@DebugLog
 	@GetMapping("brand/{brandName}")
-	public String getProductsByBrandPaged(@PathVariable("brandName") String brandName,  PaginationVO vo, Model model) {
+	public String selectProductCountByBrandPagination(@PathVariable("brandName") String brandName,  PaginationVO paginationVO, Model model) {
 		
 		BrandVO brand =  mainService.getBrandInfoByBrandName(brandName);
-		vo.setBrandName(brandName);
-		vo.setBrandSeq(brand.getBrandSeq());
-		
-		int totalNum = service.getProductsCountByBrand(vo);
-		
-		List<ProductDetailVO> products = service.getProductsByBrandPaged(vo);
-		
-		int paginationNum = service.calculatePaginationNum(totalNum);
+		paginationVO.setBrandName(brandName);
+		paginationVO.setBrandSeq(brand.getBrandSeq());
+		int totalNum = productService.selectProductCountByBrandPagination(paginationVO);
+		List<ProductDetailVO> products = productService.selectProductListByBrandPagination(paginationVO);
+		int paginationNum = productService.calculatePaginationNum(totalNum);
 		
 		model.addAttribute("brand", brand);
-
 		model.addAttribute("totalNum", totalNum);
-
 		model.addAttribute("products", products);
-		
 		model.addAttribute("paginationNum", paginationNum);
-		
 		model.addAttribute("brandName", brandName);
-		
-		model.addAttribute("page", vo.getPage());
+		model.addAttribute("page", paginationVO.getPage());
 		
 		return "main/brand";
 	}
