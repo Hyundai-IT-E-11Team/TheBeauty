@@ -99,3 +99,25 @@ function login(){
 		}
 	})
 }
+
+
+function checklogin(){
+	let userMail = $('#userMail');
+	let userPw = $('#userPw');
+	
+	$.ajax({
+		url: '/theBeauty/user/login',
+		type: 'POST',
+		data: {
+			userMail: userMail.val(),
+			userPw: userPw.val()
+		},
+		success: function(response) {
+			window.location.href = "/theBeauty/main/mainPage";
+		},
+		error : function(response) {
+			alert("아이디 혹은 비밀번호가 올바르지 않습니다. 다시 입력해주세요.");
+			window.location.href = "/theBeauty/user/login";
+		}
+	})
+}
