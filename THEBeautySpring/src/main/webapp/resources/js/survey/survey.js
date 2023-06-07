@@ -43,12 +43,10 @@ function safeANDmove(userSeq) {
 	        	surveySkintone : surveySkintone
 	        },
 	        success: function(response) {
-	        	console.log(response);
 	        	alert("설문이 완료되었습니다.");
 	        	window.location.href = response;
 	        },
 	        error: function(response) {
-	        	console.log(response);
 	            alert("설문저장에 실패하였습니다. 메인페이지로 이동합니다.");
 	            window.location.href = response;
 	        }
