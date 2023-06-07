@@ -25,10 +25,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MainController {
 	
-    private final ProductService productService;
+  private final ProductService productService;
 	private final ReserveService reserveService;
 	private final MainService mainService;
-    
+
 	@DebugLog
 	@GetMapping("mainPage")
 	public String login(@SessionAttribute(required = false) UserVO currUser, Model model) {
@@ -47,20 +47,22 @@ public class MainController {
 	
 	@DebugLog
 	@GetMapping("brand/{brandName}")
-	public String getProductsByBrandPaged(@PathVariable("brandName") String brandName,  PaginationVO vo, Model model) {
+	public String selectProductCountByBrandPagination(@PathVariable("brandName") String brandName,  PaginationVO paginationVO, Model model) {
 		
-		BrandVO brand =  mainService.selectBrandByBrandName(brandName);
-		vo.setBrandName(brandName);
-		vo.setBrandSeq(brand.getBrandSeq());
-		int totalNum = productService.getProductsCountByBrand(vo);
-		List<ProductDetailVO> products = productService.getProductsByBrandPaged(vo);
+		BrandVO brand =  mainService.getBrandInfoByBrandName(brandName);
+		paginationVO.setBrandName(brandName);
+		paginationVO.setBrandSeq(brand.getBrandSeq());
+		int totalNum = productService.selectProductCountByBrandPagination(paginationVO);
+		List<ProductDetailVO> products = productService.selectProductListByBrandPagination(paginationVO);
 		int paginationNum = productService.calculatePaginationNum(totalNum);
+		
 		model.addAttribute("brand", brand);
 		model.addAttribute("totalNum", totalNum);
 		model.addAttribute("products", products);
 		model.addAttribute("paginationNum", paginationNum);
 		model.addAttribute("brandName", brandName);
-		model.addAttribute("page", vo.getPage());
+		model.addAttribute("page", paginationVO.getPage());
+
 		return "main/brand";
 	}
 }

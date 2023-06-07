@@ -97,12 +97,24 @@
 	flex-direction: column;
 }
 
+#calImg img{
+	width : 40px;
+	height : 40px;
+}
+
 #dateContainer {
 	width: 500px;
 	height: 310px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+.add-hover:hover {
+	color: #006600;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer; 
 }
 
 #choiceDate {

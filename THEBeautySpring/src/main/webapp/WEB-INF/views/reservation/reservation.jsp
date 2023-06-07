@@ -44,7 +44,7 @@
 							 <input type="hidden" id="brandSeq" name="brandSeq" value="${brandInfo.brandSeq}" />
 							<div id="dateContainer">
 								<div id="choiceDate">
-									<div>날 짜 :</div>
+									<div id="calImg"><img src="https://smithstonewalters.com/wp-content/uploads/2015/08/icon-calendar-green.png"></div>
 									<div id="inputDate"></div>
 								</div>
 								<div id="calendar">
@@ -74,7 +74,7 @@
 							</div>
 							<div id="timeContainer">
 								<div id="choiceTime">
-									<div>시 간 :</div>
+									<div id="calImg"><img src="https://previews.123rf.com/images/imagevectors/imagevectors1601/imagevectors160100846/50600441-%ED%8F%89%EB%A9%B4-%EB%85%B9%EC%83%89-%EC%8B%9C%EA%B3%84-%EC%95%84%EC%9D%B4%EC%BD%98%EA%B3%BC-%EB%85%B9%EC%83%89-%EC%9B%90.jpg"></div>
 									<div id="inputTime"></div>
 								</div>
 								<div id="timeTable"></div>
@@ -90,5 +90,7 @@
 	<div id="endLine">
 		<hr>
 	</div>
+	<!-- footer추가 -->
+	<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 </body>
 </html>
