@@ -10,20 +10,6 @@ INSERT INTO tb_brand VALUES (
     NULL
 );
 
-INSERT INTO tb_user (
-    role_num,
-    user_name,
-    user_mail,
-    user_pw,
-    user_registration
-) VALUES (
-    0,
-    'test',
-    'test@test.com',
-    '0000',
-    0000
-);
-
 INSERT INTO tb_brand (
     brand_seq,
     brand_name,
@@ -472,6 +458,381 @@ INSERT INTO tb_brand (
     'https://www.lancome.co.kr/dw/image/v2/AARM_PRD/on/demandware.static/-/Sites-lancome-kr-ng-Library/ko_KR/dw578ba542/main/mainbanner_810x810_04.jpg?sw=810&sh=810&sm=cut&q=70',
     'https://www.lancome.co.kr/dw/image/v2/AARM_PRD/on/demandware.static/-/Sites-lancome-kr-ng-Library/ko_KR/dwbf2304d7/main/mainbanner_810x810_03.jpg?sw=810&sh=810&sm=cut&q=70',
     'https://www.lancome.co.kr/dw/image/v2/AARM_PRD/on/demandware.static/-/Sites-lancome-master-catalog/default/dw41ddfdb6/images/PACKSHOTS/MAKEUP/EYES/HYPNOSE_PALETTE/A01665-LAC/3614272453135_HYPNOSE_PALETTE_TAUPE_CRAZE.jpg?sw=563&sh=563&sm=cut&sfrm=jpg&q=70'
+);
+
+-- 1 프리메라
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    1,
+    '프리메라',
+    'primera@primera.com',
+    'primera',
+    '0000'
+);
+
+-- 2 크리드
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    2,
+    '크리드',
+    'creed@creed.com',
+    'creed',
+    '0000'
+);
+
+-- 3 오에라
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    3,
+    '오에라',
+    'oera@oera.com',
+    'oera',
+    '0000'
+);
+
+-- 4 겔랑
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    4,
+    '겔랑',
+    'guerlain@guerlain.com',
+    'guerlain',
+    '0000'
+);
+
+-- 5 베네피트
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    5,
+    '베네피트',
+    'benefit@benefit.com',
+    'benefit',
+    '0000'
+);
+
+-- 6 라메르
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    6,
+    '라메르',
+    'lamer@lamer.com',
+    'lamer',
+    '0000'
+);
+
+-- 7 라프레리
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    7,
+    '라프레리',
+    'laprairie@laprairie.com',
+    'laprairie',
+    '0000'
+);
+
+-- 8 록시땅
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    8,
+    '록시땅',
+    'roche@roche.com',
+    'roche',
+    '0000'
+);
+
+-- 9 바닐라코
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    9,
+    '바닐라코',
+    'vanilla@vanilla.com',
+    'vanilla',
+    '0000'
+);
+
+-- 10 바비브라운
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    10,
+    '바비브라운',
+    'bobbibrown@bobbibrown.com',
+    'bobbibrown',
+    '0000'
+);
+
+-- 11 시슬리
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    11,
+    '시슬리',
+    'sisley@sisley.com',
+    'sisley',
+    '0000'
+);
+
+-- 12 아쿠아디파르마
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    12,
+    '아쿠아디파르마',
+    'acquadiparma@acquadiparma.com',
+    'acquadiparma',
+    '0000'
+);
+
+-- 13 에스티로더
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    13,
+    '에스티로더',
+    'estee@estee.com',
+    'estee',
+    '0000'
+);
+
+-- 14 이솝
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    14,
+    '이솝',
+    'aesop@aesop.com',
+    'aesop',
+    '0000'
+);
+
+-- 15 헤라
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    15,
+    '헤라',
+    'hera@hera.com',
+    'hera',
+    '0000'
+);
+
+-- 16 디올
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    16,
+    '디올',
+    'dior@dior.com',
+    'dior',
+    '0000'
+);
+
+-- 17 나스
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    17,
+    '나스',
+    'nars@nars.com',
+    'nars',
+    '0000'
+);
+
+-- 18 에스케이투
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    18,
+    '에스케이투',
+    'sk2@sk2.com',
+    'sk2',
+    '0000'
+);
+
+-- 19 브이디엘
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    19,
+    '브이디엘',
+    'vdl@vdl.com',
+    'vdl',
+    '0000'
+);
+
+-- 20 메종마르지엘라
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    20,
+    '메종마르지엘라',
+    'maison@maison.com',
+    'maison',
+    '0000'
+);
+
+-- 21 샤넬
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    21,
+    '샤넬',
+    'chanel@chanel.com',
+    'chanel',
+    '0000'
+);
+
+-- 22 에르메스
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    22,
+    '에르메스',
+    'hermes@hermes.com',
+    'hermes',
+    '0000'
+);
+
+-- 23 톰포드
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    23,
+    '톰포드',
+    'tomford@tomford.com',
+    'tomford',
+    '0000'
+);
+
+-- 24 구찌
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    24,
+    '구찌',
+    'gucci@gucci.com',
+    'gucci',
+    '0000'
+);
+
+-- 25 랑콤
+INSERT INTO tb_user (
+    role_num,
+    user_name,
+    user_mail,
+    user_pw,
+    user_registration
+) VALUES (
+    25,
+    '랑콤',
+    'lancome@lancome.com',
+    'lancome',
+    '0000'
 );
 
 INSERT INTO tb_category VALUES ( 'SKINCARE' );
