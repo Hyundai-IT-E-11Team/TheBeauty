@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.reservation.domain.ReservationVO;
 import com.kosa.theBeauty.reservation.domain.SatisfactionVO;
-import com.kosa.theBeauty.reservation.service.reserveService;
+import com.kosa.theBeauty.reservation.service.ReserveService;
 import com.kosa.theBeauty.survey.service.SurveyService;
 import com.kosa.theBeauty.user.domain.UserVO;
 
@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 @SessionAttributes(value = {"reservationSeq"})
 public class ConsultController {
 
-	private final reserveService service;
+	private final ReserveService service;
 	private final SurveyService surveyService;
 	
 	@DebugLog
