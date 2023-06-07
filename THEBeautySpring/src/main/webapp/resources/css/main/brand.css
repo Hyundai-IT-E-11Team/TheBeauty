@@ -1,0 +1,116 @@
+@import
+	url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap")
+	;
+
+* {
+	font-family: "Poppins", sans-serif;
+}
+
+
+.consulting-btn {
+	color: #0B5345;
+	background-color: white;
+	border: none;
+	border-bottom: 1px solid #0B5345;
+	font-weight: bold;
+	font-size: 22px
+}
+
+.brand-consulting {
+	display: flex;
+	width: 100%;
+	margin: 7px 0;
+	justify-content: flex-end;
+}
+
+.brand-consulting div {
+	display: flex;
+	width: 33%;
+	justify-content: space-around;
+}
+
+.brand-consulting div:nth-child(2) {
+	justify-content: center;
+}
+
+.brand-consulting div:nth-child(3) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.brand-imgurl {
+	width: 250px; /* 지정하신 너비에 따라 변경해 주세요 */
+	object-fit: contain;
+}
+
+.product-imgs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center; /* 가로축 중앙 정렬 */
+	align-items: center; /* 세로축 중앙 정렬 */
+}
+
+.product-img {
+	margin: 10px; /* 상하좌우 마진을 자동으로 설정하여 중앙정렬을 가능하게 함 */
+}
+
+.product-img img {
+	width: 480px;
+	height: 250px;
+	object-fit: cover;
+}
+
+/* 상품 리스트 부분 */
+.productlist-wrap {
+	display: flex;
+	justify-content: center;
+	width: 1300px;
+	margin: 0 auto;
+}
+
+.product-list {
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.product {
+	display: block;
+	width: 280px;
+	/* text-align: center; */
+	text-decoration: none;
+	color: black;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+
+.product-price {
+	font-size: 23px;
+	line-height: 25px;
+	color: #333;
+	font-weight: 700;
+}
+
+.product-name {
+	font-size: 13px;
+	margin-top: 12px;
+	line-height: 18px;
+	max-height: 36px;
+	height: 36px;
+	display: block;
+	overflow: hidden;
+	color: #757575;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+}
+
+.clearfix {
+	clear: both;
+}

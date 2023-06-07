@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa.theBeauty.product.dao.ProductDAO">
+
+	<resultMap type="ProductVO" id="ProductVOMap">
+		<result column="product_seq" property="productSeq" />
+		<result column="brand_seq" property="brandSeq" />
+		<result column="product_name" property="productName" />
+		<result column="product_price" property="productPrice" />
+		<result column="product_imgurl" property="productImgurl" />
+		<result column="product_category" property="productCategory" />
+	</resultMap>
+
+	<resultMap type="ProductDetailVO" id="ProductDetailVOMap">
+		<association property="productVO" javaType="ProductVO">
+			<result column="product_seq" property="productSeq" />
+			<result column="brand_seq" property="brandSeq" />
+			<result column="product_name" property="productName" />
+			<result column="product_price" property="productPrice" />
+			<result column="product_imgurl" property="productImgurl" />
+			<result column="product_category" property="productCategory" />
+		</association>
+
+		<association property="brandVO" javaType="BrandVO">
+			<result column="brand_seq" property="brandSeq" />
+			<result column="brand_name" property="brandName" />
+			<result column="brand_imgurl" property="brandImgurl" />
+			<result column="brand_img1" property="brandImg1" />
+			<result column="brand_img2" property="brandImg2" />
+			<result column="brand_img3" property="brandImg3" />
+			<result column="brand_img4" property="brandImg4" />
+		</association>
+	</resultMap>
+
+	<!-- 상품 검색 -->
+	<select id="selectProductByKeyword" parameterType="ProductVO"
+		resultMap="ProductVOMap">	
+			<![CDATA[		
+			SELECT *
+			  FROM tb_product
+			 WHERE product_name LIKE '%' || #{productName} || '%'
+			]]>
+	</select>
+
+	<!-- pagination 검색 상품 개수 구하기 -->
+	<select id="selectProductCountByKeyword" parameterType="PaginationVO"
+		resultType="_int">
+			<![CDATA[
+			SELECT count(*)
+			  FROM tb_product
+			 WHERE product_name LIKE '%' || #{productName} || '%'
+			 ]]>
+	</select>
+	
+	<!-- pagination 페이지네이션된 상품 리스트 (20개씩 나오는 거) -->
+	<select id="selectProductListByKeywordPaged" parameterType="PaginationVO"
+		resultMap="ProductVOMap">
+			<![CDATA[
+			SELECT *
+			  FROM tb_product
+			 WHERE product_name LIKE '%' || #{productName} || '%'
+            OFFSET #{offset} ROWS FETCH NEXT 20 ROWS ONLY
+		]]>
+	</select>
+
+	<!-- 브랜드관 페이지 -->
+	<select id="selectProductByBrandName" parameterType="String"
+		resultMap="ProductDetailVOMap">
+		<![CDATA[
+			SELECT *
+			  FROM tb_product
+			 WHERE brand_seq = 21
+			 ]]>
+	</select>
+	<!-- 상품 상세정보 페이지 -->
+	<select id="getProductDetails" resultMap="ProductDetailVOMap">
+		SELECT p.*, b.*
+		FROM tb_product p
+		JOIN tb_brand b
+		ON p.brand_seq = b.brand_seq
+		WHERE p.product_seq = #{productSeq}
+	</select>
+
+	<!-- 브랜드관 페이지 상품리스트 hw -->
+	<select id="getProductsByBrandPaged" parameterType="PaginationVO" resultMap="ProductDetailVOMap">
+		SELECT p.*, b.*
+		FROM tb_product p
+		JOIN tb_brand b
+		ON p.brand_seq = b.brand_seq
+		WHERE b.brand_seq = #{brandSeq}
+		OFFSET #{offset} ROWS FETCH NEXT 20 ROWS ONLY
+	</select>
+	
+	<!-- pagination 검색 상품 개수 구하기 -->
+	<select id="getProductsCountByBrand" parameterType="PaginationVO"
+		resultType="_int">
+		SELECT COUNT(*) AS count
+		FROM tb_product p
+		JOIN tb_brand b
+		ON p.brand_seq = b.brand_seq
+		WHERE b.brand_seq = #{brandSeq}
+	</select>
+	
+	<!-- 브랜드관 페이지 상품리스트 -->
+	<select id="selectProductByBrandAndQuery" parameterType="String" resultMap="ProductVOMap">
+		SELECT *
+		  FROM tb_product
+		 WHERE brand_seq = #{brandSeq}
+		   AND product_name like '%${query}%'
+	</select>
+	
+	<!--  header에서 카테고리 별로 상품 검색-->
+	<select id="selectProductByCategoryPaged" parameterType="PaginationVO" resultMap="ProductVOMap">
+		SELECT *
+		  FROM tb_product
+		 WHERE product_category = #{productCategory}
+		 OFFSET #{offset} ROWS FETCH NEXT 20 ROWS ONLY
+	</select>
+	
+	<!-- pagination 검색 상품 개수 구하기 -->
+	<select id="selectProductCountByCategory" parameterType="PaginationVO"
+		resultType="_int">
+			<![CDATA[
+			SELECT count(*)
+			  FROM tb_product
+			 WHERE product_category = #{productCategory}
+			 ]]>
+	</select>
+
+</mapper>
+

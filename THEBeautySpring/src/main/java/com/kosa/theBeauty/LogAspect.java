@@ -24,8 +24,7 @@ public class LogAspect {
 		log.debug(method.getName() + "메서드 호출");
 
 		Arrays.stream(joinPoint.getArgs()).forEach(o -> {
-			log.debug("type: " + o.getClass().getName());
-			log.debug("value: " + o);
+			log.debug("매개변수 value: " + o);
 		});
 
 	}

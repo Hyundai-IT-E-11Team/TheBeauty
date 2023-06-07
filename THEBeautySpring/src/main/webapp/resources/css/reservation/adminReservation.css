@@ -1,0 +1,295 @@
+/* 상위 헤더 css */
+#totalContainer {
+	width: 1690px;
+	height: 100%;
+}
+
+#header {
+	position: relative;
+	display: flex;
+	height: 150px;
+	align-items: center;
+	flex-wrap: nowrap;
+	margin-left: 100px;
+}
+
+#mainLogo {
+	width: 300px;
+	height: 75px;
+	align-items: center;
+	justify-content: center;
+	margin-left: 100px;
+}
+
+#mainLogo img {
+	width: 270px;
+	height: 75px;
+	margin: 10px;
+}
+
+#reservement {
+	margin-top: 30px;
+}
+
+#middle {
+	height: 800px;
+	display: grid;
+	place-items: center;
+}
+
+#reservemain {
+	display: flex;
+	flex-direction: column;
+	width: 1100px;
+	height: 800px;
+}
+
+#innerheader {
+	width: 1100px;
+	height: 100px;
+}
+
+#reservemain h1 {
+	margin-left: 30px;
+}
+
+#innermain {
+	width: 1100px;
+	height: 800px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 0px;
+}
+
+#brand {
+	width: 1100px;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+}
+
+
+#brandlogo {
+	width: 500px;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#brandlogo img {
+	width: 300px;
+	height: 70px;
+}
+
+#content {
+	width: 1100px;
+	height: 300px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#schedule {
+	width: 500px;
+	height: 700px;
+	display: flex;
+	flex-direction: column;
+}
+
+#calImg img{
+	width : 40px;
+	height : 40px;
+}
+
+#dateContainer {
+	width: 500px;
+	height: 310px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.add-hover:hover {
+	color: #006600;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer; 
+}
+
+#choiceDate {
+	width: 400px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	margin-left: 20px;
+	margin-right: auto;
+}
+
+#inputDate {
+	width : 150px;
+	height : 50px;
+	display: flex;
+	align-items: center;
+	margin-left : 20px;
+}
+
+#calendar {
+	display: flex;
+	justify-content: center;
+}
+
+.Calendar thead {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#ymd {
+	width: 400px;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#ymd td {
+	width: 100px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#day {
+	width: 400px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#day td {
+	width: 50px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Calendar tbody {
+	width: 400px;
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+}
+.Calendar tbody tr {
+	width: 400px;
+	height: 37px;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+.Calendar tbody tr td {
+	width: 50px;
+	height: 35px;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+#timeContainer {
+	width: 500px;
+	height: 310px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-top : 0px;
+}
+
+#choiceTime {
+	width: 400px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	margin-left: 20px;
+	margin-right: auto;
+}
+
+#inputTime {
+	width: 150px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	margin-left : 20px;
+}
+
+#timeTable {
+	width: 400px;
+	height: 250px;
+	display: flex;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	align-items: flex-end;
+}
+
+.time {
+	width : 100px;
+	height : 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#detail {
+	width: 1100px;
+	height: 200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#reserveInfo {
+	width: 400px;
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 35px;
+	margin-left:100px;
+}
+
+#submitschedule {
+	width: 500px;
+	height: 200px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 100px;
+}
+
+#submitschedule a {
+	width: 230px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: darkgreen;
+	color: white;
+	justify-content: center;
+	border-radius: 10px;
+}
+
+#a::value {
+	color: white;
+	margin: 0;
+	padding: 0;
+} 
+
+.getInfo {
+	white-space: nowrap;
+}
+
+#endLine hr {
+	width: 1100px;
+}

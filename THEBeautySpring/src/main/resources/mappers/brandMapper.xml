@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa.theBeauty.main.dao.mainDAO">
+	<resultMap type="BrandVO" id="BrandVOMap">
+		<result column="brand_seq" property="brandSeq" />
+		<result column="brand_name" property="brandName" />
+		<result column="brand_imgurl" property="brandImgurl" />
+		<result column="brand_img1" property="brandImg1" />
+		<result column="brand_img2" property="brandImg2" />
+		<result column="brand_img3" property="brandImg3" />
+		<result column="brand_img4" property="brandImg4" />
+	</resultMap>
+	
+	<!-- 브랜드정보 계정 롤넘으로 찾기 -->
+	<select id="selectBrnadByUser" parameterType="int" resultMap="BrandVOMap">
+		SELECT *
+		  FROM tb_brand
+		 WHERE brand_seq = #{rollNum}
+	</select>
+	
+	<select id="selectBrandByName" resultMap="BrandVOMap">
+		SELECT *
+		  FROM tb_brand
+		 WHERE brand_name = #{brandName}
+	</select>
+	
+</mapper>  

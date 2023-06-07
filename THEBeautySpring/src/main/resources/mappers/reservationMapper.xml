@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosa.theBeauty.reservation.dao.reserveDAO">
+	<resultMap type="ReservationVO" id="ReservationVOMap">
+		<result column="RESERVATION_SEQ" property="reservationSeq" />
+		<result column="USER_SEQ" property="userSeq" />
+		<result column="BRAND_SEQ" property="brandSeq" />
+		<result column="BRAND_NAME" property="brandName" />
+		<result column="USER_NAME" property="userName" />
+		<result column="RESERVE_DATE" property="reserveDate" />
+		<result column="RESERVE_TIME" property="reserveTime" />
+		<result column="RESERVE_STATUS" property="reserveStatus" />
+		<result column="CONSULT_ROOM_ID" property="consultRoomId" />
+	</resultMap>
+	<resultMap type="BrandVO" id="BrandVOMap">
+		<result column="brand_seq" property="brandSeq" />
+		<result column="brand_name" property="brandName" />
+		<result column="brand_imgurl" property="brandImgurl" />
+		<result column="brand_img1" property="brandImg1" />
+		<result column="brand_img2" property="brandImg2" />
+		<result column="brand_img3" property="brandImg3" />
+		<result column="brand_img4" property="brandImg4" />
+	</resultMap>
+	<resultMap type="ProductVO" id="ProductVOMap">
+		<result column="PRODUCT_SEQ" property="productSeq" />
+		<result column="BRAND_SEQ" property="brandSeq" />
+		<result column="PRODUCT_NAME" property="productName" />
+		<result column="PRODUCT_PRICE" property="productPrice" />
+		<result column="PRODUCT_IMGURL" property="productImgurl" />
+		<result column="PRODUCT_CATEGORY" property="productCategory" />
+	</resultMap>
+
+	<!-- 브랜드 정보 찾기 -->
+	<select id="selectBrandInfo" resultMap="BrandVOMap">
+		SELECT *
+		FROM tb_brand
+		WHERE brand_seq = #{brandSeq}
+	</select>
+
+	<!-- 예약내역삽입 -->
+	<insert id="insertReservationInfo" parameterType="ReservationVO">
+		INSERT INTO
+		tb_reservation
+		(USER_SEQ,USER_NAME,BRAND_SEQ,RESERVE_DATE,RESERVE_TIME)
+		VAlUES
+		(#{userSeq},#{userName},#{brandSeq},#{reserveDate},#{reserveTime})
+	</insert>
+
+	<!-- 예약가능확인 -->
+	<select id="selectReservationInfo" parameterType="ReservationVO"
+		resultMap="ReservationVOMap">
+		SELECT *
+		FROM tb_reservation
+		WHERE brand_seq = #{brandSeq}
+		AND reserve_date = #{reserveDate}
+		AND reserve_time = #{reserveTime}
+		AND (reserve_status = 0 OR reserve_status = 1 OR reserve_status = 2)
+	</select>
+	
+	<!-- 예약정보불러오기 -->
+	<select id="selectReservationforDetail"
+		parameterType="ReservationVO" resultMap="ReservationVOMap">
+		SELECT r.*, b.brand_name
+		  FROM tb_reservation r
+		  JOIN tb_brand b ON r.brand_seq = b.brand_seq
+		 WHERE r.user_seq = #{userSeq}
+		   AND r.reserve_status = #{reserveStatus}
+	</select>
+	
+	<!-- 예약 취소 -->
+	<update id="updateReservation" parameterType="ReservationVO">
+		UPDATE
+		tb_reservation
+		SET reserve_status = 3
+		WHERE brand_seq = #{brandSeq}
+		AND
+		user_Name = #{userName}
+		AND reserve_date = #{reserveDate}
+		AND
+		reserve_time = #{reserveTime}
+	</update>
+
+	<!-- 예약정보불러오기 -->
+	<select id="selectReservationByUser"
+		parameterType="ReservationVO" resultMap="ReservationVOMap">
+		SELECT *
+		FROM (
+		SELECT r.*,
+		b.brand_name
+		FROM tb_reservation r
+		JOIN tb_brand b
+		ON r.brand_seq =
+		b.brand_seq
+		WHERE r.user_seq = #{userSeq}
+		AND r.reserve_status = 0
+		ORDER
+		BY r.reserve_date, r.reserve_time
+		)
+		WHERE ROWNUM = 1
+	</select>
+
+	<select id="selectReservationBrand" resultMap="ReservationVOMap">
+		SELECT *
+		FROM
+		tb_reservation
+		WHERE brand_seq = #{brandSeq}
+		AND reserve_status = 0
+	</select>
+
+	<select id="selectReservationBySeq" resultMap="ReservationVOMap">
+		SELECT *
+		FROM
+		tb_reservation
+		WHERE reservation_seq = #{reservationSeq}
+	</select>
+	
+	<update id="updateReservationStatus">
+		UPDATE tb_reservation
+		   SET reserve_status = 1
+		 WHERE reservation_seq = #{reservationSeq}
+	</update>
+	
+	<insert id="createStatisfaction" parameterType="SatisfactionVO">
+		INSERT INTO tb_satisfaction (reservation_seq, user_score, user_comment)
+		VALUES (#{reservationSeq}, #{score}, #{comment} )
+	</insert>
+</mapper> 

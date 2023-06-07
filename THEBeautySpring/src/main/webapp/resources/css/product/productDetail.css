@@ -1,0 +1,223 @@
+@import
+	url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap")
+	;
+
+* {
+	font-family: "Poppins", sans-serif;
+}
+
+#prd-shop-form {
+	diplay: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#logoImg {
+	width: auto;
+	height: 40px;
+	margin-top: 10px;
+	cursor:pointer;
+}
+
+/* 상품 상세정보 css */
+.prd-detail-content {
+	position: relative;
+	margin: 0 auto;
+	width: 1120px;
+}
+
+.prd-info {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+}
+
+.prd-info-box {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.prd-info-box.left {
+	margin-right: 30px;
+}
+
+.prd-info-box .imgview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 80px;
+}
+
+.prd-info-box .prd-shop, .prd-info-box .prd-title, .prd-info-box .prd-price-wrap
+	{
+	text-align: left;
+	width: 100%;
+}
+
+.product-control {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: flex-start;
+	margin-bottom: 20px;
+	float: right;
+}
+
+.product-control>* {
+	margin-right: 10px; /* 간격을 조절합니다. 필요에 따라 변경하세요. */
+}
+
+#decrease-button, #increase-button {
+	border: none;
+	cursor: pointer;
+}
+
+.sumPrice:first-child {
+	color: #e35c61;
+	font-size: 20px;
+	align-items: flex-end;
+	margin-right: 4px;
+}
+
+.sumPrice:last-child {
+	color: #e35c61;
+	font-size: 24px;
+}
+
+.prd-shop button {
+	border: none;
+	background: #fff;
+	width: 20px;
+	height: 20px;
+}
+
+.button-option {
+	display: flex; /*  버튼들이 한 행에 나열되도록  */
+	width: 100%;
+	justify-content: space-between; /* 버튼 간의 공간을 균등하게 배분 */
+}
+
+.button-option button {
+	margin-right: 10px; /* 버튼 간의 간격 설정 */
+}
+
+.prd-info-box .cart-button, .prd-info-box .consulting-button,
+	.prd-info-box .pay-button {
+	margin-bottom: 10px;
+	border: none;
+	border-radius: 1px;
+	padding: 15px;
+	color: #fff;
+	flex-grow: 1; /* 각 버튼이 동일한 공간을 차지하도록 */
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.prd-info-box .cart-button {
+	background-color: #A6ACAF;
+}
+
+.prd-info-box .consulting-button {
+	background-color: #0B5345;
+}
+
+.prd-info-box .pay-button {
+	background-color: #e35c61;
+}
+
+.prd-title h2 { /* 상품명 폰트 관련  */
+	font-size: 23px;
+	font-weight: 400;
+	color: #000;
+}
+
+.prd-price-wrap h3 { /* 상품 가격 폰트 관련  */
+	color: #e35c61;
+	font-size: 39px;
+	font-weight: 700;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+li {
+	list-style-type: none;
+}
+
+.shipping-info dt, .shipping-info dd {
+	display: inline;
+	margin-right: 10px;
+}
+
+.benefit-info-list {
+	padding: 10px 0px;
+}
+
+.benefit-info-list li {
+	display: flex;
+	flex-direction: row;
+	padding: 10px 0;
+}
+
+.benefit-title {
+	flex: 0 0 30%;
+}
+
+.benefit-desc {
+	flex: 0 0 70%;
+	text-align: left;
+	padding-left: 10px;
+}
+
+/* 이미지 크기 변경  */
+.prd-info-box .imgview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.prd-info-box .imgview img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* 상품개수 조절 및 합계 부분 */
+.prd-cnt {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.prd-cnt-sum {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.prd-cnt-sum button {
+	border: none;
+	background: #f0f0f0;
+	padding: 10px 15px;
+	margin: 0 10px;
+	font-size: 18px;
+	color: #000;
+}
+
+.prd-price-sum {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	color: #e35c61;
+}
+
+.sum-text {
+	font-size: 15px;
+}
+
+.price-text {
+	font-size: 25px;
+}

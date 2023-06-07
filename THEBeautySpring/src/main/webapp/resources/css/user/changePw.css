@@ -1,0 +1,43 @@
+h1 {
+    text-align: center;
+}
+
+#outter {
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3 {
+    align-self: flex-start;
+}
+
+.textInput {
+    width: 350px;
+    height: 40px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #D4D4D4;
+    margin-right: 5px;
+}
+
+#changeUserInfoBtn {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    height: 40px;
+    width: 150px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

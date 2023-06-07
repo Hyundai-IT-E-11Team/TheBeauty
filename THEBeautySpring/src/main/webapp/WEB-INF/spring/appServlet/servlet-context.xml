@@ -37,9 +37,11 @@
 
 	<interceptors>
 		<interceptor>
-			<mapping path="/test/get" />
+			<mapping path="/cart/**"/>
+			<mapping path="/reserve/**"/>
+			<mapping path="/consult/**"/>
 			<beans:bean
-				class="com.kosa.theBeauty.interceptors.TestInterceptor"></beans:bean>
+				class="com.kosa.theBeauty.interceptors.UserInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
 

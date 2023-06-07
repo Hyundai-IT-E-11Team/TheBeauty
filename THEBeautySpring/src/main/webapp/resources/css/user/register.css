@@ -1,0 +1,62 @@
+h1 {
+	text-align: center;
+}
+
+#outter {
+	display: flex;
+justify-content: center;}
+
+#outter>div:first-child {
+	width:88px;
+}
+
+#container {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.signup-form {
+	display: flex;
+	flex-direction: column; /* 변경: form 요소를 세로로 나열하도록 변경 */
+	margin-bottom: 5px;
+}
+
+h3 {
+	align-self: flex-start;
+}
+
+.textInput {
+	width: 350px;
+	height: 40px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 2px solid #D4D4D4;
+	margin-bottom: 5px;
+}
+
+#checkBtn {
+	background-color: #000000;
+	color: #ffffff;
+	border: none;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	height: 30px;
+	width: 88px;
+	z-index: 1;
+}
+
+#registerBtn {
+	background-color: #000000;
+	color: #ffffff;
+	border: none;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	height: 40px;
+	width: 350px;
+	margin-top: 10px;
+	
+}
