@@ -135,82 +135,129 @@ END;
 -- END;
 --/
 CREATE OR REPLACE PROCEDURE tb_survey_insert (
-  user_seq_param IN tb_survey.user_seq%TYPE,
-  survey_skintype_param IN tb_survey.survey_skintype%TYPE,
-  survey_personal_color_param IN tb_survey.survey_personal_color%TYPE,
-  survey_jewelry_color_param IN tb_survey.survey_jewelry_color%TYPE,
-  survey_skintone_param IN tb_survey.survey_skintone%TYPE
-)
-IS
-  v_count NUMBER;
+    user_seq_param               IN  tb_survey.user_seq%TYPE,
+    survey_skintype_param        IN  tb_survey.survey_skintype%TYPE,
+    survey_personal_color_param  IN  tb_survey.survey_personal_color%TYPE,
+    survey_jewelry_color_param   IN  tb_survey.survey_jewelry_color%TYPE,
+    survey_skintone_param        IN  tb_survey.survey_skintone%TYPE
+) IS
+    v_count NUMBER;
 BEGIN
   -- 해당 사용자의 설문 결과가 이미 존재하는지 확인
-  SELECT COUNT(*) INTO v_count FROM tb_survey WHERE user_seq = user_seq_param;
-  
-  IF v_count > 0 THEN
+    SELECT
+        COUNT(*)
+    INTO v_count
+    FROM
+        tb_survey
+    WHERE
+        user_seq = user_seq_param;
+
+    IF v_count > 0 THEN
     -- 설문 결과가 존재하는 경우 UPDATE 수행
-    UPDATE tb_survey
-    SET survey_skintype = survey_skintype_param,
-        survey_personal_color = survey_personal_color_param,
-        survey_jewelry_color = survey_jewelry_color_param,
-        survey_skintone = survey_skintone_param
-    WHERE user_seq = user_seq_param;
+        UPDATE tb_survey
+        SET
+            survey_skintype = survey_skintype_param,
+            survey_personal_color = survey_personal_color_param,
+            survey_jewelry_color = survey_jewelry_color_param,
+            survey_skintone = survey_skintone_param
+        WHERE
+            user_seq = user_seq_param;
     
     -- UPDATE가 수행되었음을 출력
-    DBMS_OUTPUT.PUT_LINE('설문 결과가 업데이트되었습니다.');
-  ELSE
+        dbms_output.put_line('설문 결과가 업데이트되었습니다.');
+    ELSE
     -- 설문 결과가 존재하지 않는 경우 INSERT 수행
-    INSERT INTO tb_survey (user_seq, survey_skintype, survey_personal_color, survey_jewelry_color, survey_skintone)
-    VALUES (user_seq_param, survey_skintype_param, survey_personal_color_param, survey_jewelry_color_param, survey_skintone_param);
+        INSERT INTO tb_survey (
+            user_seq,
+            survey_skintype,
+            survey_personal_color,
+            survey_jewelry_color,
+            survey_skintone
+        ) VALUES (
+            user_seq_param,
+            survey_skintype_param,
+            survey_personal_color_param,
+            survey_jewelry_color_param,
+            survey_skintone_param
+        );
     
     -- INSERT가 수행되었음을 출력
-    DBMS_OUTPUT.PUT_LINE('설문 결과가 저장되었습니다.');
-  END IF;
+        dbms_output.put_line('설문 결과가 저장되었습니다.');
+    END IF;
   
   -- 커밋
-  COMMIT;
+    COMMIT;
 EXCEPTION
-  WHEN OTHERS THEN
+    WHEN OTHERS THEN
     -- 에러 발생 시 롤백
-    ROLLBACK;
+        ROLLBACK;
     -- 에러 메시지 출력
-    DBMS_OUTPUT.PUT_LINE('에러: ' || SQLERRM);
+        dbms_output.put_line('에러: ' || sqlerrm);
 END;
 /
 -- 한 user의 cart에 같은 상품이 추가될 때 product_count만 증가하도록 설정
-create or replace procedure tb_cart_insert 
-(
-  user_seq_param IN tb_cart.user_seq%TYPE,
-  product_seq_param IN tb_cart.product_seq%TYPE,
-  product_count_param IN tb_cart.product_count%TYPE
-)
-is
-  v_cnt NUMBER;
-begin
+CREATE OR replace PROCEDURE tb_cart_insert (
+    user_seq_param       IN  tb_cart.user_seq%TYPE,
+    product_seq_param    IN  tb_cart.product_seq%TYPE,
+    product_count_param  IN  tb_cart.product_count%TYPE
+) IS
+    v_cnt NUMBER;
+BEGIN
   -- user_seq와 product_seq를 기준으로 장바구니에서 상품 개수를 조회
-  SELECT count(*) INTO v_cnt
-  FROM tb_cart 
-  WHERE user_seq = user_seq_param 
-  AND product_seq = p roduct_seq_param;
+ SELECT
+          COUNT(*)
+      INTO v_cnt
+      FROM
+          tb_cart
+      WHERE
+              user_seq = user_seq_param
+          AND product_seq = product_seq_param;
   
   -- 조회한 상품 개수가 0보다 크면     
-  IF v_cnt > 0 THEN
+    IF v_cnt > 0 THEN
     -- 장바구니의 해당 상품 개수를 증가
-    UPDATE tb_cart
-    SET product_count = product_count + product_count_param
-    WHERE user_seq = user_seq_param 
-    AND product_seq = product_seq_param;
-  ELSE
-	  -- 아니라면 새로운 상품을 장바구니에 추가
-    INSERT INTO tb_cart (user_seq, product_seq, product_count)
-    VALUES (user_seq_param, product_seq_param, product_count_param);
-  END IF;
+        UPDATE tb_cart
+        SET
+            product_count = product_count + product_count_param
+        WHERE
+                user_seq = user_seq_param
+            AND product_seq = product_seq_param;
 
-  COMMIT;
-  
+    ELSE
+	  -- 아니라면 새로운 상품을 장바구니에 추가
+        INSERT INTO tb_cart (
+            user_seq,
+            product_seq,
+            product_count
+        ) VALUES (
+            user_seq_param,
+            product_seq_param,
+            product_count_param
+        );
+
+    END IF;
+
+    COMMIT;
 EXCEPTION
-  WHEN OTHERS THEN
-    ROLLBACK;
-    RAISE;
-end tb_cart_insert;
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
+END tb_cart_insert;
+/
+
+-- 만족도 조사 insert때 user, brand 생성하는 트리거
+CREATE OR REPLACE TRIGGER trg_generate_user_brand
+BEFORE INSERT ON tb_satisfaction
+FOR EACH ROW
+DECLARE
+    r_reservation tb_reservation%Rowtype;
+BEGIN
+    SELECT *
+    INTO r_reservation
+    FROM tb_reservation
+    WHERE reservation_seq = :new.reservation_seq;
+    
+    :new.user_seq := r_reservation.user_seq;
+    :new.brand_seq := r_reservation.brand_seq;
+END;
 /

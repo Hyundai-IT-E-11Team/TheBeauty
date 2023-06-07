@@ -46,6 +46,11 @@
 		<constructor-arg ref="dataSource"></constructor-arg>
 	</bean>
 
-	<mybatis:scan base-package="com.kosa.theBeauty.*.dao" />
+	<mybatis:scan base-package="com.kosa.theBeauty.cart.dao" />
+	<mybatis:scan base-package="com.kosa.theBeauty.main.dao" />
+	<mybatis:scan base-package="com.kosa.theBeauty.product.dao" />
+	<mybatis:scan base-package="com.kosa.theBeauty.reservation.dao" />
+	<mybatis:scan base-package="com.kosa.theBeauty.survey.dao" />
+	<mybatis:scan base-package="com.kosa.theBeauty.user.dao" />
 
 </beans>

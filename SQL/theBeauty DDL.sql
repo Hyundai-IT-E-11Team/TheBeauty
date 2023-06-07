@@ -24,7 +24,7 @@ DROP TABLE tb_user CASCADE CONSTRAINTS;
 
 DROP SEQUENCE tb_user_seq;
 
-CREATE SEQUENCE tb_user_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE tb_user_seq START WITH 26 INCREMENT BY 1;
 
 CREATE TABLE tb_user (
     user_seq           NUMBER DEFAULT tb_user_seq.NEXTVAL,
@@ -123,15 +123,19 @@ DROP TABLE tb_cart CASCADE CONSTRAINTS;
 CREATE TABLE tb_cart (
     user_seq       NUMBER NOT NULL,
     product_seq    NUMBER NOT NULL,
-    product_count  NUMBER
+    product_count  NUMBER,
+    FOREIGN KEY ( user_seq )
+        REFERENCES tb_user ( user_seq ),
+    FOREIGN KEY ( product_seq )
+        REFERENCES tb_product ( product_seq )
 );
 
 -- tb_satisfaction
 DROP TABLE tb_satisfaction CASCADE CONSTRAINTS;
 
 CREATE TABLE tb_satisfaction (
-    user_seq         NUMBER ,
-    brand_seq        NUMBER ,
+    user_seq         NUMBER,
+    brand_seq        NUMBER,
     reservation_seq  NUMBER NOT NULL,
     user_score       NUMBER NOT NULL,
     user_comment     VARCHAR2(255)
