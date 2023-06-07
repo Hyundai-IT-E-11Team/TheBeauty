@@ -1,6 +1,8 @@
 package com.kosa.theBeauty.reservation.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
@@ -43,17 +46,24 @@ public class reserveController {
 	// 예약완료 후 예약상세페이지 이동 및 메인페이지에서 마이뷰티 클릭 시
 	@DebugLog
 	@GetMapping("reservationDetailPage")
-	public String reservationDetailPage(@SessionAttribute UserVO currUser, Model model) {
-	      if (currUser.getRoleNum() == 0) {
-	         ReservationVO reservationvo = new ReservationVO();
-	         List<ReservationVO> reservationList = new ArrayList<ReservationVO>();
-	         reservationvo.setUserSeq(currUser.getUserSeq());
-	         reservationList = service.getReservation(reservationvo);
-	         model.addAttribute("reservationList", reservationList);
-	        
-	      }
+	public String reservationDetailPage(@SessionAttribute UserVO currUser,@RequestParam(value = "reserveStatus", defaultValue = "0") int reserveStatus, Model model) {
+		ReservationVO reservationvo = new ReservationVO();
+        List<ReservationVO> reservationList = new ArrayList<ReservationVO>();
+        reservationvo.setUserSeq(currUser.getUserSeq());
+        reservationvo.setReserveStatus(reserveStatus);
+        if(reserveStatus==1) {
+        	reservationList = service.getReservation(reservationvo);
+        	reservationvo.setReserveStatus(2);
+        	reservationList.addAll(service.getReservation(reservationvo));
+        	Collections.sort(reservationList, Comparator.comparing(ReservationVO::getReserveDate));
+        	model.addAttribute("reservationList", reservationList);
+        } else {
+        	reservationList = service.getReservation(reservationvo);
+        	Collections.sort(reservationList, Comparator.comparing(ReservationVO::getReserveDate));
+        	model.addAttribute("reservationList", reservationList);
+        }
       return "reservation/reservationDetail";
-	   }
+	}
 
 	// 예약취소
 	@DebugLog
