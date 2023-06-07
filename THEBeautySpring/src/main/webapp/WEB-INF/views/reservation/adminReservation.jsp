@@ -89,7 +89,7 @@
 					 		 <span id="consultStatus" class="getInfo"></span>
 					 	</div>
 					 	<div id="submitschedule">
-							<a id="consultLink" href="/theBeauty/consult/">상담시작하기</a>
+							<a id="consultLink" href="">상담시작하기</a>
 						</div>
 					</div>
 				</div>

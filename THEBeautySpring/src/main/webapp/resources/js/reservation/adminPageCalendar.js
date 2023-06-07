@@ -206,9 +206,7 @@ function floatToInfo() {
 	        	break;
 	        }
 	        $("#consultStatus").text("예약상태 : "+data.reserveStatus);
-	        $("#consultLink").attr("href", function(i, val) {
-	        	  return val + data.reservationSeq;
-	        	});
+	        $("#consultLink").attr("href", "/theBeauty/consult/" + data.reservationSeq);
 	    }
 	});
 }
