@@ -1,4 +1,4 @@
-package com.kosa.theBeauty.annotation;
+package com.kosa.theBeauty.util.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
