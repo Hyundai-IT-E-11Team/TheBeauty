@@ -15,7 +15,7 @@ import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.reservation.domain.ReservationVO;
 import com.kosa.theBeauty.reservation.domain.SatisfactionVO;
 import com.kosa.theBeauty.reservation.service.reserveService;
-import com.kosa.theBeauty.survey.service.SurveyService;
+import com.kosa.theBeauty.survey.service.SurveyServiceImpl;
 import com.kosa.theBeauty.user.domain.UserVO;
 
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class ConsultController {
 
 	private final reserveService service;
-	private final SurveyService surveyService;
+	private final SurveyServiceImpl surveyService;
 	
 	@DebugLog
 	@GetMapping("/{reservationSeq}")
