@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class reserveService {
+public class ReserveService {
 
 	private final reserveDAO dao;
 	

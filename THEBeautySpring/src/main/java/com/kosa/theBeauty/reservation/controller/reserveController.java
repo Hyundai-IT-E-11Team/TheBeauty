@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.product.domain.BrandVO;
 import com.kosa.theBeauty.reservation.domain.ReservationVO;
-import com.kosa.theBeauty.reservation.service.reserveService;
+import com.kosa.theBeauty.reservation.service.ReserveService;
 import com.kosa.theBeauty.user.domain.UserVO;
 
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class reserveController {
 
-	private final reserveService service;
+	private final ReserveService service;
 
 	// 예약페이지 이동
 	@DebugLog
