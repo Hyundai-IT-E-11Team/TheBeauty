@@ -36,7 +36,7 @@ public class ConsultController {
 		ReservationVO reserve = reserveService.getReservationBySeq(reservationSeq);
 		model.addAttribute("reservation", reserve);
 		model.addAttribute("userInfo", surveyService.seleSurveyVO(reserve.getUserSeq()));
-		return "consult/rtcTest";
+		return "consult/consult";
 	}
 	
 	@DebugLog
