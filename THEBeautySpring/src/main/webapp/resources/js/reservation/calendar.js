@@ -145,7 +145,7 @@ function showTimeTable() {
 	        	
 	        },
 	        error: function() {
-	        	console.log("시간로딩실패");
+	        	alert("시간로딩실패. 다시 시도해주세요.");
 	        }
 	    });
 	    
@@ -177,7 +177,7 @@ function showTimeTable() {
 	        	}
 	        },
 	        error: function() {
-	        	console.log("시간로딩실패");
+	        	alert("시간로딩실패. 다시 시도해주세요.");
 	        }
 	    });
 	    

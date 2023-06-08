@@ -14,7 +14,6 @@ $(document).ready(function() {
     
 
 function calculateShippingFee(price) {
-    console.log(price); // 콘솔에 가격 정보 출력
     var shippingFee = 0;
     var shippingFeeMessage = "";
 
@@ -41,10 +40,8 @@ function productCounting(value) {
 	else if(value === "-" && currCount > 0){
 		currCount -= 1;
 	} else {
-		console.log("수량카운팅실패");
 	}
 	
-	console.log(productPrice);
 	productPrice = productPrice * currCount;
 	document.getElementById("currCount").innerHTML = currCount;
 	document.getElementById("productCount").value = currCount;

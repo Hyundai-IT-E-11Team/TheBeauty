@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>THEBeauty 아이디 찾기 결과</title>
+<title>아이디 찾기 결과</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user/findEmail.css" />
 </head>
 <body>

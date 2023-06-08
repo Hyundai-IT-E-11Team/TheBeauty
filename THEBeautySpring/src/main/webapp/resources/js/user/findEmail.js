@@ -2,8 +2,6 @@ function findEmail() {
 	
 	var nameStatus = $("#userName").val();
 	var registrationStatus = $("#userRegistration").val();
-	console.log(nameStatus);
-	console.log(registrationStatus);
 //	alert("실행");
 	if (nameStatus==="") {
 		alert("이름을 입력하세요.");

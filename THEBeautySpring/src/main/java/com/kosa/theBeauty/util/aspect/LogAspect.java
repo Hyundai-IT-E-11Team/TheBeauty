@@ -1,4 +1,4 @@
-package com.kosa.theBeauty;
+package com.kosa.theBeauty.util.aspect;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -17,7 +17,7 @@ public class LogAspect {
 
 	Logger log = LogManager.getLogger("case3");
 
-	@Before(value = "@annotation(com.kosa.theBeauty.annotation.DebugLog)")
+	@Before(value = "@annotation(com.kosa.theBeauty.util.annotation.DebugLog)")
 	public void before(JoinPoint joinPoint) {
 		MethodSignature ms = (MethodSignature) joinPoint.getSignature();
 		Method method = ms.getMethod();

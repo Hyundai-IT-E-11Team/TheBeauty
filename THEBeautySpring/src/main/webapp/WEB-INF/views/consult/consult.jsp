@@ -5,24 +5,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>openvidu-hello-world</title>
+<title>TheBeauty 화상상담</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	crossorigin="anonymous"></script>
 <link rel="styleSheet"
-	href="${pageContext.request.contextPath}/resources/consult/style.css"
+	href="${pageContext.request.contextPath}/resources/css/consult/style.css"
 	type="text/css" media="screen">
 <script
-	src="${pageContext.request.contextPath}/resources/consult/openvidu-browser-2.27.0.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/consult/openvidu-browser-2.27.0.js"></script>
 <script
-	src="${pageContext.request.contextPath}/resources/consult/app.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/consult/app.js"></script>
 </head>
 <body>
 	<div id="consult-container">
 		<div id="join" style="display: block;">
-			<h1>${currUser.userName }님환영합니다.</h1>
-			<p>상담 브랜드</p>
-			<p>${reservation.brandName }</p>
+			<h1>${currUser.userName }님 환영합니다.</h1>
 			<p>
 				<input type="button"
 					onclick="joinSession('${currUser.roleNum}', '${reservation.consultRoomId }')"

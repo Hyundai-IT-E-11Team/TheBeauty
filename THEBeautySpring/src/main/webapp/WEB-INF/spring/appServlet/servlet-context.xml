@@ -41,7 +41,7 @@
 			<mapping path="/reserve/**"/>
 			<mapping path="/consult/**"/>
 			<beans:bean
-				class="com.kosa.theBeauty.interceptors.UserInterceptor"></beans:bean>
+				class="com.kosa.theBeauty.util.interceptor.UserInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
 

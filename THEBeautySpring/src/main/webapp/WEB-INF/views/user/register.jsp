@@ -36,7 +36,6 @@
 				src="${pageContext.request.contextPath}/resources/js/user/register.js"></script>
 		</div>
 		<br>
-
 	</div>
 </body>
 </html>

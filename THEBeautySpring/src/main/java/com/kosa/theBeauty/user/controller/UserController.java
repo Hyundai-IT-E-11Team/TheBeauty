@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.kosa.theBeauty.annotation.DebugLog;
 import com.kosa.theBeauty.user.domain.UserDTO;
 import com.kosa.theBeauty.user.domain.UserVO;
 import com.kosa.theBeauty.user.service.UserService;
+import com.kosa.theBeauty.user.service.UserServiceImpl;
+import com.kosa.theBeauty.util.annotation.DebugLog;
 
 import lombok.RequiredArgsConstructor;
 
@@ -38,18 +39,17 @@ public class UserController {
 	// 로그인
 	@DebugLog
 	@PostMapping("login")
-	public String login(UserDTO dto, Model model) {
+	public ResponseEntity<String> login(UserDTO dto, Model model) {
 		UserVO vo = service.login(dto);
-		System.out.println(vo);
 		if (vo == null) {
-			return "redirect:/user/login";
+			return  new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		} else {
 			model.addAttribute("currUser", vo);
-			return "redirect:../main/mainPage";
+			return new ResponseEntity<String>(HttpStatus.OK);
 		}
 	}
 	
-	//로그아웃>>일단 임시로 메인페이지에서 사용자 이름을 클릭하면 로그아웃처리되도록..수정 필요
+	//로그아웃
 	@DebugLog
 	@GetMapping("logout")
 	public String logout(@SessionAttribute UserVO currUser,SessionStatus sessionStatus) {

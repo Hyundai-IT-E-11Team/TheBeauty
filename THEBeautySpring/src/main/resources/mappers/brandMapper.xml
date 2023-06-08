@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kosa.theBeauty.main.dao.mainDAO">
+<mapper namespace="com.kosa.theBeauty.main.dao.MainDAO">
 	<resultMap type="BrandVO" id="BrandVOMap">
 		<result column="brand_seq" property="brandSeq" />
 		<result column="brand_name" property="brandName" />
@@ -14,14 +14,13 @@
 		<result column="brand_img4" property="brandImg4" />
 	</resultMap>
 	
-	<!-- 브랜드정보 계정 롤넘으로 찾기 -->
-	<select id="selectBrnadByUser" parameterType="int" resultMap="BrandVOMap">
+	<select id="selectBrnadByRoleNum" parameterType="int" resultMap="BrandVOMap">
 		SELECT *
 		  FROM tb_brand
 		 WHERE brand_seq = #{rollNum}
 	</select>
 	
-	<select id="selectBrandByName" resultMap="BrandVOMap">
+	<select id="selectBrandByBrandName" resultMap="BrandVOMap">
 		SELECT *
 		  FROM tb_brand
 		 WHERE brand_name = #{brandName}

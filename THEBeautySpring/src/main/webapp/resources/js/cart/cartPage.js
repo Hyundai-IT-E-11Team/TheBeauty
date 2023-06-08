@@ -68,9 +68,7 @@ $(document).ready(function() {
                 productCount: currentCount
             }
         }).done(function(response) {
-            console.log(response);
         }).fail(function(error) {
-            console.log(error);
         });
         
         updateTotalPrice()

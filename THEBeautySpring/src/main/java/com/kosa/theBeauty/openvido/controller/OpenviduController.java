@@ -1,4 +1,4 @@
-package com.kosa.theBeauty.openvido;
+package com.kosa.theBeauty.openvido.controller;
 
 import java.util.Map;
 
@@ -23,14 +23,14 @@ import io.openvidu.java.client.SessionProperties;
 
 @CrossOrigin(origins = "*")
 @RestController
-public class openvidoController {
+public class OpenviduController {
 
 	@Value("http://localhost:4443/")
 	private String OPENVIDU_URL;
 	
 	@Value("MY_SECRET")
 	private String OPENVIDU_SECRET;
-	
+
 	private OpenVidu openvidu;
 	
 	@PostConstruct
@@ -51,7 +51,9 @@ public class openvidoController {
 	public ResponseEntity<String> createConnection(@PathVariable("sessionId") String sessionId,
 			@RequestBody(required = false) Map<String, Object> params)
 			throws OpenViduJavaClientException, OpenViduHttpException {
+		
 		Session session;
+		
 		try {
 			session = openvidu.getActiveSession(sessionId);			
 			if (session == null) {
@@ -61,9 +63,7 @@ public class openvidoController {
 			Connection connection = session.createConnection(properties);
 			return new ResponseEntity<>(connection.getToken(), HttpStatus.OK);
 		} catch (Exception e) {
-			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
 }
